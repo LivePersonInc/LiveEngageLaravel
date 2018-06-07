@@ -1,0 +1,52 @@
+{
+  "name": "liveperson/live-engage-laravel",
+  "description": "LiveEngage package for laravel",
+  "license": "MIT",
+  "keywords": [
+    "live",
+    "engage",
+    "laravel"
+  ],
+  "type": "library",
+  "authors": [
+    {
+      "name": "Robert Lester",
+      "email": "rlester@liveperson.com"
+    }
+  ],
+  "require": {
+    "php": ">=7.0"
+  },
+  "require-dev": {
+    "orchestra/testbench": "~3.6.0",
+    "phpunit/phpunit": "~7.2"
+  },
+  "autoload": {
+    "psr-4": {
+      "LivePersonNY\\LiveEngageLaravel\\": "src"
+    }
+  },
+  "autoload-dev": {
+    "psr-4": {
+      "LivePersonNY\\LiveEngageLaravel\\Tests\\": "tests"
+    },
+    "files": [
+      "vendor/phpunit/phpunit/src/Framework/Assert/Functions.php"
+    ]
+  },
+  "scripts": {
+    "phpunit": "phpunit"
+  },
+  "extra": {
+    "laravel": {
+      "providers": [
+        "LivePersonNY\\LiveEngageLaravel\\ServiceProvider"
+      ]
+    }
+  },
+  "config": {
+    "preferred-install": "dist",
+    "sort-packages": true,
+    "optimize-autoloader": true
+  }
+}
