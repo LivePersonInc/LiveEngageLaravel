@@ -16,7 +16,7 @@ Package description: LiveEngage package for laravel
 
 Install via composer
 ```bash
-composer require liveperson/live-engage-laravel
+composer require LivePersonNY/LiveEngageLaravel
 ```
 
 ### Register Service Provider
