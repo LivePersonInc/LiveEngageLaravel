@@ -12,7 +12,7 @@
 
 Package description: Laravel package to easily tap the LiveEngage developer APIs for such content as Engagement History, Engagement Attributes, and more...
 
-*Use at your own risk. This package carries no SLA or support and is still currently under development.*
+**Use at your own risk. This package carries no SLA or support and is still currently under development.**
 
 ## Installation
 
@@ -62,7 +62,7 @@ Configure your keys/account in `config/services.php`
 ],
 ```
 
-*Example:* Capturing engagement history between 2 date/times using global account configured above.
+**Example:** Capturing engagement history between 2 date/times using global account configured above.
 
 ```php
 use LiveEngage;
@@ -75,7 +75,7 @@ $end = new Carbon('2018-06-03 17:00:00');
 $history = LiveEngage::history($start, $end)->get();
 ```
 
-*Example:* Getting engagement history between 2 date/times for specific skill IDs.
+**Example:** Getting engagement history between 2 date/times for specific skill IDs.
 
 ```php
 use LiveEngage;
