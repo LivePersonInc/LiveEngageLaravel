@@ -10,10 +10,5 @@ class Engagement extends Model
 	
 	protected $guarded = [];
 	
-	public function newCollection(array $models = []) {
-		
-		return new EngagementHistory($models);
-		
-	}
 	
 }

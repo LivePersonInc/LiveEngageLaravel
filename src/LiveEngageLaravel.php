@@ -18,6 +18,7 @@ class LiveEngageLaravel {
 	private $results = [];
 	private $skills = [];
 	private $next = false;
+	private $prev = false;
 	private $start;
 	private $end;
 	private $config = 'services.liveperson.default';
@@ -30,6 +31,14 @@ class LiveEngageLaravel {
 	
 	private $retry_limit = 5;
 	private $retry_counter = 0;
+	
+	public function __get($attribute) {
+		return $this->$attribute;
+	}
+	
+	public function __set($attribute, $value) {
+		return $this->$attribute = $value;
+	}
 	
 	public function __construct() {
 		$this->account = config("{$this->config}.account");
@@ -88,7 +97,7 @@ class LiveEngageLaravel {
 		
 	}
 	
-	private function retrieveHistory(Carbon $start, Carbon $end, $url = false) {
+	public final function retrieveHistory(Carbon $start, Carbon $end, $url = false) {
 		
 		if (!$this->domain) $this->domain('engHistDomain');
 		
@@ -127,6 +136,9 @@ class LiveEngageLaravel {
 		if (property_exists($results_object->_metadata, 'next')) {
 			$this->next = $results_object->_metadata->next->href;
 		}
+		if (property_exists($results_object->_metadata, 'prev')) {
+			$this->prev = $results_object->_metadata->prev->href;
+		}
 		
 		$history = [];
 		foreach ($results as $item) {
@@ -135,19 +147,7 @@ class LiveEngageLaravel {
 			$history[] = $record;
 		}
 		
-		return $history;
-		
-	}
-	
-	public function next() {
-		
-		$next = $this->retrieveHistory($this->start, $this->end, $this->next);
-		if (property_exists($next->_metadata, 'next')) {
-			$this->next = $next->_metadata->next->href;
-			return $next->interactionHistoryRecords;
-		} else {
-			return false;
-		}
+		return new EngagementHistory($history, $this);
 		
 	}
 	
