@@ -5,6 +5,7 @@ namespace LivePersonNY\LiveEngageLaravel;
 use GuzzleHttp\Exception\GuzzleException;
 use LivePersonNY\LiveEngageLaravel\Collections\EngagementHistory;
 use LivePersonNY\LiveEngageLaravel\Models\Engagement;
+use LivePersonNY\LiveEngageLaravel\Models\Info;
 use LivePersonNY\LiveEngageLaravel\Exceptions\LiveEngageException;
 use GuzzleHttp\Subscriber\Oauth\Oauth1;
 use GuzzleHttp\HandlerStack;
@@ -143,7 +144,13 @@ class LiveEngageLaravel {
 		$history = [];
 		foreach ($results as $item) {
 			$record = new Engagement();
-			$record->fill((array) $item);
+			$array = (array) $item;
+			$array['transcript_lines'] = $array['transcript'];
+			$info = $array['info'];
+			$array['info'] = new Info();
+			$array['info']->fill((array) $info);
+			unset($array['transcript']);
+			$record->fill($array);
 			$history[] = $record;
 		}
 		
