@@ -3,6 +3,8 @@
 namespace LivePersonNY\LiveEngageLaravel;
 
 use GuzzleHttp\Exception\GuzzleException;
+use LivePersonNY\LiveEngageLaravel\Collections\EngagementHistory;
+use LivePersonNY\LiveEngageLaravel\Models\Engagement;
 use LivePersonNY\LiveEngageLaravel\Exceptions\LiveEngageException;
 use GuzzleHttp\Subscriber\Oauth\Oauth1;
 use GuzzleHttp\HandlerStack;
@@ -21,6 +23,8 @@ class LiveEngageLaravel {
 	private $config = 'services.liveperson.default';
 	private $version = '1.0';
 	private $history_limit = 50;
+	private $history = false;
+	private $context = '';
 	
 	private $domain = false;
 	
@@ -33,7 +37,7 @@ class LiveEngageLaravel {
 		$this->version = config("{$this->config}.version") ?: $this->version;
 	}
 	
-	public function key($key = 'default') {
+	public function new($key = 'default') {
 		$this->config = "services.liveperson.$key";
 		return $this;
 	}
@@ -70,12 +74,17 @@ class LiveEngageLaravel {
 		
 	}
 	
-	public function visitor($visitorID, $sessionID) {
+	public function visitor($visitorID, $sessionID, $setData = false) {
 		
 		if (!$this->domain) $this->domain('smt');
-		$url = "https://{$this->domain}/api/account/{$this->account}/monitoring/visitors/{$visitorID}/visits/current/state?v=1&sid={$sessionID}";
 		
-		return $this->request($url, 'GET');
+		if ($setData) {
+			$url = "https://{$this->domain}/api/account/{$this->account}/monitoring/visitors/{$visitorID}/visits/current/events?v=1&sid={$sessionID}";
+			return $this->request($url, 'POST', $setData);
+		} else {
+			$url = "https://{$this->domain}/api/account/{$this->account}/monitoring/visitors/{$visitorID}/visits/current/state?v=1&sid={$sessionID}";
+			return $this->request($url, 'GET');
+		}
 		
 	}
 	
@@ -108,18 +117,25 @@ class LiveEngageLaravel {
 		$this->retry_counter = 0;
 		
 		$start = $start ?: (new Carbon())->today();
-		$end = $end ?: (new Carbon())->today();
+		$end = $end ?: (new Carbon())->today()->addHours(23)->addMinutes(59);
 		
 		$this->start = $start;
 		$this->end = $end;
 		
-		$results = $this->retrieveHistory($start, $end);
-		$this->results = $results->interactionHistoryRecords;
-		if (property_exists($results->_metadata, 'next')) {
-			$this->next = $results->_metadata->next->href;
+		$results_object = $this->retrieveHistory($start, $end);
+		$results = $results_object->interactionHistoryRecords;
+		if (property_exists($results_object->_metadata, 'next')) {
+			$this->next = $results_object->_metadata->next->href;
 		}
 		
-		return $this;
+		$history = [];
+		foreach ($results as $item) {
+			$record = new Engagement();
+			$record->fill((array) $item);
+			$history[] = $record;
+		}
+		
+		return $history;
 		
 	}
 	
