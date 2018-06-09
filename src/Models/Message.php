@@ -17,6 +17,16 @@ class Message extends Model
 		'time'
 	];
 	
+	public function getTextAttribute() {
+		if ($this->type == 'PLAIN') {
+			return $this->messageData->msg->text;
+		} else if ($this->type == 'RICH_CONTENT') {
+			return 'RICH_CONTENT';
+		} else {
+			return isset($this->attributes['text']) ? $this->attributes['text'] : '';
+		}
+	}
+	
 	public function getPlainTextAttribute() {
 		return strip_tags($this->text);
 	}

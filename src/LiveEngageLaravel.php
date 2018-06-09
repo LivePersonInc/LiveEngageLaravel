@@ -4,10 +4,13 @@ namespace LivePersonNY\LiveEngageLaravel;
 
 use GuzzleHttp\Exception\GuzzleException;
 use LivePersonNY\LiveEngageLaravel\Collections\EngagementHistory;
+use LivePersonNY\LiveEngageLaravel\Collections\ConversationHistory;
 use LivePersonNY\LiveEngageLaravel\Models\Engagement;
+use LivePersonNY\LiveEngageLaravel\Models\Conversation;
 use LivePersonNY\LiveEngageLaravel\Models\Info;
 use LivePersonNY\LiveEngageLaravel\Models\Visitor;
 use LivePersonNY\LiveEngageLaravel\Models\Campaign;
+use LivePersonNY\LiveEngageLaravel\Models\Payload;
 use LivePersonNY\LiveEngageLaravel\Exceptions\LiveEngageException;
 use GuzzleHttp\Subscriber\Oauth\Oauth1;
 use GuzzleHttp\HandlerStack;
@@ -28,7 +31,7 @@ class LiveEngageLaravel {
 	private $version = '1.0';
 	private $history_limit = 50;
 	private $history = false;
-	private $context = '';
+	private $context = 'interactionHistoryRecords';
 	
 	private $domain = false;
 	
@@ -77,7 +80,7 @@ class LiveEngageLaravel {
 		$this->account = $accountid;
 		return $this;
 	}
-	
+		
 	public function domain($service) {
 		
 		$response = $this->request("https://api.liveperson.net/api/account/{$this->account}/service/{$service}/baseURI.json?version={$this->version}", 'GET');
@@ -103,6 +106,15 @@ class LiveEngageLaravel {
 		
 	}
 	
+	public function agentStatus() {
+		
+		if (!$this->domain) $this->domain('msgHist');
+		
+		$url = "https://{$this->domain}/messaging_history/api/account/{$this->account}/agent-view/status";
+		return $this->request($url, 'POST', new Payload(['skillIds' => $this->skills]));
+		
+	}
+	
 	public final function retrieveHistory(Carbon $start, Carbon $end, $url = false) {
 		
 		if (!$this->domain) $this->domain('engHistDomain');
@@ -124,6 +136,72 @@ class LiveEngageLaravel {
 		}
 		
 		return $this->request($url, 'POST', $data);
+		
+	}
+	
+	public final function retrieveMsgHistory(Carbon $start, Carbon $end, $url = false) {
+		
+		if (!$this->domain) $this->domain('msgHist');
+		
+		$url = $url ?: "https://{$this->domain}/messaging_history/api/account/{$this->account}/conversations/search?limit={$this->history_limit}&offset=0";
+		
+		$start_str = $start->toW3cString();
+		$end_str = $end->toW3cString();
+		
+		$data = new \StdClass();
+		$data->interactive = true;
+		$data->ended = true;
+		$data->start = new \StdClass();
+		$data->start->from = strtotime($start_str) . '000';
+		$data->start->to = strtotime($end_str) . '000';
+		
+		if (count($this->skills)) {
+			$data->skillIds = $this->skills;
+		}
+		
+		return $this->request($url, 'POST', $data);
+		
+	}
+	
+	public function messagingHistory(Carbon $start = null, Carbon $end = null) {
+		
+		$this->retry_counter = 0;
+		
+		$start = $start ?: (new Carbon())->today();
+		$end = $end ?: (new Carbon())->today()->addHours(23)->addMinutes(59);
+		
+		$this->start = $start;
+		$this->end = $end;
+		
+		$results_object = $this->retrieveMsgHistory($start, $end);
+		$results = $results_object->conversationHistoryRecords;
+		if (property_exists($results_object->_metadata, 'next')) {
+			$this->next = $results_object->_metadata->next->href;
+		}
+		if (property_exists($results_object->_metadata, 'prev')) {
+			$this->prev = $results_object->_metadata->prev->href;
+		}
+		
+		$history = [];
+		foreach ($results as $item) {
+			
+			$engagement = new Conversation();
+			
+			if (property_exists($item, 'info'))
+				$item->info = new Info((array) $item->info);
+			
+			if (property_exists($item, 'visitorInfo'))
+				$item->visitorInfo = new Visitor((array) $item->visitorInfo);
+				
+			if (property_exists($item, 'campaign'))
+				$item->campaign = new Campaign((array) $item->campaign);
+			
+			$engagement->fill((array) $item);
+			$history[] = $engagement;
+			
+		}
+		
+		return new ConversationHistory($history, $this);
 		
 	}
 	
@@ -152,13 +230,13 @@ class LiveEngageLaravel {
 			$engagement = new Engagement();
 			
 			if (property_exists($item, 'info'))
-				$item->info = (new Info())->fill((array) $item->info);
+				$item->info = new Info((array) $item->info);
 			
 			if (property_exists($item, 'visitorInfo'))
-				$item->visitorInfo = (new Visitor())->fill((array) $item->visitorInfo);
+				$item->visitorInfo = new Visitor((array) $item->visitorInfo);
 				
 			if (property_exists($item, 'campaign'))
-				$item->campaign = (new Campaign())->fill((array) $item->campaign);
+				$item->campaign = new Campaign((array) $item->campaign);
 			
 			$engagement->fill((array) $item);
 			$history[] = $engagement;
@@ -213,7 +291,7 @@ class LiveEngageLaravel {
 				$this->retry_counter++;
 				$response = $this->request($url, $payload);
 			} else {
-				throw new LiveEngageException("Retry limit has been exceeded ($this->retry_limit)", 'E100');
+				throw $e; //new LiveEngageException("Retry limit has been exceeded ($this->retry_limit)", 100);
 			}
 		}
 		

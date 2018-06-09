@@ -17,4 +17,8 @@ class Info extends Model
 		return new Carbon($this->attributes['startTime']);
 	}
 	
+	public function getSessionIdAttribute() {
+		return str_replace($this->accountId, '', $this->engagementId);
+	}
+	
 }

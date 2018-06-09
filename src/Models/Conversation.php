@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 use LivePersonNY\LiveEngageLaravel\Collections\Transcript;
 use LivePersonNY\LiveEngageLaravel\Collections\EngagementHistory;
 
-class Engagement extends Model
+class Conversation extends Model
 {
 	
 	protected $guarded = [];
@@ -14,14 +14,14 @@ class Engagement extends Model
 		'transcript'
 	];
 	
-	public function getTranscriptAttribute() {
+	public function getMessageRecordsAttribute() {
 		
 		$messages = [];
-		foreach ($this->attributes['transcript']->lines as $line) {
+		foreach ($this->attributes['messageRecords'] as $line) {
 			$messages[] = new Message((array) $line);
 		}
 		
-		return new Transcript($messages);
+		return collect($messages);
 		
 	}	
 	

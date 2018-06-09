@@ -3,10 +3,10 @@
 namespace LivePersonNY\LiveEngageLaravel\Collections;
 
 use Illuminate\Support\Collection;
-use LivePersonNY\LiveEngageLaravel\Models\Engagement;
+use LivePersonNY\LiveEngageLaravel\Models\Conversation;
 use LivePersonNY\LiveEngageLaravel\LiveEngageLaravel;
 
-class EngagementHistory extends Collection {
+class ConversationHistory extends Collection {
 	
 	private $instance;
 	
@@ -23,16 +23,16 @@ class EngagementHistory extends Collection {
 		
 		$instance = $this->instance;
 		
-		$next = $instance->retrieveHistory($instance->start, $instance->end, $instance->next);
+		$next = $instance->retrieveMsgHistory($instance->start, $instance->end, $instance->next);
 		if (property_exists($next->_metadata, 'next')) {
 			$instance->next = $next->_metadata->next->href;
 			
 			$history = [];
-			foreach ($next->interactionHistoryRecords as $item) {
-				$history[] = new Engagement((array) $item);
+			foreach ($next->conversationHistoryRecords as $item) {
+				$history[] = new Conversation((array) $item);
 			}
 			
-			return $this->merge(new EngagementHistory($history));
+			return $this->merge(new ConversationHistory($history));
 			
 		} else {
 			return false;
@@ -46,16 +46,16 @@ class EngagementHistory extends Collection {
 		
 		$instance = $this->instance;
 		
-		$prev = $instance->retrieveHistory($instance->start, $instance->end, $instance->prev);
+		$prev = $instance->retrieveMsgHistory($instance->start, $instance->end, $instance->prev);
 		if (property_exists($prev->_metadata, 'prev')) {
 			$instance->prev = $prev->_metadata->prev->href;
 			
 			$history = [];
-			foreach ($next->interactionHistoryRecords as $item) {
-				$history[] = new Engagement((array) $item);
+			foreach ($next->conversationHistoryRecords as $item) {
+				$history[] = new Conversation((array) $item);
 			}
 			
-			return $this->merge(new EngagementHistory($history));
+			return $this->merge(new ConversationHistory($history));
 			
 		} else {
 			return false;
