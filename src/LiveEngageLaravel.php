@@ -49,7 +49,7 @@ class LiveEngageLaravel {
 		$this->version = config("{$this->config}.version") ?: $this->version;
 	}
 	
-	public function new($key = 'default') {
+	public function key($key = 'default') {
 		$this->config = "services.liveperson.$key";
 		return $this;
 	}

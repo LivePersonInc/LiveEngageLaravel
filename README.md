@@ -10,7 +10,7 @@
 [![Packagist](https://poser.pugx.org/liveperson/live-engage-laravel/d/total.svg)](https://packagist.org/packages/LivePersonNY/LiveEngageLaravel)
 [![Packagist](https://img.shields.io/packagist/l/liveperson/live-engage-laravel.svg)](https://packagist.org/packages/LivePersonNY/LiveEngageLaravel)
 
-Package description: Laravel package to easily tap the LiveEngage developer APIs for such content as Engagement History, Engagement Attributes, and more...
+Laravel package to easily tap the LiveEngage developer APIs for such content as Engagement History, Engagement Attributes, and more...
 
 **Use at your own risk. This package carries no SLA or support and is still currently under development.**
 
@@ -38,12 +38,6 @@ Register package facade in `config/app.php` in `aliases` section
 'LiveEngage' => LivePersonNY\LiveEngageLaravel\Facades\LiveEngageLaravel::class,
 ```
 
-### Publish Configuration File
-
-```bash
-php artisan vendor:publish --provider="LivePersonNY\LiveEngageLaravel\ServiceProvider" --tag="config"
-```
-
 ## Usage
 
 Create/Obtain an API key from LiveEngage with appropriate permissions for the APIs you intend to access.
@@ -61,6 +55,41 @@ Configure your keys/account in `config/services.php`
     ]
 ],
 ```
+If you want to have multiple API keys, you can add more arrays for them. The keys for each array are arbitrary, but you will need to specify them later to access specific key sets.
+```php
+'liveperson' => [
+    'default' => [
+	    'key' => 'xxxxxxx',
+	    'secret' => 'xxxxxxx',
+	    'token' => 'xxxxxxx',
+	    'token_secret' => 'xxxxxxx',
+	    'account' => '123456',
+    ],
+    'history' => [
+	    'key' => 'xxxxxxx',
+	    'secret' => 'xxxxxxx',
+	    'token' => 'xxxxxxx',
+	    'token_secret' => 'xxxxxxx',
+	    'account' => '123456',
+    ],
+    'attributes' => [
+	    'key' => 'xxxxxxx',
+	    'secret' => 'xxxxxxx',
+	    'token' => 'xxxxxxx',
+	    'token_secret' => 'xxxxxxx',
+	    'account' => '123456',
+    ]
+],
+```
+To make an api call on a specific key set...
+```php
+$history = LiveEngage::key('history')->history();
+```
+To use the default keyset, you need not use the `key` method at all.
+```php
+$history = LiveEngage::history()
+```
+
 
 **Example:** Capturing engagement history between 2 date/times using global account configured above.
 
@@ -87,6 +116,7 @@ $end = new Carbon('2018-06-03 17:00:00');
 
 $history = LiveEngage::skills([432,676])->history($start, $end);
 ```
+`history()` returns a Laravel collection of Engagement objects.
 
 **Example:** Pulling the next "page" of data in to the collection.
 
