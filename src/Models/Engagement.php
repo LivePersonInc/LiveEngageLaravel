@@ -10,11 +10,14 @@ class Engagement extends Model
 {
 	
 	protected $guarded = [];
+	protected $appends = [
+		'transcript'
+	];
 	
 	public function getTranscriptAttribute() {
 		
 		$messages = [];
-		foreach ($this->transcript_lines->lines as $line) {
+		foreach ($this->attributes['transcript']->lines as $line) {
 			$message = new Message();
 			$message->fill((array) $line);
 			$messages[] = $message;

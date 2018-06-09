@@ -6,6 +6,8 @@ use GuzzleHttp\Exception\GuzzleException;
 use LivePersonNY\LiveEngageLaravel\Collections\EngagementHistory;
 use LivePersonNY\LiveEngageLaravel\Models\Engagement;
 use LivePersonNY\LiveEngageLaravel\Models\Info;
+use LivePersonNY\LiveEngageLaravel\Models\Visitor;
+use LivePersonNY\LiveEngageLaravel\Models\Campaign;
 use LivePersonNY\LiveEngageLaravel\Exceptions\LiveEngageException;
 use GuzzleHttp\Subscriber\Oauth\Oauth1;
 use GuzzleHttp\HandlerStack;
@@ -78,10 +80,13 @@ class LiveEngageLaravel {
 	
 	public function domain($service) {
 		
-		$client = new Client();
-		$this->domain = json_decode($client->get("http://api.liveperson.net/api/account/{$this->account}/service/{$service}/baseURI.json?version={$this->version}")->getBody())->baseURI;
-		return $this;
-		
+		$response = $this->request("https://api.liveperson.net/api/account/{$this->account}/service/{$service}/baseURI.json?version={$this->version}", 'GET');
+		if (is_a($response, 'Exception')) {
+			throw new \Exception('Unable to get LivePerson account domain', 101);
+		} else {
+			$this->domain = $response->baseURI;
+			return $this;
+		}
 	}
 	
 	public function visitor($visitorID, $sessionID, $setData = false) {
@@ -143,15 +148,21 @@ class LiveEngageLaravel {
 		
 		$history = [];
 		foreach ($results as $item) {
-			$record = new Engagement();
-			$array = (array) $item;
-			$array['transcript_lines'] = $array['transcript'];
-			$info = $array['info'];
-			$array['info'] = new Info();
-			$array['info']->fill((array) $info);
-			unset($array['transcript']);
-			$record->fill($array);
-			$history[] = $record;
+			
+			$engagement = new Engagement();
+			
+			if (property_exists($item, 'info'))
+				$item->info = (new Info())->fill((array) $item->info);
+			
+			if (property_exists($item, 'visitorInfo'))
+				$item->visitorInfo = (new Visitor())->fill((array) $item->visitorInfo);
+				
+			if (property_exists($item, 'campaign'))
+				$item->campaign = (new Campaign())->fill((array) $item->campaign);
+			
+			$engagement->fill((array) $item);
+			$history[] = $engagement;
+			
 		}
 		
 		return new EngagementHistory($history, $this);
@@ -194,13 +205,15 @@ class LiveEngageLaravel {
 			$res = $client->request($method, $url, $args);
 			
 			$response = json_decode($res->getBody());
+		} catch (\GuzzleHttp\Exception\ConnectException $connection) {
+			return $connection;
 		} catch (\Exception $e) {
 			if ($this->retry_counter < $this->retry_limit || $this->retry_limit == -1) {
 				usleep(1500);
 				$this->retry_counter++;
 				$response = $this->request($url, $payload);
 			} else {
-				throw $e; // new LiveEngageException("Retry limit has been exceeded ($this->retry_limit)", '100');
+				throw new LiveEngageException("Retry limit has been exceeded ($this->retry_limit)", 'E100');
 			}
 		}
 		

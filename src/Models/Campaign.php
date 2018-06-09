@@ -5,7 +5,7 @@ namespace LivePersonNY\LiveEngageLaravel\Models;
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;
 
-class Visitor extends Model
+class Campaign extends Model
 {
 	
 	protected $guarded = [];

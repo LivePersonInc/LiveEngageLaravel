@@ -72,7 +72,7 @@ use Carbon\Carbon;
 $start = new Carbon('2018-06-01 08:00:00');
 $end = new Carbon('2018-06-03 17:00:00');
 
-$history = LiveEngage::history($start, $end)->get();
+$history = LiveEngage::history($start, $end);
 ```
 
 **Example:** Getting engagement history between 2 date/times for specific skill IDs.
@@ -85,8 +85,31 @@ use Carbon\Carbon;
 $start = new Carbon('2018-06-01 08:00:00');
 $end = new Carbon('2018-06-03 17:00:00');
 
-$history = LiveEngage::skills([432,676])->history($start, $end)->get();
+$history = LiveEngage::skills([432,676])->history($start, $end);
 ```
+
+**Example:** Pulling the next "page" of data in to the collection.
+
+```php
+$history->next(); // one page
+```
+Or
+```php
+while ($history->next()) {} // get all remaining data
+```
+
+**Example:** Iterate through all messages of the transcript
+
+```php
+foreach ($history->transcript as $message) {
+	echo $message . "\n";
+}
+```
+Transcript is a collection of message objects, so you can access properties of the message as well.
+```php
+echo $message->time->format('Y-m-d');
+```
+The time property of the message is a Carbon date object.
 
 ## Security
 
