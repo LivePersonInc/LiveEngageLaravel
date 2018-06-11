@@ -6,9 +6,9 @@
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/CHANGEME/mini.png)](https://insight.sensiolabs.com/projects/CHANGEME)
 [![Coverage Status](https://coveralls.io/repos/github/liveperson/live-engage-laravel/badge.svg?branch=master)](https://coveralls.io/github/LivePersonInc/LiveEngageLaravel?branch=master)
 
-[![Packagist](https://img.shields.io/packagist/v/liveperson/live-engage-laravel.svg)](https://packagist.org/packages/LivePersonInc/LiveEngageLaravel)
-[![Packagist](https://poser.pugx.org/liveperson/live-engage-laravel/d/total.svg)](https://packagist.org/packages/LivePersonInc/LiveEngageLaravel)
-[![Packagist](https://img.shields.io/packagist/l/liveperson/live-engage-laravel.svg)](https://packagist.org/packages/LivePersonInc/LiveEngageLaravel)
+[![Packagist](https://img.shields.io/packagist/v/liveperson-inc/live-engage-laravel.svg)](https://packagist.org/packages/live-person-inc/live-engage-laravel)
+[![Packagist](https://poser.pugx.org/liveperson-inc/live-engage-laravel/d/total.svg)](https://packagist.org/packages/live-person-inc/live-engage-laravel)
+[![Packagist](https://img.shields.io/packagist/l/liveperson-inc/live-engage-laravel.svg)](https://packagist.org/packages/live-person-inc/live-engage-laravel)
 
 Laravel package to easily tap the LiveEngage developer APIs for such content as Engagement History, Engagement Attributes, and more...
 
