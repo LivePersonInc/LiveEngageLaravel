@@ -36,7 +36,11 @@ class Message extends Model
 	}
 	
 	public function __toString() {
-		return $this->plain_text;
+		if ($this->type == 'TEXT_PLAIN') {
+			return $this->messageData->msg->text;
+		} else if ($this->type == 'RICH_CONTENT') {
+			return 'RICH_CONTENT';
+		}
 	}
 	
 }
