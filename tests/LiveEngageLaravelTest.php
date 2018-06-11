@@ -2,9 +2,9 @@
 
 namespace LivePersonInc\LiveEngageLaravel\Tests;
 
-use LivePersonInc\LiveEngageLaravel\Facades\LiveEngageLaravel;
-use LivePersonInc\LiveEngageLaravel\ServiceProvider;
 use Orchestra\Testbench\TestCase;
+use LivePersonInc\LiveEngageLaravel\ServiceProvider;
+use LivePersonInc\LiveEngageLaravel\Facades\LiveEngageLaravel;
 
 class LiveEngageLaravelTest extends TestCase
 {
