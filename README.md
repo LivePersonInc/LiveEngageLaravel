@@ -5,7 +5,8 @@
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/LivePersonInc/LiveEngageLaravel/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/LivePersonInc/LiveEngageLaravel/?branch=master)
 [![Coverage Status](https://coveralls.io/repos/github/live-person-inc/live-engage-laravel/badge.svg?branch=master)](https://coveralls.io/github/live-person-inc/live-engage-laravel?branch=master)
 
-[![Packagist](https://img.shields.io/packagist/v/live-person-inc/live-engage-laravel.svg)](https://packagist.org/packages/live-person-inc/live-engage-laravel)
+[![Latest Stable Version](https://poser.pugx.org/live-person-inc/live-engage-laravel/v/stable.svg)](https://packagist.org/packages/live-person-inc/live-engage-laravel)
+[![Latest Unstable Version](https://poser.pugx.org/live-person-inc/live-engage-laravel/v/unstable.svg)](https://packagist.org/packages/live-person-inc/live-engage-laravel)
 [![Packagist](https://poser.pugx.org/live-person-inc/live-engage-laravel/d/total.svg)](https://packagist.org/packages/live-person-inc/live-engage-laravel)
 [![Packagist](https://img.shields.io/packagist/l/live-person-inc/live-engage-laravel.svg)](https://packagist.org/packages/live-person-inc/live-engage-laravel)
 
