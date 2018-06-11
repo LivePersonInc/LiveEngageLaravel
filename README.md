@@ -1,10 +1,10 @@
 # Live Engage Laravel
 
-[![Build Status](https://travis-ci.org/liveperson/live-engage-laravel.svg?branch=master)](https://travis-ci.org/LivePersonInc/LiveEngageLaravel)
+[![Build Status](https://travis-ci.org/live-person-inc/live-engage-laravel.svg?branch=master)](https://travis-ci.org/live-person-inc/live-engage-laravel)
 [![styleci](https://styleci.io/repos/CHANGEME/shield)](https://styleci.io/repos/CHANGEME)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/liveperson/live-engage-laravel/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/LivePersonInc/LiveEngageLaravel/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/live-person-inc/live-engage-laravel/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/live-person-inc/live-engage-laravel/?branch=master)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/CHANGEME/mini.png)](https://insight.sensiolabs.com/projects/CHANGEME)
-[![Coverage Status](https://coveralls.io/repos/github/liveperson/live-engage-laravel/badge.svg?branch=master)](https://coveralls.io/github/LivePersonInc/LiveEngageLaravel?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/live-person-inc/live-engage-laravel/badge.svg?branch=master)](https://coveralls.io/github/live-person-inc/live-engage-laravel?branch=master)
 
 [![Packagist](https://img.shields.io/packagist/v/live-person-inc/live-engage-laravel.svg)](https://packagist.org/packages/live-person-inc/live-engage-laravel)
 [![Packagist](https://poser.pugx.org/live-person-inc/live-engage-laravel/d/total.svg)](https://packagist.org/packages/live-person-inc/live-engage-laravel)
