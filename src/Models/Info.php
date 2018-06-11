@@ -1,6 +1,6 @@
 <?php
 
-namespace LivePersonNY\LiveEngageLaravel\Models;
+namespace LivePersonInc\LiveEngageLaravel\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Carbon\Carbon;

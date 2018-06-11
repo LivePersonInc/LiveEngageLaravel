@@ -1,10 +1,10 @@
 <?php
 
-namespace LivePersonNY\LiveEngageLaravel\Collections;
+namespace LivePersonInc\LiveEngageLaravel\Collections;
 
 use Illuminate\Support\Collection;
-use LivePersonNY\LiveEngageLaravel\Models\Conversation;
-use LivePersonNY\LiveEngageLaravel\LiveEngageLaravel;
+use LivePersonInc\LiveEngageLaravel\Models\Conversation;
+use LivePersonInc\LiveEngageLaravel\LiveEngageLaravel;
 
 class ConversationHistory extends Collection {
 	

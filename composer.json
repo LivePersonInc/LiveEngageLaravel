@@ -1,5 +1,5 @@
 {
-  "name": "LivePersonNY/LiveEngageLaravel",
+  "name": "LivePersonInc/LiveEngageLaravel",
   "description": "LiveEngage package for laravel",
   "license": "MIT",
   "keywords": [
@@ -24,12 +24,12 @@
   },
   "autoload": {
     "psr-4": {
-      "LivePersonNY\\LiveEngageLaravel\\": "src"
+      "LivePersonInc\\LiveEngageLaravel\\": "src"
     }
   },
   "autoload-dev": {
     "psr-4": {
-      "LivePersonNY\\LiveEngageLaravel\\Tests\\": "tests"
+      "LivePersonInc\\LiveEngageLaravel\\Tests\\": "tests"
     },
     "files": [
       "vendor/phpunit/phpunit/src/Framework/Assert/Functions.php"
@@ -41,7 +41,7 @@
   "extra": {
     "laravel": {
       "providers": [
-        "LivePersonNY\\LiveEngageLaravel\\ServiceProvider"
+        "LivePersonInc\\LiveEngageLaravel\\ServiceProvider"
       ]
     }
   },

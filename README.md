@@ -1,14 +1,14 @@
 # Live Engage Laravel
 
-[![Build Status](https://travis-ci.org/liveperson/live-engage-laravel.svg?branch=master)](https://travis-ci.org/LivePersonNY/LiveEngageLaravel)
+[![Build Status](https://travis-ci.org/liveperson/live-engage-laravel.svg?branch=master)](https://travis-ci.org/LivePersonInc/LiveEngageLaravel)
 [![styleci](https://styleci.io/repos/CHANGEME/shield)](https://styleci.io/repos/CHANGEME)
-[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/liveperson/live-engage-laravel/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/LivePersonNY/LiveEngageLaravel/?branch=master)
+[![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/liveperson/live-engage-laravel/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/LivePersonInc/LiveEngageLaravel/?branch=master)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/CHANGEME/mini.png)](https://insight.sensiolabs.com/projects/CHANGEME)
-[![Coverage Status](https://coveralls.io/repos/github/liveperson/live-engage-laravel/badge.svg?branch=master)](https://coveralls.io/github/LivePersonNY/LiveEngageLaravel?branch=master)
+[![Coverage Status](https://coveralls.io/repos/github/liveperson/live-engage-laravel/badge.svg?branch=master)](https://coveralls.io/github/LivePersonInc/LiveEngageLaravel?branch=master)
 
-[![Packagist](https://img.shields.io/packagist/v/liveperson/live-engage-laravel.svg)](https://packagist.org/packages/LivePersonNY/LiveEngageLaravel)
-[![Packagist](https://poser.pugx.org/liveperson/live-engage-laravel/d/total.svg)](https://packagist.org/packages/LivePersonNY/LiveEngageLaravel)
-[![Packagist](https://img.shields.io/packagist/l/liveperson/live-engage-laravel.svg)](https://packagist.org/packages/LivePersonNY/LiveEngageLaravel)
+[![Packagist](https://img.shields.io/packagist/v/liveperson/live-engage-laravel.svg)](https://packagist.org/packages/LivePersonInc/LiveEngageLaravel)
+[![Packagist](https://poser.pugx.org/liveperson/live-engage-laravel/d/total.svg)](https://packagist.org/packages/LivePersonInc/LiveEngageLaravel)
+[![Packagist](https://img.shields.io/packagist/l/liveperson/live-engage-laravel.svg)](https://packagist.org/packages/LivePersonInc/LiveEngageLaravel)
 
 Laravel package to easily tap the LiveEngage developer APIs for such content as Engagement History, Engagement Attributes, and more...
 
@@ -18,7 +18,7 @@ Laravel package to easily tap the LiveEngage developer APIs for such content as 
 
 Install via composer
 ```bash
-composer require LivePersonNY/LiveEngageLaravel
+composer require LivePersonInc/LiveEngageLaravel
 ```
 
 ### Register Service Provider
@@ -28,14 +28,14 @@ auto discovery feature.**
 
 Add service provider to `config/app.php` in `providers` section
 ```php
-LivePersonNY\LiveEngageLaravel\ServiceProvider::class,
+LivePersonInc\LiveEngageLaravel\ServiceProvider::class,
 ```
 
 ### Register Facade
 
 Register package facade in `config/app.php` in `aliases` section
 ```php
-'LiveEngage' => LivePersonNY\LiveEngageLaravel\Facades\LiveEngageLaravel::class,
+'LiveEngage' => LivePersonInc\LiveEngageLaravel\Facades\LiveEngageLaravel::class,
 ```
 
 ## Usage
@@ -148,8 +148,8 @@ instead of using the issue tracker.
 
 ## Credits
 
-- [Robert Lester](https://github.com/LivePersonNY/LiveEngageLaravel)
-- [All contributors](https://github.com/LivePersonNY/LiveEngageLaravel/graphs/contributors)
+- [Robert Lester](https://github.com/LivePersonInc/LiveEngageLaravel)
+- [All contributors](https://github.com/LivePersonInc/LiveEngageLaravel/graphs/contributors)
 
 This package is bootstrapped with the help of
 [melihovv/laravel-package-generator](https://github.com/melihovv/laravel-package-generator).

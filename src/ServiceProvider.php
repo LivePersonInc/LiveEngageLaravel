@@ -1,6 +1,6 @@
 <?php
 
-namespace LivePersonNY\LiveEngageLaravel;
+namespace LivePersonInc\LiveEngageLaravel;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {

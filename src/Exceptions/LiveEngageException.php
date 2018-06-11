@@ -1,6 +1,6 @@
 <?php
 
-namespace LivePersonNY\LiveEngageLaravel\Exceptions;
+namespace LivePersonInc\LiveEngageLaravel\Exceptions;
 
 use Exception;
 

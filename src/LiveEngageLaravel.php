@@ -1,17 +1,17 @@
 <?php
 
-namespace LivePersonNY\LiveEngageLaravel;
+namespace LivePersonInc\LiveEngageLaravel;
 
 use GuzzleHttp\Exception\GuzzleException;
-use LivePersonNY\LiveEngageLaravel\Collections\EngagementHistory;
-use LivePersonNY\LiveEngageLaravel\Collections\ConversationHistory;
-use LivePersonNY\LiveEngageLaravel\Models\Engagement;
-use LivePersonNY\LiveEngageLaravel\Models\Conversation;
-use LivePersonNY\LiveEngageLaravel\Models\Info;
-use LivePersonNY\LiveEngageLaravel\Models\Visitor;
-use LivePersonNY\LiveEngageLaravel\Models\Campaign;
-use LivePersonNY\LiveEngageLaravel\Models\Payload;
-use LivePersonNY\LiveEngageLaravel\Exceptions\LiveEngageException;
+use LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory;
+use LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory;
+use LivePersonInc\LiveEngageLaravel\Models\Engagement;
+use LivePersonInc\LiveEngageLaravel\Models\Conversation;
+use LivePersonInc\LiveEngageLaravel\Models\Info;
+use LivePersonInc\LiveEngageLaravel\Models\Visitor;
+use LivePersonInc\LiveEngageLaravel\Models\Campaign;
+use LivePersonInc\LiveEngageLaravel\Models\Payload;
+use LivePersonInc\LiveEngageLaravel\Exceptions\LiveEngageException;
 use GuzzleHttp\Subscriber\Oauth\Oauth1;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Client;

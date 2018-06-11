@@ -1,10 +1,10 @@
 <?php
 
-namespace LivePersonNY\LiveEngageLaravel\Models;
+namespace LivePersonInc\LiveEngageLaravel\Models;
 
 use Illuminate\Database\Eloquent\Model;
-use LivePersonNY\LiveEngageLaravel\Collections\Transcript;
-use LivePersonNY\LiveEngageLaravel\Collections\EngagementHistory;
+use LivePersonInc\LiveEngageLaravel\Collections\Transcript;
+use LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory;
 use Carbon\Carbon;
 
 class Message extends Model

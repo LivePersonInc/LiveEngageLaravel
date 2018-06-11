@@ -1,10 +1,10 @@
 <?php
 
-namespace LivePersonNY\LiveEngageLaravel\Collections;
+namespace LivePersonInc\LiveEngageLaravel\Collections;
 
 use Illuminate\Support\Collection;
-use LivePersonNY\LiveEngageLaravel\Models\MessagingAgent;
-use LivePersonNY\LiveEngageLaravel\LiveEngageLaravel;
+use LivePersonInc\LiveEngageLaravel\Models\MessagingAgent;
+use LivePersonInc\LiveEngageLaravel\LiveEngageLaravel;
 
 class AgentParticipants extends Collection {
 	

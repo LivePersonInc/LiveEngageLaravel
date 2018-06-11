@@ -1,6 +1,6 @@
 <?php
 
-namespace LivePersonNY\LiveEngageLaravel\Facades;
+namespace LivePersonInc\LiveEngageLaravel\Facades;
 
 use Illuminate\Support\Facades\Facade;
 
