@@ -21,4 +21,19 @@ class Info extends Model
     {
         return str_replace($this->accountId, '', $this->engagementId);
     }
+    
+    public function getMinutesAttribute()
+    {
+	    return round($this->duration / 60, 2);
+    }
+    
+    public function getSecondsAttribute()
+    {
+	    return $this->duration;
+    }
+    
+    public function getHoursAttribute()
+    {
+	    return round($this->minutes / 60, 2);
+    }
 }
