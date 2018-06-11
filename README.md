@@ -1,7 +1,7 @@
 # Live Engage Laravel
 
 [![Build Status](https://travis-ci.org/live-person-inc/live-engage-laravel.svg?branch=master)](https://travis-ci.org/live-person-inc/live-engage-laravel)
-[![styleci](https://styleci.io/repos/LivePersonInc/LiveEngageLaravel/shield)](https://styleci.io/repos/LivePersonInc/LiveEngageLaravel)
+[![styleci](https://styleci.io/repos/136946333/shield)](https://styleci.io/repos/136946333)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/LivePersonInc/LiveEngageLaravel/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/LivePersonInc/LiveEngageLaravel/?branch=master)
 [![SensioLabsInsight](https://insight.sensiolabs.com/projects/LivePersonInc/LiveEngageLaravel/mini.png)](https://insight.sensiolabs.com/projects/LivePersonInc/LiveEngageLaravel)
 [![Coverage Status](https://coveralls.io/repos/github/live-person-inc/live-engage-laravel/badge.svg?branch=master)](https://coveralls.io/github/live-person-inc/live-engage-laravel?branch=master)
