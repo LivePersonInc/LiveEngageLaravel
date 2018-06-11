@@ -124,16 +124,19 @@ class LiveEngageLaravel {
 		$start_str = $start->toW3cString();
 		$end_str = $end->toW3cString();
 		
-		$data = new \StdClass();
-		$data->interactive = true;
-		$data->ended = true;
-		$data->start = new \StdClass();
-		$data->start->from = strtotime($start_str) . '000';
-		$data->start->to = strtotime($end_str) . '000';
-		
+		$data = [
+			'interactive' => true,
+			'ended' => true,
+			'start' => [
+				'from' => strtotime($start_str) . '000',
+				'to' => strtotime($end_str) . '000'
+			]
+		];
 		if (count($this->skills)) {
-			$data->skillIds = $this->skills;
+			$data['skillIds'] = $this->skills;
 		}
+		
+		$data = new Payload($data);
 		
 		return $this->request($url, 'POST', $data);
 		
@@ -148,16 +151,19 @@ class LiveEngageLaravel {
 		$start_str = $start->toW3cString();
 		$end_str = $end->toW3cString();
 		
-		$data = new \StdClass();
-		$data->interactive = true;
-		$data->ended = true;
-		$data->start = new \StdClass();
-		$data->start->from = strtotime($start_str) . '000';
-		$data->start->to = strtotime($end_str) . '000';
-		
+		$data = [
+			'interactive' => true,
+			'ended' => true,
+			'start' => [
+				'from' => strtotime($start_str) . '000',
+				'to' => strtotime($end_str) . '000'
+			]
+		];
 		if (count($this->skills)) {
-			$data->skillIds = $this->skills;
+			$data['skillIds'] = $this->skills;
 		}
+		
+		$data = new Payload($data);
 		
 		return $this->request($url, 'POST', $data);
 		
@@ -185,8 +191,6 @@ class LiveEngageLaravel {
 		$history = [];
 		foreach ($results as $item) {
 			
-			$engagement = new Conversation();
-			
 			if (property_exists($item, 'info'))
 				$item->info = new Info((array) $item->info);
 			
@@ -196,8 +200,7 @@ class LiveEngageLaravel {
 			if (property_exists($item, 'campaign'))
 				$item->campaign = new Campaign((array) $item->campaign);
 			
-			$engagement->fill((array) $item);
-			$history[] = $engagement;
+			$history[] = new Conversation((array) $item);
 			
 		}
 		
@@ -227,8 +230,6 @@ class LiveEngageLaravel {
 		$history = [];
 		foreach ($results as $item) {
 			
-			$engagement = new Engagement();
-			
 			if (property_exists($item, 'info'))
 				$item->info = new Info((array) $item->info);
 			
@@ -238,8 +239,7 @@ class LiveEngageLaravel {
 			if (property_exists($item, 'campaign'))
 				$item->campaign = new Campaign((array) $item->campaign);
 			
-			$engagement->fill((array) $item);
-			$history[] = $engagement;
+			$history[] = new Engagement((array) $item);
 			
 		}
 		
