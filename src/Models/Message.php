@@ -24,7 +24,7 @@ class Message extends Model
             return isset($this->attributes['text']) ? $this->attributes['text'] : '';
         }
     }
-    
+
     public function getPlainTextAttribute()
     {
         return strip_tags($this->text);
