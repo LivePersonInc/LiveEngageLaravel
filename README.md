@@ -17,7 +17,7 @@ Laravel package to easily tap the LiveEngage developer APIs for such content as 
 
 Install via composer
 ```bash
-composer require LivePersonInc/LiveEngageLaravel
+composer require live-person-inc/live-engage-laravel
 ```
 
 ### Register Service Provider
