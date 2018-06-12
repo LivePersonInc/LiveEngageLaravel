@@ -24,12 +24,12 @@ class Info extends Model
 
     public function getMinutesAttribute()
     {
-        return round($this->duration / 60, 2);
+        return round($this->attributes['duration'] / 60, 2);
     }
 
     public function getSecondsAttribute()
     {
-        return $this->duration;
+        return $this->attributes['duration'];
     }
 
     public function getHoursAttribute()

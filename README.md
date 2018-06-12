@@ -1,7 +1,7 @@
 # Live Engage Laravel
 
 [![Build Status](https://scrutinizer-ci.com/g/LivePersonInc/LiveEngageLaravel/badges/build.png?b=master)](https://scrutinizer-ci.com/g/LivePersonInc/LiveEngageLaravel/build-status/master)
-[![styleci](https://styleci.io/repos/136946333/shield)](https://styleci.io/repos/136946333)
+[![Code Intelligence Status](https://scrutinizer-ci.com/g/LivePersonInc/LiveEngageLaravel/badges/code-intelligence.svg?b=master)](https://scrutinizer-ci.com/code-intelligence)
 [![Scrutinizer Code Quality](https://scrutinizer-ci.com/g/LivePersonInc/LiveEngageLaravel/badges/quality-score.png?b=master)](https://scrutinizer-ci.com/g/LivePersonInc/LiveEngageLaravel/?branch=master)
 [![Code Coverage](https://scrutinizer-ci.com/g/LivePersonInc/LiveEngageLaravel/badges/coverage.png?b=master)](https://scrutinizer-ci.com/g/LivePersonInc/LiveEngageLaravel/?branch=master)
 
