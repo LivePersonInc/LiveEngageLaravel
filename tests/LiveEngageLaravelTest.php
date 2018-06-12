@@ -20,7 +20,7 @@ class LiveEngageLaravelTest extends TestCase
         ];
     }
 
-    public function testExample()
+    public function testGetHistory()
     {
         $this->assertEquals(1, 1);
     }
