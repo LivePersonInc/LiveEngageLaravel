@@ -213,33 +213,42 @@ class LiveEngageLaravel
         $this->start = $start;
         $this->end = $end;
 
-        $results_object = $this->retrieveMsgHistory($start, $end);
-        $results = $results_object->conversationHistoryRecords;
-        if (property_exists($results_object->_metadata, 'next')) {
-            $this->next = $results_object->_metadata->next->href;
-        }
-        if (property_exists($results_object->_metadata, 'prev')) {
-            $this->prev = $results_object->_metadata->prev->href;
-        }
+		if (is_object($results_object)) {
 
-        $history = [];
-        foreach ($results as $item) {
-            if (property_exists($item, 'info')) {
-                $item->info = new Info((array) $item->info);
-            }
-
-            if (property_exists($item, 'visitorInfo')) {
-                $item->visitorInfo = new Visitor((array) $item->visitorInfo);
-            }
-
-            if (property_exists($item, 'campaign')) {
-                $item->campaign = new Campaign((array) $item->campaign);
-            }
-
-            $history[] = new Conversation((array) $item);
-        }
-
-        return new ConversationHistory($history, $this);
+	        $results_object = $this->retrieveMsgHistory($start, $end);
+	        $results = $results_object->conversationHistoryRecords;
+	        if (property_exists($results_object->_metadata, 'next')) {
+	            $this->next = $results_object->_metadata->next->href;
+	        }
+	        if (property_exists($results_object->_metadata, 'prev')) {
+	            $this->prev = $results_object->_metadata->prev->href;
+	        }
+	
+	        $history = [];
+	        foreach ($results as $item) {
+	            if (property_exists($item, 'info')) {
+	                $item->info = new Info((array) $item->info);
+	            }
+	
+	            if (property_exists($item, 'visitorInfo')) {
+	                $item->visitorInfo = new Visitor((array) $item->visitorInfo);
+	            }
+	
+	            if (property_exists($item, 'campaign')) {
+	                $item->campaign = new Campaign((array) $item->campaign);
+	            }
+	
+	            $history[] = new Conversation((array) $item);
+	        }
+	
+	        $collection = new ConversationHistory($history, $this);
+	        $collection->metaData = $results_object->_metadata;
+	        
+	        return $collection;
+	        
+	    } else {
+		    return false;
+	    }
     }
 
     public function history(Carbon $start = null, Carbon $end = null)
@@ -253,35 +262,42 @@ class LiveEngageLaravel
         $this->end = $end;
 
         $results_object = $this->retrieveHistory($start, $end);
-        $results = $results_object->interactionHistoryRecords;
-        if (property_exists($results_object->_metadata, 'next')) {
-            $this->next = $results_object->_metadata->next->href;
-        }
-        if (property_exists($results_object->_metadata, 'prev')) {
-            $this->prev = $results_object->_metadata->prev->href;
-        }
-
-        $history = [];
-        foreach ($results as $item) {
-            if (property_exists($item, 'info')) {
-                $item->info = new Info((array) $item->info);
-            }
-
-            if (property_exists($item, 'visitorInfo')) {
-                $item->visitorInfo = new Visitor((array) $item->visitorInfo);
-            }
-
-            if (property_exists($item, 'campaign')) {
-                $item->campaign = new Campaign((array) $item->campaign);
-            }
-
-            $history[] = new Engagement((array) $item);
-        }
         
-        $collection = new EngagementHistory($history, $this);
-        $collection->metaData = $results_object->_metadata;
+        if (is_object($results_object)) {
         
-        return $collection;
+	        $results = $results_object->interactionHistoryRecords;
+	        if (property_exists($results_object->_metadata, 'next')) {
+	            $this->next = $results_object->_metadata->next->href;
+	        }
+	        if (property_exists($results_object->_metadata, 'prev')) {
+	            $this->prev = $results_object->_metadata->prev->href;
+	        }
+	
+	        $history = [];
+	        foreach ($results as $item) {
+	            if (property_exists($item, 'info')) {
+	                $item->info = new Info((array) $item->info);
+	            }
+	
+	            if (property_exists($item, 'visitorInfo')) {
+	                $item->visitorInfo = new Visitor((array) $item->visitorInfo);
+	            }
+	
+	            if (property_exists($item, 'campaign')) {
+	                $item->campaign = new Campaign((array) $item->campaign);
+	            }
+	
+	            $history[] = new Engagement((array) $item);
+	        }
+	        
+	        $collection = new EngagementHistory($history, $this);
+	        $collection->metaData = $results_object->_metadata;
+	        
+	        return $collection;
+	        
+        } else {
+	        return false;
+        }
     }
 
     private function request($url, $method, $payload = false)

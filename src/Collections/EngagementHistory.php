@@ -17,7 +17,7 @@ class EngagementHistory extends Collection
     {
         $this->instance = $instance;
 
-        return parent::__construct($models);
+        parent::__construct($models);
     }
     
     public function find($engagementID)
@@ -99,5 +99,15 @@ class EngagementHistory extends Collection
         } else {
             return false;
         }
+    }
+    
+    public function getMetaDataAttribute()
+    {
+	    return $this->attributes['_metaData'];
+    }
+    
+    public function setMetaDataAttribute($value)
+    {
+	    $this->attributes['_metaData'] = $value;
     }
 }

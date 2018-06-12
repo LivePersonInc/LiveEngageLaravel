@@ -96,4 +96,14 @@ class ConversationHistory extends Collection
             return false;
         }
     }
+    
+    public function getMetaDataAttribute()
+    {
+	    return $this->attributes['_metaData'];
+    }
+    
+    public function setMetaDataAttribute($value)
+    {
+	    $this->attributes['_metaData'] = $value;
+    }
 }
