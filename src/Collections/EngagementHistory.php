@@ -14,7 +14,7 @@ class EngagementHistory extends Collection
     {
         $this->instance = $instance;
 
-        return parent::__construct($models);
+        parent::__construct($models);
     }
 
     public function next()
