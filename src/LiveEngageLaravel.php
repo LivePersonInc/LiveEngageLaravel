@@ -263,7 +263,7 @@ class LiveEngageLaravel
 
             $history[] = new Engagement((array) $item);
         }
-
+        
         return new EngagementHistory($history, $this);
     }
 
