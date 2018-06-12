@@ -16,6 +16,15 @@ class ConversationHistory extends Collection
 
         parent::__construct($models);
     }
+    
+    public function find($engagementID)
+    {
+	    $result = $this->filter(function ($value, $key) use ($engagementID) {
+		    return $value->info->conversationId == $engagementID;
+	    });
+	    
+	    return $result->first();
+    }
 
     public function next()
     {

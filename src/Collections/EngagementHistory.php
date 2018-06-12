@@ -16,6 +16,15 @@ class EngagementHistory extends Collection
 
         parent::__construct($models);
     }
+    
+    public function find($engagementID)
+    {
+	    $result = $this->filter(function ($value, $key) use ($engagementID) {
+		    return $value->info->sessionId == $engagementID;
+	    });
+	    
+	    return $result->first();
+    }
 
     public function next()
     {

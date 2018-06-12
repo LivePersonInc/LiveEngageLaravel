@@ -28,6 +28,14 @@ class LiveEngageLaravelTest extends TestCase
         $this->assertNotFalse(is_a($history->random(), 'LivePersonInc\LiveEngageLaravel\Models\Engagement'), "Actual Class type: " . get_class($history->random()));
     }
     
+    public function testGetMessagingHistory()
+    {
+	    $history = LiveEngage::messagingHistory();
+        $this->assertNotTrue($history->isEmpty(), 'History returned no records.');
+        $this->assertNotFalse(is_a($history, 'LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory'), "Actual Class type: " . get_class($history));
+        $this->assertNotFalse(is_a($history->random(), 'LivePersonInc\LiveEngageLaravel\Models\Conversation'), "Actual Class type: " . get_class($history->random()));
+    }
+    
     public function setUp()
 	{
 		parent::setUp();
