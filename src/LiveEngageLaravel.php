@@ -30,6 +30,8 @@ class LiveEngageLaravel
     private $history_limit = 50;
     private $history = false;
     private $context = 'interactionHistoryRecords';
+    private $interactive = true;
+    private $ended = true;
 
     private $domain = false;
 
@@ -58,6 +60,18 @@ class LiveEngageLaravel
         $this->config = "services.liveperson.$key";
 
         return $this;
+    }
+    
+    public function nonInteractive()
+    {
+	    $this->interactive = false;
+	    return $this;
+    }
+    
+    public function active()
+    {
+	    $this->ended = false;
+	    return $this;
     }
 
     public function limit($limit)
@@ -145,8 +159,8 @@ class LiveEngageLaravel
         $end_str = $end->toW3cString();
 
         $data = [
-            'interactive' => true,
-            'ended' => true,
+            'interactive' => $this->interactive,
+            'ended' => $this->ended,
             'start' => [
                 'from' => strtotime($start_str).'000',
                 'to' => strtotime($end_str).'000',
@@ -173,8 +187,8 @@ class LiveEngageLaravel
         $end_str = $end->toW3cString();
 
         $data = [
-            'interactive' => true,
-            'ended' => true,
+            'interactive' => $this->interactive,
+            'ended' => $this->ended,
             'start' => [
                 'from' => strtotime($start_str).'000',
                 'to' => strtotime($end_str).'000',
@@ -264,7 +278,10 @@ class LiveEngageLaravel
             $history[] = new Engagement((array) $item);
         }
         
-        return new EngagementHistory($history, $this);
+        $collection = new EngagementHistory($history, $this);
+        $collection->metaData = $results_object->_metadata;
+        
+        return $collection;
     }
 
     private function request($url, $method, $payload = false)

@@ -5,6 +5,9 @@ namespace LivePersonInc\LiveEngageLaravel\Collections;
 use Illuminate\Support\Collection;
 use LivePersonInc\LiveEngageLaravel\LiveEngageLaravel;
 use LivePersonInc\LiveEngageLaravel\Models\Engagement;
+use LivePersonInc\LiveEngageLaravel\Models\Info;
+use LivePersonInc\LiveEngageLaravel\Models\Visitor;
+use LivePersonInc\LiveEngageLaravel\Models\Campaign;
 
 class EngagementHistory extends Collection
 {
@@ -14,7 +17,7 @@ class EngagementHistory extends Collection
     {
         $this->instance = $instance;
 
-        parent::__construct($models);
+        return parent::__construct($models);
     }
     
     public function find($engagementID)
@@ -40,10 +43,23 @@ class EngagementHistory extends Collection
 
             $history = [];
             foreach ($next->interactionHistoryRecords as $item) {
-                $history[] = new Engagement((array) $item);
+	            
+                if (property_exists($item, 'info')) {
+	                $item->info = new Info((array) $item->info);
+	            }
+	
+	            if (property_exists($item, 'visitorInfo')) {
+	                $item->visitorInfo = new Visitor((array) $item->visitorInfo);
+	            }
+	
+	            if (property_exists($item, 'campaign')) {
+	                $item->campaign = new Campaign((array) $item->campaign);
+	            }
+	
+	            $history[] = new Engagement((array) $item);
             }
 
-            return $this->merge(new self($history));
+            return $this->merge(new EngagementHistory($history));
         } else {
             return false;
         }
@@ -63,7 +79,20 @@ class EngagementHistory extends Collection
 
             $history = [];
             foreach ($next->interactionHistoryRecords as $item) {
-                $history[] = new Engagement((array) $item);
+	            
+                if (property_exists($item, 'info')) {
+	                $item->info = new Info((array) $item->info);
+	            }
+	
+	            if (property_exists($item, 'visitorInfo')) {
+	                $item->visitorInfo = new Visitor((array) $item->visitorInfo);
+	            }
+	
+	            if (property_exists($item, 'campaign')) {
+	                $item->campaign = new Campaign((array) $item->campaign);
+	            }
+	
+	            $history[] = new Engagement((array) $item);
             }
 
             return $this->merge(new self($history));
