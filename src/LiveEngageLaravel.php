@@ -9,10 +9,12 @@ use GuzzleHttp\Subscriber\Oauth\Oauth1;
 use LivePersonInc\LiveEngageLaravel\Models\Info;
 use LivePersonInc\LiveEngageLaravel\Models\Payload;
 use LivePersonInc\LiveEngageLaravel\Models\Visitor;
+use LivePersonInc\LiveEngageLaravel\Models\Agent;
 use LivePersonInc\LiveEngageLaravel\Models\Campaign;
 use LivePersonInc\LiveEngageLaravel\Models\Engagement;
 use LivePersonInc\LiveEngageLaravel\Models\Conversation;
 use LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory;
+use LivePersonInc\LiveEngageLaravel\Collections\Humans;
 use LivePersonInc\LiveEngageLaravel\Exceptions\LiveEngageException;
 use LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory;
 
@@ -204,7 +206,17 @@ class LiveEngageLaravel
         
         $data['skillIds'] = $skills;
         
-        return $this->requestV1($url, 'POST', $data);
+        $response = $this->requestV1($url, 'POST', $data);
+        $agents = [];
+        
+        foreach ($response->agentStatusRecords as $agent) {
+	        $agents[] = new Agent((array) $agent);
+        }
+        
+        $collection = new Humans($agents);
+        $collection->metaData = $response->_metadata;
+        
+        return $collection;
         
     }
 
