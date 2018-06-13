@@ -221,10 +221,11 @@ class LiveEngageLaravel
 
         $this->start = $start;
         $this->end = $end;
+        
+        $results_object = $this->retrieveMsgHistory($start, $end);
 
 		if (is_object($results_object)) {
 
-	        $results_object = $this->retrieveMsgHistory($start, $end);
 	        $results = $results_object->conversationHistoryRecords;
 	        if (property_exists($results_object->_metadata, 'next')) {
 	            $this->next = $results_object->_metadata->next->href;
