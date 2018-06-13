@@ -51,7 +51,7 @@ class LiveEngageLaravel
     public function __construct()
     {
         $this->account = config("{$this->config}.account");
-        $this->domain = config("{$this->config}.domain");
+        //$this->domain = config("{$this->config}.domain");
         $this->version = config("{$this->config}.version") ?: $this->version;
     }
 
@@ -136,20 +136,9 @@ class LiveEngageLaravel
         }
     }
 
-    public function agentStatus()
-    {
-        if (! $this->domain) {
-            $this->domain('msgHist');
-        }
-
-        $url = "https://{$this->domain}/messaging_history/api/account/{$this->account}/agent-view/status";
-
-        return $this->request($url, 'POST', new Payload(['skillIds' => $this->skills]));
-    }
-
     final public function retrieveHistory(Carbon $start, Carbon $end, $url = false)
     {
-        if (! $this->domain) {
+        if (!$this->domain) {
             $this->domain('engHistDomain');
         }
 
@@ -177,7 +166,7 @@ class LiveEngageLaravel
 
     final public function retrieveMsgHistory(Carbon $start, Carbon $end, $url = false)
     {
-        if (! $this->domain) {
+        if (!$this->domain) {
             $this->domain('msgHist');
         }
 
@@ -201,6 +190,21 @@ class LiveEngageLaravel
         $data = new Payload($data);
 
         return $this->request($url, 'POST', $data);
+    }
+    
+    public function getAgentStatus()
+    {
+	
+	    if (!$this->domain) {
+            $this->domain('accountConfigReadOnly');
+        }
+        
+        die($this->domain('accountConfigReadOnly'));
+        
+        $url = "https://{$this->domain}/api/account/{$this->account}/configuration/le-agents/status-reasons";
+        
+        return $this->request($url, 'GET');
+        
     }
 
     public function messagingHistory(Carbon $start = null, Carbon $end = null)
