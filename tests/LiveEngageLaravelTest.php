@@ -36,6 +36,12 @@ class LiveEngageLaravelTest extends TestCase
 		$this->assertNotFalse(is_a($history->random(), 'LivePersonInc\LiveEngageLaravel\Models\Conversation'), "Actual Class type: " . get_class($history->random()));
 	}
 	
+	public function testClassSetters()
+	{
+		$object = LiveEngage::domain('msgHist');
+		$this->assertContains('msghist', $object->domain, 'Domain: ' . $object->domain);
+	}
+	
 	public function setUp()
 	{
 		parent::setUp();
