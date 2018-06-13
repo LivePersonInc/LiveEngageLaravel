@@ -32,6 +32,7 @@ class LiveEngageLaravel
     private $context = 'interactionHistoryRecords';
     private $interactive = true;
     private $ended = true;
+    private $bearer = false;
 
     private $domain = false;
 
@@ -109,7 +110,7 @@ class LiveEngageLaravel
 
     public function domain($service)
     {
-        $response = $this->request("https://api.liveperson.net/api/account/{$this->account}/service/{$service}/baseURI.json?version={$this->version}", 'GET');
+        $response = $this->requestV1("https://api.liveperson.net/api/account/{$this->account}/service/{$service}/baseURI.json?version={$this->version}", 'GET');
         if (is_a($response, 'Exception')) {
             throw new \Exception('Unable to get LivePerson account domain', 101);
         } else {
@@ -128,11 +129,11 @@ class LiveEngageLaravel
         if ($setData) {
             $url = "https://{$this->domain}/api/account/{$this->account}/monitoring/visitors/{$visitorID}/visits/current/events?v=1&sid={$sessionID}";
 
-            return $this->request($url, 'POST', $setData);
+            return $this->requestV1($url, 'POST', $setData);
         } else {
             $url = "https://{$this->domain}/api/account/{$this->account}/monitoring/visitors/{$visitorID}/visits/current/state?v=1&sid={$sessionID}";
 
-            return $this->request($url, 'GET');
+            return $this->requestV1($url, 'GET');
         }
     }
 
@@ -161,7 +162,7 @@ class LiveEngageLaravel
 
         $data = new Payload($data);
 
-        return $this->request($url, 'POST', $data);
+        return $this->requestV1($url, 'POST', $data);
     }
 
     final public function retrieveMsgHistory(Carbon $start, Carbon $end, $url = false)
@@ -189,21 +190,21 @@ class LiveEngageLaravel
 
         $data = new Payload($data);
 
-        return $this->request($url, 'POST', $data);
+        return $this->requestV1($url, 'POST', $data);
     }
     
-    public function getAgentStatus()
+    public function getAgentStatus(array $skills)
     {
 	
 	    if (!$this->domain) {
-            $this->domain('accountConfigReadOnly');
+            $this->domain('msgHist');
         }
         
-        die($this->domain('accountConfigReadOnly'));
+        $url = "https://{$this->domain}/messaging_history/api/account/{$this->account}/agent-view/status";
         
-        $url = "https://{$this->domain}/api/account/{$this->account}/configuration/le-agents/status-reasons";
+        $data['skillIds'] = $skills;
         
-        return $this->request($url, 'GET');
+        return $this->requestV1($url, 'POST', $data);
         
     }
 
@@ -303,8 +304,59 @@ class LiveEngageLaravel
 	        return false;
         }
     }
+    
+    public function login()
+    {
+	    $this->domain('agentVep');
+	    
+	    $consumer_key = config("{$this->config}.key");
+        $consumer_secret = config("{$this->config}.secret");
+        $token = config("{$this->config}.token");
+        $secret = config("{$this->config}.token_secret");
+        $username = config("{$this->config}.user_name");
+        
+        $auth = [
+	        'username'          => $username,
+            'appKey'            => $consumer_key,
+            'secret'            => $consumer_secret,
+            'accessToken'		=> $token,
+            'accessTokenSecret' => $secret,
+        ];
+        
+        $url = "https://{$this->domain}/api/account/{$this->account}/login?v=1.3";
+        
+        $response = $this->requestV1($url, 'POST', $auth);
+        
+        $this->bearer = $response->bearer;
+        
+        return $this;
+    }
+    
+    private function requestV2($url, $method, $payload = false)
+    {
+	    if (!$this->bearer) $this->login();
+	    
+	    $client = new Client();
+	    $args = [
+		    'headers' => [
+			    'Authorization' => $this->bearer
+		    ]
+	    ];
+	    
+	    if ($payload !== false) {
+            $args['body'] = json_encode($payload);
+        }
+	    
+	    try {
+		    $res = $client->request($method, $url, $args);
+	    } catch (\Exception $e) {
+		    throw $e;
+	    } 
+	    
+	    return json_decode($res->getBody());
+    }
 
-    private function request($url, $method, $payload = false)
+    private function requestV1($url, $method, $payload = false)
     {
         $consumer_key = config("{$this->config}.key");
         $consumer_secret = config("{$this->config}.secret");
@@ -346,7 +398,7 @@ class LiveEngageLaravel
             if ($this->retry_counter < $this->retry_limit || $this->retry_limit == -1) {
                 usleep(1500);
                 $this->retry_counter++;
-                $response = $this->request($url, $payload);
+                $response = $this->requestV1($url, $payload);
             } else {
                 throw $e; //new LiveEngageException("Retry limit has been exceeded ($this->retry_limit)", 100);
             }
