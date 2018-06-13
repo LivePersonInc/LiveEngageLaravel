@@ -84,11 +84,11 @@ If you want to have multiple API keys, you can add more arrays for them. The key
 ```
 To make an api call on a specific key set...
 ```php
-$history = LiveEngage::key('history')->history();
+$history = LiveEngage::key('history')->history(); //messagingHistory() for messaging
 ```
 To use the default keyset, you need not use the `key` method at all.
 ```php
-$history = LiveEngage::history()
+$history = LiveEngage::history(); //messagingHistory() for messaging
 ```
 
 
@@ -141,6 +141,14 @@ Transcript is a collection of message objects, so you can access properties of t
 echo $message->time->format('Y-m-d');
 ```
 The time property of the message is a Carbon date object.
+
+**Example:** Get messaging agents availability by skill
+```php
+$availableAgents = LiveEngage::getAgentStatus(['17']);
+
+$online = $availableAgents->state('online');
+$away = $availableAgents->state('away');
+```
 
 ## Security
 
