@@ -124,9 +124,7 @@ class LiveEngageLaravel
 
     public function visitor($visitorID, $sessionID, $setData = false)
     {
-        if (! $this->domain) {
-            $this->domain('smt');
-        }
+        $this->domain('smt');
 
         if ($setData) {
             $url = "https://{$this->domain}/api/account/{$this->account}/monitoring/visitors/{$visitorID}/visits/current/events?v=1&sid={$sessionID}";
@@ -141,9 +139,7 @@ class LiveEngageLaravel
 
     final public function retrieveHistory(Carbon $start, Carbon $end, $url = false)
     {
-        if (!$this->domain) {
-            $this->domain('engHistDomain');
-        }
+        $this->domain('engHistDomain');
 
         $url = $url ?: "https://{$this->domain}/interaction_history/api/account/{$this->account}/interactions/search?limit={$this->history_limit}&offset=0";
 
@@ -169,9 +165,7 @@ class LiveEngageLaravel
 
     final public function retrieveMsgHistory(Carbon $start, Carbon $end, $url = false)
     {
-        if (!$this->domain) {
-            $this->domain('msgHist');
-        }
+        $this->domain('msgHist');
 
         $url = $url ?: "https://{$this->domain}/messaging_history/api/account/{$this->account}/conversations/search?limit={$this->history_limit}&offset=0";
 
@@ -198,9 +192,7 @@ class LiveEngageLaravel
     public function getAgentStatus(array $skills)
     {
 	
-	    if (!$this->domain) {
-            $this->domain('msgHist');
-        }
+	    $this->domain('msgHist');
         
         $url = "https://{$this->domain}/messaging_history/api/account/{$this->account}/agent-view/status";
         
@@ -406,6 +398,8 @@ class LiveEngageLaravel
             $response = json_decode($res->getBody());
         } catch (\GuzzleHttp\Exception\ConnectException $connection) {
             return $connection;
+        } catch (\GuzzleHttp\Exception\ClientException $clientException) {
+	        return $clientException;
         } catch (\Exception $e) {
             if ($this->retry_counter < $this->retry_limit || $this->retry_limit == -1) {
                 usleep(1500);
