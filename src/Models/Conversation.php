@@ -7,25 +7,25 @@ use LivePersonInc\LiveEngageLaravel\Collections\AgentParticipants;
 
 class Conversation extends Model
 {
-    protected $guarded = [];
+	protected $guarded = [];
 
-    public function getMessageRecordsAttribute()
-    {
-        $messages = [];
-        foreach ($this->attributes['messageRecords'] as $line) {
-            $messages[] = new Message((array) $line);
-        }
+	public function getMessageRecordsAttribute()
+	{
+		$messages = [];
+		foreach ($this->attributes['messageRecords'] as $line) {
+			$messages[] = new Message((array) $line);
+		}
 
-        return collect($messages);
-    }
+		return collect($messages);
+	}
 
-    public function getAgentParticipantsAttribute()
-    {
-        $agents = [];
-        foreach ($this->attributes['agentParticipants'] as $agent) {
-            $agents[] = new MessagingAgent((array) $agent);
-        }
+	public function getAgentParticipantsAttribute()
+	{
+		$agents = [];
+		foreach ($this->attributes['agentParticipants'] as $agent) {
+			$agents[] = new MessagingAgent((array) $agent);
+		}
 
-        return new AgentParticipants($agents);
-    }
+		return new AgentParticipants($agents);
+	}
 }
