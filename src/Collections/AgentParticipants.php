@@ -7,6 +7,8 @@ use LivePersonInc\LiveEngageLaravel\Models\Agent;
 
 class AgentParticipants extends Collection
 {
+	public $metaData;
+	
 	public function __construct(array $models = [])
 	{
 		
@@ -19,7 +21,7 @@ class AgentParticipants extends Collection
 	
 	public function state($state = 'ONLINE')
 	{
-		$result = $this->filter(function($value, $key) use ($state) {
+		$result = $this->filter(function($value) use ($state) {
 			return strtolower($value->currentStatus) == strtolower($state);
 		});
 		
@@ -28,7 +30,7 @@ class AgentParticipants extends Collection
 	
 	public function findById($agentId)
 	{
-		$result = $this->filter(function($value, $key) use ($agentId) {
+		$result = $this->filter(function($value) use ($agentId) {
 			return strtolower($value->agentId) == $agentId;
 		});
 		

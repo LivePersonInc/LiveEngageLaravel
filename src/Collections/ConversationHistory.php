@@ -13,7 +13,6 @@ use LivePersonInc\LiveEngageLaravel\Models\Campaign;
 
 class ConversationHistory extends Collection
 {
-	private $instance;
 	public $metaData;
 
 	public function __construct(array $models = [])

@@ -13,10 +13,9 @@ use LivePersonInc\LiveEngageLaravel\Models\Campaign;
 
 class EngagementHistory extends Collection
 {
-	private $instance;
 	public $metaData;
 
-	public function __construct(array $models = [], LiveEngageLaravel $instance = null)
+	public function __construct(array $models = [])
 	{
 		$models = array_map(function($item) {
 			return new Engagement((array) $item);
