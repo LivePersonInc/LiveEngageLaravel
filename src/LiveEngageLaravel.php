@@ -175,7 +175,7 @@ class LiveEngageLaravel
 		$end_str = $end->toW3cString();
 
 		$data = [
-			'status' => $this->ended ? ['CLOSE'] : ['OPEN','CLOSE'],
+			'status' => $this->ended ? ['CLOSE'] : ['OPEN', 'CLOSE'],
 			'start' => [
 				'from' => strtotime($start_str) . '000',
 				'to' => strtotime($end_str) . '000',
@@ -322,8 +322,8 @@ class LiveEngageLaravel
 		
 		return json_decode($res->getBody());
 	}
-
-	private function requestV1($url, $method, $payload = false)
+	
+	private function requestClient()
 	{
 		$consumer_key = config("{$this->config}.key");
 		$consumer_secret = config("{$this->config}.secret");
@@ -343,6 +343,13 @@ class LiveEngageLaravel
 		$client = new Client([
 			'handler' => $stack,
 		]);
+		
+		return $client;
+	}
+
+	private function requestV1($url, $method, $payload = false)
+	{
+		$client = $this->requestClient();
 
 		$args = [
 			'auth' => 'oauth',
