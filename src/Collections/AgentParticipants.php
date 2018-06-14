@@ -25,4 +25,13 @@ class AgentParticipants extends Collection
 		
 		return $result;
 	}
+	
+	public function findById($agentId)
+	{
+		$result = $this->filter(function($value, $key) use ($agentId) {
+			return strtolower($value->agentId) == $agentId;
+		});
+		
+		return $result->first();
+	}
 }

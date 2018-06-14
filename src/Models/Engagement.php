@@ -14,21 +14,11 @@ class Engagement extends Model
 	
 	public function __construct(array $item)
 	{
-		if (isset($item['info'])) {
-			$item['info'] = new Info((array) $item['info']);
-		}
+		$item['info'] = isset($item['info']) ? new Info((array) $item['info']) : new Info();
+		$item['visitorInfo'] = isset($item['visitorInfo']) ? new Visitor((array) $item['visitorInfo']) : new Visitor();
+		$item['campaign'] = isset($item['campaign']) ? new Campaign((array) $item['campaign']) : new Campaign();
+		$item['transcript'] = new Transcript(isset($item['transcript']) ? $item['transcript'] : []);
 
-		if (isset($item['visitorInfo'])) {
-			$item['visitorInfo'] = new Visitor((array) $item['visitorInfo']);
-		}
-
-		if (isset($item['campaign'])) {
-			$item['campaign'] = new Campaign((array) $item['campaign']);
-		}
-		
-		if (isset($item['transcript'])) {
-			$item['transcript'] = new Transcript((array) $item['transcript']);
-		}
 		parent::__construct($item);
 	}
 }

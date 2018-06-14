@@ -14,33 +14,14 @@ class Conversation extends Model
 	
 	public function __construct(array $item)
 	{
-		if (isset($item['info'])) {
-			$item['info'] = new MessagingInfo((array) $item['info']);
-		}
-
-		if (isset($item['visitorInfo'])) {
-			$item['visitorInfo'] = new Visitor((array) $item['visitorInfo']);
-		}
-
-		if (isset($item['campaign'])) {
-			$item['campaign'] = new Campaign((array) $item['campaign']);
-		}
+		$item['info'] = isset($item['info']) ? new MessagingInfo((array) $item['info']) : new MessagingInfo();
+		$item['visitorInfo'] = isset($item['visitorInfo']) ? new Visitor((array) $item['visitorInfo']) : new Visitor();
+		$item['campaign'] = isset($item['campaign']) ? new Campaign((array) $item['campaign']) : new Campaign();
+		$item['transfers'] = new Transfers(isset($item['transfers']) ? $item['transfers'] : []);
+		$item['agentParticipants'] = new AgentParticipants(isset($item['agentParticipants']) ? $item['agentParticipants'] : []);
+		$item['consumerParticipants'] = new AgentParticipants(isset($item['consumerParticipants']) ? $item['consumerParticipants'] : []);
+		$item['messageRecords'] = new Transcript(isset($item['messageRecords']) ? $item['messageRecords'] : []);
 		
-		if (isset($item['transfers'])) {
-			$item['transfers'] = new Transfers((array) $item['transfers']);
-		}
-		
-		if (isset($item['agentParticipants'])) {
-			$item['agentParticipants'] = new AgentParticipants($item['agentParticipants']);
-		}
-		
-		if (isset($item['consumerParticipants'])) {
-			$item['consumerParticipants'] = new AgentParticipants($item['consumerParticipants']);
-		}
-		
-		if (isset($item['messageRecords'])) {
-			$item['messageRecords'] = new Transcript($item['messageRecords']);
-		}
 		parent::__construct($item);
 	}
 }
