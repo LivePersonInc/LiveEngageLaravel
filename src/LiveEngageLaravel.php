@@ -151,8 +151,8 @@ class LiveEngageLaravel
 			'interactive' => $this->interactive,
 			'ended' => $this->ended,
 			'start' => [
-				'from' => strtotime($start_str).'000',
-				'to' => strtotime($end_str).'000',
+				'from' => strtotime($start_str) . '000',
+				'to' => strtotime($end_str) . '000',
 			],
 		];
 		if (count($this->skills)) {
@@ -176,8 +176,8 @@ class LiveEngageLaravel
 		$data = [
 			'status' => $this->ended ? ['CLOSE'] : ['OPEN'],
 			'start' => [
-				'from' => strtotime($start_str).'000',
-				'to' => strtotime($end_str).'000',
+				'from' => strtotime($start_str) . '000',
+				'to' => strtotime($end_str) . '000',
 			],
 		];
 		if (count($this->skills)) {
@@ -348,7 +348,9 @@ class LiveEngageLaravel
 	
 	private function requestV2($url, $method, $payload = false)
 	{
-		if (!$this->bearer) $this->login();
+		if (!$this->bearer) {
+			$this->login();
+		}
 		
 		$client = new Client();
 		$args = [

@@ -19,7 +19,7 @@ class Humans extends Collection
 	
 	public function state($state = 'ONLINE')
 	{
-		$result = $this->filter(function ($value, $key) use ($state) {
+		$result = $this->filter(function($value, $key) use ($state) {
 			return strtolower($value->currentStatus) == strtolower($state);
 		});
 		

@@ -22,7 +22,7 @@ class EngagementHistory extends Collection
 	
 	public function find($engagementID)
 	{
-		$result = $this->filter(function ($value, $key) use ($engagementID) {
+		$result = $this->filter(function($value, $key) use ($engagementID) {
 			return $value->info->sessionId == $engagementID;
 		});
 		
@@ -31,7 +31,7 @@ class EngagementHistory extends Collection
 
 	public function next()
 	{
-		if (! $this->instance) {
+		if (!$this->instance) {
 			return false;
 		}
 
@@ -67,7 +67,7 @@ class EngagementHistory extends Collection
 
 	public function prev()
 	{
-		if (! $this->instance) {
+		if (!$this->instance) {
 			return false;
 		}
 

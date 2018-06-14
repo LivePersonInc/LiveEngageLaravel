@@ -17,11 +17,6 @@ class MessagingInfo extends Model
 		return new Carbon($this->attributes['startTime']);
 	}
 
-	public function getSessionIdAttribute()
-	{
-		return str_replace($this->accountId, '', $this->engagementId);
-	}
-
 	public function getMinutesAttribute()
 	{
 		return round(($this->attributes['duration'] / 1000) / 60, 2);
