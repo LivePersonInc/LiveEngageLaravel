@@ -8,7 +8,6 @@
 [![Latest Stable Version](https://poser.pugx.org/live-person-inc/live-engage-laravel/v/stable.svg)](https://packagist.org/packages/live-person-inc/live-engage-laravel)
 [![Latest Unstable Version](https://poser.pugx.org/live-person-inc/live-engage-laravel/v/unstable.svg)](https://packagist.org/packages/live-person-inc/live-engage-laravel)
 [![Packagist](https://poser.pugx.org/live-person-inc/live-engage-laravel/d/total.svg)](https://packagist.org/packages/live-person-inc/live-engage-laravel)
-[![Packagist](https://img.shields.io/packagist/l/live-person-inc/live-engage-laravel.svg)](https://packagist.org/packages/live-person-inc/live-engage-laravel)
 
 Laravel package to easily tap the LiveEngage developer APIs for such content as Engagement History, Engagement Attributes, and more...
 

@@ -20,6 +20,9 @@ class LiveEngageLaravelTest extends TestCase
 		];
 	}
 
+	/**
+     * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::history
+     */
 	public function testGetHistory()
 	{
 		$history = LiveEngage::history();
@@ -27,13 +30,25 @@ class LiveEngageLaravelTest extends TestCase
 		$this->assertNotFalse(is_a($history, 'LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory'), "Actual Class type: " . get_class($history));
 		$this->assertNotFalse(is_a($history->random(), 'LivePersonInc\LiveEngageLaravel\Models\Engagement'), "Actual Class type: " . get_class($history->random()));
 	}
-	
+
+	/**
+     * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::messagingHistory
+     */	
 	public function testGetMessagingHistory()
 	{
 		$history = LiveEngage::messagingHistory();
 		$this->assertNotTrue($history->isEmpty(), 'History returned no records.');
 		$this->assertNotFalse(is_a($history, 'LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory'), "Actual Class type: " . get_class($history));
 		$this->assertNotFalse(is_a($history->random(), 'LivePersonInc\LiveEngageLaravel\Models\Conversation'), "Actual Class type: " . get_class($history->random()));
+	}
+	
+	/**
+     * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::getAgentStatus
+     */
+	public function testGetAgentStatuses()
+	{
+		$agents = LiveEngage::getAgentStatus('17');
+		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Collections\Humans', $agents, 'Return result was not the Humans collection');
 	}
 	
 	public function testClassSetters()

@@ -4,7 +4,7 @@ namespace LivePersonInc\LiveEngageLaravel;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
-	const CONFIG_PATH = __DIR__.'/../config/live-engage-laravel.php';
+	const CONFIG_PATH = __DIR__ . '/../config/live-engage-laravel.php';
 
 	public function boot()
 	{
@@ -20,7 +20,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 			'live-engage-laravel'
 		);
 
-		$this->app->bind('live-engage-laravel', function () {
+		$this->app->bind('live-engage-laravel', function() {
 			return new LiveEngageLaravel();
 		});
 	}

@@ -23,4 +23,9 @@ class Agent extends Model
 	{
 		return new Carbon($this->attributes['currentStatusReasonStartTime']);
 	}
+	
+	public function getStatusMinutesAttribute()
+	{
+		return ($this->attributes['currentStatusDuration'] / 1000) / 60;
+	}
 }

@@ -189,8 +189,9 @@ class LiveEngageLaravel
 		return $this->requestV1($url, 'POST', $data);
 	}
 	
-	public function getAgentStatus(array $skills)
+	public function getAgentStatus($skills)
 	{
+		$skills = is_array($skills) ? $skills : [$skills];
 	
 		$this->domain('msgHist');
 		
@@ -398,16 +399,16 @@ class LiveEngageLaravel
 
 			$response = json_decode($res->getBody());
 		} catch (\GuzzleHttp\Exception\ConnectException $connection) {
-			return $connection;
+			throw $connection;
 		} catch (\GuzzleHttp\Exception\ClientException $clientException) {
-			return $clientException;
+			throw $clientException;
 		} catch (\Exception $e) {
 			if ($this->retry_counter < $this->retry_limit || $this->retry_limit == -1) {
 				usleep(1500);
 				$this->retry_counter++;
 				$response = $this->requestV1($url, $payload);
 			} else {
-				throw $e; //new LiveEngageException("Retry limit has been exceeded ($this->retry_limit)", 100);
+				throw new LiveEngageException("Retry limit has been exceeded ($this->retry_limit)", 100);
 			}
 		}
 
