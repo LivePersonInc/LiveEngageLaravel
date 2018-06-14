@@ -25,16 +25,10 @@ class Engagement extends Model
 		if (isset($item['campaign'])) {
 			$item['campaign'] = new Campaign((array) $item['campaign']);
 		}
-		parent::__construct($item);
-	}
-
-	public function getTranscriptAttribute()
-	{
-		$messages = [];
-		foreach ($this->attributes['transcript']->lines as $line) {
-			$messages[] = new Message((array) $line);
+		
+		if (isset($item['transcript'])) {
+			$item['transcript'] = new Transcript((array) $item['transcript']);
 		}
-
-		return new Transcript($messages);
+		parent::__construct($item);
 	}
 }

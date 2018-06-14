@@ -16,9 +16,11 @@ class ConversationHistory extends Collection
 	private $instance;
 	public $metaData;
 
-	public function __construct(array $models = [], LiveEngageLaravel $instance = null)
+	public function __construct(array $models = [])
 	{
-		$this->instance = $instance;
+		$models = array_map(function($item) {
+			return new Conversation((array) $item);
+		}, $models);
 		$this->metaData = new MetaData();
 		parent::__construct($models);
 	}
@@ -40,11 +42,7 @@ class ConversationHistory extends Collection
 		
 				$meta = new MetaData((array) $next->_metadata);
 				
-				$results = array_map(function($item) {
-					return new Conversation((array) $item);
-				}, $next->conversationHistoryRecords);
-				
-				$collection = new self($results);
+				$collection = new self($next->conversationHistoryRecords);
 				$meta->start = $this->metaData->start;
 				$meta->end = $this->metaData->end;
 				$collection->metaData = $meta;
@@ -65,11 +63,7 @@ class ConversationHistory extends Collection
 		
 				$meta = new MetaData((array) $prev->_metadata);
 				
-				$results = array_map(function($item) {
-					return new Conversation((array) $item);
-				}, $prev->conversationHistoryRecords);
-				
-				$collection = new self($results);
+				$collection = new self($prev->conversationHistoryRecords);
 				$meta->start = $this->metaData->start;
 				$meta->end = $this->metaData->end;
 				$collection->metaData = $meta;

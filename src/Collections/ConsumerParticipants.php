@@ -3,15 +3,17 @@
 namespace LivePersonInc\LiveEngageLaravel\Collections;
 
 use Illuminate\Support\Collection;
-use LivePersonInc\LiveEngageLaravel\Models\Message;
+use LivePersonInc\LiveEngageLaravel\Models\Visitor;
 
-class Transcript extends Collection
+class ConsumerParticipants extends Collection
 {
 	public function __construct(array $models = [])
 	{
+		
 		$models = array_map(function($item) {
-			return new Message((array) $item);
+			return new Visitor((array) $item);
 		}, $models);
-		return parent::__construct($models);
+		
+		parent::__construct($models);
 	}
 }

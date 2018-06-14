@@ -16,7 +16,7 @@ use LivePersonInc\LiveEngageLaravel\Models\Campaign;
 use LivePersonInc\LiveEngageLaravel\Models\Engagement;
 use LivePersonInc\LiveEngageLaravel\Models\Conversation;
 use LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory;
-use LivePersonInc\LiveEngageLaravel\Collections\Humans;
+use LivePersonInc\LiveEngageLaravel\Collections\AgentParticipants;
 use LivePersonInc\LiveEngageLaravel\Exceptions\LiveEngageException;
 use LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory;
 
@@ -207,7 +207,7 @@ class LiveEngageLaravel
 			$agents[] = new Agent((array) $agent);
 		}
 		
-		$collection = new Humans($agents);
+		$collection = new AgentParticipants($response->agentStatusRecords);
 		$collection->metaData = $response->_metadata;
 		
 		return $collection;
@@ -230,11 +230,7 @@ class LiveEngageLaravel
 		
 			$meta = new MetaData((array) $results_object->_metadata);
 			
-			$results = array_map(function($item) {
-				return new Conversation((array) $item);
-			}, $results_object->conversationHistoryRecords);
-			
-			$collection = new ConversationHistory($results);
+			$collection = new ConversationHistory($results_object->conversationHistoryRecords);
 			$meta->start = $this->start;
 			$meta->end = $this->end;
 			$collection->metaData = $meta;
@@ -262,11 +258,7 @@ class LiveEngageLaravel
 		
 			$meta = new MetaData((array) $results_object->_metadata);
 			
-			$results = array_map(function($item) {
-				return new Engagement((array) $item);
-			}, $results_object->interactionHistoryRecords);
-			
-			$collection = new EngagementHistory($results);
+			$collection = new EngagementHistory($results_object->interactionHistoryRecords);
 			$meta->start = $this->start;
 			$meta->end = $this->end;
 			$collection->metaData = $meta;

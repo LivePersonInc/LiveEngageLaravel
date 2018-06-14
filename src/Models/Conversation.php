@@ -4,6 +4,9 @@ namespace LivePersonInc\LiveEngageLaravel\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use LivePersonInc\LiveEngageLaravel\Collections\AgentParticipants;
+use LivePersonInc\LiveEngageLaravel\Collections\ConsumerParticipants;
+use LivePersonInc\LiveEngageLaravel\Collections\Transfers;
+use LivePersonInc\LiveEngageLaravel\Collections\Transcript;
 
 class Conversation extends Model
 {
@@ -22,26 +25,22 @@ class Conversation extends Model
 		if (isset($item['campaign'])) {
 			$item['campaign'] = new Campaign((array) $item['campaign']);
 		}
+		
+		if (isset($item['transfers'])) {
+			$item['transfers'] = new Transfers((array) $item['transfers']);
+		}
+		
+		if (isset($item['agentParticipants'])) {
+			$item['agentParticipants'] = new AgentParticipants($item['agentParticipants']);
+		}
+		
+		if (isset($item['consumerParticipants'])) {
+			$item['consumerParticipants'] = new AgentParticipants($item['consumerParticipants']);
+		}
+		
+		if (isset($item['messageRecords'])) {
+			$item['messageRecords'] = new Transcript($item['messageRecords']);
+		}
 		parent::__construct($item);
-	}
-
-	public function getMessageRecordsAttribute()
-	{
-		$messages = [];
-		foreach ($this->attributes['messageRecords'] as $line) {
-			$messages[] = new Message((array) $line);
-		}
-
-		return collect($messages);
-	}
-
-	public function getAgentParticipantsAttribute()
-	{
-		$agents = [];
-		foreach ($this->attributes['agentParticipants'] as $agent) {
-			$agents[] = new MessagingAgent((array) $agent);
-		}
-
-		return new AgentParticipants($agents);
 	}
 }
