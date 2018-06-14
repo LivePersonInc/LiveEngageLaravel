@@ -230,9 +230,13 @@ class LiveEngageLaravel
 			$results = $results_object->conversationHistoryRecords;
 			if (property_exists($results_object->_metadata, 'next')) {
 				$this->next = $results_object->_metadata->next->href;
+			} else {
+				$this->next = false;
 			}
 			if (property_exists($results_object->_metadata, 'prev')) {
 				$this->prev = $results_object->_metadata->prev->href;
+			} else {
+				$this->next = false;
 			}
 	
 			$history = [];
@@ -279,9 +283,13 @@ class LiveEngageLaravel
 			$results = $results_object->interactionHistoryRecords;
 			if (property_exists($results_object->_metadata, 'next')) {
 				$this->next = $results_object->_metadata->next->href;
+			} else {
+				$this->next = false;
 			}
 			if (property_exists($results_object->_metadata, 'prev')) {
 				$this->prev = $results_object->_metadata->prev->href;
+			} else {
+				$this->next = false;
 			}
 	
 			$history = [];
