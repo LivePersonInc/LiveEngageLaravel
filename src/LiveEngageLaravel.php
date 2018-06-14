@@ -7,6 +7,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Subscriber\Oauth\Oauth1;
 use LivePersonInc\LiveEngageLaravel\Models\Info;
+use LivePersonInc\LiveEngageLaravel\Models\MessagingInfo;
 use LivePersonInc\LiveEngageLaravel\Models\Payload;
 use LivePersonInc\LiveEngageLaravel\Models\Visitor;
 use LivePersonInc\LiveEngageLaravel\Models\Agent;
@@ -167,14 +168,13 @@ class LiveEngageLaravel
 	{
 		$this->domain('msgHist');
 
-		$url = $url ?: "https://{$this->domain}/messaging_history/api/account/{$this->account}/conversations/search?limit={$this->history_limit}&offset=0";
+		$url = $url ?: "https://{$this->domain}/messaging_history/api/account/{$this->account}/conversations/search?limit={$this->history_limit}&offset=0&sort=start:desc";
 
 		$start_str = $start->toW3cString();
 		$end_str = $end->toW3cString();
 
 		$data = [
-			'interactive' => $this->interactive,
-			'ended' => $this->ended,
+			'status' => $this->ended ? ['CLOSE'] : ['OPEN'],
 			'start' => [
 				'from' => strtotime($start_str).'000',
 				'to' => strtotime($end_str).'000',
@@ -236,13 +236,13 @@ class LiveEngageLaravel
 			if (property_exists($results_object->_metadata, 'prev')) {
 				$this->prev = $results_object->_metadata->prev->href;
 			} else {
-				$this->next = false;
+				$this->prev = false;
 			}
 	
 			$history = [];
 			foreach ($results as $item) {
 				if (property_exists($item, 'info')) {
-					$item->info = new Info((array) $item->info);
+					$item->info = new MessagingInfo((array) $item->info);
 				}
 	
 				if (property_exists($item, 'visitorInfo')) {
@@ -284,12 +284,12 @@ class LiveEngageLaravel
 			if (property_exists($results_object->_metadata, 'next')) {
 				$this->next = $results_object->_metadata->next->href;
 			} else {
-				$this->next = false;
+				//$this->next = false;
 			}
 			if (property_exists($results_object->_metadata, 'prev')) {
 				$this->prev = $results_object->_metadata->prev->href;
 			} else {
-				$this->next = false;
+				//$this->prev = false;
 			}
 	
 			$history = [];
