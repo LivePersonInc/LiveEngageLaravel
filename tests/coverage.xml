@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1528986358">
-  <project timestamp="1528986358">
+<coverage generated="1528995991">
+  <project timestamp="1528995991">
     <package name="LivePersonInc\LiveEngageLaravel\Collections">
       <file name="/home/vagrant/code/packages/LivePersonInc/LiveEngageLaravel/src/Collections/AgentParticipants.php">
         <class name="LivePersonInc\LiveEngageLaravel\Collections\AgentParticipants" namespace="LivePersonInc\LiveEngageLaravel\Collections">
@@ -65,7 +65,7 @@
       </file>
       <file name="/home/vagrant/code/packages/LivePersonInc/LiveEngageLaravel/src/Collections/EngagementHistory.php">
         <class name="LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory" namespace="LivePersonInc\LiveEngageLaravel\Collections">
-          <metrics complexity="19" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="42" coveredstatements="0" elements="48" coveredelements="0"/>
+          <metrics complexity="23" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="50" coveredstatements="18" elements="56" coveredelements="18"/>
         </class>
         <line num="16" type="method" name="__construct" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="18" type="stmt" count="0"/>
@@ -75,48 +75,56 @@
         <line num="26" type="stmt" count="0"/>
         <line num="27" type="stmt" count="0"/>
         <line num="29" type="stmt" count="0"/>
-        <line num="32" type="method" name="next" visibility="public" complexity="7" crap="56" count="0"/>
-        <line num="34" type="stmt" count="0"/>
+        <line num="32" type="method" name="next" visibility="public" complexity="9" crap="10.09" count="1"/>
+        <line num="34" type="stmt" count="1"/>
         <line num="35" type="stmt" count="0"/>
-        <line num="38" type="stmt" count="0"/>
-        <line num="40" type="stmt" count="0"/>
-        <line num="41" type="stmt" count="0"/>
+        <line num="38" type="stmt" count="1"/>
+        <line num="40" type="stmt" count="1"/>
+        <line num="41" type="stmt" count="1"/>
         <line num="42" type="stmt" count="0"/>
-        <line num="44" type="stmt" count="0"/>
-        <line num="45" type="stmt" count="0"/>
-        <line num="47" type="stmt" count="0"/>
-        <line num="48" type="stmt" count="0"/>
-        <line num="51" type="stmt" count="0"/>
-        <line num="52" type="stmt" count="0"/>
-        <line num="55" type="stmt" count="0"/>
-        <line num="56" type="stmt" count="0"/>
-        <line num="59" type="stmt" count="0"/>
+        <line num="44" type="stmt" count="1"/>
+        <line num="45" type="stmt" count="1"/>
+        <line num="47" type="stmt" count="1"/>
+        <line num="48" type="stmt" count="1"/>
+        <line num="50" type="stmt" count="1"/>
+        <line num="51" type="stmt" count="1"/>
+        <line num="53" type="stmt" count="1"/>
+        <line num="54" type="stmt" count="1"/>
+        <line num="57" type="stmt" count="1"/>
+        <line num="58" type="stmt" count="0"/>
+        <line num="61" type="stmt" count="1"/>
         <line num="62" type="stmt" count="0"/>
-        <line num="64" type="stmt" count="0"/>
-        <line num="68" type="method" name="prev" visibility="public" complexity="7" crap="56" count="0"/>
+        <line num="65" type="stmt" count="1"/>
+        <line num="68" type="stmt" count="1"/>
         <line num="70" type="stmt" count="0"/>
-        <line num="71" type="stmt" count="0"/>
-        <line num="74" type="stmt" count="0"/>
-        <line num="76" type="stmt" count="0"/>
-        <line num="77" type="stmt" count="0"/>
-        <line num="78" type="stmt" count="0"/>
+        <line num="74" type="method" name="prev" visibility="public" complexity="9" crap="68.99" count="1"/>
+        <line num="76" type="stmt" count="1"/>
+        <line num="77" type="stmt" count="1"/>
         <line num="80" type="stmt" count="0"/>
-        <line num="81" type="stmt" count="0"/>
+        <line num="82" type="stmt" count="0"/>
         <line num="83" type="stmt" count="0"/>
         <line num="84" type="stmt" count="0"/>
+        <line num="86" type="stmt" count="0"/>
         <line num="87" type="stmt" count="0"/>
-        <line num="88" type="stmt" count="0"/>
-        <line num="91" type="stmt" count="0"/>
+        <line num="89" type="stmt" count="0"/>
+        <line num="90" type="stmt" count="0"/>
         <line num="92" type="stmt" count="0"/>
+        <line num="93" type="stmt" count="0"/>
         <line num="95" type="stmt" count="0"/>
-        <line num="98" type="stmt" count="0"/>
+        <line num="96" type="stmt" count="0"/>
+        <line num="99" type="stmt" count="0"/>
         <line num="100" type="stmt" count="0"/>
-        <line num="104" type="method" name="getMetaDataAttribute" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="106" type="stmt" count="0"/>
-        <line num="109" type="method" name="setMetaDataAttribute" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="111" type="stmt" count="0"/>
+        <line num="103" type="stmt" count="0"/>
+        <line num="104" type="stmt" count="0"/>
+        <line num="107" type="stmt" count="0"/>
+        <line num="110" type="stmt" count="0"/>
         <line num="112" type="stmt" count="0"/>
-        <metrics loc="113" ncloc="113" classes="1" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="43" coveredstatements="0" elements="49" coveredelements="0"/>
+        <line num="116" type="method" name="getMetaDataAttribute" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="118" type="stmt" count="0"/>
+        <line num="121" type="method" name="setMetaDataAttribute" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="123" type="stmt" count="0"/>
+        <line num="124" type="stmt" count="0"/>
+        <metrics loc="125" ncloc="125" classes="1" methods="6" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="51" coveredstatements="18" elements="57" coveredelements="18"/>
       </file>
       <file name="/home/vagrant/code/packages/LivePersonInc/LiveEngageLaravel/src/Collections/Humans.php">
         <class name="LivePersonInc\LiveEngageLaravel\Collections\Humans" namespace="LivePersonInc\LiveEngageLaravel\Collections">
@@ -168,71 +176,70 @@
     <package name="LivePersonInc\LiveEngageLaravel">
       <file name="/home/vagrant/code/packages/LivePersonInc/LiveEngageLaravel/src/LiveEngageLaravel.php">
         <class name="LivePersonInc\LiveEngageLaravel\LiveEngageLaravel" namespace="LivePersonInc\LiveEngageLaravel">
-          <metrics complexity="57" methods="21" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="170" coveredstatements="83" elements="191" coveredelements="86"/>
+          <metrics complexity="58" methods="21" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="172" coveredstatements="61" elements="193" coveredelements="64"/>
         </class>
-        <line num="44" type="method" name="__get" visibility="public" complexity="1" crap="1" count="1"/>
-        <line num="46" type="stmt" count="1"/>
-        <line num="49" type="method" name="__set" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="51" type="stmt" count="0"/>
-        <line num="54" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="1"/>
-        <line num="56" type="stmt" count="1"/>
-        <line num="58" type="stmt" count="1"/>
+        <line num="45" type="method" name="__get" visibility="public" complexity="1" crap="1" count="1"/>
+        <line num="47" type="stmt" count="1"/>
+        <line num="50" type="method" name="__set" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="52" type="stmt" count="0"/>
+        <line num="55" type="method" name="__construct" visibility="public" complexity="2" crap="2" count="1"/>
+        <line num="57" type="stmt" count="1"/>
         <line num="59" type="stmt" count="1"/>
-        <line num="61" type="method" name="key" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="63" type="stmt" count="0"/>
-        <line num="65" type="stmt" count="0"/>
-        <line num="68" type="method" name="nonInteractive" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="70" type="stmt" count="0"/>
+        <line num="60" type="stmt" count="1"/>
+        <line num="62" type="method" name="key" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="64" type="stmt" count="0"/>
+        <line num="66" type="stmt" count="0"/>
+        <line num="69" type="method" name="nonInteractive" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="71" type="stmt" count="0"/>
-        <line num="74" type="method" name="active" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="76" type="stmt" count="0"/>
+        <line num="72" type="stmt" count="0"/>
+        <line num="75" type="method" name="active" visibility="public" complexity="1" crap="2" count="0"/>
         <line num="77" type="stmt" count="0"/>
-        <line num="80" type="method" name="limit" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="82" type="stmt" count="0"/>
-        <line num="84" type="stmt" count="0"/>
-        <line num="87" type="method" name="skills" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="89" type="stmt" count="0"/>
-        <line num="91" type="stmt" count="0"/>
-        <line num="94" type="method" name="retry" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="96" type="stmt" count="0"/>
-        <line num="98" type="stmt" count="0"/>
-        <line num="101" type="method" name="get" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="103" type="stmt" count="0"/>
-        <line num="106" type="method" name="account" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="108" type="stmt" count="0"/>
-        <line num="110" type="stmt" count="0"/>
-        <line num="113" type="method" name="domain" visibility="public" complexity="2" crap="2.03" count="1"/>
-        <line num="115" type="stmt" count="1"/>
+        <line num="78" type="stmt" count="0"/>
+        <line num="81" type="method" name="limit" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="83" type="stmt" count="0"/>
+        <line num="85" type="stmt" count="0"/>
+        <line num="88" type="method" name="skills" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="90" type="stmt" count="0"/>
+        <line num="92" type="stmt" count="0"/>
+        <line num="95" type="method" name="retry" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="97" type="stmt" count="0"/>
+        <line num="99" type="stmt" count="0"/>
+        <line num="102" type="method" name="get" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="104" type="stmt" count="0"/>
+        <line num="107" type="method" name="account" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="109" type="stmt" count="0"/>
+        <line num="111" type="stmt" count="0"/>
+        <line num="114" type="method" name="domain" visibility="public" complexity="2" crap="2.03" count="1"/>
         <line num="116" type="stmt" count="1"/>
-        <line num="117" type="stmt" count="0"/>
-        <line num="119" type="stmt" count="1"/>
-        <line num="121" type="stmt" count="1"/>
-        <line num="125" type="method" name="visitor" visibility="public" complexity="2" crap="6" count="0"/>
-        <line num="127" type="stmt" count="0"/>
-        <line num="129" type="stmt" count="0"/>
+        <line num="117" type="stmt" count="1"/>
+        <line num="118" type="stmt" count="0"/>
+        <line num="120" type="stmt" count="1"/>
+        <line num="122" type="stmt" count="1"/>
+        <line num="126" type="method" name="visitor" visibility="public" complexity="2" crap="6" count="0"/>
+        <line num="128" type="stmt" count="0"/>
         <line num="130" type="stmt" count="0"/>
-        <line num="132" type="stmt" count="0"/>
-        <line num="134" type="stmt" count="0"/>
-        <line num="136" type="stmt" count="0"/>
-        <line num="140" type="method" name="retrieveHistory" visibility="public" complexity="3" crap="12" count="0"/>
-        <line num="142" type="stmt" count="0"/>
-        <line num="144" type="stmt" count="0"/>
-        <line num="146" type="stmt" count="0"/>
+        <line num="131" type="stmt" count="0"/>
+        <line num="133" type="stmt" count="0"/>
+        <line num="135" type="stmt" count="0"/>
+        <line num="137" type="stmt" count="0"/>
+        <line num="141" type="method" name="retrieveHistory" visibility="public" complexity="3" crap="12" count="0"/>
+        <line num="143" type="stmt" count="0"/>
+        <line num="145" type="stmt" count="0"/>
         <line num="147" type="stmt" count="0"/>
-        <line num="150" type="stmt" count="0"/>
+        <line num="148" type="stmt" count="0"/>
         <line num="151" type="stmt" count="0"/>
-        <line num="153" type="stmt" count="0"/>
+        <line num="152" type="stmt" count="0"/>
         <line num="154" type="stmt" count="0"/>
-        <line num="157" type="stmt" count="0"/>
+        <line num="155" type="stmt" count="0"/>
         <line num="158" type="stmt" count="0"/>
-        <line num="161" type="stmt" count="0"/>
-        <line num="163" type="stmt" count="0"/>
-        <line num="166" type="method" name="retrieveMsgHistory" visibility="public" complexity="3" crap="12" count="0"/>
-        <line num="168" type="stmt" count="0"/>
-        <line num="170" type="stmt" count="0"/>
-        <line num="172" type="stmt" count="0"/>
+        <line num="159" type="stmt" count="0"/>
+        <line num="162" type="stmt" count="0"/>
+        <line num="164" type="stmt" count="0"/>
+        <line num="167" type="method" name="retrieveMsgHistory" visibility="public" complexity="4" crap="20" count="0"/>
+        <line num="169" type="stmt" count="0"/>
+        <line num="171" type="stmt" count="0"/>
         <line num="173" type="stmt" count="0"/>
-        <line num="176" type="stmt" count="0"/>
+        <line num="174" type="stmt" count="0"/>
         <line num="177" type="stmt" count="0"/>
         <line num="179" type="stmt" count="0"/>
         <line num="180" type="stmt" count="0"/>
@@ -252,7 +259,7 @@
         <line num="209" type="stmt" count="1"/>
         <line num="210" type="stmt" count="1"/>
         <line num="212" type="stmt" count="1"/>
-        <line num="216" type="method" name="messagingHistory" visibility="public" complexity="10" crap="10.17" count="1"/>
+        <line num="216" type="method" name="messagingHistory" visibility="public" complexity="10" crap="10.33" count="1"/>
         <line num="218" type="stmt" count="1"/>
         <line num="220" type="stmt" count="1"/>
         <line num="221" type="stmt" count="1"/>
@@ -263,105 +270,108 @@
         <line num="230" type="stmt" count="1"/>
         <line num="231" type="stmt" count="1"/>
         <line num="232" type="stmt" count="1"/>
-        <line num="234" type="stmt" count="1"/>
-        <line num="235" type="stmt" count="0"/>
-        <line num="238" type="stmt" count="1"/>
+        <line num="234" type="stmt" count="0"/>
+        <line num="236" type="stmt" count="1"/>
+        <line num="237" type="stmt" count="0"/>
         <line num="239" type="stmt" count="1"/>
-        <line num="240" type="stmt" count="1"/>
-        <line num="241" type="stmt" count="1"/>
+        <line num="242" type="stmt" count="1"/>
+        <line num="243" type="stmt" count="1"/>
         <line num="244" type="stmt" count="1"/>
-        <line num="245" type="stmt" count="0"/>
+        <line num="245" type="stmt" count="1"/>
         <line num="248" type="stmt" count="1"/>
-        <line num="249" type="stmt" count="1"/>
+        <line num="249" type="stmt" count="0"/>
         <line num="252" type="stmt" count="1"/>
-        <line num="255" type="stmt" count="1"/>
+        <line num="253" type="stmt" count="1"/>
         <line num="256" type="stmt" count="1"/>
-        <line num="258" type="stmt" count="1"/>
-        <line num="261" type="stmt" count="0"/>
-        <line num="265" type="method" name="history" visibility="public" complexity="10" crap="10.05" count="1"/>
-        <line num="267" type="stmt" count="1"/>
-        <line num="269" type="stmt" count="1"/>
-        <line num="270" type="stmt" count="1"/>
-        <line num="272" type="stmt" count="1"/>
-        <line num="273" type="stmt" count="1"/>
-        <line num="275" type="stmt" count="1"/>
-        <line num="277" type="stmt" count="1"/>
-        <line num="279" type="stmt" count="1"/>
-        <line num="280" type="stmt" count="1"/>
-        <line num="281" type="stmt" count="1"/>
-        <line num="283" type="stmt" count="1"/>
+        <line num="259" type="stmt" count="1"/>
+        <line num="260" type="stmt" count="1"/>
+        <line num="262" type="stmt" count="1"/>
+        <line num="265" type="stmt" count="0"/>
+        <line num="269" type="method" name="history" visibility="public" complexity="10" crap="110" count="0"/>
+        <line num="271" type="stmt" count="0"/>
+        <line num="273" type="stmt" count="0"/>
+        <line num="274" type="stmt" count="0"/>
+        <line num="276" type="stmt" count="0"/>
+        <line num="277" type="stmt" count="0"/>
+        <line num="279" type="stmt" count="0"/>
+        <line num="281" type="stmt" count="0"/>
+        <line num="283" type="stmt" count="0"/>
         <line num="284" type="stmt" count="0"/>
-        <line num="287" type="stmt" count="1"/>
-        <line num="288" type="stmt" count="1"/>
-        <line num="289" type="stmt" count="1"/>
-        <line num="290" type="stmt" count="1"/>
-        <line num="293" type="stmt" count="1"/>
-        <line num="294" type="stmt" count="1"/>
-        <line num="297" type="stmt" count="1"/>
-        <line num="298" type="stmt" count="1"/>
-        <line num="301" type="stmt" count="1"/>
-        <line num="304" type="stmt" count="1"/>
-        <line num="305" type="stmt" count="1"/>
-        <line num="307" type="stmt" count="1"/>
-        <line num="310" type="stmt" count="0"/>
-        <line num="314" type="method" name="login" visibility="public" complexity="1" crap="2" count="0"/>
-        <line num="316" type="stmt" count="0"/>
+        <line num="285" type="stmt" count="0"/>
+        <line num="289" type="stmt" count="0"/>
+        <line num="290" type="stmt" count="0"/>
+        <line num="295" type="stmt" count="0"/>
+        <line num="296" type="stmt" count="0"/>
+        <line num="297" type="stmt" count="0"/>
+        <line num="298" type="stmt" count="0"/>
+        <line num="301" type="stmt" count="0"/>
+        <line num="302" type="stmt" count="0"/>
+        <line num="305" type="stmt" count="0"/>
+        <line num="306" type="stmt" count="0"/>
+        <line num="309" type="stmt" count="0"/>
+        <line num="312" type="stmt" count="0"/>
+        <line num="313" type="stmt" count="0"/>
+        <line num="315" type="stmt" count="0"/>
         <line num="318" type="stmt" count="0"/>
-        <line num="319" type="stmt" count="0"/>
-        <line num="320" type="stmt" count="0"/>
-        <line num="321" type="stmt" count="0"/>
-        <line num="322" type="stmt" count="0"/>
-        <line num="325" type="stmt" count="0"/>
+        <line num="322" type="method" name="login" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="324" type="stmt" count="0"/>
         <line num="326" type="stmt" count="0"/>
         <line num="327" type="stmt" count="0"/>
         <line num="328" type="stmt" count="0"/>
         <line num="329" type="stmt" count="0"/>
-        <line num="332" type="stmt" count="0"/>
+        <line num="330" type="stmt" count="0"/>
+        <line num="333" type="stmt" count="0"/>
         <line num="334" type="stmt" count="0"/>
+        <line num="335" type="stmt" count="0"/>
         <line num="336" type="stmt" count="0"/>
-        <line num="338" type="stmt" count="0"/>
-        <line num="341" type="method" name="requestV2" visibility="private" complexity="4" crap="20" count="0"/>
-        <line num="343" type="stmt" count="0"/>
-        <line num="345" type="stmt" count="0"/>
-        <line num="348" type="stmt" count="0"/>
+        <line num="337" type="stmt" count="0"/>
+        <line num="340" type="stmt" count="0"/>
+        <line num="342" type="stmt" count="0"/>
+        <line num="344" type="stmt" count="0"/>
+        <line num="346" type="stmt" count="0"/>
+        <line num="349" type="method" name="requestV2" visibility="private" complexity="4" crap="20" count="0"/>
+        <line num="351" type="stmt" count="0"/>
         <line num="352" type="stmt" count="0"/>
-        <line num="353" type="stmt" count="0"/>
-        <line num="357" type="stmt" count="0"/>
+        <line num="355" type="stmt" count="0"/>
         <line num="358" type="stmt" count="0"/>
-        <line num="359" type="stmt" count="0"/>
         <line num="362" type="stmt" count="0"/>
-        <line num="365" type="method" name="requestV1" visibility="private" complexity="7" crap="9.42" count="1"/>
-        <line num="367" type="stmt" count="1"/>
-        <line num="368" type="stmt" count="1"/>
-        <line num="369" type="stmt" count="1"/>
-        <line num="370" type="stmt" count="1"/>
-        <line num="372" type="stmt" count="1"/>
-        <line num="373" type="stmt" count="1"/>
-        <line num="374" type="stmt" count="1"/>
-        <line num="375" type="stmt" count="1"/>
-        <line num="376" type="stmt" count="1"/>
+        <line num="363" type="stmt" count="0"/>
+        <line num="367" type="stmt" count="0"/>
+        <line num="368" type="stmt" count="0"/>
+        <line num="369" type="stmt" count="0"/>
+        <line num="372" type="stmt" count="0"/>
+        <line num="375" type="method" name="requestV1" visibility="private" complexity="7" crap="9.42" count="1"/>
         <line num="377" type="stmt" count="1"/>
         <line num="378" type="stmt" count="1"/>
+        <line num="379" type="stmt" count="1"/>
         <line num="380" type="stmt" count="1"/>
         <line num="382" type="stmt" count="1"/>
         <line num="383" type="stmt" count="1"/>
+        <line num="384" type="stmt" count="1"/>
+        <line num="385" type="stmt" count="1"/>
+        <line num="386" type="stmt" count="1"/>
         <line num="387" type="stmt" count="1"/>
+        <line num="388" type="stmt" count="1"/>
+        <line num="390" type="stmt" count="1"/>
+        <line num="392" type="stmt" count="1"/>
         <line num="393" type="stmt" count="1"/>
-        <line num="394" type="stmt" count="0"/>
-        <line num="398" type="stmt" count="1"/>
-        <line num="400" type="stmt" count="1"/>
-        <line num="401" type="stmt" count="0"/>
-        <line num="402" type="stmt" count="0"/>
-        <line num="403" type="stmt" count="0"/>
+        <line num="397" type="stmt" count="1"/>
+        <line num="403" type="stmt" count="1"/>
         <line num="404" type="stmt" count="0"/>
-        <line num="405" type="stmt" count="0"/>
-        <line num="406" type="stmt" count="0"/>
-        <line num="407" type="stmt" count="0"/>
-        <line num="408" type="stmt" count="0"/>
-        <line num="409" type="stmt" count="0"/>
+        <line num="408" type="stmt" count="1"/>
+        <line num="410" type="stmt" count="1"/>
         <line num="411" type="stmt" count="0"/>
-        <line num="415" type="stmt" count="1"/>
-        <metrics loc="417" ncloc="415" classes="1" methods="21" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="170" coveredstatements="83" elements="191" coveredelements="86"/>
+        <line num="412" type="stmt" count="0"/>
+        <line num="413" type="stmt" count="0"/>
+        <line num="414" type="stmt" count="0"/>
+        <line num="415" type="stmt" count="0"/>
+        <line num="416" type="stmt" count="0"/>
+        <line num="417" type="stmt" count="0"/>
+        <line num="418" type="stmt" count="0"/>
+        <line num="419" type="stmt" count="0"/>
+        <line num="421" type="stmt" count="0"/>
+        <line num="425" type="stmt" count="1"/>
+        <metrics loc="427" ncloc="421" classes="1" methods="21" coveredmethods="3" conditionals="0" coveredconditionals="0" statements="172" coveredstatements="61" elements="193" coveredelements="64"/>
       </file>
       <file name="/home/vagrant/code/packages/LivePersonInc/LiveEngageLaravel/src/ServiceProvider.php">
         <class name="LivePersonInc\LiveEngageLaravel\ServiceProvider" namespace="LivePersonInc\LiveEngageLaravel">
@@ -475,6 +485,20 @@
         </class>
         <metrics loc="10" ncloc="10" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
+      <file name="/home/vagrant/code/packages/LivePersonInc/LiveEngageLaravel/src/Models/MessagingInfo.php">
+        <class name="LivePersonInc\LiveEngageLaravel\Models\MessagingInfo" namespace="LivePersonInc\LiveEngageLaravel\Models">
+          <metrics complexity="4" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="8" coveredelements="0"/>
+        </class>
+        <line num="15" type="method" name="getStartTimeAttribute" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="17" type="stmt" count="0"/>
+        <line num="20" type="method" name="getMinutesAttribute" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="22" type="stmt" count="0"/>
+        <line num="25" type="method" name="getSecondsAttribute" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="27" type="stmt" count="0"/>
+        <line num="30" type="method" name="getHoursAttribute" visibility="public" complexity="1" crap="2" count="0"/>
+        <line num="32" type="stmt" count="0"/>
+        <metrics loc="34" ncloc="34" classes="1" methods="4" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="4" coveredstatements="0" elements="8" coveredelements="0"/>
+      </file>
       <file name="/home/vagrant/code/packages/LivePersonInc/LiveEngageLaravel/src/Models/Payload.php">
         <class name="LivePersonInc\LiveEngageLaravel\Models\Payload" namespace="LivePersonInc\LiveEngageLaravel\Models">
           <metrics complexity="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
@@ -488,6 +512,6 @@
         <metrics loc="9" ncloc="9" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
     </package>
-    <metrics files="18" loc="956" ncloc="952" classes="13" methods="59" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="310" coveredstatements="94" elements="369" coveredelements="101"/>
+    <metrics files="19" loc="1012" ncloc="1004" classes="14" methods="63" coveredmethods="7" conditionals="0" coveredconditionals="0" statements="324" coveredstatements="90" elements="387" coveredelements="97"/>
   </project>
 </coverage>

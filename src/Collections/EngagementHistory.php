@@ -4,7 +4,9 @@ namespace LivePersonInc\LiveEngageLaravel\Collections;
 
 use Illuminate\Support\Collection;
 use LivePersonInc\LiveEngageLaravel\LiveEngageLaravel;
+use LivePersonInc\LiveEngageLaravel\Facades\LiveEngageLaravel as LiveEngage;
 use LivePersonInc\LiveEngageLaravel\Models\Engagement;
+use LivePersonInc\LiveEngageLaravel\Models\MetaData;
 use LivePersonInc\LiveEngageLaravel\Models\Info;
 use LivePersonInc\LiveEngageLaravel\Models\Visitor;
 use LivePersonInc\LiveEngageLaravel\Models\Campaign;
@@ -12,11 +14,12 @@ use LivePersonInc\LiveEngageLaravel\Models\Campaign;
 class EngagementHistory extends Collection
 {
 	private $instance;
+	public $metaData;
 
 	public function __construct(array $models = [], LiveEngageLaravel $instance = null)
 	{
 		$this->instance = $instance;
-
+		$this->metaData = new MetaData();
 		parent::__construct($models);
 	}
 	
@@ -31,83 +34,62 @@ class EngagementHistory extends Collection
 
 	public function next()
 	{
-		if (!$this->instance) {
-			return false;
-		}
-
-		$instance = $this->instance;
-
-		$next = $instance->retrieveHistory($instance->start, $instance->end, $instance->next);
-		if (property_exists($next->_metadata, 'next')) {
-			$instance->next = $next->_metadata->next->href;
-
-			$history = [];
-			foreach ($next->interactionHistoryRecords as $item) {
+		
+		if ($this->metaData->next) {
+			$next = LiveEngage::retrieveHistory($this->metaData->start, $this->metaData->end, $this->metaData->next->href);
+			if ($next) {
+		
+				$meta = new MetaData((array) $next->_metadata);
 				
-				if (property_exists($item, 'info')) {
-					$item->info = new Info((array) $item->info);
-				}
-	
-				if (property_exists($item, 'visitorInfo')) {
-					$item->visitorInfo = new Visitor((array) $item->visitorInfo);
-				}
-	
-				if (property_exists($item, 'campaign')) {
-					$item->campaign = new Campaign((array) $item->campaign);
-				}
-	
-				$history[] = new Engagement((array) $item);
+				$results = array_map(function($item) {
+					return new Engagement((array) $item);
+				}, $next->interactionHistoryRecords);
+				
+				$collection = new self($results);
+				$meta->start = $this->metaData->start;
+				$meta->end = $this->metaData->end;
+				$collection->metaData = $meta;
+				
+				return $collection;
+				
+			} else {
+				return false;
 			}
-
-			return $this->merge(new EngagementHistory($history));
-		} else {
-			return false;
 		}
+		
 	}
 
 	public function prev()
 	{
-		if (!$this->instance) {
-			return false;
-		}
-
-		$instance = $this->instance;
-
-		$prev = $instance->retrieveHistory($instance->start, $instance->end, $instance->prev);
-		if (property_exists($prev->_metadata, 'prev')) {
-			$instance->prev = $prev->_metadata->prev->href;
-
-			$history = [];
-			foreach ($next->interactionHistoryRecords as $item) {
+		if ($this->metaData->prev) {
+			$prev = LiveEngage::retrieveHistory($this->metaData->start, $this->metaData->end, $this->metaData->prev->href);
+			if ($prev) {
+		
+				$meta = new MetaData((array) $prev->_metadata);
 				
-				if (property_exists($item, 'info')) {
-					$item->info = new Info((array) $item->info);
-				}
-	
-				if (property_exists($item, 'visitorInfo')) {
-					$item->visitorInfo = new Visitor((array) $item->visitorInfo);
-				}
-	
-				if (property_exists($item, 'campaign')) {
-					$item->campaign = new Campaign((array) $item->campaign);
-				}
-	
-				$history[] = new Engagement((array) $item);
+				$results = array_map(function($item) {
+					return new Engagement((array) $item);
+				}, $prev->interactionHistoryRecords);
+				
+				$collection = new self($results);
+				$meta->start = $this->metaData->start;
+				$meta->end = $this->metaData->end;
+				$collection->metaData = $meta;
+				
+				return $collection;
+				
+			} else {
+				return false;
 			}
-
-			return $this->merge(new self($history));
-		} else {
-			return false;
 		}
 	}
 	
-	public function getMetaDataAttribute()
-	{
-		return $this->attributes['_metaData'];
-	}
-	
-	public function setMetaDataAttribute($value)
-	{
-		$this->attributes['_metaData'] = $value;
+	public function merge($collection) {
+		
+		$collection = parent::merge($collection);
+		$this->metaData = $collection->metaData;
+		
+		return $collection;
+		
 	}
 }

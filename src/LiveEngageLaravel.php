@@ -7,6 +7,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Subscriber\Oauth\Oauth1;
 use LivePersonInc\LiveEngageLaravel\Models\Info;
+use LivePersonInc\LiveEngageLaravel\Models\MetaData;
 use LivePersonInc\LiveEngageLaravel\Models\MessagingInfo;
 use LivePersonInc\LiveEngageLaravel\Models\Payload;
 use LivePersonInc\LiveEngageLaravel\Models\Visitor;
@@ -174,7 +175,7 @@ class LiveEngageLaravel
 		$end_str = $end->toW3cString();
 
 		$data = [
-			'status' => $this->ended ? ['CLOSE'] : ['OPEN'],
+			'status' => $this->ended ? ['CLOSE'] : ['OPEN','CLOSE'],
 			'start' => [
 				'from' => strtotime($start_str) . '000',
 				'to' => strtotime($end_str) . '000',
@@ -222,42 +223,21 @@ class LiveEngageLaravel
 
 		$this->start = $start;
 		$this->end = $end;
-		
+
 		$results_object = $this->retrieveMsgHistory($start, $end);
-
-		if (is_object($results_object)) {
-
-			$results = $results_object->conversationHistoryRecords;
-			if (property_exists($results_object->_metadata, 'next')) {
-				$this->next = $results_object->_metadata->next->href;
-			} else {
-				$this->next = false;
-			}
-			if (property_exists($results_object->_metadata, 'prev')) {
-				$this->prev = $results_object->_metadata->prev->href;
-			} else {
-				$this->prev = false;
-			}
-	
-			$history = [];
-			foreach ($results as $item) {
-				if (property_exists($item, 'info')) {
-					$item->info = new MessagingInfo((array) $item->info);
-				}
-	
-				if (property_exists($item, 'visitorInfo')) {
-					$item->visitorInfo = new Visitor((array) $item->visitorInfo);
-				}
-	
-				if (property_exists($item, 'campaign')) {
-					$item->campaign = new Campaign((array) $item->campaign);
-				}
-	
-				$history[] = new Conversation((array) $item);
-			}
-	
-			$collection = new ConversationHistory($history, $this);
-			$collection->metaData = $results_object->_metadata;
+		
+		if ($results_object) {
+		
+			$meta = new MetaData((array) $results_object->_metadata);
+			
+			$results = array_map(function($item) {
+				return new Conversation((array) $item);
+			}, $results_object->conversationHistoryRecords);
+			
+			$collection = new ConversationHistory($results);
+			$meta->start = $this->start;
+			$meta->end = $this->end;
+			$collection->metaData = $meta;
 			
 			return $collection;
 			
@@ -278,39 +258,18 @@ class LiveEngageLaravel
 
 		$results_object = $this->retrieveHistory($start, $end);
 		
-		if (is_object($results_object)) {
+		if ($results_object) {
 		
-			$results = $results_object->interactionHistoryRecords;
-			if (property_exists($results_object->_metadata, 'next')) {
-				$this->next = $results_object->_metadata->next->href;
-			} else {
-				//$this->next = false;
-			}
-			if (property_exists($results_object->_metadata, 'prev')) {
-				$this->prev = $results_object->_metadata->prev->href;
-			} else {
-				//$this->prev = false;
-			}
-	
-			$history = [];
-			foreach ($results as $item) {
-				if (property_exists($item, 'info')) {
-					$item->info = new Info((array) $item->info);
-				}
-	
-				if (property_exists($item, 'visitorInfo')) {
-					$item->visitorInfo = new Visitor((array) $item->visitorInfo);
-				}
-	
-				if (property_exists($item, 'campaign')) {
-					$item->campaign = new Campaign((array) $item->campaign);
-				}
-	
-				$history[] = new Engagement((array) $item);
-			}
+			$meta = new MetaData((array) $results_object->_metadata);
 			
-			$collection = new EngagementHistory($history, $this);
-			$collection->metaData = $results_object->_metadata;
+			$results = array_map(function($item) {
+				return new Engagement((array) $item);
+			}, $results_object->interactionHistoryRecords);
+			
+			$collection = new EngagementHistory($results);
+			$meta->start = $this->start;
+			$meta->end = $this->end;
+			$collection->metaData = $meta;
 			
 			return $collection;
 			

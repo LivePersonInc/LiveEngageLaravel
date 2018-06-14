@@ -25,10 +25,32 @@ class LiveEngageLaravelTest extends TestCase
      */
 	public function testGetHistory()
 	{
-		$history = LiveEngage::history();
-		$this->assertNotTrue($history->isEmpty(), 'History returned no records.');
-		$this->assertNotFalse(is_a($history, 'LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory'), "Actual Class type: " . get_class($history));
-		$this->assertNotFalse(is_a($history->random(), 'LivePersonInc\LiveEngageLaravel\Models\Engagement'), "Actual Class type: " . get_class($history->random()));
+		$history = LiveEngage::limit(10)->history();
+		$this->assertNotTrue(is_bool($history), 'History returned no records.');
+		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory', $history, "Actual Class type: " . get_class($history));
+		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Models\Engagement', $history->random(), "Actual Class type: " . get_class($history->random()));
+	}
+	
+	/**
+     * @covers LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory::next
+     */
+	public function testEngagementHistoryNext()
+	{
+		$history = LiveEngage::limit(2)->history()->next();
+		$this->assertNotTrue(is_bool($history), 'History returned no records.');
+		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory', $history, "Actual Class type: " . get_class($history));
+		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Models\Engagement', $history->random(), "Actual Class type: " . get_class($history->random()));
+	}
+	
+	/**
+     * @covers LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory::prev
+     */
+	public function testEngagementHistoryPrev()
+	{
+		$history = LiveEngage::limit(2)->history()->next()->prev();
+		$this->assertNotTrue(is_bool($history), 'History returned no records.');
+		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory', $history, "Actual Class type: " . get_class($history));
+		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Models\Engagement', $history->random(), "Actual Class type: " . get_class($history->random()));
 	}
 
 	/**
@@ -37,7 +59,7 @@ class LiveEngageLaravelTest extends TestCase
 	public function testGetMessagingHistory()
 	{
 		$history = LiveEngage::messagingHistory();
-		$this->assertNotTrue($history->isEmpty(), 'History returned no records.');
+		$this->assertNotTrue(is_bool($history), 'History returned no records.');
 		$this->assertNotFalse(is_a($history, 'LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory'), "Actual Class type: " . get_class($history));
 		$this->assertNotFalse(is_a($history->random(), 'LivePersonInc\LiveEngageLaravel\Models\Conversation'), "Actual Class type: " . get_class($history->random()));
 	}

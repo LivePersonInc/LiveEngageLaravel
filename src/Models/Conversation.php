@@ -8,6 +8,22 @@ use LivePersonInc\LiveEngageLaravel\Collections\AgentParticipants;
 class Conversation extends Model
 {
 	protected $guarded = [];
+	
+	public function __construct(array $item)
+	{
+		if (isset($item['info'])) {
+			$item['info'] = new MessagingInfo((array) $item['info']);
+		}
+
+		if (isset($item['visitorInfo'])) {
+			$item['visitorInfo'] = new Visitor((array) $item['visitorInfo']);
+		}
+
+		if (isset($item['campaign'])) {
+			$item['campaign'] = new Campaign((array) $item['campaign']);
+		}
+		parent::__construct($item);
+	}
 
 	public function getMessageRecordsAttribute()
 	{
