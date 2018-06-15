@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1529077484">
-  <project timestamp="1529077484">
+<coverage generated="1529078246">
+  <project timestamp="1529078246">
     <package name="LivePersonInc\LiveEngageLaravel\Collections">
       <file name="/home/vagrant/code/packages/LivePersonInc/LiveEngageLaravel/src/Collections/AgentParticipants.php">
         <class name="LivePersonInc\LiveEngageLaravel\Collections\AgentParticipants" namespace="LivePersonInc\LiveEngageLaravel\Collections">
@@ -189,7 +189,7 @@
     <package name="LivePersonInc\LiveEngageLaravel">
       <file name="/home/vagrant/code/packages/LivePersonInc/LiveEngageLaravel/src/LiveEngageLaravel.php">
         <class name="LivePersonInc\LiveEngageLaravel\LiveEngageLaravel" namespace="LivePersonInc\LiveEngageLaravel">
-          <metrics complexity="45" methods="22" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="145" coveredstatements="62" elements="167" coveredelements="67"/>
+          <metrics complexity="42" methods="22" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="140" coveredstatements="62" elements="162" coveredelements="67"/>
         </class>
         <line num="46" type="method" name="__get" visibility="public" complexity="1" crap="1" count="1"/>
         <line num="48" type="stmt" count="1"/>
@@ -340,25 +340,20 @@
         <line num="336" type="stmt" count="1"/>
         <line num="337" type="stmt" count="1"/>
         <line num="340" type="stmt" count="1"/>
-        <line num="343" type="method" name="requestV1" visibility="private" complexity="7" crap="20.27" count="1"/>
+        <line num="343" type="method" name="requestV1" visibility="private" complexity="4" crap="6.00" count="1"/>
         <line num="345" type="stmt" count="1"/>
         <line num="348" type="stmt" count="1"/>
-        <line num="354" type="stmt" count="1"/>
-        <line num="355" type="stmt" count="0"/>
-        <line num="359" type="stmt" count="1"/>
-        <line num="361" type="stmt" count="1"/>
+        <line num="352" type="stmt" count="1"/>
+        <line num="356" type="stmt" count="1"/>
+        <line num="357" type="stmt" count="1"/>
+        <line num="358" type="stmt" count="0"/>
+        <line num="359" type="stmt" count="0"/>
+        <line num="360" type="stmt" count="0"/>
+        <line num="361" type="stmt" count="0"/>
         <line num="362" type="stmt" count="0"/>
-        <line num="363" type="stmt" count="0"/>
         <line num="364" type="stmt" count="0"/>
-        <line num="365" type="stmt" count="0"/>
-        <line num="366" type="stmt" count="0"/>
-        <line num="367" type="stmt" count="0"/>
-        <line num="368" type="stmt" count="0"/>
-        <line num="369" type="stmt" count="0"/>
-        <line num="370" type="stmt" count="0"/>
-        <line num="372" type="stmt" count="0"/>
-        <line num="376" type="stmt" count="1"/>
-        <metrics loc="378" ncloc="376" classes="1" methods="22" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="145" coveredstatements="62" elements="167" coveredelements="67"/>
+        <line num="368" type="stmt" count="1"/>
+        <metrics loc="370" ncloc="368" classes="1" methods="22" coveredmethods="5" conditionals="0" coveredconditionals="0" statements="140" coveredstatements="62" elements="162" coveredelements="67"/>
       </file>
       <file name="/home/vagrant/code/packages/LivePersonInc/LiveEngageLaravel/src/ServiceProvider.php">
         <class name="LivePersonInc\LiveEngageLaravel\ServiceProvider" namespace="LivePersonInc\LiveEngageLaravel">
@@ -519,6 +514,6 @@
         <metrics loc="9" ncloc="9" classes="0" methods="0" coveredmethods="0" conditionals="0" coveredconditionals="0" statements="0" coveredstatements="0" elements="0" coveredelements="0"/>
       </file>
     </package>
-    <metrics files="24" loc="1026" ncloc="1022" classes="17" methods="66" coveredmethods="20" conditionals="0" coveredconditionals="0" statements="298" coveredstatements="162" elements="364" coveredelements="182"/>
+    <metrics files="24" loc="1018" ncloc="1014" classes="17" methods="66" coveredmethods="20" conditionals="0" coveredconditionals="0" statements="293" coveredstatements="162" elements="359" coveredelements="182"/>
   </project>
 </coverage>

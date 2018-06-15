@@ -339,8 +339,8 @@ class LiveEngageLaravel
 		
 		return $client;
 	}
-
-	private function requestV1($url, $method, $payload = false)
+	
+	private function requestV1($url, $method, $payload = [])
 	{
 		$client = $this->requestClient();
 
@@ -349,20 +349,12 @@ class LiveEngageLaravel
 			'headers' => [
 				'content-type' => 'application/json',
 			],
+			'body' => json_encode($payload)
 		];
-
-		if ($payload !== false) {
-			$args['body'] = json_encode($payload);
-		}
 
 		try {
 			$res = $client->request($method, $url, $args);
-
 			$response = json_decode($res->getBody());
-		} catch (\GuzzleHttp\Exception\ConnectException $connection) {
-			throw $connection;
-		} catch (\GuzzleHttp\Exception\ClientException $clientException) {
-			throw $clientException;
 		} catch (\Exception $e) {
 			if ($this->retry_counter < $this->retry_limit || $this->retry_limit == -1) {
 				usleep(1500);
