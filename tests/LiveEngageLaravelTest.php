@@ -79,14 +79,14 @@ class LiveEngageLaravelTest extends TestCase
 	public function setUp()
 	{
 		parent::setUp();
-		
+				
 		config([
 			'services.liveperson.default' => [
-				'key' => getenv('LP_KEY'),
-				'secret' => getenv('LP_SECRET'),
-				'token' => getenv('LP_TOKEN'),
-				'token_secret' => getenv('LP_TOKEN_SECRET'),
-				'account' => getenv('LP_ACCOUNT'),
+				'key' => $_ENV['LP_KEY'],
+				'secret' => $_ENV['LP_SECRET'],
+				'token' => $_ENV['LP_TOKEN'],
+				'token_secret' => $_ENV['LP_TOKEN_SECRET'],
+				'account' => $_ENV['LP_ACCOUNT'],
 			]
 		]);
 	}
@@ -97,39 +97,5 @@ class LiveEngageLaravelTest extends TestCase
 	 * @return \Illuminate\Foundation\Application
 	 */
 	
-	public function createApplication()
-	{
-		//$app = require __DIR__.(isset($_ENV['TEST_APP_PATH']) ? $_ENV['TEST_APP_PATH'] : '/../../../../bootstrap/app.php');
 	
-		$app = new \Illuminate\Foundation\Application(
-		    realpath(__DIR__ . (isset($_ENV['SCRUT_TEST']) ? '/../' : '/../../../../'))
-		);
-		
-		/*
-		|--------------------------------------------------------------------------
-		| Bind Important Interfaces
-		|--------------------------------------------------------------------------
-		|
-		| Next, we need to bind some important interfaces into the container so
-		| we will be able to resolve them when needed. The kernels serve the
-		| incoming requests to this application from both the web and CLI.
-		|
-		*/
-		
-		$app->singleton(
-		    \Illuminate\Contracts\Console\Kernel::class,
-		    \Illuminate\Foundation\Console\Kernel::class
-		);
-		
-		$app->singleton(
-		    \Illuminate\Contracts\Debug\ExceptionHandler::class,
-		    \Illuminate\Foundation\Exceptions\Handler::class
-		);
-	
-		$app->make(\Illuminate\Contracts\Console\Kernel::class)->bootstrap();
-	
-		$app->loadEnvironmentFrom('.env');
-
-		return $app;
-	}
 }
