@@ -53,6 +53,7 @@ class LiveEngageLaravelTest extends TestCase
 
 	/**
      * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::messagingHistory
+     * @covers LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory
      */	
 	public function testGetMessagingHistory()
 	{
@@ -63,6 +64,7 @@ class LiveEngageLaravelTest extends TestCase
 	
 	/**
      * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::getAgentStatus
+     * @covers LivePersonInc\LiveEngageLaravel\Collections\AgentParticipants
      */
 	public function testGetAgentStatuses()
 	{

@@ -8,6 +8,8 @@ use LivePersonInc\LiveEngageLaravel\Models\MetaData;
 
 class ConsumerParticipants extends Collection
 {
+	public $metaData;
+	
 	public function __construct(array $models = [])
 	{
 		
