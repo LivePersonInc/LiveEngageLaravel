@@ -256,11 +256,12 @@ class LiveEngageLaravel
 		
 		if ($results_object) {
 		
+			$results_object->_metadata->start = $this->start;
+			$results_object->_metadata->end = $this->end;
+		
 			$meta = new MetaData((array) $results_object->_metadata);
 			
 			$collection = new EngagementHistory($results_object->interactionHistoryRecords);
-			$meta->start = $this->start;
-			$meta->end = $this->end;
 			$collection->metaData = $meta;
 			
 			return $collection;

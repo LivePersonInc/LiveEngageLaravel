@@ -18,7 +18,7 @@ class EngagementHistory extends Collection
 	public function __construct(array $models = [])
 	{
 		$models = array_map(function($item) {
-			return new Engagement((array) $item);
+			return is_a($item, 'LivePersonInc\LiveEngageLaravel\Models\Engagement') ? $item : new Engagement((array) $item);
 		}, $models);
 		$this->metaData = new MetaData();
 		parent::__construct($models);
@@ -40,11 +40,12 @@ class EngagementHistory extends Collection
 			$next = LiveEngage::retrieveHistory($this->metaData->start, $this->metaData->end, $this->metaData->next->href);
 			if ($next) {
 		
+				$next->_metadata->start = $this->metaData->start;
+				$next->_metadata->end = $this->metaData->end;
+		
 				$meta = new MetaData((array) $next->_metadata);
 				
 				$collection = new self($next->interactionHistoryRecords);
-				$meta->start = $this->metaData->start;
-				$meta->end = $this->metaData->end;
 				$collection->metaData = $meta;
 				
 				return $collection;
@@ -53,6 +54,8 @@ class EngagementHistory extends Collection
 				return false;
 			}
 		}
+		
+		return false;
 		
 	}
 
@@ -62,11 +65,12 @@ class EngagementHistory extends Collection
 			$prev = LiveEngage::retrieveHistory($this->metaData->start, $this->metaData->end, $this->metaData->prev->href);
 			if ($prev) {
 		
+				$prev->_metadata->start = $this->metaData->start;
+				$prev->_metadata->end = $this->metaData->end;
+		
 				$meta = new MetaData((array) $prev->_metadata);
 				
 				$collection = new self($prev->interactionHistoryRecords);
-				$meta->start = $this->metaData->start;
-				$meta->end = $this->metaData->end;
 				$collection->metaData = $meta;
 				
 				return $collection;
@@ -75,6 +79,9 @@ class EngagementHistory extends Collection
 				return false;
 			}
 		}
+		
+		return false;
+		
 	}
 	
 	public function merge($collection) {

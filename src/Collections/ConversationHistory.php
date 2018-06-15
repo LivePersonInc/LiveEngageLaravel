@@ -18,7 +18,7 @@ class ConversationHistory extends Collection
 	public function __construct(array $models = [])
 	{
 		$models = array_map(function($item) {
-			return new Conversation((array) $item);
+			return is_a($item, 'LivePersonInc\LiveEngageLaravel\Models\Conversation') ? $item : new Conversation((array) $item);
 		}, $models);
 		$this->metaData = new MetaData();
 		parent::__construct($models);
@@ -52,6 +52,9 @@ class ConversationHistory extends Collection
 				return false;
 			}
 		}
+		
+		return false;
+		
 	}
 
 	public function prev()
@@ -73,6 +76,9 @@ class ConversationHistory extends Collection
 				return false;
 			}
 		}
+		
+		return false;
+		
 	}
 	
 	public function merge($collection) {
