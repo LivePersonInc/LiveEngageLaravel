@@ -41,6 +41,8 @@ class Message extends Model
 			return $this->messageData->msg->text;
 		} elseif ($this->type == 'RICH_CONTENT') {
 			return 'RICH_CONTENT';
+		} else {
+			return isset($this->attributes['text']) ? $this->attributes['text'] : '';
 		}
 	}
 }

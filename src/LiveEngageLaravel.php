@@ -115,13 +115,10 @@ class LiveEngageLaravel
 	public function domain($service)
 	{
 		$response = $this->requestV1("https://api.liveperson.net/api/account/{$this->account}/service/{$service}/baseURI.json?version={$this->version}", 'GET');
-		if (is_a($response, 'Exception')) {
-			throw new \Exception('Unable to get LivePerson account domain', 101);
-		} else {
-			$this->domain = $response->baseURI;
+		
+		$this->domain = $response->baseURI;
 
-			return $this;
-		}
+		return $this;
 	}
 
 	public function visitor($visitorID, $sessionID, $setData = false)
@@ -198,7 +195,7 @@ class LiveEngageLaravel
 		
 		$url = "https://{$this->domain}/messaging_history/api/account/{$this->account}/agent-view/status";
 		
-		$data['skillIds'] = $skills;
+		$data = ['skillIds' => $skills];
 		
 		$response = $this->requestV1($url, 'POST', $data);
 		$collection = new AgentParticipants($response->agentStatusRecords);
