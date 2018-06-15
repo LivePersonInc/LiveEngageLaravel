@@ -100,11 +100,6 @@ class LiveEngageLaravel
 		return $this;
 	}
 
-	public function get()
-	{
-		return $this->results;
-	}
-
 	public function account($accountid)
 	{
 		$this->account = $accountid;
@@ -145,19 +140,15 @@ class LiveEngageLaravel
 		$start_str = $start->toW3cString();
 		$end_str = $end->toW3cString();
 
-		$data = [
+		$data = new Payload([
 			'interactive' => $this->interactive,
 			'ended' => $this->ended,
 			'start' => [
 				'from' => strtotime($start_str) . '000',
 				'to' => strtotime($end_str) . '000',
 			],
-		];
-		if (count($this->skills)) {
-			$data['skillIds'] = $this->skills;
-		}
-
-		$data = new Payload($data);
+			'skillIds' => $this->skills
+		]);
 
 		return $this->requestV1($url, 'POST', $data);
 	}
@@ -171,19 +162,15 @@ class LiveEngageLaravel
 		$start_str = $start->toW3cString();
 		$end_str = $end->toW3cString();
 
-		$data = [
+		$data = new Payload([
 			'status' => $this->ended ? ['CLOSE'] : ['OPEN', 'CLOSE'],
 			'start' => [
 				'from' => strtotime($start_str) . '000',
 				'to' => strtotime($end_str) . '000',
 			],
-		];
-		if (count($this->skills)) {
-			$data['skillIds'] = $this->skills;
-		}
-
-		$data = new Payload($data);
-
+			'skillIds' => $this->skills
+		]);
+		
 		return $this->requestV1($url, 'POST', $data);
 	}
 	
@@ -212,15 +199,12 @@ class LiveEngageLaravel
 		$start = $start ?: (new Carbon())->today();
 		$end = $end ?: (new Carbon())->today()->addHours(23)->addMinutes(59);
 
-		$this->start = $start;
-		$this->end = $end;
-
 		$results_object = $this->retrieveMsgHistory($start, $end);
 		
 		if ($results_object) {
 		
-			$results_object->_metadata->start = $this->start;
-			$results_object->_metadata->end = $this->end;
+			$results_object->_metadata->start = $start;
+			$results_object->_metadata->end = $end;
 		
 			$meta = new MetaData((array) $results_object->_metadata);
 			
@@ -241,15 +225,12 @@ class LiveEngageLaravel
 		$start = $start ?: (new Carbon())->today();
 		$end = $end ?: (new Carbon())->today()->addHours(23)->addMinutes(59);
 
-		$this->start = $start;
-		$this->end = $end;
-
 		$results_object = $this->retrieveHistory($start, $end);
 		
 		if ($results_object) {
 		
-			$results_object->_metadata->start = $this->start;
-			$results_object->_metadata->end = $this->end;
+			$results_object->_metadata->start = $start;
+			$results_object->_metadata->end = $end;
 		
 			$meta = new MetaData((array) $results_object->_metadata);
 			
@@ -361,7 +342,7 @@ class LiveEngageLaravel
 				$this->retry_counter++;
 				$response = $this->requestV1($url, $payload);
 			} else {
-				throw new LiveEngageException("Retry limit has been exceeded ($this->retry_limit)", 100);
+				throw $e; //new LiveEngageException("Retry limit has been exceeded ($this->retry_limit)", 100);
 			}
 		}
 

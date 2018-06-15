@@ -8,9 +8,6 @@ use LivePersonInc\LiveEngageLaravel\Collections\Transcript;
 class Engagement extends Model
 {
 	protected $guarded = [];
-	protected $appends = [
-		'transcript',
-	];
 	
 	public function __construct(array $item)
 	{
