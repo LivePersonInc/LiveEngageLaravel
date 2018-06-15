@@ -79,14 +79,14 @@ class LiveEngageLaravelTest extends TestCase
 	public function setUp()
 	{
 		parent::setUp();
-				
+		
 		config([
 			'services.liveperson.default' => [
-				'key' => $_ENV['LP_KEY'],
-				'secret' => $_ENV['LP_SECRET'],
-				'token' => $_ENV['LP_TOKEN'],
-				'token_secret' => $_ENV['LP_TOKEN_SECRET'],
-				'account' => $_ENV['LP_ACCOUNT'],
+				'key' => getenv('LP_KEY'),
+				'secret' => getenv('LP_SECRET'),
+				'token' => getenv('LP_TOKEN'),
+				'token_secret' => getenv('LP_TOKEN_SECRET'),
+				'account' => getenv('LP_ACCOUNT'),
 			]
 		]);
 	}

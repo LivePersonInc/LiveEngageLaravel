@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1529067025">
-  <project timestamp="1529067025">
+<coverage generated="1529067763">
+  <project timestamp="1529067763">
     <package name="LivePersonInc\LiveEngageLaravel\Collections">
       <file name="/home/vagrant/code/packages/LivePersonInc/LiveEngageLaravel/src/Collections/AgentParticipants.php">
         <class name="LivePersonInc\LiveEngageLaravel\Collections\AgentParticipants" namespace="LivePersonInc\LiveEngageLaravel\Collections">
