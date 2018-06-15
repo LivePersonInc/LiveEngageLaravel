@@ -35,15 +35,17 @@ class ConversationHistory extends Collection
 
 	public function next()
 	{
+		
 		if ($this->metaData->next) {
 			$next = LiveEngage::retrieveMsgHistory($this->metaData->start, $this->metaData->end, $this->metaData->next->href);
 			if ($next) {
 		
+				$next->_metadata->start = $this->metaData->start;
+				$next->_metadata->end = $this->metaData->end;
+		
 				$meta = new MetaData((array) $next->_metadata);
 				
 				$collection = new self($next->conversationHistoryRecords);
-				$meta->start = $this->metaData->start;
-				$meta->end = $this->metaData->end;
 				$collection->metaData = $meta;
 				
 				return $collection;
@@ -63,11 +65,12 @@ class ConversationHistory extends Collection
 			$prev = LiveEngage::retrieveMsgHistory($this->metaData->start, $this->metaData->end, $this->metaData->prev->href);
 			if ($prev) {
 		
+				$prev->_metadata->start = $this->metaData->start;
+				$prev->_metadata->end = $this->metaData->end;
+		
 				$meta = new MetaData((array) $prev->_metadata);
 				
 				$collection = new self($prev->conversationHistoryRecords);
-				$meta->start = $this->metaData->start;
-				$meta->end = $this->metaData->end;
 				$collection->metaData = $meta;
 				
 				return $collection;
@@ -83,8 +86,10 @@ class ConversationHistory extends Collection
 	
 	public function merge($collection) {
 		
+		$meta = $collection->metaData;
 		$collection = parent::merge($collection);
-		$this->metaData = $collection->metaData;
+		$this->metaData = $meta;
+		$collection->metaData = $meta;
 		
 		return $collection;
 		

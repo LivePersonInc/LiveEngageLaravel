@@ -86,8 +86,10 @@ class EngagementHistory extends Collection
 	
 	public function merge($collection) {
 		
+		$meta = $collection->metaData;
 		$collection = parent::merge($collection);
-		$this->metaData = $collection->metaData;
+		$this->metaData = $meta;
+		$collection->metaData = $meta;
 		
 		return $collection;
 		

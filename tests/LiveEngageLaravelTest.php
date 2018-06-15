@@ -97,5 +97,16 @@ class LiveEngageLaravelTest extends TestCase
 	 * @return \Illuminate\Foundation\Application
 	 */
 	
+	public function createApplication()
+	{
+		if (getenv('SCRUT_TEST')) return parent::createApplication();
+		
+		$app = require __DIR__.'/../../../../bootstrap/app.php';
 	
+		$app->make(\Illuminate\Contracts\Console\Kernel::class)->bootstrap();
+	
+		$app->loadEnvironmentFrom('.env');
+
+		return $app;
+	}
 }
