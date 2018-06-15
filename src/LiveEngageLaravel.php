@@ -48,11 +48,6 @@ class LiveEngageLaravel
 		return $this->$attribute;
 	}
 
-	public function __set($attribute, $value)
-	{
-		return $this->$attribute = $value;
-	}
-
 	public function __construct()
 	{
 		$this->account = config("{$this->config}.account");
@@ -213,8 +208,6 @@ class LiveEngageLaravel
 			
 			return $collection;
 			
-		} else {
-			return false;
 		}
 	}
 
@@ -239,8 +232,6 @@ class LiveEngageLaravel
 			
 			return $collection;
 			
-		} else {
-			return false;
 		}
 	}
 	
@@ -273,20 +264,15 @@ class LiveEngageLaravel
 	
 	private function requestV2($url, $method, $payload = false)
 	{
-		if (!$this->bearer) {
-			$this->login();
-		}
+		$this->login();
 		
 		$client = new Client();
 		$args = [
 			'headers' => [
-				'Authorization' => $this->bearer
-			]
+				'content-type' => 'application/json',
+			],
+			'body' => json_encode($payload)
 		];
-		
-		if ($payload !== false) {
-			$args['body'] = json_encode($payload);
-		}
 		
 		try {
 			$res = $client->request($method, $url, $args);

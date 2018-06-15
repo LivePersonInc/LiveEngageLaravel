@@ -192,6 +192,7 @@ class LiveEngageLaravelTest extends TestCase
 	/**
      * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::active
      * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::__construct
+     * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::__get
      */
 	public function testActive()
 	{
@@ -202,6 +203,7 @@ class LiveEngageLaravelTest extends TestCase
 	/**
      * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::limit
      * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::__construct
+     * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::__get
      */
 	public function testLimit()
 	{
@@ -212,6 +214,7 @@ class LiveEngageLaravelTest extends TestCase
 	/**
      * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::account
      * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::__construct
+     * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::__get
      */
 	public function testAccount()
 	{
@@ -222,6 +225,7 @@ class LiveEngageLaravelTest extends TestCase
 	/**
      * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::nonInteractive
      * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::__construct
+     * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::__get
      */
 	public function testNonInteractive()
 	{
@@ -232,6 +236,7 @@ class LiveEngageLaravelTest extends TestCase
 	/**
      * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::key
      * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::__construct
+     * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::__get
      */
 	public function testKey()
 	{
