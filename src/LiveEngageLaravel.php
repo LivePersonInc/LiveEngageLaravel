@@ -201,14 +201,8 @@ class LiveEngageLaravel
 		$data['skillIds'] = $skills;
 		
 		$response = $this->requestV1($url, 'POST', $data);
-		$agents = [];
-		
-		foreach ($response->agentStatusRecords as $agent) {
-			$agents[] = new Agent((array) $agent);
-		}
-		
 		$collection = new AgentParticipants($response->agentStatusRecords);
-		$collection->metaData = $response->_metadata;
+		$collection->metaData = new MetaData((array) $response->_metadata);
 		
 		return $collection;
 		

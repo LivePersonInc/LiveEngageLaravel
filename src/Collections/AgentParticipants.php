@@ -4,6 +4,7 @@ namespace LivePersonInc\LiveEngageLaravel\Collections;
 
 use Illuminate\Support\Collection;
 use LivePersonInc\LiveEngageLaravel\Models\Agent;
+use LivePersonInc\LiveEngageLaravel\Models\MetaData;
 
 class AgentParticipants extends Collection
 {
@@ -13,9 +14,9 @@ class AgentParticipants extends Collection
 	{
 		
 		$models = array_map(function($item) {
-			return new Agent((array) $item);
+			return is_a($item, 'LivePersonInc\LiveEngageLaravel\Models\Agent') ? $item : new Agent((array) $item);
 		}, $models);
-		
+		$this->metaData = new MetaData();
 		parent::__construct($models);
 	}
 	
