@@ -110,7 +110,7 @@ class LiveEngageLaravelTest extends TestCase
      */	
 	public function testGetMessagingHistory()
 	{
-		$history = LiveEngage::messagingHistory();
+		$history = LiveEngage::messagingHistory(Carbon::today()->subDays(2));
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory', $history);
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Models\Conversation', $history->random());
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Models\Campaign', $history->random()->campaign);
@@ -137,7 +137,7 @@ class LiveEngageLaravelTest extends TestCase
      */
 	public function testConversationHistoryNext()
 	{
-		$history = LiveEngage::limit(10)->messagingHistory()->next();
+		$history = LiveEngage::limit(10)->messagingHistory(Carbon::today()->subDays(2))->next();
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory', $history, "Actual Class type: " . get_class($history));
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Models\Conversation', $history->random(), "Actual Class type: " . get_class($history->random()));
 		
@@ -155,7 +155,7 @@ class LiveEngageLaravelTest extends TestCase
      */
 	public function testGetAgentStatuses()
 	{
-		$agents = LiveEngage::getAgentStatus('17');
+		$agents = LiveEngage::getAgentStatus(['17','11']);
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Collections\AgentParticipants', $agents);
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Collections\AgentParticipants', $agents->state('online'));
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Models\Agent', $agents->findById($agents->random()->agentId));

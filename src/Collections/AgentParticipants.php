@@ -32,7 +32,7 @@ class AgentParticipants extends Collection
 	public function findById($agentId)
 	{
 		$result = $this->filter(function($value) use ($agentId) {
-			return strtolower($value->agentId) == $agentId;
+			return $value->agentId == $agentId;
 		});
 		
 		return $result->first();

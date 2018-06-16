@@ -196,19 +196,18 @@ class LiveEngageLaravel
 
 		$results_object = $this->retrieveMsgHistory($start, $end);
 		
-		if ($results_object) {
+		if (!$results_object) return false;
 		
-			$results_object->_metadata->start = $start;
-			$results_object->_metadata->end = $end;
+		$results_object->_metadata->start = $start;
+		$results_object->_metadata->end = $end;
+	
+		$meta = new MetaData((array) $results_object->_metadata);
 		
-			$meta = new MetaData((array) $results_object->_metadata);
+		$collection = new ConversationHistory($results_object->conversationHistoryRecords);
+		$collection->metaData = $meta;
+		
+		return $collection;
 			
-			$collection = new ConversationHistory($results_object->conversationHistoryRecords);
-			$collection->metaData = $meta;
-			
-			return $collection;
-			
-		}
 	}
 
 	public function history(Carbon $start = null, Carbon $end = null)
@@ -220,19 +219,18 @@ class LiveEngageLaravel
 
 		$results_object = $this->retrieveHistory($start, $end);
 		
-		if ($results_object) {
+		if (!$results_object) return false;
 		
-			$results_object->_metadata->start = $start;
-			$results_object->_metadata->end = $end;
+		$results_object->_metadata->start = $start;
+		$results_object->_metadata->end = $end;
+	
+		$meta = new MetaData((array) $results_object->_metadata);
 		
-			$meta = new MetaData((array) $results_object->_metadata);
+		$collection = new EngagementHistory($results_object->interactionHistoryRecords);
+		$collection->metaData = $meta;
+		
+		return $collection;
 			
-			$collection = new EngagementHistory($results_object->interactionHistoryRecords);
-			$collection->metaData = $meta;
-			
-			return $collection;
-			
-		}
 	}
 	
 	public function login()
