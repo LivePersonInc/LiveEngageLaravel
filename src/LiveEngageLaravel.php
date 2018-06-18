@@ -196,7 +196,9 @@ class LiveEngageLaravel
 
 		$results_object = $this->retrieveMsgHistory($start, $end);
 		
-		if (!$results_object) return false;
+		if (!$results_object) {
+			return false;
+		}
 		
 		$results_object->_metadata->start = $start;
 		$results_object->_metadata->end = $end;
@@ -219,7 +221,9 @@ class LiveEngageLaravel
 
 		$results_object = $this->retrieveHistory($start, $end);
 		
-		if (!$results_object) return false;
+		if (!$results_object) {
+			return false;
+		}
 		
 		$results_object->_metadata->start = $start;
 		$results_object->_metadata->end = $end;
