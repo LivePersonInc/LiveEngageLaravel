@@ -125,13 +125,15 @@ $history->next(); // one page
 ```
 Or
 ```php
-while ($history->next()) {} // get all remaining data
+while ($next = $history->next()) { $history = history->merge($next) } // get all remaining data
 ```
 
 **Example:** Iterate through all messages of the transcript
 
 ```php
-foreach ($history->transcript as $message) {
+$engagement = $history->find('3498290084'); // This is a collection, so random(), first(), last() all work as well
+
+foreach ($engagement->transcript as $message) {  // For messaging conversations, use messageRecords instead of transcript
 	echo $message . "\n";
 }
 ```
@@ -140,6 +142,14 @@ Transcript is a collection of message objects, so you can access properties of t
 echo $message->time->format('Y-m-d');
 ```
 The time property of the message is a Carbon date object.
+
+```php
+$conversation = LiveEngage::messagingHistory()->first();
+
+foreach ($conversation->transfers as $transfer) {
+	echo $transfer->targetSkillName . "\n";
+}
+```
 
 **Example:** Get messaging agents availability by skill
 ```php
