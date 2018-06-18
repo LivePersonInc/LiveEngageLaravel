@@ -26,7 +26,7 @@ class ConversationHistory extends Collection
 	
 	public function find($engagementID)
 	{
-		$result = $this->filter(function($value, $key) use ($engagementID) {
+		$result = $this->filter(function($value) use ($engagementID) {
 			return $value->info->conversationId == $engagementID;
 		});
 		

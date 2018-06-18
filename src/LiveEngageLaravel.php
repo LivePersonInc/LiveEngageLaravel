@@ -58,6 +58,7 @@ class LiveEngageLaravel
 	public function key($key = 'default')
 	{
 		$this->config = "services.liveperson.$key";
+		$this->__construct();
 
 		return $this;
 	}
