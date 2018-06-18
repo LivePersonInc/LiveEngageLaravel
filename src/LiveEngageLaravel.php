@@ -186,7 +186,7 @@ class LiveEngageLaravel
 		return $collection;
 		
 	}
-
+	
 	public function messagingHistory(Carbon $start = null, Carbon $end = null)
 	{
 		$this->retry_counter = 0;
@@ -195,10 +195,6 @@ class LiveEngageLaravel
 		$end = $end ?: (new Carbon())->today()->addHours(23)->addMinutes(59);
 
 		$results_object = $this->retrieveMsgHistory($start, $end);
-		
-		if (!$results_object) {
-			return false;
-		}
 		
 		$results_object->_metadata->start = $start;
 		$results_object->_metadata->end = $end;
@@ -220,10 +216,6 @@ class LiveEngageLaravel
 		$end = $end ?: (new Carbon())->today()->addHours(23)->addMinutes(59);
 
 		$results_object = $this->retrieveHistory($start, $end);
-		
-		if (!$results_object) {
-			return false;
-		}
 		
 		$results_object->_metadata->start = $start;
 		$results_object->_metadata->end = $end;

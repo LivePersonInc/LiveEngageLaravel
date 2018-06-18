@@ -37,6 +37,7 @@ class EngagementHistory extends Collection
 	{
 		
 		if ($this->metaData->next) {
+			/** @scrutinizer ignore-call */
 			$next = LiveEngage::retrieveHistory($this->metaData->start, $this->metaData->end, $this->metaData->next->href);
 			if ($next) {
 		
@@ -62,6 +63,7 @@ class EngagementHistory extends Collection
 	public function prev()
 	{
 		if ($this->metaData->prev) {
+			/** @scrutinizer ignore-call */
 			$prev = LiveEngage::retrieveHistory($this->metaData->start, $this->metaData->end, $this->metaData->prev->href);
 			if ($prev) {
 		
