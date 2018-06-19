@@ -8,6 +8,7 @@ use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Subscriber\Oauth\Oauth1;
 use LivePersonInc\LiveEngageLaravel\Models\Info;
 use LivePersonInc\LiveEngageLaravel\Models\MetaData;
+use LivePersonInc\LiveEngageLaravel\Models\AccountStatus;
 use LivePersonInc\LiveEngageLaravel\Models\MessagingInfo;
 use LivePersonInc\LiveEngageLaravel\Models\Payload;
 use LivePersonInc\LiveEngageLaravel\Models\Visitor;

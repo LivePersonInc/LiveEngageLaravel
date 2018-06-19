@@ -10,7 +10,10 @@ class AccountStatus extends Model
 	
 	public function __construct(array $array)
 	{
-		$array = array_filter($array);
-		parent::__construct($array);
+		$output = [];
+		foreach ($array as $key=>$value) {
+			$output[snake_case($key)] = $value;
+		}
+		parent::__construct($output);
 	}
 }

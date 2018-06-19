@@ -264,6 +264,18 @@ class LiveEngageLaravelTest extends TestCase
 		$this->assertEquals($object->retry_limit, 4);
 	}
 	
+	/**
+     * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::status
+     * @covers LivePersonInc\LiveEngageLaravel\Models\AccountStatus
+     * @covers LivePersonInc\LiveEngageLaravel\Models\AccountStatus::__construct
+     * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::__construct
+     */
+	public function testAccountStatus()
+	{
+		$object = LiveEngage::status();
+		$this->assertEquals($object->visitor_experience, 'OK');
+	}
+	
 	public function setUp()
 	{
 		parent::setUp();
