@@ -230,6 +230,15 @@ class LiveEngageLaravel
 			
 	}
 	
+	public function status()
+	{
+		$url = "https://status.liveperson.com/json?site={$this->account}";
+		
+		$response = $this->requestV1($url, 'GET');
+		
+		return new AccountStatus((array) $response);
+	}
+	
 	public function login()
 	{
 		$this->domain('agentVep');
