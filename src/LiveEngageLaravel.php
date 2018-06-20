@@ -127,6 +127,22 @@ class LiveEngageLaravel
 			return $this->requestV1($url, 'GET');
 		}
 	}
+	
+	public function chat()
+	{
+		$this->domain('conversationVep');
+		
+		$url = "https://{$this->domain}/api/account/{$this->account}/chat/request?v=1&NC=true";
+		
+		$args = [
+			
+		];
+		$payload = new Payload($args);
+		
+		$response = $this->requestV1($url, 'POST', $payload);
+		
+		return $response;
+	}
 
 	final public function retrieveHistory(Carbon $start, Carbon $end, $url = false)
 	{
