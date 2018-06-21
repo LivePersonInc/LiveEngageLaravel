@@ -9,6 +9,14 @@ class Agent extends Model
 {
 	protected $guarded = [];
 	
+	public function __construct($array)
+	{
+		$array['skills'] = array_map(function($item) {
+			return new Skill((array) $item);
+		}, isset($array['skills']) ? $array['skills'] : []);
+		parent::__construct($array);
+	}
+	
 	public function getLastUpdatedTimeAttribute()
 	{
 		return new Carbon($this->attributes['lastUpdatedTime']);

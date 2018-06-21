@@ -187,6 +187,15 @@ class LiveEngageLaravel
 		return $this->requestV1($url, 'POST', $data);
 	}
 	
+	public function getAgent($userId)
+	{
+		$this->domain('accountConfigReadOnly');
+		
+		$url = "https://{$this->domain}/api/account/{$this->account}/configuration/le-users/users/{$userId}?v=4.0";
+		
+		return new Agent((array) $this->requestV2($url, 'GET'));
+	}
+	
 	public function getAgentStatus($skills)
 	{
 		$skills = is_array($skills) ? $skills : [$skills];
@@ -283,7 +292,7 @@ class LiveEngageLaravel
 		return $this;
 	}
 	
-	private function requestV2($url, $method, $payload = false)
+	private function requestV2($url, $method, $payload = [])
 	{
 		$this->login();
 		
@@ -291,6 +300,7 @@ class LiveEngageLaravel
 		$args = [
 			'headers' => [
 				'content-type' => 'application/json',
+				'Authorization' => 'Bearer ' . $this->bearer
 			],
 			'body' => json_encode($payload)
 		];
