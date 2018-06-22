@@ -196,6 +196,19 @@ class LiveEngageLaravel
 		return new Agent((array) $this->requestV2($url, 'GET'));
 	}
 	
+	public function updateAgent($userId, $properties)
+	{
+		$this->domain('accountConfigReadWrite');
+		
+		$url = "https://{$this->domain}/api/account/{$this->account}/configuration/le-users/users/{$userId}?v=4.0";
+		$headers = [
+			'X-HTTP-Method-Override' => 'PUT',
+			'if-Match' => '*'
+		];
+		
+		return new Agent((array) $this->requestV2($url, 'PUT', $properties, $headers));
+	}
+	
 	public function getAgentStatus($skills)
 	{
 		$skills = is_array($skills) ? $skills : [$skills];
@@ -214,7 +227,7 @@ class LiveEngageLaravel
 		
 	}
 	
-	public function messagingHistory(Carbon $start = null, Carbon $end = null)
+	public function conversationHistory(Carbon $start = null, Carbon $end = null)
 	{
 		$this->retry_counter = 0;
 
@@ -235,7 +248,7 @@ class LiveEngageLaravel
 			
 	}
 
-	public function history(Carbon $start = null, Carbon $end = null)
+	public function engagementHistory(Carbon $start = null, Carbon $end = null)
 	{
 		$this->retry_counter = 0;
 
@@ -292,16 +305,16 @@ class LiveEngageLaravel
 		return $this;
 	}
 	
-	private function requestV2($url, $method, $payload = [])
+	private function requestV2($url, $method, $payload = [], $headers = [])
 	{
 		$this->login();
 		
 		$client = new Client();
 		$args = [
-			'headers' => [
+			'headers' => array_merge([
 				'content-type' => 'application/json',
 				'Authorization' => 'Bearer ' . $this->bearer
-			],
+			], $headers),
 			'body' => json_encode($payload)
 		];
 		

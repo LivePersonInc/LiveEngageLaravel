@@ -16,4 +16,12 @@ class Transfers extends Collection
 		
 		parent::__construct($models);
 	}
+	
+	public function toSkillIds()
+	{
+		$array = array_map(function($item) {
+			return $item['targetSkillId'];
+		}, $this->toArray());
+		return $array;
+	}
 }
