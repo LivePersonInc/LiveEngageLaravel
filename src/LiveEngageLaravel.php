@@ -38,6 +38,7 @@ class LiveEngageLaravel
 	private $interactive = true;
 	private $ended = true;
 	private $bearer = false;
+	private $revision = 0;
 
 	private $domain = false;
 
@@ -194,6 +195,43 @@ class LiveEngageLaravel
 		$url = "https://{$this->domain}/api/account/{$this->account}/configuration/le-users/users/{$userId}?v=4.0";
 		
 		return new Agent((array) $this->requestV2($url, 'GET'));
+	}
+	
+	public function agents()
+	{
+		$this->domain('accountConfigReadOnly');
+		
+		$select = implode(',', [
+			'id',
+			'pid',
+			'deleted',
+			'loginName',
+			'skills',
+			'nickname',
+			'dateCreated',
+			'userTypeId',
+			'isApiUser',
+			'profileIds',
+			'permissionGroups',
+			'allowedAppKeys',
+			'changePwdNextLogin',
+			'maxChats',
+			'skillIds',
+			'lpaCreatedUser',
+			'email',
+			'lobs',
+			'profiles',
+			'fullName',
+			'employeeId',
+			'managedAgentGroups',
+			'dateUpdated',
+			'isEnabled',
+			'lastPwdChangeDate'
+		]);
+		
+		$url = "https://{$this->domain}/api/account/{$this->account}/configuration/le-users/users?v=4.0&select=$select";
+		
+		return new AgentParticipants($this->requestV2($url, 'GET'));
 	}
 	
 	public function updateAgent($userId, $properties)
