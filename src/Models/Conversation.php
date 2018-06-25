@@ -20,7 +20,7 @@ class Conversation extends Model
 		$item['transfers'] = new Transfers(isset($item['transfers']) ? $item['transfers'] : []);
 		$item['agentParticipants'] = new AgentParticipants(isset($item['agentParticipants']) ? $item['agentParticipants'] : []);
 		$item['consumerParticipants'] = new ConsumerParticipants(isset($item['consumerParticipants']) ? $item['consumerParticipants'] : []);
-		$item['messageRecords'] = new Transcript(isset($item['messageRecords']) ? $item['messageRecords'] : []);
+		$item['messageRecords'] = new Transcript(isset($item['messageRecords']) ? $item['messageRecords'] : [], $item['agentParticipants']);
 		
 		parent::__construct($item);
 	}

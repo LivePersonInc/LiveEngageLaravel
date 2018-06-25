@@ -9,12 +9,22 @@ class Agent extends Model
 {
 	protected $guarded = [];
 	
+	protected $userTypes = [
+		1 => 'Human',
+		2 => 'Bot'
+	];
+	
 	public function __construct($array)
 	{
 		$array['skills'] = array_map(function($item) {
 			return new Skill((array) $item);
 		}, isset($array['skills']) ? $array['skills'] : []);
 		parent::__construct($array);
+	}
+	
+	public function getUserTypeNameAttribute()
+	{
+		return $this->userTypes[$this->attributes['userTypeId']];
 	}
 	
 	public function getLastUpdatedTimeAttribute()

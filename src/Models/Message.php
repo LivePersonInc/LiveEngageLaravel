@@ -10,10 +10,10 @@ class Message extends Model
 	protected $guarded = [];
 
 	protected $appends = [
-		'plaint_text',
+		'plain_text',
 		'time',
 	];
-
+	
 	public function getTextAttribute()
 	{
 		if ($this->type == 'PLAIN') {
