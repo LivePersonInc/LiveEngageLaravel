@@ -16,6 +16,7 @@ Laravel package to easily tap the LiveEngage developer APIs for such content as 
 ## Installation
 
 Install via composer
+
 ```bash
 composer require live-person-inc/live-engage-laravel
 
@@ -27,6 +28,7 @@ composer require live-person-inc/live-engage-laravel
 auto discovery feature.**
 
 Add service provider to `config/app.php` in `providers` section
+
 ```php
 LivePersonInc\LiveEngageLaravel\ServiceProvider::class,
 ```
@@ -34,6 +36,7 @@ LivePersonInc\LiveEngageLaravel\ServiceProvider::class,
 ### Register Facade
 
 Register package facade in `config/app.php` in `aliases` section
+
 ```php
 'LiveEngage' => LivePersonInc\LiveEngageLaravel\Facades\LiveEngageLaravel::class,
 ```
@@ -56,6 +59,7 @@ Configure your keys/account in `config/services.php`
 ],
 ```
 If you want to have multiple API keys, you can add more arrays for them. The keys for each array are arbitrary, but you will need to specify them later to access specific key sets.
+
 ```php
 'liveperson' => [
     'default' => [
@@ -82,10 +86,12 @@ If you want to have multiple API keys, you can add more arrays for them. The key
 ],
 ```
 To make an api call on a specific key set...
+
 ```php
 $history = LiveEngage::key('history')->history(); //messagingHistory() for messaging
 ```
 To use the default keyset, you need not use the `key` method at all.
+
 ```php
 $history = LiveEngage::history(); //messagingHistory() for messaging
 ```
@@ -97,11 +103,20 @@ $history = LiveEngage::history(); //messagingHistory() for messaging
 use LiveEngage;
 use Carbon\Carbon;
 ```
+
 ```php
 $start = new Carbon('2018-06-01 08:00:00');
 $end = new Carbon('2018-06-03 17:00:00');
 
-$history = LiveEngage::history($start, $end);
+/**
+ * engagementHistory function.
+ * 
+ * @access public
+ * @param Carbon $start (default: null)
+ * @param Carbon $end (default: null)
+ * @param mixed $skills (default: [])
+ */ 
+$history = LiveEngage::engagementHistory($start, $end);
 ```
 
 **Example:** Getting engagement history between 2 date/times for specific skill IDs.
@@ -113,8 +128,9 @@ use Carbon\Carbon;
 ```php
 $start = new Carbon('2018-06-01 08:00:00');
 $end = new Carbon('2018-06-03 17:00:00');
+$skills = [432,676];
 
-$history = LiveEngage::skills([432,676])->history($start, $end);
+$history = LiveEngage::engagementHistory($start, $end, $skills);
 ```
 `history()` returns a Laravel collection of Engagement objects.
 
@@ -124,6 +140,7 @@ $history = LiveEngage::skills([432,676])->history($start, $end);
 $history->next(); // one page
 ```
 Or
+
 ```php
 while ($next = $history->next()) { $history = history->merge($next) } // get all remaining data
 ```
@@ -134,17 +151,17 @@ while ($next = $history->next()) { $history = history->merge($next) } // get all
 $engagement = $history->find('3498290084'); // This is a collection, so random(), first(), last() all work as well
 
 foreach ($engagement->transcript as $message) {  // For messaging conversations, use messageRecords instead of transcript
-	echo $message . "\n";
+	echo $message . "\n"; // calling the message object as a string returns its text value
 }
 ```
 Transcript is a collection of message objects, so you can access properties of the message as well.
-```php
-echo $message->time->format('Y-m-d');
-```
-The time property of the message is a Carbon date object.
 
 ```php
-$conversation = LiveEngage::messagingHistory()->first();
+echo $message->time->format('Y-m-d'); //The all time properties are Carbon date objects.
+```
+
+```php
+$conversation = LiveEngage::conversationHistory()->first();
 
 foreach ($conversation->transfers as $transfer) {
 	echo $transfer->targetSkillName . "\n";
@@ -152,8 +169,9 @@ foreach ($conversation->transfers as $transfer) {
 ```
 
 **Example:** Get messaging agents availability by skill
+
 ```php
-$availableAgents = LiveEngage::getAgentStatus(['17']);
+$availableAgents = LiveEngage::getAgentStatus(17); //Skill ID 17
 
 $online = $availableAgents->state('online');
 $away = $availableAgents->state('away');

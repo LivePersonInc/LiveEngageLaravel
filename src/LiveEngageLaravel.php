@@ -281,6 +281,15 @@ class LiveEngageLaravel
 		
 	}
 	
+	/**
+	 * conversationHistory function.
+	 * 
+	 * @access public
+	 * @param Carbon $start (default: null)
+	 * @param Carbon $end (default: null)
+	 * @param mixed $skills (default: [])
+	 * @return ConversationHistory Collection Object
+	 */
 	public function conversationHistory(Carbon $start = null, Carbon $end = null, $skills = [])
 	{
 		$this->retry_counter = 0;
@@ -303,6 +312,13 @@ class LiveEngageLaravel
 			
 	}
 	
+	/**
+	 * getConversation function.
+	 * 
+	 * @access public
+	 * @param mixed $conversationId
+	 * @return void
+	 */
 	public function getConversation($conversationId)
 	{
 		$this->domain('msgHist');
@@ -321,6 +337,15 @@ class LiveEngageLaravel
 		return new Conversation((array) $result->conversationHistoryRecords[0]);
 	}
 
+	/**
+	 * engagementHistory function.
+	 * 
+	 * @access public
+	 * @param Carbon $start (default: null)
+	 * @param Carbon $end (default: null)
+	 * @param mixed $skills (default: [])
+	 * @return EngagementHistory Collection object
+	 */
 	public function engagementHistory(Carbon $start = null, Carbon $end = null, $skills = [])
 	{
 		$this->retry_counter = 0;
