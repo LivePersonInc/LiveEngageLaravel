@@ -7,6 +7,7 @@ use LivePersonInc\LiveEngageLaravel\Collections\AgentParticipants;
 use LivePersonInc\LiveEngageLaravel\Collections\ConsumerParticipants;
 use LivePersonInc\LiveEngageLaravel\Collections\Transfers;
 use LivePersonInc\LiveEngageLaravel\Collections\Transcript;
+use LivePersonInc\LiveEngageLaravel\Collections\SDEs;
 
 class Conversation extends Model
 {
@@ -21,6 +22,7 @@ class Conversation extends Model
 		$item['agentParticipants'] = new AgentParticipants(isset($item['agentParticipants']) ? $item['agentParticipants'] : []);
 		$item['consumerParticipants'] = new ConsumerParticipants(isset($item['consumerParticipants']) ? $item['consumerParticipants'] : []);
 		$item['messageRecords'] = new Transcript(isset($item['messageRecords']) ? $item['messageRecords'] : [], $item['agentParticipants']);
+		$item['sdes'] = new SDEs(isset($item['sdes']->events) ? $item['sdes']->events : []);
 		
 		parent::__construct($item);
 	}
