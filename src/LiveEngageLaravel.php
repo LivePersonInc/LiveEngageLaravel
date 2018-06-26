@@ -13,10 +13,13 @@ use LivePersonInc\LiveEngageLaravel\Models\MessagingInfo;
 use LivePersonInc\LiveEngageLaravel\Models\Payload;
 use LivePersonInc\LiveEngageLaravel\Models\Visitor;
 use LivePersonInc\LiveEngageLaravel\Models\Agent;
+use LivePersonInc\LiveEngageLaravel\Models\Skill;
 use LivePersonInc\LiveEngageLaravel\Models\Campaign;
 use LivePersonInc\LiveEngageLaravel\Models\Engagement;
 use LivePersonInc\LiveEngageLaravel\Models\Conversation;
+use LivePersonInc\LiveEngageLaravel\Models\Message;
 use LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory;
+use LivePersonInc\LiveEngageLaravel\Collections\Skills;
 use LivePersonInc\LiveEngageLaravel\Collections\AgentParticipants;
 use LivePersonInc\LiveEngageLaravel\Exceptions\LiveEngageException;
 use LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory;
@@ -80,13 +83,6 @@ class LiveEngageLaravel
 	public function limit($limit)
 	{
 		$this->history_limit = $limit;
-
-		return $this;
-	}
-
-	public function skills($skills)
-	{
-		$this->skills = $skills;
 
 		return $this;
 	}
@@ -188,6 +184,24 @@ class LiveEngageLaravel
 		return $this->requestV1($url, 'POST', $data);
 	}
 	
+	public function skills()
+	{
+		$this->domain('accountConfigReadOnly');
+		
+		$url = "https://{$this->domain}/api/account/{$this->account}/configuration/le-users/skills?v=4.0";
+		
+		return new Skills($this->requestV2($url, 'GET'));
+	}
+	
+	public function getSkill($skillId)
+	{
+		$this->domain('accountConfigReadOnly');
+		
+		$url = "https://{$this->domain}/api/account/{$this->account}/configuration/le-users/skills/{$skillId}?v=4.0";
+		
+		return new Skill((array) $this->requestV2($url, 'GET'));
+	}
+	
 	public function getAgent($userId)
 	{
 		$this->domain('accountConfigReadOnly');
@@ -195,6 +209,21 @@ class LiveEngageLaravel
 		$url = "https://{$this->domain}/api/account/{$this->account}/configuration/le-users/users/{$userId}?v=4.0";
 		
 		return new Agent((array) $this->requestV2($url, 'GET'));
+	}
+	
+	public function updateAgent($userId, $properties)
+	{
+		$agent = $this->getAgent($userId);
+		
+		$this->domain('accountConfigReadWrite');
+		
+		$url = "https://{$this->domain}/api/account/{$this->account}/configuration/le-users/users/{$userId}?v=4.0";
+		$headers = [
+			'X-HTTP-Method-Override' => 'PUT',
+			'if-Match' => '*'
+		];
+		
+		return new Agent((array) $this->requestV2($url, 'PUT', $properties, $headers));
 	}
 	
 	public function agents()
@@ -234,19 +263,6 @@ class LiveEngageLaravel
 		return new AgentParticipants($this->requestV2($url, 'GET'));
 	}
 	
-	public function updateAgent($userId, $properties)
-	{
-		$this->domain('accountConfigReadWrite');
-		
-		$url = "https://{$this->domain}/api/account/{$this->account}/configuration/le-users/users/{$userId}?v=4.0";
-		$headers = [
-			'X-HTTP-Method-Override' => 'PUT',
-			'if-Match' => '*'
-		];
-		
-		return new Agent((array) $this->requestV2($url, 'PUT', $properties, $headers));
-	}
-	
 	public function getAgentStatus($skills)
 	{
 		$skills = is_array($skills) ? $skills : [$skills];
@@ -265,9 +281,10 @@ class LiveEngageLaravel
 		
 	}
 	
-	public function conversationHistory(Carbon $start = null, Carbon $end = null)
+	public function conversationHistory(Carbon $start = null, Carbon $end = null, $skills = [])
 	{
 		$this->retry_counter = 0;
+		$this->skills = $skills;
 
 		$start = $start ?: (new Carbon())->today();
 		$end = $end ?: (new Carbon())->today()->addHours(23)->addMinutes(59);
@@ -285,10 +302,29 @@ class LiveEngageLaravel
 		return $collection;
 			
 	}
+	
+	public function getConversation($conversationId)
+	{
+		$this->domain('msgHist');
+		
+		$url = "https://{$this->domain}/messaging_history/api/account/{$this->account}/conversations/conversation/search";
+		
+		$data = new Payload([
+			'conversationId' => $conversationId
+		]);
+		
+		$result = $this->requestV1($url, 'POST', $data);
+		if (!count($result->conversationHistoryRecords)) {
+			return null;
+		}
+		
+		return new Conversation((array) $result->conversationHistoryRecords[0]);
+	}
 
-	public function engagementHistory(Carbon $start = null, Carbon $end = null)
+	public function engagementHistory(Carbon $start = null, Carbon $end = null, $skills = [])
 	{
 		$this->retry_counter = 0;
+		$this->skills = $skills;
 
 		$start = $start ?: (new Carbon())->today();
 		$end = $end ?: (new Carbon())->today()->addHours(23)->addMinutes(59);

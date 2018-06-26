@@ -14,14 +14,6 @@ class Agent extends Model
 		2 => 'Bot'
 	];
 	
-	public function __construct($array)
-	{
-		$array['skills'] = array_map(function($item) {
-			return new Skill((array) $item);
-		}, isset($array['skills']) ? $array['skills'] : []);
-		parent::__construct($array);
-	}
-	
 	public function getUserTypeNameAttribute()
 	{
 		return $this->userTypes[$this->attributes['userTypeId']];
