@@ -24,7 +24,7 @@ class LiveEngageLaravelTest extends TestCase
 
 	/**
 	 * @covers LivePersonInc\LiveEngageLaravel\Facades\LiveEngageLaravel
-     * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::history
+     * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::engagementHistory
      * @covers LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory
      * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::retrieveHistory
      * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::requestV1
@@ -43,7 +43,7 @@ class LiveEngageLaravelTest extends TestCase
      */
 	public function testGetHistory()
 	{
-		$history = LiveEngage::limit(10)->history(new Carbon('2018-05-27'), new Carbon('2018-05-31'));
+		$history = LiveEngage::limit(10)->engagementHistory(new Carbon('2018-05-27'), new Carbon('2018-05-31'));
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory', $history, "Actual Class type: " . get_class($history));
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Models\Engagement', $history->random(), "Actual Class type: " . get_class($history->random()));
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Models\Visitor', $history->random()->visitorInfo);
@@ -70,7 +70,7 @@ class LiveEngageLaravelTest extends TestCase
      */
 	public function testEngagementHistoryNext()
 	{
-		$history = LiveEngage::limit(10)->history(new Carbon('2018-05-27'), new Carbon('2018-05-31'));
+		$history = LiveEngage::limit(10)->engagementHistory(new Carbon('2018-05-27'), new Carbon('2018-05-31'));
 		$meta = $history->metaData;
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Models\MetaData', $meta);
 		$history = $history->next();
@@ -85,7 +85,7 @@ class LiveEngageLaravelTest extends TestCase
 	}
 	
 	/**
-     * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::messagingHistory
+     * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::conversationHistory
      * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::retrieveMsgHistory
      * @covers LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory
      * @covers LivePersonInc\LiveEngageLaravel\Collections\Transfers
@@ -110,7 +110,7 @@ class LiveEngageLaravelTest extends TestCase
      */	
 	public function testGetMessagingHistory()
 	{
-		$history = LiveEngage::messagingHistory(Carbon::today()->subDays(2));
+		$history = LiveEngage::conversationHistory(Carbon::today()->subDays(2));
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory', $history);
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Models\Conversation', $history->random());
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Models\Campaign', $history->random()->campaign);
@@ -137,7 +137,7 @@ class LiveEngageLaravelTest extends TestCase
      */
 	public function testConversationHistoryNext()
 	{
-		$history = LiveEngage::limit(10)->messagingHistory(Carbon::today()->subDays(2))->next();
+		$history = LiveEngage::limit(10)->conversationHistory(Carbon::today()->subDays(2))->next();
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory', $history, "Actual Class type: " . get_class($history));
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Models\Conversation', $history->random(), "Actual Class type: " . get_class($history->random()));
 		
@@ -250,8 +250,8 @@ class LiveEngageLaravelTest extends TestCase
      */
 	public function testSkills()
 	{
-		$object = LiveEngage::skills(['17','11']);
-		$this->assertEquals($object->skills, ['17','11']);
+		$object = LiveEngage::skills();
+		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Collections\Skills', $object);
 	}
 	
 	/**
@@ -287,6 +287,7 @@ class LiveEngageLaravelTest extends TestCase
 				'token' => getenv('LP_TOKEN'),
 				'token_secret' => getenv('LP_TOKEN_SECRET'),
 				'account' => getenv('LP_ACCOUNT'),
+				'user_name' => 'routingBot'
 			]
 		]);
 	}
