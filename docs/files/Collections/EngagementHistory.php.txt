@@ -45,7 +45,7 @@ class EngagementHistory extends Collection
 	 */
 	public function find($engagementID)
 	{
-		$result = $this->filter(function($value, $key) use ($engagementID) {
+		$result = $this->filter(function($value) use ($engagementID) {
 			return $value->info->sessionId == $engagementID;
 		});
 		
@@ -77,11 +77,11 @@ class EngagementHistory extends Collection
 				return $collection;
 				
 			} else {
-				return false;
+				return new self();
 			}
 		}
 		
-		return false;
+		return new self();
 		
 	}
 
@@ -110,11 +110,11 @@ class EngagementHistory extends Collection
 				return $collection;
 				
 			} else {
-				return false;
+				return new self();
 			}
 		}
 		
-		return false;
+		return new self();
 		
 	}
 	

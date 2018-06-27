@@ -33,7 +33,7 @@ class SDEs extends Collection
 	 * 
 	 * @access public
 	 * @param mixed $type
-	 * @return SDE
+	 * @return mixed
 	 */
 	public function getSDE($type)
 	{

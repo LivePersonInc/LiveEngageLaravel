@@ -2,6 +2,9 @@
 
 namespace LivePersonInc\LiveEngageLaravel;
 
+/**
+ * @codeCoverageIgnore
+ */
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
 	const CONFIG_PATH = __DIR__ . '/../config/live-engage-laravel.php';

@@ -1,5 +1,9 @@
 <?php
-
+/**
+ * Root class file for all api wrappers.
+ *
+ */
+ 
 namespace LivePersonInc\LiveEngageLaravel;
 
 use Carbon\Carbon;
@@ -31,26 +35,99 @@ use LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory;
  */
 class LiveEngageLaravel
 {
+	/**
+	 * account - LiveEngage account number, usually set by configuration
+	 * 
+	 * (default value: false)
+	 * 
+	 * @var long
+	 * @access private
+	 */
 	private $account = false;
-	private $results = [];
+	/**
+	 * skills - holds the skills for history retrieval
+	 * 
+	 * (default value: [])
+	 * 
+	 * @var array
+	 * @access private
+	 */
 	private $skills = [];
-	private $next = false;
-	private $prev = false;
-	private $start;
-	private $end;
+	/**
+	 * config - holds the configuration key where keyset is stored in config/services.php
+	 * 
+	 * (default value: 'services.liveperson.default')
+	 * 
+	 * @var string
+	 * @access private
+	 */
 	private $config = 'services.liveperson.default';
+	/**
+	 * version - api version
+	 * 
+	 * (default value: '1.0')
+	 * 
+	 * @var string
+	 * @access private
+	 */
 	private $version = '1.0';
+	/**
+	 * history_limit - stores the history page limit
+	 * 
+	 * (default value: 50)
+	 * 
+	 * @var int
+	 * @access private
+	 */
 	private $history_limit = 50;
-	private $history = false;
-	private $context = 'interactionHistoryRecords';
 	private $interactive = true;
 	private $ended = true;
+	/**
+	 * bearer - bearer token for V2 authentication
+	 * 
+	 * (default value: false)
+	 * 
+	 * @var string
+	 * @access private
+	 */
 	private $bearer = false;
+	/**
+	 * revision
+	 * 
+	 * (default value: 0)
+	 * 
+	 * @var int
+	 * @access private
+	 */
 	private $revision = 0;
 
+	/**
+	 * domain - api domain storage
+	 * 
+	 * (default value: false)
+	 * 
+	 * @var bool
+	 * @access private
+	 */
 	private $domain = false;
 
+	/**
+	 * retry_limit - number of times the request will attempt before it throws the exception.
+	 * 
+	 * (default value: 5)
+	 * 
+	 * @var int
+	 * @access private
+	 */
 	private $retry_limit = 5;
+	/**
+	 * retry_counter - stores current count of retries.
+	 * 
+	 * (default value: 0)
+	 * 
+	 * @var int
+	 * @access private
+	 */
 	private $retry_counter = 0;
 
 	/**
@@ -93,18 +170,37 @@ class LiveEngageLaravel
 		return $this;
 	}
 	
+	/**
+	 * nonInteractive function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
 	public function nonInteractive()
 	{
 		$this->interactive = false;
 		return $this;
 	}
 	
+	/**
+	 * active function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
 	public function active()
 	{
 		$this->ended = false;
 		return $this;
 	}
 
+	/**
+	 * limit function.
+	 * 
+	 * @access public
+	 * @param mixed $limit
+	 * @return void
+	 */
 	public function limit($limit)
 	{
 		$this->history_limit = $limit;
@@ -112,6 +208,13 @@ class LiveEngageLaravel
 		return $this;
 	}
 
+	/**
+	 * retry function.
+	 * 
+	 * @access public
+	 * @param mixed $limit
+	 * @return void
+	 */
 	public function retry($limit)
 	{
 		$this->retry_limit = $limit;
@@ -119,6 +222,13 @@ class LiveEngageLaravel
 		return $this;
 	}
 
+	/**
+	 * account function.
+	 * 
+	 * @access public
+	 * @param mixed $accountid
+	 * @return void
+	 */
 	public function account($accountid)
 	{
 		$this->account = $accountid;
@@ -168,9 +278,12 @@ class LiveEngageLaravel
 	}
 	
 	/**
+	 * chat function
+	 *
      * @codeCoverageIgnore
+     *
+     * @todo connect this to the server chat api - this function currently does nothing.
      */
-	// TODO: Enable server chat api here. I actually may create new class
 	public function chat()
 	{
 		$this->domain('conversationVep');
@@ -187,6 +300,16 @@ class LiveEngageLaravel
 		return $response;
 	}
 
+	/**
+	 * retrieveHistory function.
+	 * 
+	 * @access public
+	 * @final
+	 * @param Carbon $start
+	 * @param Carbon $end
+	 * @param string $url (default: false)
+	 * @return mixed
+	 */
 	final public function retrieveHistory(Carbon $start, Carbon $end, $url = false)
 	{
 		$this->domain('engHistDomain');
@@ -209,6 +332,16 @@ class LiveEngageLaravel
 		return $this->requestV1($url, 'POST', $data);
 	}
 
+	/**
+	 * retrieveMsgHistory function.
+	 * 
+	 * @access public
+	 * @final
+	 * @param Carbon $start
+	 * @param Carbon $end
+	 * @param string $url (default: false)
+	 * @return mixed
+	 */
 	final public function retrieveMsgHistory(Carbon $start, Carbon $end, $url = false)
 	{
 		$this->domain('msgHist');
@@ -419,7 +552,7 @@ class LiveEngageLaravel
 		
 		$result = $this->requestV1($url, 'POST', $data);
 		if (!count($result->conversationHistoryRecords)) {
-			return null;
+			return null; // @codeCoverageIgnore
 		}
 		
 		return new Conversation((array) $result->conversationHistoryRecords[0]);
@@ -527,11 +660,13 @@ class LiveEngageLaravel
 			'body' => json_encode($payload)
 		];
 		
+		// @codeCoverageIgnoreStart
 		try {
 			$res = $client->request($method, $url, $args);
 		} catch (\Exception $e) {
 			throw $e;
-		} 
+		}
+		// @codeCoverageIgnoreEnd
 		
 		return json_decode($res->getBody());
 	}
@@ -591,13 +726,15 @@ class LiveEngageLaravel
 			$res = $client->request($method, $url, $args);
 			$response = json_decode($res->getBody());
 		} catch (\Exception $e) {
+			// @codeCoverageIgnoreStart
 			if ($this->retry_counter < $this->retry_limit || $this->retry_limit == -1) {
 				usleep(1500);
 				$this->retry_counter++;
 				$response = $this->requestV1($url, $payload);
 			} else {
-				throw $e; //new LiveEngageException("Retry limit has been exceeded ($this->retry_limit)", 100);
+				throw $e;
 			}
+			// @codeCoverageIgnoreEnd
 		}
 
 		return $response;
