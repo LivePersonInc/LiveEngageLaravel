@@ -88,12 +88,12 @@ If you want to have multiple API keys, you can add more arrays for them. The key
 To make an api call on a specific key set...
 
 ```php
-$history = LiveEngage::key('history')->history(); //messagingHistory() for messaging
+$history = LiveEngage::key('history')->engagementHistory(); //conversationHistory() for messaging
 ```
 To use the default keyset, you need not use the `key` method at all.
 
 ```php
-$history = LiveEngage::history(); //messagingHistory() for messaging
+$history = LiveEngage::engagementHistory(); //conversationHistory() for messaging
 ```
 
 
@@ -132,7 +132,7 @@ $skills = [432,676];
 
 $history = LiveEngage::engagementHistory($start, $end, $skills);
 ```
-`history()` returns a Laravel collection of Engagement objects.
+`engagementHistory()` and `conversationHistory()` returns a Laravel collection of Engagement objects.
 
 **Example:** Pulling the next "page" of data in to the collection.
 
