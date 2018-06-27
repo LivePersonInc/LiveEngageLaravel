@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpdoc>
+    <title>LiveEngage Laravel Wrapper</title>
+    <parser>
+        <target>./docs</target>
+        <markers>
+			<item>TODO</item>
+			<item>FIXME</item>
+		</markers>
+    </parser>
+    <transformer>
+        <target>./docs</target>
+    </transformer>
+    <files>
+        <directory>./src</directory>
+    </files>
+</phpdoc>

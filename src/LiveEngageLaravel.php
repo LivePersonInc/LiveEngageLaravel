@@ -24,6 +24,11 @@ use LivePersonInc\LiveEngageLaravel\Collections\AgentParticipants;
 use LivePersonInc\LiveEngageLaravel\Exceptions\LiveEngageException;
 use LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory;
 
+/**
+ * LiveEngageLaravel class holds all of the root package functions.
+ *
+ * All "setting" functions will return `$this` so method can be chained. Most methods will return a class object or Laravel collection.
+ */
 class LiveEngageLaravel
 {
 	private $account = false;
@@ -48,11 +53,24 @@ class LiveEngageLaravel
 	private $retry_limit = 5;
 	private $retry_counter = 0;
 
+	/**
+	 * __get magic function to retrieve private properties of the class.
+	 * 
+	 * @access public
+	 * @param mixed $attribute
+	 * @return mixed
+	 */
 	public function __get($attribute)
 	{
 		return $this->$attribute;
 	}
 
+	/**
+	 * __construct function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
 	public function __construct()
 	{
 		$this->account = config("{$this->config}.account");
@@ -60,6 +78,13 @@ class LiveEngageLaravel
 		$this->version = config("{$this->config}.version") ?: $this->version;
 	}
 
+	/**
+	 * key function sets the keyset the class should use. Setting this once will be stored for script execution, but not for the session.
+	 * 
+	 * @access public
+	 * @param string $key (default: 'default')
+	 * @return this
+	 */
 	public function key($key = 'default')
 	{
 		$this->config = "services.liveperson.$key";
@@ -101,6 +126,13 @@ class LiveEngageLaravel
 		return $this;
 	}
 
+	/**
+	 * domain function sets the LivePerson domain for the secified service. Like `key` it is set for the execution script, but not session. It must be run each time.
+	 * 
+	 * @access public
+	 * @param mixed $service
+	 * @return this
+	 */
 	public function domain($service)
 	{
 		$response = $this->requestV1("https://api.liveperson.net/api/account/{$this->account}/service/{$service}/baseURI.json?version={$this->version}", 'GET');
@@ -110,6 +142,15 @@ class LiveEngageLaravel
 		return $this;
 	}
 
+	/**
+	 * visitor function gets or sets visitor attribute information - this only works for CHAT, not messaging.
+	 * 
+	 * @access public
+	 * @param string $visitorID
+	 * @param string $sessionID
+	 * @param mixed $setData (default: false)
+	 * @return mixed
+	 */
 	public function visitor($visitorID, $sessionID, $setData = false)
 	{
 		$this->domain('smt');
@@ -184,6 +225,12 @@ class LiveEngageLaravel
 		return $this->requestV1($url, 'POST', $data);
 	}
 	
+	/**
+	 * skills function gets collection of skills associated with the account.
+	 * 
+	 * @access public
+	 * @return Collections\Skills
+	 */
 	public function skills()
 	{
 		$this->domain('accountConfigReadOnly');
@@ -193,6 +240,13 @@ class LiveEngageLaravel
 		return new Skills($this->requestV2($url, 'GET'));
 	}
 	
+	/**
+	 * getSkill function gets skill object based on ID.
+	 * 
+	 * @access public
+	 * @param int $skillId
+	 * @return Models\Skill
+	 */
 	public function getSkill($skillId)
 	{
 		$this->domain('accountConfigReadOnly');
@@ -202,6 +256,13 @@ class LiveEngageLaravel
 		return new Skill((array) $this->requestV2($url, 'GET'));
 	}
 	
+	/**
+	 * getAgent function gets agent object based on ID.
+	 * 
+	 * @access public
+	 * @param int $userId
+	 * @return Models\Agent
+	 */
 	public function getAgent($userId)
 	{
 		$this->domain('accountConfigReadOnly');
@@ -226,6 +287,12 @@ class LiveEngageLaravel
 		return new Agent((array) $this->requestV2($url, 'PUT', $properties, $headers));
 	}
 	
+	/**
+	 * agents function gets collection of agents from account.
+	 * 
+	 * @access public
+	 * @return Collections\AgentParticipants
+	 */
 	public function agents()
 	{
 		$this->domain('accountConfigReadOnly');
@@ -263,6 +330,13 @@ class LiveEngageLaravel
 		return new AgentParticipants($this->requestV2($url, 'GET'));
 	}
 	
+	/**
+	 * getAgentStatus function gets status of agents based on provided Skill IDs.
+	 * 
+	 * @access public
+	 * @param int/array $skills
+	 * @return Collections\AgentParticipants
+	 */
 	public function getAgentStatus($skills)
 	{
 		$skills = is_array($skills) ? $skills : [$skills];
@@ -287,8 +361,8 @@ class LiveEngageLaravel
 	 * @access public
 	 * @param Carbon $start (default: null)
 	 * @param Carbon $end (default: null)
-	 * @param mixed $skills (default: [])
-	 * @return ConversationHistory Collection Object
+	 * @param int/array $skills (default: [])
+	 * @return Collections\ConversationHistory
 	 */
 	public function conversationHistory(Carbon $start = null, Carbon $end = null, $skills = [])
 	{
@@ -317,7 +391,7 @@ class LiveEngageLaravel
 	 * 
 	 * @access public
 	 * @param mixed $conversationId
-	 * @return void
+	 * @return Models\Conversation
 	 */
 	public function getConversation($conversationId)
 	{
@@ -343,8 +417,8 @@ class LiveEngageLaravel
 	 * @access public
 	 * @param Carbon $start (default: null)
 	 * @param Carbon $end (default: null)
-	 * @param mixed $skills (default: [])
-	 * @return EngagementHistory Collection object
+	 * @param int/array $skills (default: [])
+	 * @return Collections\EngagementHistory
 	 */
 	public function engagementHistory(Carbon $start = null, Carbon $end = null, $skills = [])
 	{
@@ -368,6 +442,12 @@ class LiveEngageLaravel
 			
 	}
 	
+	/**
+	 * status function gets status of the account.
+	 * 
+	 * @access public
+	 * @return Models\AccountStatus
+	 */
 	public function status()
 	{
 		$url = "https://status.liveperson.com/json?site={$this->account}";
@@ -450,6 +530,15 @@ class LiveEngageLaravel
 		return $client;
 	}
 	
+	/**
+	 * requestV1 - request bootstrap for older oauth supported APIs.
+	 * 
+	 * @access private
+	 * @param string $url
+	 * @param string $method
+	 * @param array $payload (default: [])
+	 * @return mixed
+	 */
 	private function requestV1($url, $method, $payload = [])
 	{
 		$client = $this->requestClient();

@@ -1,0 +1,2280 @@
+<?xml version="1.0" encoding="utf-8"?>
+<project title="LiveEngage Laravel Wrapper" version="v2.9.0">
+  <partials/>
+  <file path="Models/MessagingInfo.php" generated-path="Models.MessagingInfo.html" hash="90a076556efdd5f7f73dd74a66b48177" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Carbon">\Carbon\Carbon</namespace-alias>
+    <namespace-alias name="Model">\Illuminate\Database\Eloquent\Model</namespace-alias>
+    <class final="false" abstract="false" namespace="LivePersonInc\LiveEngageLaravel\Models" line="8" package="Default">
+      <extends>\Illuminate\Database\Eloquent\Model</extends>
+      <name>MessagingInfo</name>
+      <full_name>\LivePersonInc\LiveEngageLaravel\Models\MessagingInfo</full_name>
+      <docblock line="8">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="8" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="LivePersonInc\LiveEngageLaravel\Models" line="10" package="Default">
+        <name>$guarded</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\MessagingInfo::guarded</full_name>
+        <default>array()</default>
+        <docblock line="10">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="LivePersonInc\LiveEngageLaravel\Models" line="11" package="Default">
+        <name>$appends</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\MessagingInfo::appends</full_name>
+        <default>array('startTime')</default>
+        <docblock line="11">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Models" line="15" package="Default">
+        <name>getStartTimeAttribute</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\MessagingInfo::getStartTimeAttribute()</full_name>
+        <docblock line="15">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Models" line="20" package="Default">
+        <name>getMinutesAttribute</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\MessagingInfo::getMinutesAttribute()</full_name>
+        <docblock line="20">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Models" line="25" package="Default">
+        <name>getSecondsAttribute</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\MessagingInfo::getSecondsAttribute()</full_name>
+        <docblock line="25">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Models" line="30" package="Default">
+        <name>getHoursAttribute</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\MessagingInfo::getHoursAttribute()</full_name>
+        <docblock line="30">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="8" code="PPC:ERR-50005">No summary for class \LivePersonInc\LiveEngageLaravel\Models\MessagingInfo</error>
+      <error line="15" code="PPC:ERR-50008">No summary for method getStartTimeAttribute()</error>
+      <error line="20" code="PPC:ERR-50008">No summary for method getMinutesAttribute()</error>
+      <error line="25" code="PPC:ERR-50008">No summary for method getSecondsAttribute()</error>
+      <error line="30" code="PPC:ERR-50008">No summary for method getHoursAttribute()</error>
+      <error line="10" code="PPC:ERR-50007">No summary for property $guarded</error>
+      <error line="11" code="PPC:ERR-50007">No summary for property $appends</error>
+    </parse_markers>
+    <source>eJyNkE1rwzAMhs/xr/Ch0BY6lu2wS/fB2AoLtDDobk0PiqOmBkfObLkbjP73Of2AFZptJ8nSq/eRfPvQrBshCGr0DSiUU73BV3TeUkYqb18TqqDCKTjYoMlntkTjx0IEj/IJXGEp34fxrpQZE2pNwJg/A0MBHvOJse8BiffDcVYZ8F7O0HuoNFUZrazET0YqY7XViC+RNM4yKsZS9qoArozJnVwsxycdaJrdVOyIJOl7Bsdvusb+SCRRGrWhMFrJVSDF2pKskOdH0SOz00VgHAxFEomJQw6OJOHH4bRBj9faX9zDUekXPxjLYVxmex4y09TKuxDOBioH5+zL4KA16S/lpbxK03QY4006kte/0OaobPyGLtp/MN3mLza4Pw45AOr90acLb8U3yYDM6w==</source>
+  </file>
+  <file path="Collections/ConsumerParticipants.php" generated-path="Collections.ConsumerParticipants.html" hash="d09e95f4e17c493b1cbce83115d4912a" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Collection">\Illuminate\Support\Collection</namespace-alias>
+    <namespace-alias name="Visitor">\LivePersonInc\LiveEngageLaravel\Models\Visitor</namespace-alias>
+    <namespace-alias name="MetaData">\LivePersonInc\LiveEngageLaravel\Models\MetaData</namespace-alias>
+    <class final="false" abstract="false" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="9" package="Default">
+      <extends>\Illuminate\Support\Collection</extends>
+      <name>ConsumerParticipants</name>
+      <full_name>\LivePersonInc\LiveEngageLaravel\Collections\ConsumerParticipants</full_name>
+      <docblock line="9">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="9" description="Default"/>
+      </docblock>
+      <property static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="11" package="Default">
+        <name>$metaData</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Collections\ConsumerParticipants::metaData</full_name>
+        <default></default>
+        <docblock line="11">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="13" package="Default">
+        <name>__construct</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Collections\ConsumerParticipants::__construct()</full_name>
+        <docblock line="13">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$models</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="9" code="PPC:ERR-50005">No summary for class \LivePersonInc\LiveEngageLaravel\Collections\ConsumerParticipants</error>
+      <error line="13" code="PPC:ERR-50015">Argument $models is missing from the Docblock of __construct</error>
+      <error line="13" code="PPC:ERR-50008">No summary for method __construct()</error>
+      <error line="11" code="PPC:ERR-50007">No summary for property $metaData</error>
+    </parse_markers>
+    <source>eJyVkMFOwzAQRM/xV+whUhOp/EAK9FA4VGqlSkhcCIoWd2ktOY5lrwsI5d9xHFJ6Qz169s14dm+X9miFMNiStygJNupEO3K+M2sj6+H1aA54oA06PJGuV53WJFl1xi+ECJ5grXVolUGm+ilY2zm+gBYJ+S902+1J+/pZecWdu8qzJcYHZIxlpEbvYRWbhZbcDh0rqSwa9kCfTGY/DKdi4ltkNrxpJSFvzxnZWXwPJnHQNDImsguSC3QOvyKfvoY7eHktRRaDoi37UxPVtGiLKaTIFVNbwoBmjjg4A8o3OOpzmF13oFkJS0hWqMDQB/zqxViwHGdlXCfr51Pd9Mz5qPzN/bRwLDvYpxsWibHoyHBVXS5+kdGLXvwA7HfEdQ==</source>
+  </file>
+  <file path="Collections/Humans.php" generated-path="Collections.Humans.html" hash="701c84154f5c1ed007070953cf9c464f" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Collection">\Illuminate\Support\Collection</namespace-alias>
+    <namespace-alias name="LiveEngageLaravel">\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel</namespace-alias>
+    <class final="false" abstract="false" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="8" package="Default">
+      <extends>\Illuminate\Support\Collection</extends>
+      <name>Humans</name>
+      <full_name>\LivePersonInc\LiveEngageLaravel\Collections\Humans</full_name>
+      <docblock line="8">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="8" description="Default"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="10" package="Default">
+        <name>getMetaDataAttribute</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Collections\Humans::getMetaDataAttribute()</full_name>
+        <docblock line="10">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="15" package="Default">
+        <name>setMetaDataAttribute</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Collections\Humans::setMetaDataAttribute()</full_name>
+        <docblock line="15">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$value</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="20" package="Default">
+        <name>state</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Collections\Humans::state()</full_name>
+        <docblock line="20">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$state</name>
+          <default>'ONLINE'</default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="8" code="PPC:ERR-50005">No summary for class \LivePersonInc\LiveEngageLaravel\Collections\Humans</error>
+      <error line="10" code="PPC:ERR-50008">No summary for method getMetaDataAttribute()</error>
+      <error line="15" code="PPC:ERR-50015">Argument $value is missing from the Docblock of setMetaDataAttribute</error>
+      <error line="15" code="PPC:ERR-50008">No summary for method setMetaDataAttribute()</error>
+      <error line="20" code="PPC:ERR-50015">Argument $state is missing from the Docblock of state</error>
+      <error line="20" code="PPC:ERR-50008">No summary for method state()</error>
+    </parse_markers>
+    <source>eJyFkN1Kw0AQha+zTzEXhTRgn6CmIlqwUKvQSyMyjdN0cbMJO7NRkby7+cVK/bnZZWfP+ebMnF+Uh1IpizlxiSnBWld0T44Lu7Jp0r6WNsOM1uiwIpNcFcZQKrqwPFfKM8HKGJ9ri0LJ1pdl4eRINO8k/0FPKg06NcgMNz5Hy0BvQvaZ4QusPlRQ+p3RKey97UqQkdyS4DUKXoo4vfNC00gFjTRwJN5ZmMhB82yB4zc/hE/54Akf5yqoVXAK5p/AkwqNpwH/Nxdi6NW/NhBsid3ViMO7zXq1WYYj3BF7Iy2lb7PXRshNR/sQ5QwmL/QeQbvxgRVB6x+HZ3FSmOK1sfaO2SL1zpGVbSP2HEEcfxP1jCZ0UHfn0R77SN089Se748ZE</source>
+  </file>
+  <file path="Models/Info.php" generated-path="Models.Info.html" hash="cd43f1c608b181fd5a45794062c45110" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Carbon">\Carbon\Carbon</namespace-alias>
+    <namespace-alias name="Model">\Illuminate\Database\Eloquent\Model</namespace-alias>
+    <class final="false" abstract="false" namespace="LivePersonInc\LiveEngageLaravel\Models" line="8" package="Default">
+      <extends>\Illuminate\Database\Eloquent\Model</extends>
+      <name>Info</name>
+      <full_name>\LivePersonInc\LiveEngageLaravel\Models\Info</full_name>
+      <docblock line="8">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="8" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="LivePersonInc\LiveEngageLaravel\Models" line="10" package="Default">
+        <name>$guarded</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Info::guarded</full_name>
+        <default>array()</default>
+        <docblock line="10">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="LivePersonInc\LiveEngageLaravel\Models" line="11" package="Default">
+        <name>$appends</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Info::appends</full_name>
+        <default>array('startTime')</default>
+        <docblock line="11">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Models" line="15" package="Default">
+        <name>getStartTimeAttribute</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Info::getStartTimeAttribute()</full_name>
+        <docblock line="15">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Models" line="20" package="Default">
+        <name>getSessionIdAttribute</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Info::getSessionIdAttribute()</full_name>
+        <docblock line="20">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Models" line="25" package="Default">
+        <name>getMinutesAttribute</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Info::getMinutesAttribute()</full_name>
+        <docblock line="25">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Models" line="30" package="Default">
+        <name>getSecondsAttribute</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Info::getSecondsAttribute()</full_name>
+        <docblock line="30">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Models" line="35" package="Default">
+        <name>getHoursAttribute</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Info::getHoursAttribute()</full_name>
+        <docblock line="35">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="8" code="PPC:ERR-50005">No summary for class \LivePersonInc\LiveEngageLaravel\Models\Info</error>
+      <error line="15" code="PPC:ERR-50008">No summary for method getStartTimeAttribute()</error>
+      <error line="20" code="PPC:ERR-50008">No summary for method getSessionIdAttribute()</error>
+      <error line="25" code="PPC:ERR-50008">No summary for method getMinutesAttribute()</error>
+      <error line="30" code="PPC:ERR-50008">No summary for method getSecondsAttribute()</error>
+      <error line="35" code="PPC:ERR-50008">No summary for method getHoursAttribute()</error>
+      <error line="10" code="PPC:ERR-50007">No summary for property $guarded</error>
+      <error line="11" code="PPC:ERR-50007">No summary for property $appends</error>
+    </parse_markers>
+    <source>eJyNUN1LwzAQf27+ijwMukFF8cGX+YHowMIGgr6tQ67JrQukSU0uU5D976bdJg5s8SmX+939Pu76rtk0jBmo0TcgkM/VFp/ReWtyI4r2NzMVVDgHB1vUxcJK1H7KWPDIH8CV1hT7Z9q1cq1DrQwQFo9AUILHYqbte0BD++W4KzR4z3Ozthw/CY30vIPYF0saZwkFoeSjKoCTsbjhy9X0BIGm6bYiwpIk9QSOXlWNacaSOBpnQ6mV4OtgBClreIX0chy6J3KqDITjCUuiYuKQgjPc4Mch0XhEG+XPbuE46Ze/NFaTaGbXI4LexzKXfSKe3JvDRsdb/6gIYYOhXGY8TTN+6GJ39hpbYEBwoUzrr0/ORWb5VxwZHLQc6Yqf86uLjF8OphI2nrtPZJC+n/XJBvc/4/U+5KnTHfsGVBLspA==</source>
+  </file>
+  <file path="Models/Visitor.php" generated-path="Models.Visitor.html" hash="4e9e7f61ab9c3c4ecb8889e17c5f9965" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Model">\Illuminate\Database\Eloquent\Model</namespace-alias>
+    <class final="false" abstract="false" namespace="LivePersonInc\LiveEngageLaravel\Models" line="7" package="Default">
+      <extends>\Illuminate\Database\Eloquent\Model</extends>
+      <name>Visitor</name>
+      <full_name>\LivePersonInc\LiveEngageLaravel\Models\Visitor</full_name>
+      <docblock line="7">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="7" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="LivePersonInc\LiveEngageLaravel\Models" line="9" package="Default">
+        <name>$guarded</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Visitor::guarded</full_name>
+        <default>array()</default>
+        <docblock line="9">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="7" code="PPC:ERR-50005">No summary for class \LivePersonInc\LiveEngageLaravel\Models\Visitor</error>
+      <error line="9" code="PPC:ERR-50007">No summary for property $guarded</error>
+    </parse_markers>
+    <source>eJwlirEKAjEQBWvzFVv4F6fYeMXBCVY2xmJNHmcgbmI2OQTx3z21m2Fms8u3bIzwHZrZgcYw44iiSQZx9mu9TDxh5MIzoj0kj6idMU1BQ4ztHoQr7J4rX1lh+5geDVL/5zK6yKp0ChpqKoRnhXilXzUvs8olVbgKT+upcfELbOl86cz7A2lAN9E=</source>
+  </file>
+  <file path="Models/Campaign.php" generated-path="Models.Campaign.html" hash="0603366c10a630c10bd66b93ee5d53e0" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Model">\Illuminate\Database\Eloquent\Model</namespace-alias>
+    <class final="false" abstract="false" namespace="LivePersonInc\LiveEngageLaravel\Models" line="7" package="Default">
+      <extends>\Illuminate\Database\Eloquent\Model</extends>
+      <name>Campaign</name>
+      <full_name>\LivePersonInc\LiveEngageLaravel\Models\Campaign</full_name>
+      <docblock line="7">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="7" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="LivePersonInc\LiveEngageLaravel\Models" line="9" package="Default">
+        <name>$guarded</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Campaign::guarded</full_name>
+        <default>array()</default>
+        <docblock line="9">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="7" code="PPC:ERR-50005">No summary for class \LivePersonInc\LiveEngageLaravel\Models\Campaign</error>
+      <error line="9" code="PPC:ERR-50007">No summary for property $guarded</error>
+    </parse_markers>
+    <source>eJwlirEKAjEQBWv3K1L4F6dY6BUHCvbGYk0e8SC3idnkEMR/99RuhpnNLt8zkfAEzexgjuOMM4omGcTZr/USOODIhWdEe0oeUTuipjBDjG0ahSvsgSvfWGH7mB4NUv/nMrrIqmbPU+YxiMGzQryaX6YXrXJJFa7Cm3VoXPwCW3O5dvSmD9HgOAs=</source>
+  </file>
+  <file path="Exceptions/LiveEngageException.php" generated-path="Exceptions.LiveEngageException.html" hash="dae47ea4d8bcbda938d4cf0277eae7d4" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Exception">\Exception</namespace-alias>
+    <class final="false" abstract="false" namespace="LivePersonInc\LiveEngageLaravel\Exceptions" line="7" package="Default">
+      <extends>\Exception</extends>
+      <name>LiveEngageException</name>
+      <full_name>\LivePersonInc\LiveEngageLaravel\Exceptions\LiveEngageException</full_name>
+      <docblock line="7">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="7" description="Default"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Exceptions" line="9" package="Default">
+        <name>__construct</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Exceptions\LiveEngageException::__construct()</full_name>
+        <docblock line="9">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$message</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$code</name>
+          <default>0</default>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$previous</name>
+          <default>null</default>
+          <type>\Exception</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Exceptions" line="15" package="Default">
+        <name>__toString</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Exceptions\LiveEngageException::__toString()</full_name>
+        <docblock line="15">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="7" code="PPC:ERR-50005">No summary for class \LivePersonInc\LiveEngageLaravel\Exceptions\LiveEngageException</error>
+      <error line="9" code="PPC:ERR-50015">Argument $message is missing from the Docblock of __construct</error>
+      <error line="9" code="PPC:ERR-50015">Argument $code is missing from the Docblock of __construct</error>
+      <error line="9" code="PPC:ERR-50015">Argument $previous is missing from the Docblock of __construct</error>
+      <error line="9" code="PPC:ERR-50008">No summary for method __construct()</error>
+      <error line="15" code="PPC:ERR-50008">No summary for method __toString()</error>
+    </parse_markers>
+    <source>eJx9jj1rwzAQhmffrziChwTcprPTD0rJUPBQ8FgXoygXR0WRhE4ygeD/Xtmk8VI6vvd+3PP44o4OwIgTsROSsFI9fZBna96NbEa1NZ3oqBJe9KSb7VmSC8oa3gBEJrwdkpZaMONcunlI50Bmz3MaLpC5uNNK4iEaOYXaVqbd4KMMyzwBcZooMJd2T/iED8Xcxtx56pWNnAwTtV5BlgYzJzyZUJb/LBVzd7WBbADI1muUkYM9Yaoo06GnFOG0JKZn9oB2900y/IUcbD2VllcETyH60XirXuu6bfEeFyV+XvJwVHz3PCIMXyX+6ivc0JjFRDPAD/u3ijc=</source>
+  </file>
+  <file path="Collections/Skills.php" generated-path="Collections.Skills.html" hash="1973e3c8362c1fbbe1790affc65a97f8" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Collection">\Illuminate\Support\Collection</namespace-alias>
+    <namespace-alias name="Skill">\LivePersonInc\LiveEngageLaravel\Models\Skill</namespace-alias>
+    <class final="false" abstract="false" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="8" package="Default">
+      <extends>\Illuminate\Support\Collection</extends>
+      <name>Skills</name>
+      <full_name>\LivePersonInc\LiveEngageLaravel\Collections\Skills</full_name>
+      <docblock line="8">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="8" description="Default"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="10" package="Default">
+        <name>__construct</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Collections\Skills::__construct()</full_name>
+        <docblock line="10">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$models</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="20" package="Default">
+        <name>toSkillIds</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Collections\Skills::toSkillIds()</full_name>
+        <docblock line="20">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="8" code="PPC:ERR-50005">No summary for class \LivePersonInc\LiveEngageLaravel\Collections\Skills</error>
+      <error line="10" code="PPC:ERR-50015">Argument $models is missing from the Docblock of __construct</error>
+      <error line="10" code="PPC:ERR-50008">No summary for method __construct()</error>
+      <error line="20" code="PPC:ERR-50008">No summary for method toSkillIds()</error>
+    </parse_markers>
+    <source>eJyNj01LxDAQQM/Nr5hDYVvQP7D1AxEPhRWEPW6XEtNxN5gmIZmsivS/m6aWLXhwIZcZXl5ebu7t0TKmeY/ecoGwkSd8QeeNrrVoxulJH/gBN9zxE6rm0SiFgqTRvmIseIRaqdBLzQmbbbDWOFpAVUL+kz6bDpVvtu9SqWgVinsPafKAn4S683B2sm+W2fCqpIC3oNMK2lbEInJBUMGd41+Q90kKt7DblyyLd7J4zttEtT23xSwpcknYlzCimUMKToPGjymkmLQlTFAVmeFqfiSN8VjuUNN6vaxZIAPL/paTSf6688VvZj594NLEtNqtZLfaz1V0lP76jszDKCjKlDfTSZpihh88X6np</source>
+  </file>
+  <file path="Models/Agent.php" generated-path="Models.Agent.html" hash="5e5521d7d224f7d911b336304c0ca9f6" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Carbon">\Carbon\Carbon</namespace-alias>
+    <namespace-alias name="Model">\Illuminate\Database\Eloquent\Model</namespace-alias>
+    <class final="false" abstract="false" namespace="LivePersonInc\LiveEngageLaravel\Models" line="8" package="Default">
+      <extends>\Illuminate\Database\Eloquent\Model</extends>
+      <name>Agent</name>
+      <full_name>\LivePersonInc\LiveEngageLaravel\Models\Agent</full_name>
+      <docblock line="8">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="8" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="LivePersonInc\LiveEngageLaravel\Models" line="10" package="Default">
+        <name>$guarded</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Agent::guarded</full_name>
+        <default>array()</default>
+        <docblock line="10">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="LivePersonInc\LiveEngageLaravel\Models" line="12" package="Default">
+        <name>$userTypes</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Agent::userTypes</full_name>
+        <default>array(1 =&gt; 'Human', 2 =&gt; 'Bot')</default>
+        <docblock line="12">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Models" line="17" package="Default">
+        <name>getUserTypeNameAttribute</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Agent::getUserTypeNameAttribute()</full_name>
+        <docblock line="17">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Models" line="22" package="Default">
+        <name>getLastUpdatedTimeAttribute</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Agent::getLastUpdatedTimeAttribute()</full_name>
+        <docblock line="22">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Models" line="27" package="Default">
+        <name>getCurrentStatusStartTimeAttribute</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Agent::getCurrentStatusStartTimeAttribute()</full_name>
+        <docblock line="27">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Models" line="32" package="Default">
+        <name>getCurrentStatusReasonStartTimeAttribute</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Agent::getCurrentStatusReasonStartTimeAttribute()</full_name>
+        <docblock line="32">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Models" line="37" package="Default">
+        <name>getStatusMinutesAttribute</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Agent::getStatusMinutesAttribute()</full_name>
+        <docblock line="37">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="8" code="PPC:ERR-50005">No summary for class \LivePersonInc\LiveEngageLaravel\Models\Agent</error>
+      <error line="17" code="PPC:ERR-50008">No summary for method getUserTypeNameAttribute()</error>
+      <error line="22" code="PPC:ERR-50008">No summary for method getLastUpdatedTimeAttribute()</error>
+      <error line="27" code="PPC:ERR-50008">No summary for method getCurrentStatusStartTimeAttribute()</error>
+      <error line="32" code="PPC:ERR-50008">No summary for method getCurrentStatusReasonStartTimeAttribute()</error>
+      <error line="37" code="PPC:ERR-50008">No summary for method getStatusMinutesAttribute()</error>
+      <error line="10" code="PPC:ERR-50007">No summary for property $guarded</error>
+      <error line="12" code="PPC:ERR-50007">No summary for property $userTypes</error>
+    </parse_markers>
+    <source>eJytklFPwjAQx5/XT9EHkkGicfjgC4JBIJEEjFF4Ynu4bedoUrrZXlFj+O52Y5hgAKPxpe3d9f//XS+9vimWBWMKVmgKSJBPxBofUJtcjVUSltFIZZDhBDSsUYbTPEVpOoxZg3wAOs5VuN06VWospV0JBYThEAhiMBiOZP5iUdFW7LSJBGN4P3M5jm+EKjW8qrEP5hU6J0wIU97ILOjUHbp8EXWYt1dzMD17L9CUVeZ5bd7tcf/OrkD5Zy6+rOLbnHzm1WIbS5HwZ6sSErniGdK8Nrl37+8TaRFbwmaLea4PTyNZrXiDlsKc9754izoBu/tm4e+K49SPStjmCG8ChuZF6qaTzsRxpMLXerbNAzC5b+JHrRPEgdXajfmJgKxxq6a/g5ODXr/gPyK4j/WfXXxzPN3LVjIVqjQ6Bv8RObQaSkc/4he8HQRBy+1XQcXdfAJ70yNJ</source>
+  </file>
+  <file path="Models/Payload.php" generated-path="Models.Payload.html" hash="22740663490231c0e9265e431b7d405a" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Model">\Illuminate\Database\Eloquent\Model</namespace-alias>
+    <class final="false" abstract="false" namespace="LivePersonInc\LiveEngageLaravel\Models" line="7" package="Default">
+      <extends>\Illuminate\Database\Eloquent\Model</extends>
+      <name>Payload</name>
+      <full_name>\LivePersonInc\LiveEngageLaravel\Models\Payload</full_name>
+      <docblock line="7">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="7" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="LivePersonInc\LiveEngageLaravel\Models" line="9" package="Default">
+        <name>$guarded</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Payload::guarded</full_name>
+        <default>array()</default>
+        <docblock line="9">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Models" line="11" package="Default">
+        <name>__construct</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Payload::__construct()</full_name>
+        <docblock line="11">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$array</name>
+          <default></default>
+          <type>array</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="7" code="PPC:ERR-50005">No summary for class \LivePersonInc\LiveEngageLaravel\Models\Payload</error>
+      <error line="11" code="PPC:ERR-50015">Argument $array is missing from the Docblock of __construct</error>
+      <error line="11" code="PPC:ERR-50008">No summary for method __construct()</error>
+      <error line="9" code="PPC:ERR-50007">No summary for property $guarded</error>
+    </parse_markers>
+    <source>eJxNjsFOAzEMRM/xV/jQQ/mFFsSFHiq1Uu8sWrmJu0RynZA4FRXqvxO2SHAaj954NI/P+T0DKJ25ZvKMu3jhA5eadKt++HEbnWjiHRW6sAz7FFjqGqBVxq1IO0cl4+GFjI5UedhI+misdk/2oBeqFQ90lUQB+dNYQ8WZwhe4XJKxNw64mBqV0I8nfH1bg+usHSV6PDX1FpPiOPqk1UrztqRS6IqLWR7A9SZ3N/191vEUxbgsfyO90GUqfdlq9b/nD9/gBt9wz13P</source>
+  </file>
+  <file path="ServiceProvider.php" generated-path="ServiceProvider.html" hash="eba2d114550a07543e5dbc13679c106a" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <class final="false" abstract="false" namespace="LivePersonInc\LiveEngageLaravel" line="5" package="Default">
+      <extends>\Illuminate\Support\ServiceProvider</extends>
+      <name>ServiceProvider</name>
+      <full_name>\LivePersonInc\LiveEngageLaravel\ServiceProvider</full_name>
+      <docblock line="5">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="5" description="Default"/>
+      </docblock>
+      <constant namespace="LivePersonInc\LiveEngageLaravel" line="7" package="Default">
+        <name>CONFIG_PATH</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\ServiceProvider::CONFIG_PATH</full_name>
+        <value>__DIR__ . '/../config/live-engage-laravel.php'</value>
+        <docblock line="7">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </constant>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel" line="9" package="Default">
+        <name>boot</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\ServiceProvider::boot()</full_name>
+        <docblock line="9">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel" line="16" package="Default">
+        <name>register</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\ServiceProvider::register()</full_name>
+        <docblock line="16">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="5" code="PPC:ERR-50005">No summary for class \LivePersonInc\LiveEngageLaravel\ServiceProvider</error>
+      <error line="9" code="PPC:ERR-50008">No summary for method boot()</error>
+      <error line="16" code="PPC:ERR-50008">No summary for method register()</error>
+    </parse_markers>
+    <source>eJx10dFKwzAUBuDr5CnOhZAW1u5+04lMp4Whw3lnpWTdWRtIk5CkVZC9u+mKgrNeJvmT/zvk8trUhlLFG3SGlwhr0eEGrdMqU2Xer+5UxStcc8s7lHNKS8mdgy3aTpS4sboTe7SAHx7V3kGeSdk2QnGP+bY1Rlufn2XpJyWlVs7D8ulxld0Xm5uXB7iCorjNnosCUmDTNJ2GyEFUUxkICZ4MiRwQaTCzICGm3UlRwqFVpRdawU5rH8WUhAJy4WvhksUp4mp00WvYJA7lYTb71buAoakw3NcR+68vnoT7bxNgQ5rFc0qOIwaLlXAe7ZmjQVvh8nR1ZXUTjWL6CjImYOEg7if+fo4bkyx2Qu1HwWzy44li6BXEom+tAoXv8OdTo34WchwmOtIvL8erHA==</source>
+  </file>
+  <file path="Collections/Transcript.php" generated-path="Collections.Transcript.html" hash="360d5945729444c790ae21c6b791e70e" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Collection">\Illuminate\Support\Collection</namespace-alias>
+    <namespace-alias name="Message">\LivePersonInc\LiveEngageLaravel\Models\Message</namespace-alias>
+    <namespace-alias name="Agent">\LivePersonInc\LiveEngageLaravel\Models\Agent</namespace-alias>
+    <class final="false" abstract="false" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="9" package="Default">
+      <extends>\Illuminate\Support\Collection</extends>
+      <name>Transcript</name>
+      <full_name>\LivePersonInc\LiveEngageLaravel\Collections\Transcript</full_name>
+      <docblock line="9">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="9" description="Default"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="11" package="Default">
+        <name>__construct</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Collections\Transcript::__construct()</full_name>
+        <docblock line="11">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$models</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$agents</name>
+          <default>false</default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="9" code="PPC:ERR-50005">No summary for class \LivePersonInc\LiveEngageLaravel\Collections\Transcript</error>
+      <error line="11" code="PPC:ERR-50015">Argument $models is missing from the Docblock of __construct</error>
+      <error line="11" code="PPC:ERR-50015">Argument $agents is missing from the Docblock of __construct</error>
+      <error line="11" code="PPC:ERR-50008">No summary for method __construct()</error>
+    </parse_markers>
+    <source>eJyVkU1qwzAQhdfWKWYRYhuSCyRNStN2YUig0O7qYqbyOBXIstBPGlN899qyQ9NV6UYwT997mhnd3OoPzZjCmqxGTrAXJ3oiYxuVKZ4P1aM64pH2aPBEMr9vpCTuRKPsmjFvCTIpfS0UOsqfvdaNcVfQOiB/hR6akqTND2Rtr/7Lc3ck5fpOuERr4cWgstwI7YDOjlRp4acX9sUi7d+l4FB5FSQoCt5P4oznLkFjsIVZHYJhA69vC5jhkD9UFUpLKYv6kOiHCZ6iRp1cIpOZcFSnMMyQTPYUBlckKki0aTQZ1xZ0FtbZkV5AbHtu18YpzOcQtOV2lGCzgThMGYe7X4nRhAbxgRyK0NUELbeVUOWuzcpk4jQaJ7jQqFxWpushohsOQ84bBYo+YfqEZFxHOjYT0G5xWU4oJ08f2b+1Wl1v8grrWMe+AScl0MA=</source>
+  </file>
+  <file path="Models/Transfer.php" generated-path="Models.Transfer.html" hash="f882c095934baaa725d132bbae76c653" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Carbon">\Carbon\Carbon</namespace-alias>
+    <namespace-alias name="Model">\Illuminate\Database\Eloquent\Model</namespace-alias>
+    <class final="false" abstract="false" namespace="LivePersonInc\LiveEngageLaravel\Models" line="8" package="Default">
+      <extends>\LivePersonInc\LiveEngageLaravel\Models\Skill</extends>
+      <name>Transfer</name>
+      <full_name>\LivePersonInc\LiveEngageLaravel\Models\Transfer</full_name>
+      <docblock line="8">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="8" description="Default"/>
+        <tag name="inherited_from" description="\LivePersonInc\LiveEngageLaravel\Models\Skill" refers="\LivePersonInc\LiveEngageLaravel\Models\Skill" link="/classes/LivePersonInc.LiveEngageLaravel.Models.Skill.html"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="LivePersonInc\LiveEngageLaravel\Models" line="10" package="Default">
+        <name>$guarded</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Transfer::guarded</full_name>
+        <default>array()</default>
+        <docblock line="10">
+          <description></description>
+          <long-description></long-description>
+          <tag name="inherited_from" description="\LivePersonInc\LiveEngageLaravel\Models\Skill::guarded" refers="\LivePersonInc\LiveEngageLaravel\Models\Skill::guarded" link="/classes/LivePersonInc.LiveEngageLaravel.Models.Skill.html#property_guarded"/>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="LivePersonInc\LiveEngageLaravel\Models" line="10" package="Default">
+        <name>$guarded</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Skill::guarded</full_name>
+        <default>array()</default>
+        <docblock line="10">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Models" line="12" package="Default">
+        <name>__construct</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Skill::__construct()</full_name>
+        <docblock line="12">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$skill</name>
+          <default></default>
+          <type/>
+        </argument>
+        <inherited_from>\LivePersonInc\LiveEngageLaravel\Models\Skill</inherited_from>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="8" code="PPC:ERR-50005">No summary for class \LivePersonInc\LiveEngageLaravel\Models\Transfer</error>
+      <error line="10" code="PPC:ERR-50007">No summary for property $guarded</error>
+    </parse_markers>
+    <source>eJwli7EKwjAURWfzFRn8iyoO2qFQQdDNOLwm11pMX2JeUgTx3606nXsunNUm3qJSTCMkkoVuhwkHJAncsDVfq7mnHi0lmuDNPjh4qZQqAr2l1AU2f1S/q/G+jANThtlRpo4EpvbhUcD5H8+t9SSiT4lYrkgazwx2oo/3wXv1UouYQobNcHrZF0puHmt9vlTq/QEN+z7s</source>
+  </file>
+  <file path="Models/AccountStatus.php" generated-path="Models.AccountStatus.html" hash="5418d3ee8f2b89b09a5f4b590c4b4ec2" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Model">\Illuminate\Database\Eloquent\Model</namespace-alias>
+    <class final="false" abstract="false" namespace="LivePersonInc\LiveEngageLaravel\Models" line="7" package="Default">
+      <extends>\Illuminate\Database\Eloquent\Model</extends>
+      <name>AccountStatus</name>
+      <full_name>\LivePersonInc\LiveEngageLaravel\Models\AccountStatus</full_name>
+      <docblock line="7">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="7" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="LivePersonInc\LiveEngageLaravel\Models" line="9" package="Default">
+        <name>$guarded</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\AccountStatus::guarded</full_name>
+        <default>array()</default>
+        <docblock line="9">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Models" line="11" package="Default">
+        <name>__construct</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\AccountStatus::__construct()</full_name>
+        <docblock line="11">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$array</name>
+          <default></default>
+          <type>array</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="7" code="PPC:ERR-50005">No summary for class \LivePersonInc\LiveEngageLaravel\Models\AccountStatus</error>
+      <error line="11" code="PPC:ERR-50015">Argument $array is missing from the Docblock of __construct</error>
+      <error line="11" code="PPC:ERR-50008">No summary for method __construct()</error>
+      <error line="9" code="PPC:ERR-50007">No summary for property $guarded</error>
+    </parse_markers>
+    <source>eJxNj8FqwzAMhs/xU+iQQ/IK7boxWA+FDgY7NiWoitqGurJny2Fl5N3nNCvsICSh7//R//Tiz94YwStHj8Sw7Qf+4BCdbISaaVvLCU+8xYAD2+bddWzj0pgUGTbWpmsvqNy8oeIBIzdr674Si85kBslijPBK5JLop6KmCPytLF2EO2N+TOGDUyblDspTwtDlYQW7/dIU+ZYOtic4JiHtnUDbkpOoIZFWGALeoLy32hTZqShdUp/0oS+OLjDSGaqZAoxQXvi2ei4HtIlrmEQP1S4KXrilnKSaqHqffWZw8hpzeQw53mLx/40/dZ2Z0YzmFwwycyk=</source>
+  </file>
+  <file path="Collections/ConversationHistory.php" generated-path="Collections.ConversationHistory.html" hash="540bd63942a4d7da2a265c31f959abc0" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Collection">\Illuminate\Support\Collection</namespace-alias>
+    <namespace-alias name="LiveEngageLaravel">\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel</namespace-alias>
+    <namespace-alias name="LiveEngage">\LivePersonInc\LiveEngageLaravel\Facades\LiveEngageLaravel</namespace-alias>
+    <namespace-alias name="MetaData">\LivePersonInc\LiveEngageLaravel\Models\MetaData</namespace-alias>
+    <namespace-alias name="Conversation">\LivePersonInc\LiveEngageLaravel\Models\Conversation</namespace-alias>
+    <namespace-alias name="Info">\LivePersonInc\LiveEngageLaravel\Models\Info</namespace-alias>
+    <namespace-alias name="Visitor">\LivePersonInc\LiveEngageLaravel\Models\Visitor</namespace-alias>
+    <namespace-alias name="Campaign">\LivePersonInc\LiveEngageLaravel\Models\Campaign</namespace-alias>
+    <class final="false" abstract="false" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="14" package="Default">
+      <extends>\Illuminate\Support\Collection</extends>
+      <name>ConversationHistory</name>
+      <full_name>\LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory</full_name>
+      <docblock line="14">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="14" description="Default"/>
+      </docblock>
+      <property static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="16" package="Default">
+        <name>$metaData</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory::metaData</full_name>
+        <default></default>
+        <docblock line="16">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="18" package="Default">
+        <name>__construct</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory::__construct()</full_name>
+        <docblock line="18">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$models</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="27" package="Default">
+        <name>find</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory::find()</full_name>
+        <docblock line="27">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$engagementID</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="36" package="Default">
+        <name>next</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory::next()</full_name>
+        <docblock line="36">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="63" package="Default">
+        <name>prev</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory::prev()</full_name>
+        <docblock line="63">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="90" package="Default">
+        <name>merge</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory::merge()</full_name>
+        <docblock line="90">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$collection</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="14" code="PPC:ERR-50005">No summary for class \LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory</error>
+      <error line="18" code="PPC:ERR-50015">Argument $models is missing from the Docblock of __construct</error>
+      <error line="18" code="PPC:ERR-50008">No summary for method __construct()</error>
+      <error line="27" code="PPC:ERR-50015">Argument $engagementID is missing from the Docblock of find</error>
+      <error line="27" code="PPC:ERR-50008">No summary for method find()</error>
+      <error line="36" code="PPC:ERR-50008">No summary for method next()</error>
+      <error line="63" code="PPC:ERR-50008">No summary for method prev()</error>
+      <error line="90" code="PPC:ERR-50015">Argument $collection is missing from the Docblock of merge</error>
+      <error line="90" code="PPC:ERR-50008">No summary for method merge()</error>
+      <error line="16" code="PPC:ERR-50007">No summary for property $metaData</error>
+    </parse_markers>
+    <source>eJzNVU2P2jAQPeNf4QPSBkS0d+iylXZbFWmRqlbqpVRo6kzAkuNEtkO7rfjv9Ue+IKyArir1wIHxe2/ejF+SN/fFtiBEQoa6AIb0ie/wIyqdy4VkK/fvndzABp9AwQ7F6iEXApnhudQzQkqNdCFEmXEJBlefy6LIlemAZh5yTrRXuYz2HhgkqPsnFDRti5eJLfMEhV4t0cAjGLiK9JDLnUXB5RNXxIVM86sIX7jmJlfXuYOsAL6xzggToDXt2v3AtdV7pvjToEzcWX115DcZFOV3wRkdZs1WmlpaSg+j6zWzYTCqZCYCpeDZwn1jeke/fhuRgdUZtCUPWWdQRLVCNOQGsxF1uIFCUypJuV5DqE/ozV/cws2I3lPPp1Mq8cfBzFHwOQqA0cz23U9q1/7v0Gy5juf12Na206izEXlMAQqlmU6783c09mTQ31XKZRIN0bvPLHvxWO9HoS6FsY2q1ikXBlVnRzsQJY6ou/cjhYPFBVw85zZZ8Zx1pl4k9M7Kd6l+cj8MaQWCE+dAaROFUfqTSBuYqDJ/Ox7Tt5qp0nDJf6GiNmy5wpiBEHR8axE8taYPdxrPnURl/rzCYOjgdj/t9U+n1rLiuMOl3lQ57nfRBpSZ0F7dpv1E1TWJ51uFqV9LMN4adaXgJJ6vHStpe7R3d9R89gLLOjjFseVZ08qVj9PXpPdIMTiuiKx5jiu6RpFGFYX1XwCfkOUq0ZVGh37wFHg/nTZ1ZljnhV8f7ql9EjDcbw1MwZY8ZE/Cj/TPTgeuULh7ZeCcxBWBc/B/HjjXpBe41mi4jQC6NnA91qsDd6R4SeAC5f8P3ImXdYZqg1GnVXMl9ZZOuvbfj4Nt1F+KvuDpb00z9NmtkJc24kbakz+LrjGT</source>
+  </file>
+  <file path="Collections/EngagementHistory.php" generated-path="Collections.EngagementHistory.html" hash="25525fe2799e200866879a3d5ae3c254" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Collection">\Illuminate\Support\Collection</namespace-alias>
+    <namespace-alias name="LiveEngageLaravel">\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel</namespace-alias>
+    <namespace-alias name="LiveEngage">\LivePersonInc\LiveEngageLaravel\Facades\LiveEngageLaravel</namespace-alias>
+    <namespace-alias name="Engagement">\LivePersonInc\LiveEngageLaravel\Models\Engagement</namespace-alias>
+    <namespace-alias name="MetaData">\LivePersonInc\LiveEngageLaravel\Models\MetaData</namespace-alias>
+    <namespace-alias name="Info">\LivePersonInc\LiveEngageLaravel\Models\Info</namespace-alias>
+    <namespace-alias name="Visitor">\LivePersonInc\LiveEngageLaravel\Models\Visitor</namespace-alias>
+    <namespace-alias name="Campaign">\LivePersonInc\LiveEngageLaravel\Models\Campaign</namespace-alias>
+    <class final="false" abstract="false" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="14" package="Default">
+      <extends>\Illuminate\Support\Collection</extends>
+      <name>EngagementHistory</name>
+      <full_name>\LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory</full_name>
+      <docblock line="14">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="14" description="Default"/>
+      </docblock>
+      <property static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="16" package="Default">
+        <name>$metaData</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory::metaData</full_name>
+        <default></default>
+        <docblock line="16">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="18" package="Default">
+        <name>__construct</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory::__construct()</full_name>
+        <docblock line="18">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$models</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="27" package="Default">
+        <name>find</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory::find()</full_name>
+        <docblock line="27">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$engagementID</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="36" package="Default">
+        <name>next</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory::next()</full_name>
+        <docblock line="36">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="63" package="Default">
+        <name>prev</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory::prev()</full_name>
+        <docblock line="63">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="90" package="Default">
+        <name>merge</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory::merge()</full_name>
+        <docblock line="90">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$collection</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="14" code="PPC:ERR-50005">No summary for class \LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory</error>
+      <error line="18" code="PPC:ERR-50015">Argument $models is missing from the Docblock of __construct</error>
+      <error line="18" code="PPC:ERR-50008">No summary for method __construct()</error>
+      <error line="27" code="PPC:ERR-50015">Argument $engagementID is missing from the Docblock of find</error>
+      <error line="27" code="PPC:ERR-50008">No summary for method find()</error>
+      <error line="36" code="PPC:ERR-50008">No summary for method next()</error>
+      <error line="63" code="PPC:ERR-50008">No summary for method prev()</error>
+      <error line="90" code="PPC:ERR-50015">Argument $collection is missing from the Docblock of merge</error>
+      <error line="90" code="PPC:ERR-50008">No summary for method merge()</error>
+      <error line="16" code="PPC:ERR-50007">No summary for property $metaData</error>
+    </parse_markers>
+    <source>eJzNVU2L2zAQPUe/QofAOiFm70k3W9htaWAXSgu9NCWo8jgRlWUjyWm3Jf+9I8lfibNszFLowQeP5r15M/NsvbktdgUhimVgCsaBPog9fARtcrVSfO3e3qkt28ID02wPcn2XSwncilyZBSGlAbqSssyEYhbWn8uiyLXtJC18ykukvchlsPeMswRM/4QyQ9vgZWSPeQLSrEMwA2UHwR7Bsntm2SDQSqX5IMAXYYTN9SDMHcsKJra4CcIlM4a2HX4QBtmeKPyyoBJD27WRP2RUlN+l4HScNa01sbRUPo1uNhyNYHXJbcS0Zk+Y7svSG/r124SMkGfUhnzKJmNFVDNEY2Ehm1CXN9JgS62oMBsW4jN6NXhtVxN6Sz2azqmCn51+o6BxEo4nC6x5mNWK/evY7oSJl3XLKNkx1MuNfE7BNHLN593eOxwHMurPKRUqicbQKFnd17PRYEppsVBVOhXSgu7MZ89kCajyB6Bwt/cTnqPRhex4KdBZ8dKAMcixSugN8ndRvnXfDWmxQYqToI2NQi/9VhS6JarUX0+n9K3hurRCid+gKfos1xBzJiWdXmOGSFHv8VDjpaOodL/MMBq7dBxQu/v5HCVrAXuoHNwvYSzTdkZ7cfT5mairEC93GlI/k6C6VelCQUa83DhU0tZoN3dSfPEMChWcw2B40ZRy4VPvNd49YQyKKyBvvuAKbkCmUQURCp3F/Gk1t0/Ac52YiqKDPvoEvJxOldovvPOXrw8PFD8DCLutE1OGIZ9yIOEh/bPzZis07F9pNkcxwGwu/d+azVXoma1VGVYRkoaarYd6tdlOGC8xW4D892Y785fOQG8h6pRqNlIP6axqf3EcDaO+IvqE5y+ZpukXp0Kem4hr6UD+Al9EKfE=</source>
+  </file>
+  <file path="Collections/Transfers.php" generated-path="Collections.Transfers.html" hash="cca92e389b5b1e36674cebbf5fb18842" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Collection">\Illuminate\Support\Collection</namespace-alias>
+    <namespace-alias name="Transfer">\LivePersonInc\LiveEngageLaravel\Models\Transfer</namespace-alias>
+    <class final="false" abstract="false" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="8" package="Default">
+      <extends>\Illuminate\Support\Collection</extends>
+      <name>Transfers</name>
+      <full_name>\LivePersonInc\LiveEngageLaravel\Collections\Transfers</full_name>
+      <docblock line="8">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="8" description="Default"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="10" package="Default">
+        <name>__construct</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Collections\Transfers::__construct()</full_name>
+        <docblock line="10">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$models</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="20" package="Default">
+        <name>toSkillIds</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Collections\Transfers::toSkillIds()</full_name>
+        <docblock line="20">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="8" code="PPC:ERR-50005">No summary for class \LivePersonInc\LiveEngageLaravel\Collections\Transfers</error>
+      <error line="10" code="PPC:ERR-50015">Argument $models is missing from the Docblock of __construct</error>
+      <error line="10" code="PPC:ERR-50008">No summary for method __construct()</error>
+      <error line="20" code="PPC:ERR-50008">No summary for method toSkillIds()</error>
+    </parse_markers>
+    <source>eJyNj8tqwzAQRdfWV8zCEBvaH4j7oJQuAikU0l0czFSZOKKyJKRR2lLy73XkuAl0kcJs5nLn6Ojm3m2dEAY7Cg4lwVzt6IV8sGZmZH3YnkyLLc3R4450/Wi1JsnKmlAJEQPBTOvYKYNM9SI6Zz2flapUuQR9tmvSoX71aMKGfA+WGkOAMQhAn0xmHeBEFt8ic/FNKwmbaFIETSN7L/ZRcoHe4xfkXULDLSxXpcj6m6yfU5paTYeuGCFFrpi6Eg7VzBNHb8DQx69LMZBLGHpVX9tfje+ktR+HngxPp+dCZ5W9yP7Ks128K61n61AcTfPhD/+1TNFywuhb4iNrshoFeavC9R3bhwOrKJPpeJj4yWv/A028siE=</source>
+  </file>
+  <file path="Models/Skill.php" generated-path="Models.Skill.html" hash="0db3adf8a4d999a59c05d27ee67ea7d5" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Model">\Illuminate\Database\Eloquent\Model</namespace-alias>
+    <namespace-alias name="LiveEngage">\LivePersonInc\LiveEngageLaravel\Facades\LiveEngageLaravel</namespace-alias>
+    <class final="false" abstract="false" namespace="LivePersonInc\LiveEngageLaravel\Models" line="8" package="Default">
+      <extends>\Illuminate\Database\Eloquent\Model</extends>
+      <name>Skill</name>
+      <full_name>\LivePersonInc\LiveEngageLaravel\Models\Skill</full_name>
+      <docblock line="8">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="8" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="LivePersonInc\LiveEngageLaravel\Models" line="10" package="Default">
+        <name>$guarded</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Skill::guarded</full_name>
+        <default>array()</default>
+        <docblock line="10">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Models" line="12" package="Default">
+        <name>__construct</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Skill::__construct()</full_name>
+        <docblock line="12">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$skill</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="8" code="PPC:ERR-50005">No summary for class \LivePersonInc\LiveEngageLaravel\Models\Skill</error>
+      <error line="12" code="PPC:ERR-50015">Argument $skill is missing from the Docblock of __construct</error>
+      <error line="12" code="PPC:ERR-50008">No summary for method __construct()</error>
+      <error line="10" code="PPC:ERR-50007">No summary for property $guarded</error>
+    </parse_markers>
+    <source>eJyFUMFKxDAQPSdfMYc9tL/QKl5cYWEFwaOVMpvM1mB2UjPJokj/3bSLVvDgYWDmvcd7j7m6GV9GrRlPJCMagr070wNFCbxj083XlgccaI8Rz+S7+2DJS6t1FoKd9/nkGBN1t5jwgELd1oe3TJwuynbR/Wd6hwYtyV8GUGAFS6rxKAKPr857oPdEbAWWIP2p1RhDIpPIwmbIGG1ZruHpudWqcPngnYFjZpNcYOh7E1hSzCZVG5n9aq2Kh3JHqJz0jn/wGmZcXa7iuBZqmoHSUuZbW7LUVGbEWH7QNL9jKowRP2pYpZOe9BcUW4RD</source>
+  </file>
+  <file path="Models/SDE.php" generated-path="Models.SDE.html" hash="54f0235d373705b61facc4359b876f89" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Model">\Illuminate\Database\Eloquent\Model</namespace-alias>
+    <class final="false" abstract="false" namespace="LivePersonInc\LiveEngageLaravel\Models" line="12" package="Default">
+      <extends>\Illuminate\Database\Eloquent\Model</extends>
+      <name>SDE</name>
+      <full_name>\LivePersonInc\LiveEngageLaravel\Models\SDE</full_name>
+      <docblock line="12">
+        <description>LivePersonInc\LiveEngageLaravel\Models\SDE class.</description>
+        <long-description></long-description>
+        <tag name="extends" line="12" description="Illuminate\Database\Eloquent\Model"/>
+        <tag name="package" line="12" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="LivePersonInc\LiveEngageLaravel\Models" line="14" package="Default">
+        <name>$guarded</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\SDE::guarded</full_name>
+        <default>array()</default>
+        <docblock line="14">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="14" code="PPC:ERR-50007">No summary for property $guarded</error>
+    </parse_markers>
+    <source>eJyNjbEKwjAQhmfvKTI4dbAPUEWHdhAqCI7G4UyOWkiTmEuKIL67jcW9w8Ed//f9t937hwewOBB7VCTafqQzBXb2aJXMV2M77KjFgCMZeXKaDFcAiUkcjUlDbzGSrDHiHZlkY9wzkY0zOYFlUYAoFhbLS90IZZB5k6U8B3pFspoXfJvwEn62yD1/cc7esPLBRVKRtFh3CYOelp243ir4fAE+jlt2</source>
+  </file>
+  <file path="Facades/LiveEngageLaravel.php" generated-path="Facades.LiveEngageLaravel.html" hash="3687c543b53a518c31da59aba1ca49b6" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Facade">\Illuminate\Support\Facades\Facade</namespace-alias>
+    <class final="false" abstract="false" namespace="LivePersonInc\LiveEngageLaravel\Facades" line="7" package="Default">
+      <extends>\Illuminate\Support\Facades\Facade</extends>
+      <name>LiveEngageLaravel</name>
+      <full_name>\LivePersonInc\LiveEngageLaravel\Facades\LiveEngageLaravel</full_name>
+      <docblock line="7">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="7" description="Default"/>
+      </docblock>
+      <method final="false" abstract="false" static="true" visibility="protected" namespace="LivePersonInc\LiveEngageLaravel\Facades" line="9" package="Default">
+        <name>getFacadeAccessor</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Facades\LiveEngageLaravel::getFacadeAccessor()</full_name>
+        <docblock line="9">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="7" code="PPC:ERR-50005">No summary for class \LivePersonInc\LiveEngageLaravel\Facades\LiveEngageLaravel</error>
+      <error line="9" code="PPC:ERR-50008">No summary for method getFacadeAccessor()</error>
+    </parse_markers>
+    <source>eJxljcFqAkEQRM/bX9E3zcEvMBA8JCB4EHLdS9NbrgtjzzDdI4Hgv7tmzclTUfDq1ftHORcikwu8iIIP0xVHVM+2N+0f7dNGGXGQKlek/ktUBviWqDl4n1K7TCaB/ruVkmv8A8+cOU3izi8mxk/ABucFpF/qSs0BDQzsITEpn5ppTNl4RCzYThXuua7fqJsXXUW0arxKs36DP/8mLQerLXU3utEdjxdQJQ==</source>
+  </file>
+  <file path="Collections/AgentParticipants.php" generated-path="Collections.AgentParticipants.html" hash="c89cc3c530c35af2fd03632a94286d41" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Collection">\Illuminate\Support\Collection</namespace-alias>
+    <namespace-alias name="Agent">\LivePersonInc\LiveEngageLaravel\Models\Agent</namespace-alias>
+    <namespace-alias name="MetaData">\LivePersonInc\LiveEngageLaravel\Models\MetaData</namespace-alias>
+    <class final="false" abstract="false" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="9" package="Default">
+      <extends>\Illuminate\Support\Collection</extends>
+      <name>AgentParticipants</name>
+      <full_name>\LivePersonInc\LiveEngageLaravel\Collections\AgentParticipants</full_name>
+      <docblock line="9">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="9" description="Default"/>
+      </docblock>
+      <property static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="11" package="Default">
+        <name>$metaData</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Collections\AgentParticipants::metaData</full_name>
+        <default></default>
+        <docblock line="11">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="13" package="Default">
+        <name>__construct</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Collections\AgentParticipants::__construct()</full_name>
+        <docblock line="13">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$models</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="23" package="Default">
+        <name>state</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Collections\AgentParticipants::state()</full_name>
+        <docblock line="23">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$state</name>
+          <default>'ONLINE'</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="32" package="Default">
+        <name>findById</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Collections\AgentParticipants::findById()</full_name>
+        <docblock line="32">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$agentId</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="9" code="PPC:ERR-50005">No summary for class \LivePersonInc\LiveEngageLaravel\Collections\AgentParticipants</error>
+      <error line="13" code="PPC:ERR-50015">Argument $models is missing from the Docblock of __construct</error>
+      <error line="13" code="PPC:ERR-50008">No summary for method __construct()</error>
+      <error line="23" code="PPC:ERR-50015">Argument $state is missing from the Docblock of state</error>
+      <error line="23" code="PPC:ERR-50008">No summary for method state()</error>
+      <error line="32" code="PPC:ERR-50015">Argument $agentId is missing from the Docblock of findById</error>
+      <error line="32" code="PPC:ERR-50008">No summary for method findById()</error>
+      <error line="11" code="PPC:ERR-50007">No summary for property $metaData</error>
+    </parse_markers>
+    <source>eJydUdtq6zAQfLa+Yh8MsaH9gfSkpbcHQ3qBPp4cwlbepAJZFtIqPaXk3yvLdppAL7QvNlrNzM6M/pzZJyuEwYa8RUkwVxu6J+dbUxm56E7XZo1rmqPDDenFZas1SVat8SdCBE9QaR0aZZBp8RCsbR3vgU4S5DvRm7Ym7RfnazL8I8YNMV4hY7QiNXoPSeIeHSupLBr2QP+ZTO3h3ZN4FZkNj1pJyJudQLYbroJJOFguZYzJLkgu0Dl8ifi0F2bw918psigUadn7NKGWDdpiFClyxdSU0EEzRxycAeWX2M+PYPKTbiYlnEEiwhQMPfdxi95c2d+UMUq2PRqtpmPOT8ofn45ho9GOPJZXJIxFF7Wm0/3QexrbjwryHF+9yNMvik7ubufV7fVkaCZ35IPmeDHsXynN5Paq2aAOVEL34IPKYVHRBre6fY6kHnt8KoPrfD5EcPAlzGYHoF4jNZC+Yic1mPksyUqZ+uKlqoscu0qr+ncZRvJBitH6cNl5HoFfOO1WOc9FX/5WvAGDNTfK</source>
+  </file>
+  <file path="Models/Message.php" generated-path="Models.Message.html" hash="f5e8534af330fb47557442b75a085806" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Carbon">\Carbon\Carbon</namespace-alias>
+    <namespace-alias name="Model">\Illuminate\Database\Eloquent\Model</namespace-alias>
+    <class final="false" abstract="false" namespace="LivePersonInc\LiveEngageLaravel\Models" line="8" package="Default">
+      <extends>\Illuminate\Database\Eloquent\Model</extends>
+      <name>Message</name>
+      <full_name>\LivePersonInc\LiveEngageLaravel\Models\Message</full_name>
+      <docblock line="8">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="8" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="LivePersonInc\LiveEngageLaravel\Models" line="10" package="Default">
+        <name>$guarded</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Message::guarded</full_name>
+        <default>array()</default>
+        <docblock line="10">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <property static="false" visibility="protected" namespace="LivePersonInc\LiveEngageLaravel\Models" line="12" package="Default">
+        <name>$appends</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Message::appends</full_name>
+        <default>array('plain_text', 'time')</default>
+        <docblock line="12">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Models" line="17" package="Default">
+        <name>getTextAttribute</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Message::getTextAttribute()</full_name>
+        <docblock line="17">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Models" line="28" package="Default">
+        <name>getPlainTextAttribute</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Message::getPlainTextAttribute()</full_name>
+        <docblock line="28">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Models" line="33" package="Default">
+        <name>getTimeAttribute</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Message::getTimeAttribute()</full_name>
+        <docblock line="33">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Models" line="38" package="Default">
+        <name>__toString</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Message::__toString()</full_name>
+        <docblock line="38">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="8" code="PPC:ERR-50005">No summary for class \LivePersonInc\LiveEngageLaravel\Models\Message</error>
+      <error line="17" code="PPC:ERR-50008">No summary for method getTextAttribute()</error>
+      <error line="28" code="PPC:ERR-50008">No summary for method getPlainTextAttribute()</error>
+      <error line="33" code="PPC:ERR-50008">No summary for method getTimeAttribute()</error>
+      <error line="38" code="PPC:ERR-50008">No summary for method __toString()</error>
+      <error line="10" code="PPC:ERR-50007">No summary for property $guarded</error>
+      <error line="12" code="PPC:ERR-50007">No summary for property $appends</error>
+    </parse_markers>
+    <source>eJzdUttKw0AQfc5+xTwU0oD+gLWWUgMG2lo0D4IpYZNM04Vks2YnVZH+u5Ne1ErqBwiB3dlzGc5MrkdmbYTQskRrZIowVRtcYG0rHeg0aitf5zLHqazlBotoVmVY2IEQjUWYyDqpdLQ/BrunoCiaUmlJGN1Kkom0GPlF9dKgpr2YtWkhrYUZWsvOgG+EOuO6RcWHcExdEaaEGfTyRtYZX4bwvGThT0gas5MxJBzHNYVUOiY2cy/amlSJ7Y1lDuuapFAprBqdkqo05EghU8dEtUoawr4nHO7sqBX0e7RW9vKG3g3CcAjuYjoO5q4HLe7USE2t4cAp9xHapFzYnFXsyh2dLfCYsMvuIZjcxZP7eejPw1+up9i3zQlJWYt0dJXHAPbZ3WVfejCCsyBcgbv3Ffx1jmXRzrFzNof+lp9NTDK3X9GY7Q3OOoa8iXNmGl8Pf1FnonaHy3PWcUzVI5N1/tf2Qv8pjP/tCrfiEyY9MwM=</source>
+  </file>
+  <file path="Models/Conversation.php" generated-path="Models.Conversation.html" hash="2ca7f207ca70911906ebd368a7d54296" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Model">\Illuminate\Database\Eloquent\Model</namespace-alias>
+    <namespace-alias name="AgentParticipants">\LivePersonInc\LiveEngageLaravel\Collections\AgentParticipants</namespace-alias>
+    <namespace-alias name="ConsumerParticipants">\LivePersonInc\LiveEngageLaravel\Collections\ConsumerParticipants</namespace-alias>
+    <namespace-alias name="Transfers">\LivePersonInc\LiveEngageLaravel\Collections\Transfers</namespace-alias>
+    <namespace-alias name="Transcript">\LivePersonInc\LiveEngageLaravel\Collections\Transcript</namespace-alias>
+    <namespace-alias name="SDEs">\LivePersonInc\LiveEngageLaravel\Collections\SDEs</namespace-alias>
+    <class final="false" abstract="false" namespace="LivePersonInc\LiveEngageLaravel\Models" line="12" package="Default">
+      <extends>\Illuminate\Database\Eloquent\Model</extends>
+      <name>Conversation</name>
+      <full_name>\LivePersonInc\LiveEngageLaravel\Models\Conversation</full_name>
+      <docblock line="12">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="12" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="LivePersonInc\LiveEngageLaravel\Models" line="14" package="Default">
+        <name>$guarded</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Conversation::guarded</full_name>
+        <default>array()</default>
+        <docblock line="14">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Models" line="16" package="Default">
+        <name>__construct</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Conversation::__construct()</full_name>
+        <docblock line="16">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$item</name>
+          <default></default>
+          <type>array</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="12" code="PPC:ERR-50005">No summary for class \LivePersonInc\LiveEngageLaravel\Models\Conversation</error>
+      <error line="16" code="PPC:ERR-50015">Argument $item is missing from the Docblock of __construct</error>
+      <error line="16" code="PPC:ERR-50008">No summary for method __construct()</error>
+      <error line="14" code="PPC:ERR-50007">No summary for property $guarded</error>
+    </parse_markers>
+    <source>eJylk91O4zAQha/rp/AFEq3EvkDKj1DpRSWQEKy4IQgNzjRrybGzHifsCvHuOAltbTcsgpWiyJk5c76x4zk+q3/VjGmokGoQyC9li9doyeiVFnn3tdQllHgJFlpU+ZUpUNGcsYaQr5RqKqnBYX4BDp6AMF8q87tB7QblvNd9ZrowSqFw0mjKz0tffA3WSSFr0I6+brHwr6ZC+38uPy1oWnvxN0uFlbX7eu3txbI7XqGAiPudtL4OuhTHPw51Qbw/WPbCJrU1zpdhwQ/KBmzhFyf8/mHOJj7XPCkp+LrRvS9/fBTe3dlGuClYC3/5gXRYzdjEG0369f2h1Gtz+OBNJBG6aRSd8TOu8ZlfIRGUUpcrH54OXjOeSLMR6Wy+A7WSpDN2NcqLkhvs3RBMgYk2i7QhUUBVgyz1Pm6X2bAW75EUFiqzWBmi3Obi9KxOtr1K04gcCDv0SHnmf2doDelwbBF7YxOjRgoD5JhtihYjQ7Wlj01c3MB4edDDB/5pG1V/p/AGhbFFcsL9xMXYVB4A95w61NE/jiRsgwrcwbuRjbFD+scptt6FAmic2O3OPzVYH8uycFKHGfWCV/bK3gA0Ufwy</source>
+  </file>
+  <file path="Collections/SDEs.php" generated-path="Collections.SDEs.html" hash="3e8a080287012b3039876fdc7ad670a8" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Collection">\Illuminate\Support\Collection</namespace-alias>
+    <namespace-alias name="SDE">\LivePersonInc\LiveEngageLaravel\Models\SDE</namespace-alias>
+    <class final="false" abstract="false" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="8" package="Default">
+      <extends>\Illuminate\Support\Collection</extends>
+      <name>SDEs</name>
+      <full_name>\LivePersonInc\LiveEngageLaravel\Collections\SDEs</full_name>
+      <docblock line="8">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="8" description="Default"/>
+      </docblock>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="10" package="Default">
+        <name>__construct</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Collections\SDEs::__construct()</full_name>
+        <docblock line="10">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$models</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Collections" line="19" package="Default">
+        <name>getSDE</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Collections\SDEs::getSDE()</full_name>
+        <docblock line="19">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$type</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="8" code="PPC:ERR-50005">No summary for class \LivePersonInc\LiveEngageLaravel\Collections\SDEs</error>
+      <error line="10" code="PPC:ERR-50015">Argument $models is missing from the Docblock of __construct</error>
+      <error line="10" code="PPC:ERR-50008">No summary for method __construct()</error>
+      <error line="19" code="PPC:ERR-50015">Argument $type is missing from the Docblock of getSDE</error>
+      <error line="19" code="PPC:ERR-50008">No summary for method getSDE()</error>
+    </parse_markers>
+    <source>eJyFjstqwzAQRdfWV8zCEBvaH4j7WLRZBFIopNBFXYwqT2yBLAvNKG0o/vfKTtMYughooRnOnHtv7l3rhLCyQ3JSIWz0Hp/RU2/XVpXjtLKNbHAjvdyjKR96Y1Cx7i0VQgRCWBsTOm0lY7kNzvWeZ1AxIZekT32Nhsrt4yo6lZFEEP8E+MVoa4KzT3yLxIUPoxXsgp1WUFUqtmEfFGfSe3mAtJuEcAtv77lI4k1yXk1I1UmXnQxZqhm7HEYu8cjBW7D4OXbIjsYcjkgRieHq5J/G+Jz0aHm5nBeZIYNI/pdukEd9ygeHvxXFX3jKrabru532xK8teswWVONLRBcxfDo5Ro/q4Qc2CJYX</source>
+  </file>
+  <file path="LiveEngageLaravel.php" generated-path="LiveEngageLaravel.html" hash="f1d761d0b150d04e5a895158493c8c5c" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Carbon">\Carbon\Carbon</namespace-alias>
+    <namespace-alias name="Client">\GuzzleHttp\Client</namespace-alias>
+    <namespace-alias name="HandlerStack">\GuzzleHttp\HandlerStack</namespace-alias>
+    <namespace-alias name="Oauth1">\GuzzleHttp\Subscriber\Oauth\Oauth1</namespace-alias>
+    <namespace-alias name="Info">\LivePersonInc\LiveEngageLaravel\Models\Info</namespace-alias>
+    <namespace-alias name="MetaData">\LivePersonInc\LiveEngageLaravel\Models\MetaData</namespace-alias>
+    <namespace-alias name="AccountStatus">\LivePersonInc\LiveEngageLaravel\Models\AccountStatus</namespace-alias>
+    <namespace-alias name="MessagingInfo">\LivePersonInc\LiveEngageLaravel\Models\MessagingInfo</namespace-alias>
+    <namespace-alias name="Payload">\LivePersonInc\LiveEngageLaravel\Models\Payload</namespace-alias>
+    <namespace-alias name="Visitor">\LivePersonInc\LiveEngageLaravel\Models\Visitor</namespace-alias>
+    <namespace-alias name="Agent">\LivePersonInc\LiveEngageLaravel\Models\Agent</namespace-alias>
+    <namespace-alias name="Skill">\LivePersonInc\LiveEngageLaravel\Models\Skill</namespace-alias>
+    <namespace-alias name="Campaign">\LivePersonInc\LiveEngageLaravel\Models\Campaign</namespace-alias>
+    <namespace-alias name="Engagement">\LivePersonInc\LiveEngageLaravel\Models\Engagement</namespace-alias>
+    <namespace-alias name="Conversation">\LivePersonInc\LiveEngageLaravel\Models\Conversation</namespace-alias>
+    <namespace-alias name="Message">\LivePersonInc\LiveEngageLaravel\Models\Message</namespace-alias>
+    <namespace-alias name="EngagementHistory">\LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory</namespace-alias>
+    <namespace-alias name="Skills">\LivePersonInc\LiveEngageLaravel\Collections\Skills</namespace-alias>
+    <namespace-alias name="AgentParticipants">\LivePersonInc\LiveEngageLaravel\Collections\AgentParticipants</namespace-alias>
+    <namespace-alias name="LiveEngageException">\LivePersonInc\LiveEngageLaravel\Exceptions\LiveEngageException</namespace-alias>
+    <namespace-alias name="ConversationHistory">\LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory</namespace-alias>
+    <class final="false" abstract="false" namespace="LivePersonInc\LiveEngageLaravel" line="32" package="Default">
+      <extends/>
+      <name>LiveEngageLaravel</name>
+      <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel</full_name>
+      <docblock line="32">
+        <description>LiveEngageLaravel class holds all of the root package functions.</description>
+        <long-description>All "setting" functions will return `$this` so method can be chained. Most methods will return a class object or Laravel collection.</long-description>
+        <tag name="package" line="32" description="Default"/>
+      </docblock>
+      <property static="false" visibility="private" namespace="LivePersonInc\LiveEngageLaravel" line="34" package="Default">
+        <name>$account</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::account</full_name>
+        <default>false</default>
+        <docblock line="34">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <property static="false" visibility="private" namespace="LivePersonInc\LiveEngageLaravel" line="35" package="Default">
+        <name>$results</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::results</full_name>
+        <default>array()</default>
+        <docblock line="35">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <property static="false" visibility="private" namespace="LivePersonInc\LiveEngageLaravel" line="36" package="Default">
+        <name>$skills</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::skills</full_name>
+        <default>array()</default>
+        <docblock line="36">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <property static="false" visibility="private" namespace="LivePersonInc\LiveEngageLaravel" line="37" package="Default">
+        <name>$next</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::next</full_name>
+        <default>false</default>
+        <docblock line="37">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <property static="false" visibility="private" namespace="LivePersonInc\LiveEngageLaravel" line="38" package="Default">
+        <name>$prev</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::prev</full_name>
+        <default>false</default>
+        <docblock line="38">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <property static="false" visibility="private" namespace="LivePersonInc\LiveEngageLaravel" line="39" package="Default">
+        <name>$start</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::start</full_name>
+        <default></default>
+        <docblock line="39">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <property static="false" visibility="private" namespace="LivePersonInc\LiveEngageLaravel" line="40" package="Default">
+        <name>$end</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::end</full_name>
+        <default></default>
+        <docblock line="40">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <property static="false" visibility="private" namespace="LivePersonInc\LiveEngageLaravel" line="41" package="Default">
+        <name>$config</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::config</full_name>
+        <default>'services.liveperson.default'</default>
+        <docblock line="41">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <property static="false" visibility="private" namespace="LivePersonInc\LiveEngageLaravel" line="42" package="Default">
+        <name>$version</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::version</full_name>
+        <default>'1.0'</default>
+        <docblock line="42">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <property static="false" visibility="private" namespace="LivePersonInc\LiveEngageLaravel" line="43" package="Default">
+        <name>$history_limit</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::history_limit</full_name>
+        <default>50</default>
+        <docblock line="43">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <property static="false" visibility="private" namespace="LivePersonInc\LiveEngageLaravel" line="44" package="Default">
+        <name>$history</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::history</full_name>
+        <default>false</default>
+        <docblock line="44">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <property static="false" visibility="private" namespace="LivePersonInc\LiveEngageLaravel" line="45" package="Default">
+        <name>$context</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::context</full_name>
+        <default>'interactionHistoryRecords'</default>
+        <docblock line="45">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <property static="false" visibility="private" namespace="LivePersonInc\LiveEngageLaravel" line="46" package="Default">
+        <name>$interactive</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::interactive</full_name>
+        <default>true</default>
+        <docblock line="46">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <property static="false" visibility="private" namespace="LivePersonInc\LiveEngageLaravel" line="47" package="Default">
+        <name>$ended</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::ended</full_name>
+        <default>true</default>
+        <docblock line="47">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <property static="false" visibility="private" namespace="LivePersonInc\LiveEngageLaravel" line="48" package="Default">
+        <name>$bearer</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::bearer</full_name>
+        <default>false</default>
+        <docblock line="48">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <property static="false" visibility="private" namespace="LivePersonInc\LiveEngageLaravel" line="49" package="Default">
+        <name>$revision</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::revision</full_name>
+        <default>0</default>
+        <docblock line="49">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <property static="false" visibility="private" namespace="LivePersonInc\LiveEngageLaravel" line="51" package="Default">
+        <name>$domain</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::domain</full_name>
+        <default>false</default>
+        <docblock line="51">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <property static="false" visibility="private" namespace="LivePersonInc\LiveEngageLaravel" line="53" package="Default">
+        <name>$retry_limit</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::retry_limit</full_name>
+        <default>5</default>
+        <docblock line="53">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <property static="false" visibility="private" namespace="LivePersonInc\LiveEngageLaravel" line="54" package="Default">
+        <name>$retry_counter</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::retry_counter</full_name>
+        <default>0</default>
+        <docblock line="54">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel" line="63" package="Default">
+        <name>__get</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::__get()</full_name>
+        <docblock line="63">
+          <description>__get magic function to retrieve private properties of the class.</description>
+          <long-description></long-description>
+          <tag name="access" line="63" description="public"/>
+          <tag name="param" line="63" description="" type="mixed" variable="$attribute">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="63" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$attribute</name>
+          <default></default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel" line="74" package="Default">
+        <name>__construct</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::__construct()</full_name>
+        <docblock line="74">
+          <description>__construct function.</description>
+          <long-description></long-description>
+          <tag name="access" line="74" description="public"/>
+          <tag name="return" line="74" description="" type="void">
+            <type>void</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel" line="88" package="Default">
+        <name>key</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::key()</full_name>
+        <docblock line="88">
+          <description>key function sets the keyset the class should use. Setting this once will be stored for script execution, but not for the session.</description>
+          <long-description></long-description>
+          <tag name="access" line="88" description="public"/>
+          <tag name="param" line="88" description="&lt;p&gt;(default: 'default')&lt;/p&gt;" type="string" variable="$key">
+            <type>string</type>
+          </tag>
+          <tag name="return" line="88" description="" type="\LivePersonInc\LiveEngageLaravel\this">
+            <type>\LivePersonInc\LiveEngageLaravel\this</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$key</name>
+          <default>'default'</default>
+          <type>string</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel" line="96" package="Default">
+        <name>nonInteractive</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::nonInteractive()</full_name>
+        <docblock line="96">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel" line="102" package="Default">
+        <name>active</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::active()</full_name>
+        <docblock line="102">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel" line="108" package="Default">
+        <name>limit</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::limit()</full_name>
+        <docblock line="108">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$limit</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel" line="115" package="Default">
+        <name>retry</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::retry()</full_name>
+        <docblock line="115">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$limit</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel" line="122" package="Default">
+        <name>account</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::account()</full_name>
+        <docblock line="122">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$accountid</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel" line="136" package="Default">
+        <name>domain</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::domain()</full_name>
+        <docblock line="136">
+          <description>domain function sets the LivePerson domain for the secified service. Like `key` it is set for the execution script, but not session. It must be run each time.</description>
+          <long-description></long-description>
+          <tag name="access" line="136" description="public"/>
+          <tag name="param" line="136" description="" type="mixed" variable="$service">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="136" description="" type="\LivePersonInc\LiveEngageLaravel\this">
+            <type>\LivePersonInc\LiveEngageLaravel\this</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$service</name>
+          <default></default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel" line="145" package="Default">
+        <name>visitor</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::visitor()</full_name>
+        <docblock line="145">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$visitorID</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$sessionID</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$setData</name>
+          <default>false</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel" line="160" package="Default">
+        <name>chat</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::chat()</full_name>
+        <docblock line="160">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="true" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel" line="176" package="Default">
+        <name>retrieveHistory</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::retrieveHistory()</full_name>
+        <docblock line="176">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$start</name>
+          <default></default>
+          <type>\Carbon\Carbon</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$end</name>
+          <default></default>
+          <type>\Carbon\Carbon</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$url</name>
+          <default>false</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="true" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel" line="198" package="Default">
+        <name>retrieveMsgHistory</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::retrieveMsgHistory()</full_name>
+        <docblock line="198">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$start</name>
+          <default></default>
+          <type>\Carbon\Carbon</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$end</name>
+          <default></default>
+          <type>\Carbon\Carbon</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$url</name>
+          <default>false</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel" line="225" package="Default">
+        <name>skills</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::skills()</full_name>
+        <docblock line="225">
+          <description>skills function gets collection of skills associated with the account.</description>
+          <long-description></long-description>
+          <tag name="access" line="225" description="public"/>
+          <tag name="return" line="225" description="" type="\LivePersonInc\LiveEngageLaravel\Collections\Skills">
+            <type>\LivePersonInc\LiveEngageLaravel\Collections\Skills</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel" line="241" package="Default">
+        <name>getSkill</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::getSkill()</full_name>
+        <docblock line="241">
+          <description>getSkill function gets skill object based on ID.</description>
+          <long-description></long-description>
+          <tag name="access" line="241" description="public"/>
+          <tag name="param" line="241" description="" type="integer" variable="$skillId">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="241" description="" type="\LivePersonInc\LiveEngageLaravel\Models\Skill">
+            <type>\LivePersonInc\LiveEngageLaravel\Models\Skill</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$skillId</name>
+          <default></default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel" line="257" package="Default">
+        <name>getAgent</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::getAgent()</full_name>
+        <docblock line="257">
+          <description>getAgent function gets agent object based on ID.</description>
+          <long-description></long-description>
+          <tag name="access" line="257" description="public"/>
+          <tag name="param" line="257" description="" type="integer" variable="$userId">
+            <type>integer</type>
+          </tag>
+          <tag name="return" line="257" description="" type="\LivePersonInc\LiveEngageLaravel\Models\Agent">
+            <type>\LivePersonInc\LiveEngageLaravel\Models\Agent</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$userId</name>
+          <default></default>
+          <type>integer</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel" line="266" package="Default">
+        <name>updateAgent</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::updateAgent()</full_name>
+        <docblock line="266">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$userId</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$properties</name>
+          <default></default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel" line="287" package="Default">
+        <name>agents</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::agents()</full_name>
+        <docblock line="287">
+          <description>agents function gets collection of agents from account.</description>
+          <long-description></long-description>
+          <tag name="access" line="287" description="public"/>
+          <tag name="return" line="287" description="" type="\LivePersonInc\LiveEngageLaravel\Collections\AgentParticipants">
+            <type>\LivePersonInc\LiveEngageLaravel\Collections\AgentParticipants</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel" line="331" package="Default">
+        <name>getAgentStatus</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::getAgentStatus()</full_name>
+        <docblock line="331">
+          <description>getAgentStatus function gets status of agents based on provided Skill IDs.</description>
+          <long-description></long-description>
+          <tag name="access" line="331" description="public"/>
+          <tag name="param" line="331" description="" type="\LivePersonInc\LiveEngageLaravel\int/array" variable="$skills">
+            <type>\LivePersonInc\LiveEngageLaravel\int/array</type>
+          </tag>
+          <tag name="return" line="331" description="" type="\LivePersonInc\LiveEngageLaravel\Collections\AgentParticipants">
+            <type>\LivePersonInc\LiveEngageLaravel\Collections\AgentParticipants</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$skills</name>
+          <default></default>
+          <type>\LivePersonInc\LiveEngageLaravel\int/array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel" line="358" package="Default">
+        <name>conversationHistory</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::conversationHistory()</full_name>
+        <docblock line="358">
+          <description>conversationHistory function.</description>
+          <long-description></long-description>
+          <tag name="access" line="358" description="public"/>
+          <tag name="param" line="358" description="&lt;p&gt;(default: null)&lt;/p&gt;" type="\Carbon\Carbon" variable="$start">
+            <type>\Carbon\Carbon</type>
+          </tag>
+          <tag name="param" line="358" description="&lt;p&gt;(default: null)&lt;/p&gt;" type="\Carbon\Carbon" variable="$end">
+            <type>\Carbon\Carbon</type>
+          </tag>
+          <tag name="param" line="358" description="&lt;p&gt;(default: [])&lt;/p&gt;" type="\LivePersonInc\LiveEngageLaravel\int/array" variable="$skills">
+            <type>\LivePersonInc\LiveEngageLaravel\int/array</type>
+          </tag>
+          <tag name="return" line="358" description="" type="\LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory">
+            <type>\LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$start</name>
+          <default>null</default>
+          <type>\Carbon\Carbon</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$end</name>
+          <default>null</default>
+          <type>\Carbon\Carbon</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$skills</name>
+          <default>array()</default>
+          <type>\LivePersonInc\LiveEngageLaravel\int/array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel" line="387" package="Default">
+        <name>getConversation</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::getConversation()</full_name>
+        <docblock line="387">
+          <description>getConversation function.</description>
+          <long-description></long-description>
+          <tag name="access" line="387" description="public"/>
+          <tag name="param" line="387" description="" type="mixed" variable="$conversationId">
+            <type>mixed</type>
+          </tag>
+          <tag name="return" line="387" description="" type="\LivePersonInc\LiveEngageLaravel\Models\Conversation">
+            <type>\LivePersonInc\LiveEngageLaravel\Models\Conversation</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$conversationId</name>
+          <default></default>
+          <type>mixed</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel" line="414" package="Default">
+        <name>engagementHistory</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::engagementHistory()</full_name>
+        <docblock line="414">
+          <description>engagementHistory function.</description>
+          <long-description></long-description>
+          <tag name="access" line="414" description="public"/>
+          <tag name="param" line="414" description="&lt;p&gt;(default: null)&lt;/p&gt;" type="\Carbon\Carbon" variable="$start">
+            <type>\Carbon\Carbon</type>
+          </tag>
+          <tag name="param" line="414" description="&lt;p&gt;(default: null)&lt;/p&gt;" type="\Carbon\Carbon" variable="$end">
+            <type>\Carbon\Carbon</type>
+          </tag>
+          <tag name="param" line="414" description="&lt;p&gt;(default: [])&lt;/p&gt;" type="\LivePersonInc\LiveEngageLaravel\int/array" variable="$skills">
+            <type>\LivePersonInc\LiveEngageLaravel\int/array</type>
+          </tag>
+          <tag name="return" line="414" description="" type="\LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory">
+            <type>\LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$start</name>
+          <default>null</default>
+          <type>\Carbon\Carbon</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$end</name>
+          <default>null</default>
+          <type>\Carbon\Carbon</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$skills</name>
+          <default>array()</default>
+          <type>\LivePersonInc\LiveEngageLaravel\int/array</type>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel" line="442" package="Default">
+        <name>status</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::status()</full_name>
+        <docblock line="442">
+          <description>status function gets status of the account.</description>
+          <long-description></long-description>
+          <tag name="access" line="442" description="public"/>
+          <tag name="return" line="442" description="" type="\LivePersonInc\LiveEngageLaravel\Models\AccountStatus">
+            <type>\LivePersonInc\LiveEngageLaravel\Models\AccountStatus</type>
+          </tag>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel" line="451" package="Default">
+        <name>login</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::login()</full_name>
+        <docblock line="451">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="private" namespace="LivePersonInc\LiveEngageLaravel" line="478" package="Default">
+        <name>requestV2</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::requestV2()</full_name>
+        <docblock line="478">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$url</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default></default>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$payload</name>
+          <default>array()</default>
+          <type/>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$headers</name>
+          <default>array()</default>
+          <type/>
+        </argument>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="private" namespace="LivePersonInc\LiveEngageLaravel" line="500" package="Default">
+        <name>requestClient</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::requestClient()</full_name>
+        <docblock line="500">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </method>
+      <method final="false" abstract="false" static="false" visibility="private" namespace="LivePersonInc\LiveEngageLaravel" line="533" package="Default">
+        <name>requestV1</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::requestV1()</full_name>
+        <docblock line="533">
+          <description>requestV1 - request bootstrap for older oauth supported APIs.</description>
+          <long-description></long-description>
+          <tag name="access" line="533" description="private"/>
+          <tag name="param" line="533" description="" type="string" variable="$url">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="533" description="" type="string" variable="$method">
+            <type>string</type>
+          </tag>
+          <tag name="param" line="533" description="&lt;p&gt;(default: [])&lt;/p&gt;" type="array" variable="$payload">
+            <type>array</type>
+          </tag>
+          <tag name="return" line="533" description="" type="mixed">
+            <type>mixed</type>
+          </tag>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$url</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$method</name>
+          <default></default>
+          <type>string</type>
+        </argument>
+        <argument line="0" by_reference="false">
+          <name>$payload</name>
+          <default>array()</default>
+          <type>array</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="96" code="PPC:ERR-50008">No summary for method nonInteractive()</error>
+      <error line="102" code="PPC:ERR-50008">No summary for method active()</error>
+      <error line="108" code="PPC:ERR-50015">Argument $limit is missing from the Docblock of limit</error>
+      <error line="108" code="PPC:ERR-50008">No summary for method limit()</error>
+      <error line="115" code="PPC:ERR-50015">Argument $limit is missing from the Docblock of retry</error>
+      <error line="115" code="PPC:ERR-50008">No summary for method retry()</error>
+      <error line="122" code="PPC:ERR-50015">Argument $accountid is missing from the Docblock of account</error>
+      <error line="122" code="PPC:ERR-50008">No summary for method account()</error>
+      <error line="145" code="PPC:ERR-50015">Argument $visitorID is missing from the Docblock of visitor</error>
+      <error line="145" code="PPC:ERR-50015">Argument $sessionID is missing from the Docblock of visitor</error>
+      <error line="145" code="PPC:ERR-50015">Argument $setData is missing from the Docblock of visitor</error>
+      <error line="145" code="PPC:ERR-50008">No summary for method visitor()</error>
+      <error line="160" code="PPC:ERR-50008">No summary for method chat()</error>
+      <error line="176" code="PPC:ERR-50015">Argument $start is missing from the Docblock of retrieveHistory</error>
+      <error line="176" code="PPC:ERR-50015">Argument $end is missing from the Docblock of retrieveHistory</error>
+      <error line="176" code="PPC:ERR-50015">Argument $url is missing from the Docblock of retrieveHistory</error>
+      <error line="176" code="PPC:ERR-50008">No summary for method retrieveHistory()</error>
+      <error line="198" code="PPC:ERR-50015">Argument $start is missing from the Docblock of retrieveMsgHistory</error>
+      <error line="198" code="PPC:ERR-50015">Argument $end is missing from the Docblock of retrieveMsgHistory</error>
+      <error line="198" code="PPC:ERR-50015">Argument $url is missing from the Docblock of retrieveMsgHistory</error>
+      <error line="198" code="PPC:ERR-50008">No summary for method retrieveMsgHistory()</error>
+      <error line="266" code="PPC:ERR-50015">Argument $userId is missing from the Docblock of updateAgent</error>
+      <error line="266" code="PPC:ERR-50015">Argument $properties is missing from the Docblock of updateAgent</error>
+      <error line="266" code="PPC:ERR-50008">No summary for method updateAgent()</error>
+      <error line="451" code="PPC:ERR-50008">No summary for method login()</error>
+      <error line="478" code="PPC:ERR-50015">Argument $url is missing from the Docblock of requestV2</error>
+      <error line="478" code="PPC:ERR-50015">Argument $method is missing from the Docblock of requestV2</error>
+      <error line="478" code="PPC:ERR-50015">Argument $payload is missing from the Docblock of requestV2</error>
+      <error line="478" code="PPC:ERR-50015">Argument $headers is missing from the Docblock of requestV2</error>
+      <error line="478" code="PPC:ERR-50008">No summary for method requestV2()</error>
+      <error line="500" code="PPC:ERR-50008">No summary for method requestClient()</error>
+      <error line="34" code="PPC:ERR-50007">No summary for property $account</error>
+      <error line="35" code="PPC:ERR-50007">No summary for property $results</error>
+      <error line="36" code="PPC:ERR-50007">No summary for property $skills</error>
+      <error line="37" code="PPC:ERR-50007">No summary for property $next</error>
+      <error line="38" code="PPC:ERR-50007">No summary for property $prev</error>
+      <error line="39" code="PPC:ERR-50007">No summary for property $start</error>
+      <error line="40" code="PPC:ERR-50007">No summary for property $end</error>
+      <error line="41" code="PPC:ERR-50007">No summary for property $config</error>
+      <error line="42" code="PPC:ERR-50007">No summary for property $version</error>
+      <error line="43" code="PPC:ERR-50007">No summary for property $history_limit</error>
+      <error line="44" code="PPC:ERR-50007">No summary for property $history</error>
+      <error line="45" code="PPC:ERR-50007">No summary for property $context</error>
+      <error line="46" code="PPC:ERR-50007">No summary for property $interactive</error>
+      <error line="47" code="PPC:ERR-50007">No summary for property $ended</error>
+      <error line="48" code="PPC:ERR-50007">No summary for property $bearer</error>
+      <error line="49" code="PPC:ERR-50007">No summary for property $revision</error>
+      <error line="51" code="PPC:ERR-50007">No summary for property $domain</error>
+      <error line="53" code="PPC:ERR-50007">No summary for property $retry_limit</error>
+      <error line="54" code="PPC:ERR-50007">No summary for property $retry_counter</error>
+    </parse_markers>
+    <source>eJztG2tz2zbys/QrcBpPSKeWZDeXD+dUybmOJ/ZcHHtip72ZxKNAJCShpkiWAJU4rv77LZ4EX7LUtNde5z4kEYHdxb6xCyDfvUjnabcb4wVhKQ4Iek2X5JJkLInP4uCD+DqJZ3hGXuMML0n0rNvNGUHHOJsk8Qf1zzM59Cr/8iUip5ynH44jSmJeGz7FcRiR7Irj4LY2eZVPWJDRCck+XOCcz9XfBwruAaY+nCchidiHs3iabIVwTjh+iTneCukoCJI85iAGz9mWyzGGZzSebc3oJb6LEhxuhfMDZZQn2XayzazhNsS4uqVRtBXGMV6kmM7irZDU4GJb7o6TeAlQmNNku/WUqchmOMdJFJFArOEyekoZqP9uexJSpRt6losnjXeJM04DmuKYb0ji5HNAUkWhmLSD27Ph6tzqoDt8/LiLHqMaKgoizBiaJ1HIEI4ilEwRnxOUJQlHkJFuARRN81gRHwANQeYIAHuMcA7B1Cum0SfQHMoIz7MYfdzhc8o+IpagBeHzJEQBjtGEoGCOaUzCATpPGNdzZVSsuUomP4FUKMmQ5dYKKlgZdhVcTarufbeTZnSJOUE7WCUMNEJTHDHwqWIqIyyPOIOp9zfuOJMuUBuOyedGMmlGlk3jjIM3uAMkDt3PIImndAaYHiPZkgaEDSIQJZWWHoRkioE7z8UQlgXhBcrBYL80NVe2Hkd0QQWXT/cbZpu4BC64Esyj8CvDgeM6b0mQZCErrWShlgSQeJaTiowkbBifEJyRrNkKS6qlAp6diTBZgKsUKCUc7sr6rDYlbS7XkzSF/3fAc8fjGQGng20gsH6LeCI8L6MEBDJk0iwBO3BKmAkJ6WsDSUX+9U9wLEhTKM0nEQ3UUAr+t0AL+hlUsIM50JzknKg57dxyUowMgWeJWjAiufMLxN1uBzy5ozFlQPWfF9Mg9aokG5iSgd4hZgzJB/jVlJcJbWfJEvU1O5qPIq6UH/u9ez2jvlcDDdHbBUY7w6GetVZtQ1MACktPFX7fhqQhervoxSEqY1XUdEvuCvEgiTFpXRiF34WhEZsneRQiSL8DdKVSHRJkURJDnSbTFSQzESRg6ynkKFE/pRyRzyTIBe09BDZCMeRRMSsIM1D/wzZRPgQqFyvuCG59nQoOkWeSwm7JfoKvFvsBvi+JjErIjh1tFuo1ZSGB23MsUfIHEVkl75Sq7tS5iMXOZbNGxZHK+cSkh43oNtIzGaidUp2QzCT+jvynTK2aVxVMs+R1ujIZNdItZ7DtqOrA8s3eRsO20Cwg2mibsNBhWY+MoviwMNafAzqloGvtOAOAvSXoI7jMRwRiQbCImDLgNjJ0qBQBYgIDnUFuzqEqgMjK8hgRHMwRpwuyTdrVzGwaIEom36AZRUJpkIKjC4+0Bvs5J4z/cOD35tAyscPhEKfUjZWYcDE01Dof3pfNsRrqNWBC/1oNJ5iRd2/PBj8BgRc6YY3uywls1dtD3quTa0+mxMLMNpNabvvPNb1NPWmpuhR/R/84e7knNCjNoX9z0aKZcCr7mdadxxbcU8mATpFvcHaRAO3s5FkksotR2n0JebVeY4skFmxBKhxqDhkAWWZXapQNgzzLoPwewhYOlfeL5ejgEaPh6L6QZdWTDFY208Kogk1Q8+XF1bVXyC01vkLQk5A/QBooIDn5CmGsz6xa8ifU4tVt3dg0cPqIH0ha+N7XKECsN9RsSrneHI9EodgzxHE2k3W3EA7+3MidJ1XtN4zH5BPSzbgvYS1X6+K1YlpNzqAaHRoKOlKmNMYRasrnok7U5bGvjmB0qb+HzCdsQbCQ0tSauCHxTBB6KT91BGks+Q+UMq16dmr1sd6j1uveQWCQiXAWzF/IXcemm9JWt3qUTKcQBaN95WtKxDFs/YI7+dF/zpMfnwRXslTxVb0GkhsY+FmDECChyieuLaW9PacQ8NDoOarXB3sSTm7wLoQcUHOSMTknaXa8aZYs5DdwxROxmfiFKLtogLz9/X1vTwHzpAqq5SkD3ui1RJt4Bt2Rw4pqHYXr1qujNT4Z6lzzsOeds9lv43wLRWhLt1uYQ7TNnM7NItt53SOWZHwkRTsMCQv+a17I5Mlizb3QC/TeO359cXXi3aBD+H1xefIGTGfG/oTuV0pvGztgp6gJ9TmI9cGZqAmLMxjRGWsQ6JiSgMJuFUJrxOey3tNOsFkLWj+Ba6nX1IItm5Ze8li2NG8JDi/i6O432rokzTyTrjyMSB86Q9i+FTuwl/19sN8rq1y4lhLFr2j/29IGXVM7qFniVRQvlzKHYqLOC6EXRWcvNyqOIYnqc62zsKR49yC5ReWGH98Q+HMpX5TTiq/Vejv4Ps4yfLdbDYaHzSHPdivmwHLsa8whhGi2hlyv3Rpy2tf4fxZjqL/vNVftplDMb2eKqg7yFPIVKalBFHb2zM7oRNnIloQ11TX1Uw26+zGjnPxBytuZAwMwaapi79/90+vry/65PDjvX8D2mtFQFUze5btrtUV4dNo/xzyYq/HHnimmf40tJFVXvfChuapHi1T5+j3DgMDW+Os3idp1S0u4qMV+3X7BiFgONE8XaQSR6Xt7oAhdrIZa06n9BaFLYAfUX1ECZdIbvCCes10z/RHT4DYu5oQ3H2cEF9jCEa7vUnJmBig7Suk7GDXLZsmURkTs/3qAZAsq+8NXWZKnZhhHUfKJhEdp+i9yZwahD4tn5PJT+IZ85q8Fo3pigT8fQ4/GvEqJoUVKsebSYYSAKiMr84SV+TOf0zyKHGUQodA7Uoi3wDFYKpRWLfEvVPNOhnuhiZMYT6JC0ZhxEOVYygRNO/Hc+ud3i1YVo4+Uj4y0r7TlO9dRt68GJAl1412tCdRgEVR2IwL9L6moW1UpcfZys7sL2JiGMh2YW7CvDsAy/7qGsBnaXrVRNpbrWgAouM0slNv6p8hha1uZjWy+ZRMjVdtfUvJpqPRtjyt0E/G+UosXvG57NmHK8M6OkzJHbX5UHPvhQsP6yq5Kpf98oZ9baHrm9UWR/gtyYwFreXG6iIKemih5alC/et70Iko5X6mhda49Ykgeu02A0B6tA6s5swP8/ma31bUb7tBbnLtB5HJbLpQNbJW6czvmXjQ33Q6ULjHtnEXS6E5jbJti0cP7wspqWX93VzTBIYSXbZB1c7wGEtwqDE+TPGP+t0/U1zmNc06Y//Qfuo3WV+hjXQc7Hl47rjDnFGJV99zOwXc8D+QsSfTsAehCIp0ixNQ6V28mZBmrxV+DU/g1Og3+sEk8SmbXhlo11iCrugxtF2f6psRltrkPcZdoT+8ulF+h+uDZ0++RsMunTu6XPoKqJvD6KVBZCpXWq/pyigzlB9skeHFT8jd9jaew13qPvkwxdUUuXn3Jc/1KtVGyRcXd1y3wfv/GnD8aFyPVt1T/m8m89iSsxZFr4v4/kbuJ/C+SxWveUM/hra+gfuMUztYX9FsfoTY9kG07RFW1uHHVSvZVs+7NdpAshvKGmlFORtV823Pc4KFC173Gdpskl+l6Rdp6ECSb7LbmXtTEpatL8XQlX5BsrB7EtL0lEk9ejK01AiMBcLsGRwGYR0vJLVn3WEnOa9gHKUvgcYm+6D/F6cEaLAEyFjA9K7140W1PkQwJr9NBcnMzA/rUQB4XwGRHb3xWb/pgQLJTm1fDmoR01GvBvafApCS1yStFSjVOFv9mw8pgbR0gvUPcMw+ebOOjZq8WCqscEdpXjO6TCznWcN1inVa/KXTu8sqd/456BVvcTcuNpDhla9hXtONbz5Zv/k2lKj/0BuHeqHuanlS2jDHImNmM+PqySj4FhVaX36X6QBH8AOJNlU4iAZibqiNQTZLRL3JGgX6vVOOhASopqytvrIoTQ+UAkyS8k3iC6pjEgThes1fzjgPA9qlfXoDGheKVqNZsfqE8pUv7LGCFAnECivzijTXsLLqQ4vMs+QSfCrBkO8lRSBRHsKg8N/4e+PWdA+kWkxrVa1v9JRKOLkqCW8Bx/xPJ4WEgDwONo6n0IhxQ/eeRopK2OvBa0klFbFtu17MK1/kEqazlpBSXbbWOi8foLIa9JSNj5S4eACg2Dw+vzl69Obp+9/ZkfH5yfXrxcnx6fnS8Z+t7JXz/eZqzuW+SQlvQ6ThTatJJTaAX5Nz6QP9PnXJdYPMR6pvfaJIknPEMp/I1XRJBJKFEapzlaZpk4uL16PKs8YxPuWrT41IImKZhpSF3RtfdJju1F96l181tae9gbdqzsWO0W07TRXKrZTehD5WLpGr08bCb87bMczeb56qvylSlXemB9LM+rcn3d02dx3eoNKzenf7yS9PoaIT6B5peJ2cRIal/8HR/X7Ha2Nh8842ee3h3LT2/Kj2tK3IyGg5FSDX8fxi/91asq97rojlmaEIg8xGYJ+Kw26/Ls9vbQweG+5Vsmrstr75W3f8A8kjQoQ==</source>
+  </file>
+  <file path="Models/MetaData.php" generated-path="Models.MetaData.html" hash="a88844a17e5d39db24a71660e5835296" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Carbon">\Carbon\Carbon</namespace-alias>
+    <namespace-alias name="Model">\Illuminate\Database\Eloquent\Model</namespace-alias>
+    <class final="false" abstract="false" namespace="LivePersonInc\LiveEngageLaravel\Models" line="8" package="Default">
+      <extends>\Illuminate\Database\Eloquent\Model</extends>
+      <name>MetaData</name>
+      <full_name>\LivePersonInc\LiveEngageLaravel\Models\MetaData</full_name>
+      <docblock line="8">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="8" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="LivePersonInc\LiveEngageLaravel\Models" line="10" package="Default">
+        <name>$guarded</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\MetaData::guarded</full_name>
+        <default>array()</default>
+        <docblock line="10">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="8" code="PPC:ERR-50005">No summary for class \LivePersonInc\LiveEngageLaravel\Models\MetaData</error>
+      <error line="10" code="PPC:ERR-50007">No summary for property $guarded</error>
+    </parse_markers>
+    <source>eJwlizEOwjAUQ2dyigzcoiAG6FCpldgJw29ilUrpT5qfVEiIu9PSyfazfbrEV1SKaYJEstDtuOCOJIEbtmZLNQ80oKVEC7zpgoOXSqki0FdKfWCzS/VHjfdlGpkyzI0y9SQwtQ9zAef9vH6tJxHdIdO20XhnsFvBVquPOsQUMmyG08ehUHKrOevHs1LfH/9NPpo=</source>
+  </file>
+  <file path="Models/Engagement.php" generated-path="Models.Engagement.html" hash="285ca1b14499ecffb5267b48dc52acf2" package="Default">
+    <docblock line="0">
+      <description></description>
+      <long-description></long-description>
+      <tag name="package" line="0" description="Default"/>
+    </docblock>
+    <namespace-alias name="Model">\Illuminate\Database\Eloquent\Model</namespace-alias>
+    <namespace-alias name="Transcript">\LivePersonInc\LiveEngageLaravel\Collections\Transcript</namespace-alias>
+    <class final="false" abstract="false" namespace="LivePersonInc\LiveEngageLaravel\Models" line="8" package="Default">
+      <extends>\Illuminate\Database\Eloquent\Model</extends>
+      <name>Engagement</name>
+      <full_name>\LivePersonInc\LiveEngageLaravel\Models\Engagement</full_name>
+      <docblock line="8">
+        <description></description>
+        <long-description></long-description>
+        <tag name="package" line="8" description="Default"/>
+      </docblock>
+      <property static="false" visibility="protected" namespace="LivePersonInc\LiveEngageLaravel\Models" line="10" package="Default">
+        <name>$guarded</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Engagement::guarded</full_name>
+        <default>array()</default>
+        <docblock line="10">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+      </property>
+      <method final="false" abstract="false" static="false" visibility="public" namespace="LivePersonInc\LiveEngageLaravel\Models" line="12" package="Default">
+        <name>__construct</name>
+        <full_name>\LivePersonInc\LiveEngageLaravel\Models\Engagement::__construct()</full_name>
+        <docblock line="12">
+          <description></description>
+          <long-description></long-description>
+        </docblock>
+        <argument line="0" by_reference="false">
+          <name>$item</name>
+          <default></default>
+          <type>array</type>
+        </argument>
+      </method>
+    </class>
+    <parse_markers>
+      <error line="0" code="PPC:ERR-50000">No summary was found for this file</error>
+      <error line="8" code="PPC:ERR-50005">No summary for class \LivePersonInc\LiveEngageLaravel\Models\Engagement</error>
+      <error line="12" code="PPC:ERR-50015">Argument $item is missing from the Docblock of __construct</error>
+      <error line="12" code="PPC:ERR-50008">No summary for method __construct()</error>
+      <error line="10" code="PPC:ERR-50007">No summary for property $guarded</error>
+    </parse_markers>
+    <source>eJyFkctOwzAQRdfxV3hRqcmCH0iALkoXkYrEArFpqmrqTIMlxzYep4BQ/x03oeRBJXb2zPE9lu7twr5axjTUSBYE8rU84hM6MjrXojjfVrqCCtfg4IiqeDQlKsoYawh5rlRTSw0eiwfwsAfCYqXMW4Pad2TWcv+FLo1SKLw0mopnB5qEk9YHiVBAxDu4DqEcPzzqkngbzr5YZJ3x4SmWfFY14MpwuOObbcaisGv2Sgp+aHSbzXc7EQzeNcLH4Bx88pn0WCcsCkFRe97MpT6Y+TaESCL08Wia8AXX+M7zcIu7iIRPiLQnkqyPPUqS3rj8avpoeZG8dMOpZ8KmI3ZoFFBbkJX+q+s3F9fyZzKVDcl0TA5V/rezVnbm+hrjkXuInu1Xxjf3SmqkINxsgyVoLLhQfpoOC+yqC584sRP7BggC8dA=</source>
+  </file>
+  <package name="Default" full_name="Default"/>
+  <package name="global" full_name="global"/>
+  <namespace name="LivePersonInc" full_name="LivePersonInc">
+    <namespace name="LiveEngageLaravel" full_name="LivePersonInc\LiveEngageLaravel">
+      <namespace name="Collections" full_name="LivePersonInc\LiveEngageLaravel\Collections"/>
+      <namespace name="Exceptions" full_name="LivePersonInc\LiveEngageLaravel\Exceptions"/>
+      <namespace name="Facades" full_name="LivePersonInc\LiveEngageLaravel\Facades"/>
+      <namespace name="Models" full_name="LivePersonInc\LiveEngageLaravel\Models"/>
+    </namespace>
+  </namespace>
+  <deprecated count="0"/>
+</project>
