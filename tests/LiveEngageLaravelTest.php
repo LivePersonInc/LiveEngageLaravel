@@ -276,6 +276,15 @@ class LiveEngageLaravelTest extends TestCase
 		$this->assertEquals($object->visitor_experience, 'OK');
 	}
 	
+	/**
+	 * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::agents
+	 */
+	public function testAgents()
+	{
+		$agents = LiveEngage::agents();
+		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Collections\AgentParticipants', $agents);
+	}
+	
 	public function setUp()
 	{
 		parent::setUp();
