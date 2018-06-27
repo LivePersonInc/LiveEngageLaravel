@@ -1,4 +1,9 @@
 <?php
+/**
+ * ConversationHistory
+ *
+ * @package LivePersonInc\LiveEngageLaravel\Collections
+ */
 
 namespace LivePersonInc\LiveEngageLaravel\Collections;
 
@@ -18,6 +23,12 @@ use LivePersonInc\LiveEngageLaravel\Models\Campaign;
  */
 class ConversationHistory extends Collection
 {
+	/**
+	 * metaData
+	 * 
+	 * @var \LivePersonInc\LiveEngageLaravel\Models\MetaData
+	 * @access public
+	 */
 	public $metaData;
 
 	/**

@@ -2,6 +2,8 @@
 /**
  * Root class file for all api wrappers.
  *
+ * @package LivePersonInc\LiveEngageLaravel
+ *
  */
  
 namespace LivePersonInc\LiveEngageLaravel;

@@ -1,4 +1,9 @@
 <?php
+/**
+ * Skills
+ *
+ * @package LivePersonInc\LiveEngageLaravel\Collections
+ */
 
 namespace LivePersonInc\LiveEngageLaravel\Collections;
 

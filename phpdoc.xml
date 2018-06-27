@@ -9,8 +9,11 @@
 		</markers>
     </parser>
     <transformer>
-        <target>./docs</target>
+	    <target>./docs</target>
     </transformer>
+    <transformations>
+	    <template name="responsive-twig" />
+	</transformations>
     <files>
         <directory>./src</directory>
     </files>
