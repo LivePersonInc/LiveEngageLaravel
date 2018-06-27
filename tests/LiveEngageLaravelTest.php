@@ -106,6 +106,7 @@ class LiveEngageLaravelTest extends TestCase
      * @covers LivePersonInc\LiveEngageLaravel\Models\MessagingInfo::getSecondsAttribute
      * @covers LivePersonInc\LiveEngageLaravel\Models\MessagingInfo::getHoursAttribute
      * @covers LivePersonInc\LiveEngageLaravel\Models\MessagingInfo::getStartTimeAttribute
+     * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::getConversation
      * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::requestClient
      */	
 	public function testGetMessagingHistory()
@@ -117,10 +118,13 @@ class LiveEngageLaravelTest extends TestCase
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Collections\AgentParticipants', $history->random()->agentParticipants);
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Collections\ConsumerParticipants', $history->random()->consumerParticipants);
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Collections\Transfers', $history->random()->transfers);
+		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Models\Transfer', $history->random()->transfers->random());
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Models\Visitor', $history->random()->visitorInfo);
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Models\MessagingInfo', $history->random()->info);
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Collections\Transcript', $history->random()->messageRecords);
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Models\Message', $history->random()->messageRecords->random());
+		$conversation = LiveEngage::getConversation($history->random()->info->conversationId);
+		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Models\Conversation', $conversation);
 		$this->assertInstanceOf('Carbon\Carbon', $history->random()->messageRecords->random()->time);
 		$this->assertInstanceOf('Carbon\Carbon', $history->random()->info->startTime);
 		$text = $history->random()->messageRecords->random();
@@ -246,12 +250,17 @@ class LiveEngageLaravelTest extends TestCase
 	
 	/**
      * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::skills
+     * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::getSkill
      * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::__construct
+     * @covers LivePersonInc\LiveEngageLaravel\Models\Skill
+     * @covers LivePersonInc\LiveEngageLaravel\Collections\Skills
      */
 	public function testSkills()
 	{
 		$object = LiveEngage::skills();
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Collections\Skills', $object);
+		$skill = LiveEngage::getSkill($object->random()->id);
+		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Models\Skill', $skill);
 	}
 	
 	/**
@@ -278,11 +287,14 @@ class LiveEngageLaravelTest extends TestCase
 	
 	/**
 	 * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::agents
+	 * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::getAgent
 	 */
 	public function testAgents()
 	{
 		$agents = LiveEngage::agents();
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Collections\AgentParticipants', $agents);
+		$agent = LiveEngage::getAgent($agents->random()->id);
+		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Models\Agent', $agent);
 	}
 	
 	public function setUp()

@@ -150,6 +150,7 @@ class LiveEngageLaravel
 	 * @param string $sessionID
 	 * @param mixed $setData (default: false)
 	 * @return mixed
+	 * @codeCoverageIgnore
 	 */
 	public function visitor($visitorID, $sessionID, $setData = false)
 	{
@@ -166,6 +167,9 @@ class LiveEngageLaravel
 		}
 	}
 	
+	/**
+     * @codeCoverageIgnore
+     */
 	// TODO: Enable server chat api here. I actually may create new class
 	public function chat()
 	{
@@ -273,6 +277,15 @@ class LiveEngageLaravel
 		return new Agent((array) $this->requestV2($url, 'GET'));
 	}
 	
+	/**
+	 * updateAgent function.
+	 * 
+	 * @access public
+	 * @param mixed $userId
+	 * @param mixed $properties
+	 * @return void
+	 * @codeCoverageIgnore
+	 */
 	public function updateAgent($userId, $properties)
 	{
 		$agent = $this->getAgent($userId);
@@ -458,6 +471,12 @@ class LiveEngageLaravel
 		return new AccountStatus((array) $response);
 	}
 	
+	/**
+	 * login function.
+	 * 
+	 * @access public
+	 * @return this
+	 */
 	public function login()
 	{
 		$this->domain('agentVep');
@@ -485,6 +504,16 @@ class LiveEngageLaravel
 		return $this;
 	}
 	
+	/**
+	 * requestV2 function.
+	 * 
+	 * @access private
+	 * @param mixed $url
+	 * @param mixed $method
+	 * @param mixed $payload (default: [])
+	 * @param mixed $headers (default: [])
+	 * @return void
+	 */
 	private function requestV2($url, $method, $payload = [], $headers = [])
 	{
 		$this->login();
@@ -507,6 +536,12 @@ class LiveEngageLaravel
 		return json_decode($res->getBody());
 	}
 	
+	/**
+	 * requestClient function.
+	 * 
+	 * @access private
+	 * @return \GuzzleHttp\Client
+	 */
 	private function requestClient()
 	{
 		$consumer_key = config("{$this->config}.key");

@@ -4,6 +4,9 @@ namespace LivePersonInc\LiveEngageLaravel\Exceptions;
 
 use Exception;
 
+/**
+ * @codeCoverageIgnore
+ */
 class LiveEngageException extends Exception
 {
 	public function __construct($message, $code = 0, Exception $previous = null)
