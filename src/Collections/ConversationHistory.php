@@ -77,11 +77,11 @@ class ConversationHistory extends Collection
 				return $collection;
 				
 			} else {
-				return false;
+				return new self();
 			}
 		}
 		
-		return false;
+		return new self();
 		
 	}
 
@@ -110,11 +110,11 @@ class ConversationHistory extends Collection
 				return $collection;
 				
 			} else {
-				return false;
+				return new self();
 			}
 		}
 		
-		return false;
+		return new self();
 		
 	}
 	
