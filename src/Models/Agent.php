@@ -5,6 +5,11 @@ namespace LivePersonInc\LiveEngageLaravel\Models;
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
 
+/**
+ * Agent class.
+ * 
+ * @extends Model
+ */
 class Agent extends Model
 {
 	protected $guarded = [];

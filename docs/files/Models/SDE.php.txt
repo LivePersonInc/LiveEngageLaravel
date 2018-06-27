@@ -5,9 +5,9 @@ namespace LivePersonInc\LiveEngageLaravel\Models;
 use Illuminate\Database\Eloquent\Model;
 
 /**
- * LivePersonInc\LiveEngageLaravel\Models\SDE class.
+ * SDE class.
  * 
- * @extends Illuminate\Database\Eloquent\Model
+ * @extends Model
  */
 class SDE extends Model
 {

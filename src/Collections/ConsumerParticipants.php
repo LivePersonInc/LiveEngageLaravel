@@ -6,10 +6,22 @@ use Illuminate\Support\Collection;
 use LivePersonInc\LiveEngageLaravel\Models\Visitor;
 use LivePersonInc\LiveEngageLaravel\Models\MetaData;
 
+/**
+ * ConsumerParticipants class.
+ * 
+ * @extends Collection
+ */
 class ConsumerParticipants extends Collection
 {
 	public $metaData;
 	
+	/**
+	 * __construct function.
+	 * 
+	 * @access public
+	 * @param array $models (default: [])
+	 * @return void
+	 */
 	public function __construct(array $models = [])
 	{
 		

@@ -6,6 +6,11 @@ use Illuminate\Support\Collection;
 use LivePersonInc\LiveEngageLaravel\Models\Agent;
 use LivePersonInc\LiveEngageLaravel\Models\MetaData;
 
+/**
+ * AgentParticipants class.
+ * 
+ * @extends Collection
+ */
 class AgentParticipants extends Collection
 {
 	public $metaData;

@@ -5,6 +5,11 @@ namespace LivePersonInc\LiveEngageLaravel\Collections;
 use Illuminate\Support\Collection;
 use LivePersonInc\LiveEngageLaravel\Models\Transfer;
 
+/**
+ * Transfers class.
+ * 
+ * @extends Collection
+ */
 class Transfers extends Collection
 {
 	public function __construct(array $models = [])
@@ -17,6 +22,12 @@ class Transfers extends Collection
 		parent::__construct($models);
 	}
 	
+	/**
+	 * toSkillIds function.
+	 * 
+	 * @access public
+	 * @return array
+	 */
 	public function toSkillIds()
 	{
 		$array = array_map(function($item) {

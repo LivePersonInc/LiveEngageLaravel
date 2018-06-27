@@ -11,10 +11,22 @@ use LivePersonInc\LiveEngageLaravel\Models\Info;
 use LivePersonInc\LiveEngageLaravel\Models\Visitor;
 use LivePersonInc\LiveEngageLaravel\Models\Campaign;
 
+/**
+ * EngagementHistory class.
+ * 
+ * @extends Collection
+ */
 class EngagementHistory extends Collection
 {
 	public $metaData;
 
+	/**
+	 * __construct function.
+	 * 
+	 * @access public
+	 * @param array $models (default: [])
+	 * @return void
+	 */
 	public function __construct(array $models = [])
 	{
 		$models = array_map(function($item) {
@@ -24,6 +36,13 @@ class EngagementHistory extends Collection
 		parent::__construct($models);
 	}
 	
+	/**
+	 * find function.
+	 * 
+	 * @access public
+	 * @param mixed $engagementID
+	 * @return Engagement
+	 */
 	public function find($engagementID)
 	{
 		$result = $this->filter(function($value, $key) use ($engagementID) {
@@ -33,6 +52,12 @@ class EngagementHistory extends Collection
 		return $result->first();
 	}
 
+	/**
+	 * next function.
+	 * 
+	 * @access public
+	 * @return EngagementHistory
+	 */
 	public function next()
 	{
 		/** @scrutinizer ignore-call */
@@ -60,6 +85,12 @@ class EngagementHistory extends Collection
 		
 	}
 
+	/**
+	 * prev function.
+	 * 
+	 * @access public
+	 * @return EngagementHistory
+	 */
 	public function prev()
 	{
 		/** @scrutinizer ignore-call */
@@ -87,6 +118,13 @@ class EngagementHistory extends Collection
 		
 	}
 	
+	/**
+	 * merge function.
+	 * 
+	 * @access public
+	 * @param EngagementHistory $collection
+	 * @return EngagementHistory
+	 */
 	public function merge($collection) {
 		
 		$meta = $collection->metaData;

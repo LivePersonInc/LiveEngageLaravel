@@ -6,6 +6,11 @@ use Illuminate\Support\Collection;
 use LivePersonInc\LiveEngageLaravel\Models\Message;
 use LivePersonInc\LiveEngageLaravel\Models\Agent;
 
+/**
+ * Transcript class.
+ * 
+ * @extends Collection
+ */
 class Transcript extends Collection
 {
 	public function __construct(array $models = [], $agents = false)

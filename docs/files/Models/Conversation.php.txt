@@ -9,6 +9,11 @@ use LivePersonInc\LiveEngageLaravel\Collections\Transfers;
 use LivePersonInc\LiveEngageLaravel\Collections\Transcript;
 use LivePersonInc\LiveEngageLaravel\Collections\SDEs;
 
+/**
+ * Conversation class.
+ * 
+ * @extends Model
+ */
 class Conversation extends Model
 {
 	protected $guarded = [];

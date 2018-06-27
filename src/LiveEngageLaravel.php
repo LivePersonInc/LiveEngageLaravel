@@ -166,6 +166,7 @@ class LiveEngageLaravel
 		}
 	}
 	
+	// TODO: Enable server chat api here. I actually may create new class
 	public function chat()
 	{
 		$this->domain('conversationVep');
