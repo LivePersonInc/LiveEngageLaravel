@@ -62,8 +62,9 @@ class LiveEngageLaravelTest extends TestCase
 	
 	/**
 	 * @covers LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory::__construct
-     * @covers LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory::next
-     * @covers LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory::prev
+     * @covers LivePersonInc\LiveEngageLaravel\Traits\Pageable
+     * @covers LivePersonInc\LiveEngageLaravel\Traits\Pageable::next
+     * @covers LivePersonInc\LiveEngageLaravel\Traits\Pageable::prev
      * @use LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory::metaData
      * @covers LivePersonInc\LiveEngageLaravel\Models\Engagement
      * @covers LivePersonInc\LiveEngageLaravel\Models\MetaData
@@ -139,8 +140,9 @@ class LiveEngageLaravelTest extends TestCase
 	}
 	
 	/**
-     * @covers LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory::next
-     * @covers LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory::prev
+	 * @covers LivePersonInc\LiveEngageLaravel\Traits\Pageable
+     * @covers LivePersonInc\LiveEngageLaravel\Traits\Pageable::next
+     * @covers LivePersonInc\LiveEngageLaravel\Traits\Pageable::prev
      * @covers LivePersonInc\LiveEngageLaravel\Models\Conversation
      */
 	public function testConversationHistoryNext()

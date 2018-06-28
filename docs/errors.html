@@ -123,7 +123,9 @@
                                                                                                     <li><a href="#Collections/Transcript.php"><i class="icon-file"></i> Collections/Transcript.php</a></li>
                                                                                                     <li><a href="#Models/Transfer.php"><i class="icon-file"></i> Models/Transfer.php</a></li>
                                                                                                     <li><a href="#Models/AccountStatus.php"><i class="icon-file"></i> Models/AccountStatus.php</a></li>
-                                                                                                                                                                                                                    <li><a href="#Collections/Transfers.php"><i class="icon-file"></i> Collections/Transfers.php</a></li>
+                                                                                                    <li><a href="#Collections/ConversationHistory.php"><i class="icon-file"></i> Collections/ConversationHistory.php</a></li>
+                                                                                                    <li><a href="#Collections/EngagementHistory.php"><i class="icon-file"></i> Collections/EngagementHistory.php</a></li>
+                                                                                                    <li><a href="#Collections/Transfers.php"><i class="icon-file"></i> Collections/Transfers.php</a></li>
                                                                                                     <li><a href="#Models/Skill.php"><i class="icon-file"></i> Models/Skill.php</a></li>
                                                                                                     <li><a href="#Models/SDE.php"><i class="icon-file"></i> Models/SDE.php</a></li>
                                                                                                     <li><a href="#Facades/LiveEngageLaravel.php"><i class="icon-file"></i> Facades/LiveEngageLaravel.php</a></li>
@@ -132,6 +134,7 @@
                                                                                                                                                             <li><a href="#LiveEngageLaravel.php"><i class="icon-file"></i> LiveEngageLaravel.php</a></li>
                                                                                                     <li><a href="#Models/MetaData.php"><i class="icon-file"></i> Models/MetaData.php</a></li>
                                                                                                     <li><a href="#Models/Engagement.php"><i class="icon-file"></i> Models/Engagement.php</a></li>
+                                                                                                    <li><a href="#Traits/Pageable.php"><i class="icon-file"></i> Traits/Pageable.php</a></li>
                                                                     </ul>
         </div>
 
@@ -481,7 +484,7 @@
                         <h3>
                             <i class="icon-file"></i>
                             Models/Agent.php
-                            <span class="pull-right badge badge-info">7</span>
+                            <span class="pull-right badge badge-info">8</span>
                         </h3>
                         <div>
                             <table class="table markers table-bordered">
@@ -495,37 +498,42 @@
                                 <tbody>
                                                                     <tr class="error">
                                         <td>error</td>
-                                        <td>27</td>
+                                        <td>29</td>
                                         <td>No summary for method getUserTypeNameAttribute()</td>
                                     </tr>
                                                                     <tr class="error">
                                         <td>error</td>
-                                        <td>32</td>
+                                        <td>35</td>
                                         <td>No summary for method getLastUpdatedTimeAttribute()</td>
                                     </tr>
                                                                     <tr class="error">
                                         <td>error</td>
-                                        <td>37</td>
+                                        <td>40</td>
                                         <td>No summary for method getCurrentStatusStartTimeAttribute()</td>
                                     </tr>
                                                                     <tr class="error">
                                         <td>error</td>
-                                        <td>42</td>
+                                        <td>45</td>
                                         <td>No summary for method getCurrentStatusReasonStartTimeAttribute()</td>
                                     </tr>
                                                                     <tr class="error">
                                         <td>error</td>
-                                        <td>47</td>
+                                        <td>50</td>
                                         <td>No summary for method getStatusMinutesAttribute()</td>
                                     </tr>
                                                                     <tr class="error">
                                         <td>error</td>
-                                        <td>20</td>
+                                        <td>55</td>
+                                        <td>No summary for method getAvatarAttribute()</td>
+                                    </tr>
+                                                                    <tr class="error">
+                                        <td>error</td>
+                                        <td>21</td>
                                         <td>No summary for property $guarded</td>
                                     </tr>
                                                                     <tr class="error">
                                         <td>error</td>
-                                        <td>22</td>
+                                        <td>23</td>
                                         <td>No summary for property $userTypes</td>
                                     </tr>
                                                             </tbody>
@@ -723,8 +731,56 @@
                         </div>
                                     </div>
                             <div class="package-contents">
+                                            <a name="Collections/ConversationHistory.php" id="Collections/ConversationHistory.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            Collections/ConversationHistory.php
+                            <span class="pull-right badge badge-info">1</span>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr class="error">
+                                        <td>error</td>
+                                        <td>32</td>
+                                        <td>No summary for property $historyFunction</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
                                     </div>
                             <div class="package-contents">
+                                            <a name="Collections/EngagementHistory.php" id="Collections/EngagementHistory.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            Collections/EngagementHistory.php
+                            <span class="pull-right badge badge-info">1</span>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr class="error">
+                                        <td>error</td>
+                                        <td>32</td>
+                                        <td>No summary for property $historyFunction</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
                                     </div>
                             <div class="package-contents">
                                             <a name="Collections/Transfers.php" id="Collections/Transfers.php"></a>
@@ -1059,6 +1115,32 @@
                             </table>
                         </div>
                                     </div>
+                            <div class="package-contents">
+                                            <a name="Traits/Pageable.php" id="Traits/Pageable.php"></a>
+                        <h3>
+                            <i class="icon-file"></i>
+                            Traits/Pageable.php
+                            <span class="pull-right badge badge-info">1</span>
+                        </h3>
+                        <div>
+                            <table class="table markers table-bordered">
+                                <thead>
+                                <tr>
+                                    <th>Type</th>
+                                    <th>Line</th>
+                                    <th>Description</th>
+                                </tr>
+                                </thead>
+                                <tbody>
+                                                                    <tr class="error">
+                                        <td>error</td>
+                                        <td>0</td>
+                                        <td>No summary was found for this file</td>
+                                    </tr>
+                                                            </tbody>
+                            </table>
+                        </div>
+                                    </div>
                     </div>
     </div>
     </div>
@@ -1067,7 +1149,7 @@
             Template is built using <a href="http://twitter.github.com/bootstrap/">Twitter Bootstrap 2</a> and icons provided by
             <a href="http://glyphicons.com/">Glyphicons</a>.<br/>
             Documentation is powered by <a href="http://www.phpdoc.org/">phpDocumentor </a> and<br/>
-            generated on Wed, 27 Jun 2018 21:17:48 +0000.<br/>
+            generated on Thu, 28 Jun 2018 19:05:45 +0000.<br/>
     </footer>
     </body>
 </html>

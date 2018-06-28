@@ -8,13 +8,9 @@
 namespace LivePersonInc\LiveEngageLaravel\Collections;
 
 use Illuminate\Support\Collection;
-use LivePersonInc\LiveEngageLaravel\LiveEngageLaravel;
-use LivePersonInc\LiveEngageLaravel\Facades\LiveEngageLaravel as LiveEngage;
 use LivePersonInc\LiveEngageLaravel\Models\MetaData;
 use LivePersonInc\LiveEngageLaravel\Models\Conversation;
-use LivePersonInc\LiveEngageLaravel\Models\Info;
-use LivePersonInc\LiveEngageLaravel\Models\Visitor;
-use LivePersonInc\LiveEngageLaravel\Models\Campaign;
+use LivePersonInc\LiveEngageLaravel\Traits\Pageable;
 
 /**
  * ConversationHistory class.
@@ -23,6 +19,8 @@ use LivePersonInc\LiveEngageLaravel\Models\Campaign;
  */
 class ConversationHistory extends Collection
 {
+	use Pageable;
+	
 	/**
 	 * metaData
 	 * 
@@ -30,6 +28,8 @@ class ConversationHistory extends Collection
 	 * @access public
 	 */
 	public $metaData;
+	
+	protected $historyFunction = 'retrieveMsgHistory';
 
 	/**
 	 * __construct function.
@@ -38,11 +38,11 @@ class ConversationHistory extends Collection
 	 * @param array $models (default: [])
 	 * @return void
 	 */
-	public function __construct(array $models = [])
+	public function __construct($models = [])
 	{
 		$models = array_map(function($item) {
 			return is_a($item, 'LivePersonInc\LiveEngageLaravel\Models\Conversation') ? $item : new Conversation((array) $item);
-		}, $models);
+		}, $models ?: []);
 		$this->metaData = new MetaData();
 		parent::__construct($models);
 	}
@@ -61,72 +61,6 @@ class ConversationHistory extends Collection
 		});
 		
 		return $result->first();
-	}
-
-	/**
-	 * next function.
-	 * 
-	 * @access public
-	 * @return mixed
-	 */
-	public function next()
-	{
-		/** @scrutinizer ignore-call */
-		if ($this->metaData->next) {
-			/** @scrutinizer ignore-call */
-			$next = LiveEngage::retrieveMsgHistory($this->metaData->start, $this->metaData->end, $this->metaData->next->href);
-			if ($next) {
-		
-				$next->_metadata->start = $this->metaData->start;
-				$next->_metadata->end = $this->metaData->end;
-		
-				$meta = new MetaData((array) $next->_metadata);
-				
-				$collection = new self($next->conversationHistoryRecords);
-				$collection->metaData = $meta;
-				
-				return $collection;
-				
-			} else {
-				return null;
-			}
-		}
-		
-		return null;
-		
-	}
-
-	/**
-	 * prev function.
-	 * 
-	 * @access public
-	 * @return mixed
-	 */
-	public function prev()
-	{
-		/** @scrutinizer ignore-call */
-		if ($this->metaData->prev) {
-			/** @scrutinizer ignore-call */
-			$prev = LiveEngage::retrieveMsgHistory($this->metaData->start, $this->metaData->end, $this->metaData->prev->href);
-			if ($prev) {
-		
-				$prev->_metadata->start = $this->metaData->start;
-				$prev->_metadata->end = $this->metaData->end;
-		
-				$meta = new MetaData((array) $prev->_metadata);
-				
-				$collection = new self($prev->conversationHistoryRecords);
-				$collection->metaData = $meta;
-				
-				return $collection;
-				
-			} else {
-				return null;
-			}
-		}
-		
-		return null;
-		
 	}
 	
 	/**

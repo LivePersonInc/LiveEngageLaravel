@@ -9,6 +9,7 @@ namespace LivePersonInc\LiveEngageLaravel\Models;
 
 use Carbon\Carbon;
 use Illuminate\Database\Eloquent\Model;
+use LivePersonInc\LiveEngageLaravel\Facades\LiveEngageLaravel as LiveEngage;
 
 /**
  * Agent class.
@@ -50,4 +51,10 @@ class Agent extends Model
 	{
 		return ($this->attributes['currentStatusDuration'] / 1000) / 60;
 	}
+	
+	public function getAvatarAttribute()
+	{
+		return isset($this->attributes['pictureUrl']) ? $this->attributes['pictureUrl'] : null;
+	}
+	
 }
