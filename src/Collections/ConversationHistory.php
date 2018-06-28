@@ -67,7 +67,7 @@ class ConversationHistory extends Collection
 	 * next function.
 	 * 
 	 * @access public
-	 * @return ConversationHistory
+	 * @return mixed
 	 */
 	public function next()
 	{
@@ -88,11 +88,11 @@ class ConversationHistory extends Collection
 				return $collection;
 				
 			} else {
-				return new self();
+				return null;
 			}
 		}
 		
-		return new self();
+		return new null;
 		
 	}
 
@@ -100,7 +100,7 @@ class ConversationHistory extends Collection
 	 * prev function.
 	 * 
 	 * @access public
-	 * @return ConversationHistory
+	 * @return mixed
 	 */
 	public function prev()
 	{
@@ -121,11 +121,11 @@ class ConversationHistory extends Collection
 				return $collection;
 				
 			} else {
-				return new self();
+				return null;
 			}
 		}
 		
-		return new self();
+		return null;
 		
 	}
 	
