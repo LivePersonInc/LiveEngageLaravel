@@ -67,7 +67,7 @@ class EngagementHistory extends Collection
 	 * next function.
 	 * 
 	 * @access public
-	 * @return EngagementHistory
+	 * @return mixed
 	 */
 	public function next()
 	{
@@ -88,11 +88,11 @@ class EngagementHistory extends Collection
 				return $collection;
 				
 			} else {
-				return new self();
+				return null;
 			}
 		}
 		
-		return new self();
+		return null;
 		
 	}
 
@@ -100,7 +100,7 @@ class EngagementHistory extends Collection
 	 * prev function.
 	 * 
 	 * @access public
-	 * @return EngagementHistory
+	 * @return mixed
 	 */
 	public function prev()
 	{
@@ -121,11 +121,11 @@ class EngagementHistory extends Collection
 				return $collection;
 				
 			} else {
-				return new self();
+				return null;
 			}
 		}
 		
-		return new self();
+		return null;
 		
 	}
 	

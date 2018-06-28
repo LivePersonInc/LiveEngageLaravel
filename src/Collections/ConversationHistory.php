@@ -92,7 +92,7 @@ class ConversationHistory extends Collection
 			}
 		}
 		
-		return new null;
+		return null;
 		
 	}
 

@@ -20,13 +20,15 @@ class Agent extends Model
 	protected $guarded = [];
 	
 	protected $userTypes = [
+		0 => 'System',
 		1 => 'Human',
 		2 => 'Bot'
 	];
 	
 	public function getUserTypeNameAttribute()
 	{
-		return $this->userTypes[$this->attributes['userTypeId']];
+		$typeid = isset($this->attributes['userTypeId']) ? $this->attributes['userTypeId'] : $this->attributes['userType'];
+		return $this->userTypes[$typeid];
 	}
 	
 	public function getLastUpdatedTimeAttribute()
