@@ -1,4 +1,9 @@
 <?php
+/**
+ * AgentParticipants
+ *
+ * @package LivePersonInc\LiveEngageLaravel\Collections
+ */
 
 namespace LivePersonInc\LiveEngageLaravel\Collections;
 
@@ -13,8 +18,21 @@ use LivePersonInc\LiveEngageLaravel\Models\MetaData;
  */
 class AgentParticipants extends Collection
 {
+	/**
+	 * metaData
+	 * 
+	 * @var \LivePersonInc\LiveEngageLaravel\Models\MetaData
+	 * @access public
+	 */
 	public $metaData;
 	
+	/**
+	 * __construct function.
+	 * 
+	 * @access public
+	 * @param array $models (default: [])
+	 * @return void
+	 */
 	public function __construct(array $models = [])
 	{
 		
@@ -25,6 +43,13 @@ class AgentParticipants extends Collection
 		parent::__construct($models);
 	}
 	
+	/**
+	 * state function returns any agents in the collection with the specified availability state.
+	 * 
+	 * @access public
+	 * @param string $state (default: 'ONLINE')
+	 * @return \LivePersonInc\LiveEngageLaravel\Models\Agent
+	 */
 	public function state($state = 'ONLINE')
 	{
 		$result = $this->filter(function($value) use ($state) {
@@ -34,6 +59,13 @@ class AgentParticipants extends Collection
 		return $result;
 	}
 	
+	/**
+	 * findById function.
+	 * 
+	 * @access public
+	 * @param int $agentId
+	 * @return \LivePersonInc\LiveEngageLaravel\Models\Agent
+	 */
 	public function findById($agentId)
 	{
 		$result = $this->filter(function($value) use ($agentId) {

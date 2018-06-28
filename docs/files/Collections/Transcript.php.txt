@@ -1,4 +1,9 @@
 <?php
+/**
+ * Transcript
+ *
+ * @package LivePersonInc\LiveEngageLaravel\Collections
+ */
 
 namespace LivePersonInc\LiveEngageLaravel\Collections;
 

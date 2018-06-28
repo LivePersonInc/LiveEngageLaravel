@@ -29,6 +29,14 @@ class ConversationHistory extends Collection
 	 */
 	public $metaData;
 	
+	/**
+	 * historyFunction
+	 * 
+	 * Required for the Pageable trait (default value: 'retrieveMsgHistory')
+	 * 
+	 * @var string
+	 * @access protected
+	 */
 	protected $historyFunction = 'retrieveMsgHistory';
 
 	/**

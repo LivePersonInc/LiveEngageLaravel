@@ -331,7 +331,11 @@ class LiveEngageLaravel
 			'skillIds' => $this->skills
 		]);
 
-		return $this->requestV1($url, 'POST', $data);
+		$result = $this->requestV1($url, 'POST', $data);
+		$result->records = $result->interactionHistoryRecords;
+		$result->interactionHistoryRecords = null;
+		
+		return $result;
 	}
 
 	/**
@@ -362,7 +366,11 @@ class LiveEngageLaravel
 			'skillIds' => $this->skills
 		]);
 		
-		return $this->requestV1($url, 'POST', $data);
+		$result = $this->requestV1($url, 'POST', $data);
+		$result->records = $result->conversationHistoryRecords;
+		$result->conversationHistoryRecords = null;
+		
+		return $result;
 	}
 	
 	/**
@@ -471,7 +479,8 @@ class LiveEngageLaravel
 			'managedAgentGroups',
 			'dateUpdated',
 			'isEnabled',
-			'lastPwdChangeDate'
+			'lastPwdChangeDate',
+			'pictureUrl'
 		]);
 		
 		$url = "https://{$this->domain}/api/account/{$this->account}/configuration/le-users/users?v=4.0&select=$select";
@@ -528,7 +537,7 @@ class LiveEngageLaravel
 	
 		$meta = new MetaData((array) $results_object->_metadata);
 		
-		$collection = new ConversationHistory($results_object->conversationHistoryRecords);
+		$collection = new ConversationHistory($results_object->records);
 		$collection->metaData = $meta;
 		
 		return $collection;
@@ -584,7 +593,7 @@ class LiveEngageLaravel
 	
 		$meta = new MetaData((array) $results_object->_metadata);
 		
-		$collection = new EngagementHistory($results_object->interactionHistoryRecords);
+		$collection = new EngagementHistory($results_object->records);
 		$collection->metaData = $meta;
 		
 		return $collection;

@@ -29,6 +29,14 @@ class EngagementHistory extends Collection
 	 */
 	public $metaData;
 	
+	/**
+	 * historyFunction
+	 * 
+	 * Required for the Pageable trait (default value: 'retrieveHistory')
+	 * 
+	 * @var string
+	 * @access protected
+	 */
 	protected $historyFunction = 'retrieveHistory';
 
 	/**

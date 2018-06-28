@@ -1,4 +1,9 @@
 <?php
+/**
+ * ConsumerParticipants is a collection of visitor objects
+ *
+ * @package LivePersonInc\LiveEngageLaravel\Collections
+ */
 
 namespace LivePersonInc\LiveEngageLaravel\Collections;
 
@@ -13,6 +18,12 @@ use LivePersonInc\LiveEngageLaravel\Models\MetaData;
  */
 class ConsumerParticipants extends Collection
 {
+	/**
+	 * metaData
+	 * 
+	 * @var \LivePersonInc\LiveEngageLaravel\Models\MetaData
+	 * @access public
+	 */
 	public $metaData;
 	
 	/**

@@ -1,4 +1,9 @@
 <?php
+/**
+ * Info
+ *
+ * @package LivePersonInc\LiveEngageLaravel\Models
+ */
 
 namespace LivePersonInc\LiveEngageLaravel\Models;
 

@@ -1,4 +1,9 @@
 <?php
+/**
+ * Transfers
+ *
+ * @package LivePersonInc\LiveEngageLaravel\Collections
+ */
 
 namespace LivePersonInc\LiveEngageLaravel\Collections;
 
@@ -16,7 +21,7 @@ class Transfers extends Collection
 	{
 		
 		$models = array_map(function($item) {
-			return new Transfer((array) $item);
+			return is_a($item, 'LivePersonInc\LiveEngageLaravel\Models\Transfer') ? $item : new Transfer((array) $item);
 		}, $models);
 		
 		parent::__construct($models);
@@ -34,5 +39,21 @@ class Transfers extends Collection
 			return $item['targetSkillId'];
 		}, $this->toArray());
 		return $array;
+	}
+	
+	/**
+	 * find function.
+	 * 
+	 * @access public
+	 * @param mixed $skillId
+	 * @return \LivePersonInc\LiveEngageLaravel\Models\Transfer
+	 */
+	public function find($skillId)
+	{
+		$result = $this->filter(function($value) use ($skillId) {
+			return $value->targetSkillId == $skillId;
+		});
+		
+		return $result->first();
 	}
 }
