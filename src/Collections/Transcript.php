@@ -28,4 +28,14 @@ class Transcript extends Collection
 		}, $models);
 		return parent::__construct($models);
 	}
+	
+	public function textTranscript()
+	{
+		$text = "";
+		foreach ($this as $message) {
+			$by = $message->sentBy == 'Agent' ? $message->agentDetails->agentFullName : 'Visitor';
+			$text .= "{$by}:\n{$message->plainText}\n\n";
+		}
+		return $text;
+	}
 }

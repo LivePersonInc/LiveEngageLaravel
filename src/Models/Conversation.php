@@ -23,6 +23,10 @@ class Conversation extends Model
 {
 	protected $guarded = [];
 	
+	protected $appends = [
+		'textTranscript',
+	];
+	
 	public function __construct(array $item)
 	{
 		$item['info'] = isset($item['info']) ? new MessagingInfo((array) $item['info']) : new MessagingInfo();
@@ -35,5 +39,17 @@ class Conversation extends Model
 		$item['sdes'] = new SDEs(isset($item['sdes']->events) ? $item['sdes']->events : []);
 		
 		parent::__construct($item);
+	}
+	
+	public function getTextTranscriptAttribute()
+	{
+		return $this->messageRecords->textTranscript();
+	}
+	
+	public function getExportAttribute()
+	{
+		$info = $this->info->attributes;
+		$info['transcript'] = $this->textTranscript;
+		return ((object)$info);
 	}
 }

@@ -16,12 +16,13 @@ class Message extends Model
 
 	protected $appends = [
 		'plain_text',
+		'text',
 		'time',
 	];
 	
 	public function getTextAttribute()
 	{
-		if ($this->type == 'PLAIN') {
+		if ($this->type == 'TEXT_PLAIN') {
 			return $this->messageData->msg->text;
 		} elseif ($this->type == 'RICH_CONTENT') {
 			return 'RICH_CONTENT';
@@ -42,12 +43,6 @@ class Message extends Model
 
 	public function __toString()
 	{
-		if ($this->type == 'TEXT_PLAIN') {
-			return $this->messageData->msg->text;
-		} elseif ($this->type == 'RICH_CONTENT') {
-			return 'RICH_CONTENT';
-		} else {
-			return isset($this->attributes['text']) ? $this->attributes['text'] : '';
-		}
+		return $this->text;
 	}
 }

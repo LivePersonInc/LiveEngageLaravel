@@ -88,4 +88,11 @@ class ConversationHistory extends Collection
 		return $collection;
 		
 	}
+	
+	public function toArray()
+	{
+		return $this->map(function($conversation) {
+			return $conversation->export;
+		});
+	}
 }
