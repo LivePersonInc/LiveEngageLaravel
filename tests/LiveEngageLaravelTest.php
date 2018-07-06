@@ -115,6 +115,7 @@ class LiveEngageLaravelTest extends TestCase
      * @covers LivePersonInc\LiveEngageLaravel\Models\MessagingInfo::getSecondsAttribute
      * @covers LivePersonInc\LiveEngageLaravel\Models\MessagingInfo::getHoursAttribute
      * @covers LivePersonInc\LiveEngageLaravel\Models\MessagingInfo::getStartTimeAttribute
+     * @covers LivePersonInc\LiveEngageLaravel\Models\MessagingInfo::getEndTimeAttribute
      * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::getConversation
      * @covers LivePersonInc\LiveEngageLaravel\LiveEngageRequest::requestClient
      */	
@@ -138,8 +139,10 @@ class LiveEngageLaravelTest extends TestCase
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Models\Conversation', $conversation);
 		$this->assertInstanceOf('Carbon\Carbon', $history->random()->messageRecords->random()->time);
 		$this->assertInstanceOf('Carbon\Carbon', $history->random()->info->startTime);
+		$this->assertInstanceOf('Carbon\Carbon', $history->random()->info->endTime);
 		$text = $history->random()->messageRecords->random();
 		$this->assertNotEmpty($text, "Value: " . $text);
+		$this->assertNotEmpty($text, "Value: " . $text->plain_text);
 		$info = $history->random()->info;
 		$this->assertEquals($info->minutes, round($info->seconds / 60, 2));
 		$this->assertEquals($info->hours, round($info->minutes / 60, 2));

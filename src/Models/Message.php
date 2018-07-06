@@ -25,7 +25,7 @@ class Message extends Model
 		if ($this->type == 'TEXT_PLAIN') {
 			return $this->messageData->msg->text;
 		} elseif ($this->type == 'RICH_CONTENT') {
-			return 'RICH_CONTENT';
+			return 'RICH_CONTENT'; // @codeCoverageIgnore
 		} else {
 			return isset($this->attributes['text']) ? $this->attributes['text'] : '';
 		}

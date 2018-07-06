@@ -41,11 +41,17 @@ class Conversation extends Model
 		parent::__construct($item);
 	}
 	
+	/**
+	 * @codeCoverageIgnore
+	 */	
 	public function getTextTranscriptAttribute()
 	{
 		return $this->messageRecords->textTranscript();
 	}
 	
+	/**
+	 * @codeCoverageIgnore
+	 */
 	public function getExportAttribute()
 	{
 		$info = $this->info->attributes;

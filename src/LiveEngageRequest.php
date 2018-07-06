@@ -33,7 +33,7 @@ class LiveEngageRequest
 	 */
 	public function __construct($config)
 	{
-		$this->config = $config;
+		$this->config = $config; // @codeCoverageIgnore
 	}
 	
 	/**
