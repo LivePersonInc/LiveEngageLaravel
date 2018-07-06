@@ -143,6 +143,8 @@ class LiveEngageLaravel
 	{
 		return $this->$attribute;
 	}
+	
+	private $request;
 
 	/**
 	 * __construct function.
@@ -153,8 +155,8 @@ class LiveEngageLaravel
 	public function __construct()
 	{
 		$this->account = config("{$this->config}.account");
-		//$this->domain = config("{$this->config}.domain");
 		$this->version = config("{$this->config}.version") ?: $this->version;
+		$this->request = new LiveEngageRequest($this->config);
 	}
 
 	/**
@@ -247,7 +249,7 @@ class LiveEngageLaravel
 	 */
 	public function domain($service)
 	{
-		$response = $this->requestV1("https://api.liveperson.net/api/account/{$this->account}/service/{$service}/baseURI.json?version={$this->version}", 'GET');
+		$response = $this->request->V1("https://api.liveperson.net/api/account/{$this->account}/service/{$service}/baseURI.json?version={$this->version}", 'GET');
 		
 		$this->domain = $response->baseURI;
 
@@ -271,11 +273,11 @@ class LiveEngageLaravel
 		if ($setData) {
 			$url = "https://{$this->domain}/api/account/{$this->account}/monitoring/visitors/{$visitorID}/visits/current/events?v=1&sid={$sessionID}";
 
-			return $this->requestV1($url, 'POST', $setData);
+			return $this->request->V1($url, 'POST', $setData);
 		} else {
 			$url = "https://{$this->domain}/api/account/{$this->account}/monitoring/visitors/{$visitorID}/visits/current/state?v=1&sid={$sessionID}";
 
-			return $this->requestV1($url, 'GET');
+			return $this->request->V1($url, 'GET');
 		}
 	}
 	
@@ -297,7 +299,7 @@ class LiveEngageLaravel
 		];
 		$payload = new Payload($args);
 		
-		$response = $this->requestV1($url, 'POST', $payload);
+		$response = $this->request->V1($url, 'POST', $payload);
 		
 		return $response;
 	}
@@ -331,7 +333,7 @@ class LiveEngageLaravel
 			'skillIds' => $this->skills
 		]);
 
-		$result = $this->requestV1($url, 'POST', $data);
+		$result = $this->request->V1($url, 'POST', $data);
 		$result->records = $result->interactionHistoryRecords;
 		$result->interactionHistoryRecords = null;
 		
@@ -366,7 +368,7 @@ class LiveEngageLaravel
 			'skillIds' => $this->skills
 		]);
 		
-		$result = $this->requestV1($url, 'POST', $data);
+		$result = $this->request->V1($url, 'POST', $data);
 		$result->records = $result->conversationHistoryRecords;
 		$result->conversationHistoryRecords = null;
 		
@@ -385,7 +387,7 @@ class LiveEngageLaravel
 		
 		$url = "https://{$this->domain}/api/account/{$this->account}/configuration/le-users/skills?v=4.0";
 		
-		return new Skills($this->requestV2($url, 'GET'));
+		return new Skills($this->request->V2($url, 'GET'));
 	}
 	
 	/**
@@ -401,7 +403,7 @@ class LiveEngageLaravel
 		
 		$url = "https://{$this->domain}/api/account/{$this->account}/configuration/le-users/skills/{$skillId}?v=4.0";
 		
-		return new Skill((array) $this->requestV2($url, 'GET'));
+		return new Skill((array) $this->request->V2($url, 'GET'));
 	}
 	
 	/**
@@ -417,7 +419,7 @@ class LiveEngageLaravel
 		
 		$url = "https://{$this->domain}/api/account/{$this->account}/configuration/le-users/users/{$userId}?v=4.0";
 		
-		return new Agent((array) $this->requestV2($url, 'GET'));
+		return new Agent((array) $this->request->V2($url, 'GET'));
 	}
 	
 	/**
@@ -441,7 +443,7 @@ class LiveEngageLaravel
 			'if-Match' => '*'
 		];
 		
-		return new Agent((array) $this->requestV2($url, 'PUT', $properties, $headers));
+		return new Agent((array) $this->request->V2($url, 'PUT', $properties, $headers));
 	}
 	
 	/**
@@ -485,7 +487,7 @@ class LiveEngageLaravel
 		
 		$url = "https://{$this->domain}/api/account/{$this->account}/configuration/le-users/users?v=4.0&select=$select";
 		
-		return new AgentParticipants($this->requestV2($url, 'GET'));
+		return new AgentParticipants($this->request->V2($url, 'GET'));
 	}
 	
 	/**
@@ -505,7 +507,7 @@ class LiveEngageLaravel
 		
 		$data = ['skillIds' => $skills];
 		
-		$response = $this->requestV1($url, 'POST', $data);
+		$response = $this->request->V1($url, 'POST', $data);
 		$collection = new AgentParticipants($response->agentStatusRecords);
 		$collection->metaData = new MetaData((array) $response->_metadata);
 		
@@ -561,7 +563,7 @@ class LiveEngageLaravel
 			'conversationId' => $conversationId
 		]);
 		
-		$result = $this->requestV1($url, 'POST', $data);
+		$result = $this->request->V1($url, 'POST', $data);
 		if (!count($result->conversationHistoryRecords)) {
 			return null; // @codeCoverageIgnore
 		}
@@ -610,144 +612,8 @@ class LiveEngageLaravel
 	{
 		$url = "https://status.liveperson.com/json?site={$this->account}";
 		
-		$response = $this->requestV1($url, 'GET');
+		$response = $this->request->V1($url, 'GET');
 		
 		return new AccountStatus((array) $response);
-	}
-	
-	/**
-	 * login function.
-	 * 
-	 * @access public
-	 * @return this
-	 */
-	public function login()
-	{
-		$this->domain('agentVep');
-		
-		$consumer_key = config("{$this->config}.key");
-		$consumer_secret = config("{$this->config}.secret");
-		$token = config("{$this->config}.token");
-		$secret = config("{$this->config}.token_secret");
-		$username = config("{$this->config}.user_name");
-		
-		$auth = [
-			'username'		  => $username,
-			'appKey'			=> $consumer_key,
-			'secret'			=> $consumer_secret,
-			'accessToken'		=> $token,
-			'accessTokenSecret' => $secret,
-		];
-		
-		$url = "https://{$this->domain}/api/account/{$this->account}/login?v=1.3";
-		
-		$response = $this->requestV1($url, 'POST', $auth);
-		
-		$this->bearer = $response->bearer;
-		
-		return $this;
-	}
-	
-	/**
-	 * requestV2 function.
-	 * 
-	 * @access private
-	 * @param mixed $url
-	 * @param mixed $method
-	 * @param mixed $payload (default: [])
-	 * @param mixed $headers (default: [])
-	 * @return void
-	 */
-	private function requestV2($url, $method, $payload = [], $headers = [])
-	{
-		$this->login();
-		
-		$client = new Client();
-		$args = [
-			'headers' => array_merge([
-				'content-type' => 'application/json',
-				'Authorization' => 'Bearer ' . $this->bearer
-			], $headers),
-			'body' => json_encode($payload)
-		];
-		
-		// @codeCoverageIgnoreStart
-		try {
-			$res = $client->request($method, $url, $args);
-		} catch (\Exception $e) {
-			throw $e;
-		}
-		// @codeCoverageIgnoreEnd
-		
-		return json_decode($res->getBody());
-	}
-	
-	/**
-	 * requestClient function.
-	 * 
-	 * @access private
-	 * @return \GuzzleHttp\Client
-	 */
-	private function requestClient()
-	{
-		$consumer_key = config("{$this->config}.key");
-		$consumer_secret = config("{$this->config}.secret");
-		$token = config("{$this->config}.token");
-		$secret = config("{$this->config}.token_secret");
-
-		$stack = HandlerStack::create();
-		$auth = new Oauth1([
-			'consumer_key'	=> $consumer_key,
-			'consumer_secret' => $consumer_secret,
-			'token'		   => $token,
-			'token_secret'	=> $secret,
-			'signature_method'=> Oauth1::SIGNATURE_METHOD_HMAC,
-		]);
-		$stack->push($auth);
-
-		$client = new Client([
-			'handler' => $stack,
-		]);
-		
-		return $client;
-	}
-	
-	/**
-	 * requestV1 - request bootstrap for older oauth supported APIs.
-	 * 
-	 * @access private
-	 * @param string $url
-	 * @param string $method
-	 * @param array $payload (default: [])
-	 * @return mixed
-	 */
-	private function requestV1($url, $method, $payload = [])
-	{
-		$client = $this->requestClient();
-
-		$args = [
-			'auth' => 'oauth',
-			'headers' => [
-				'content-type' => 'application/json',
-			],
-			'body' => json_encode($payload)
-		];
-
-		try {
-			$res = $client->request($method, $url, $args);
-			$response = json_decode($res->getBody());
-		} catch (\Exception $e) {
-			// @codeCoverageIgnoreStart
-			if ($this->retry_counter < $this->retry_limit || $this->retry_limit == -1) {
-				usleep(1500);
-				$this->retry_counter++;
-				$response = $this->requestV1($url, $payload);
-			} else {
-				throw $e;
-			}
-			// @codeCoverageIgnoreEnd
-		}
-
-		return $response;
 	}
 }
