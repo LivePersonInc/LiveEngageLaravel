@@ -22,9 +22,18 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 			self::CONFIG_PATH,
 			'live-engage-laravel'
 		);
+		
+		$this->commands([
+		    Commands\LiveEngageTestCoverage::class
+		]);
 
 		$this->app->bind('live-engage-laravel', function() {
 			return new LiveEngageLaravel();
 		});
+		
+		$this->app->register(
+		    'Nathanmac\Utilities\Parser\ParserServiceProvider'
+		);
+		
 	}
 }

@@ -1,0 +1,131 @@
+<?php
+
+namespace LivePersonInc\LiveEngageLaravel\Commands;
+
+use Illuminate\Console\Command;
+use Orchestra\Parser\Xml\Facade as XmlParser;
+use Nathanmac\Utilities\Parser\Facades\Parser;
+
+class LiveEngageTestCoverage extends Command
+{
+    /**
+     * The name and signature of the console command.
+     *
+     * @var string
+     */
+    protected $signature = 'liveperson:le:coverage {--lines}';
+
+    /**
+     * The console command description.
+     *
+     * @var string
+     */
+    protected $description = 'Reports the test coverage of this package';
+
+    /**
+     * Create a new command instance.
+     *
+     * @return void
+     */
+    public function __construct()
+    {
+        parent::__construct();
+    }
+
+    /**
+     * Execute the console command.
+     *
+     * @return mixed
+     */
+    public function handle()
+    {
+	    $path = __DIR__ . "/../../tests/coverage.xml";
+	    if (!file_exists($path)) {
+		    $this->error("Coverage file does not exist.");
+	    } else {
+		    
+		    $xml = Parser::xml(file_get_contents($path));
+		    
+		    
+		    $elements = [
+			    'covered' => $xml['project']['metrics']['@coveredelements'],
+				'total' => $xml['project']['metrics']['@elements']
+		    ];
+		    
+		    $statements = [
+			    'covered' => $xml['project']['metrics']['@coveredstatements'],
+				'total' => $xml['project']['metrics']['@statements']
+		    ];
+		    
+		    $methods = [
+			    'covered' => $xml['project']['metrics']['@coveredmethods'],
+				'total' => $xml['project']['metrics']['@methods']
+		    ];
+		    
+		    $percentages = [
+			    'elements' => round(($elements['covered'] / $elements['total']) * 100),
+			    'statements' => round(($statements['covered'] / $statements['total']) * 100),
+			    'methods' => round(($methods['covered'] / $methods['total']) * 100),
+		    ];
+		    
+		    $average = round(($percentages['elements'] + $percentages['statements'] + $percentages['methods']) / 3);
+		    $percentages['average'] = $average;
+		    
+		    $percentages = array_map(function($item) {
+			    return number_format($item) . '%';
+			}, $percentages);
+			
+			$headers = ['Elements', 'Statements', 'Methods', 'Average'];
+		    $this->table($headers, [$percentages]);
+		    
+		    if ($this->option('lines')) {
+		    
+			    $packages = $xml['project']['package'];
+			    
+			    foreach ($packages as $namespace) {
+				    $name = $namespace['@name'];
+				    if (!$this->isAssoc($namespace['file'])) {
+					    foreach ($namespace['file'] as $file) {
+						    $this->processFile($file, $name);
+					    }
+					} else {
+						$this->processFile($namespace['file'], $name);
+					}
+			    }
+		    
+		    }
+		    		    
+	    }
+        
+    }
+    
+    private function processFile($file, $parent)
+    {
+	    $filename = $file['@name'];
+	    $name = basename($file['@name']);
+	    if (!isset($file['line'])) return;
+	    foreach ($file['line'] as $line) {
+		    if ($line['@count'] == 0 && $line['@type'] == 'stmt') {
+			    $text = file_get_contents($filename);
+			    $text = str_replace("\t", "  ", $text);
+			    $filecontents = explode("\n", $text);
+			    $number = $line['@num'];
+			    $this->warn($name);
+	    
+			    $this->line("+---------------------------------------------------------");
+			    $this->line("|");
+			    $this->line("|" . ($number - 1) . $filecontents[$number - 2]);
+			    $this->info("|" . $number . $filecontents[$number - 1]);
+			    $this->line("|" . ($number + 1) . $filecontents[$number]);
+			    
+			    $this->line("+---------------------------------------------------------");
+		    }
+	    }
+    }
+    
+    private function isAssoc(array $arr)
+	{
+	    if (array() === $arr) return false;
+	    return array_keys($arr) !== range(0, count($arr) - 1);
+	}
+}

@@ -17,7 +17,8 @@
   "require": {
     "php": ">=7.0",
     "guzzlehttp/oauth-subscriber": "^0.3.0",
-    "laravel/framework": ">=5.5"
+    "laravel/framework": ">=5.5",
+    "nathanmac/parser": "^4.3"
   },
   "require-dev": {
     "orchestra/testbench": "~3.6.0",

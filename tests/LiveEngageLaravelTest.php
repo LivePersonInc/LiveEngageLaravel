@@ -26,6 +26,7 @@ class LiveEngageLaravelTest extends TestCase
 	 * @covers LivePersonInc\LiveEngageLaravel\Facades\LiveEngageLaravel
      * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::engagementHistory
      * @covers LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory
+     * @covers LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory::find
      * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::retrieveHistory
      * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::requestV1
      * @covers LivePersonInc\LiveEngageLaravel\Models\Engagement
@@ -46,6 +47,8 @@ class LiveEngageLaravelTest extends TestCase
 		$history = LiveEngage::limit(10)->engagementHistory(new Carbon('2018-05-30'), new Carbon('2018-05-31'));
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory', $history, "Actual Class type: " . get_class($history));
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Models\Engagement', $history->random(), "Actual Class type: " . get_class($history->random()));
+		$id = $history->random()->info->sessionId;
+		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Models\Engagement', $history->find($id));
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Models\Visitor', $history->random()->visitorInfo);
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Models\Info', $history->random()->info);
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Collections\Transcript', $history->random()->transcript);
@@ -65,6 +68,7 @@ class LiveEngageLaravelTest extends TestCase
      * @covers LivePersonInc\LiveEngageLaravel\Traits\Pageable
      * @covers LivePersonInc\LiveEngageLaravel\Traits\Pageable::next
      * @covers LivePersonInc\LiveEngageLaravel\Traits\Pageable::prev
+     * @covers LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory::merge
      * @use LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory::metaData
      * @covers LivePersonInc\LiveEngageLaravel\Models\Engagement
      * @covers LivePersonInc\LiveEngageLaravel\Models\MetaData
@@ -93,6 +97,7 @@ class LiveEngageLaravelTest extends TestCase
      * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::conversationHistory
      * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::retrieveMsgHistory
      * @covers LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory
+     * @covers LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory::find
      * @covers LivePersonInc\LiveEngageLaravel\Collections\Transfers
      * @covers LivePersonInc\LiveEngageLaravel\Models\Transfer
      * @covers LivePersonInc\LiveEngageLaravel\Models\Conversation
@@ -118,6 +123,8 @@ class LiveEngageLaravelTest extends TestCase
 	{
 		$history = LiveEngage::limit(15)->conversationHistory(Carbon::today()->subDays(2));
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory', $history);
+		$id = $history->random()->info->conversationId;
+		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Models\Conversation', $history->find($id));
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Models\Conversation', $history->random());
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Models\Campaign', $history->random()->campaign);
 		$this->assertInstanceOf('LivePersonInc\LiveEngageLaravel\Collections\AgentParticipants', $history->random()->agentParticipants);
@@ -144,6 +151,7 @@ class LiveEngageLaravelTest extends TestCase
      * @covers LivePersonInc\LiveEngageLaravel\Traits\Pageable::next
      * @covers LivePersonInc\LiveEngageLaravel\Traits\Pageable::prev
      * @covers LivePersonInc\LiveEngageLaravel\Models\Conversation
+     * @covers LivePersonInc\LiveEngageLaravel\Collections\ConversationHistory::merge
      */
 	public function testConversationHistoryNext()
 	{
