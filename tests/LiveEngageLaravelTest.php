@@ -27,7 +27,7 @@ class LiveEngageLaravelTest extends TestCase
      * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::engagementHistory
      * @covers LivePersonInc\LiveEngageLaravel\Collections\EngagementHistory
      * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::retrieveHistory
-     * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::requestV1
+     * @covers LivePersonInc\LiveEngageLaravel\LiveEngageRequest::V1
      * @covers LivePersonInc\LiveEngageLaravel\Models\Engagement
      * @covers LivePersonInc\LiveEngageLaravel\Models\Visitor
      * @covers LivePersonInc\LiveEngageLaravel\Collections\Transcript
@@ -39,7 +39,6 @@ class LiveEngageLaravelTest extends TestCase
      * @covers LivePersonInc\LiveEngageLaravel\Models\Info::getMinutesAttribute
      * @covers LivePersonInc\LiveEngageLaravel\Models\Info::getSecondsAttribute
      * @covers LivePersonInc\LiveEngageLaravel\Models\Info::getHoursAttribute
-     * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::requestClient
      */
 	public function testGetHistory()
 	{
@@ -112,7 +111,7 @@ class LiveEngageLaravelTest extends TestCase
      * @covers LivePersonInc\LiveEngageLaravel\Models\MessagingInfo::getHoursAttribute
      * @covers LivePersonInc\LiveEngageLaravel\Models\MessagingInfo::getStartTimeAttribute
      * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::getConversation
-     * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::requestClient
+     * @covers LivePersonInc\LiveEngageLaravel\LiveEngageRequest::requestClient
      */	
 	public function testGetMessagingHistory()
 	{
@@ -265,8 +264,8 @@ class LiveEngageLaravelTest extends TestCase
      * @covers LivePersonInc\LiveEngageLaravel\Models\Skill
      * @covers LivePersonInc\LiveEngageLaravel\Collections\Skills
      * @covers LivePersonInc\LiveEngageLaravel\Collections\Skills::toSkillIds
-     * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::requestV2
-     * @covers LivePersonInc\LiveEngageLaravel\LiveEngageLaravel::login
+     * @covers LivePersonInc\LiveEngageLaravel\LiveEngageRequest::V2
+     * @covers LivePersonInc\LiveEngageLaravel\LiveEngageRequest::login
      */
 	public function testSkills()
 	{
