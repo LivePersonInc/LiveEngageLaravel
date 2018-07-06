@@ -6,6 +6,9 @@ use Illuminate\Console\Command;
 use Orchestra\Parser\Xml\Facade as XmlParser;
 use Nathanmac\Utilities\Parser\Facades\Parser;
 
+/**
+ * @codeCoverageIgnore
+ */
 class LiveEngageTestCoverage extends Command
 {
     /**
