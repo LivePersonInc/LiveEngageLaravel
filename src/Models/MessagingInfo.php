@@ -15,6 +15,7 @@ class MessagingInfo extends Model
 	protected $guarded = [];
 	protected $appends = [
 		'startTime',
+		'endTime'
 	];
 
 	public function getStartTimeAttribute()
