@@ -44,7 +44,7 @@ class Agent extends Model
 	 * getUserTypeNameAttribute function.
 	 * 
 	 * @access public
-	 * @return void
+	 * @return string
 	 * @codeCoverageIgnore
 	 */
 	public function getUserTypeNameAttribute()
@@ -93,7 +93,7 @@ class Agent extends Model
 	 * getStatusMinutesAttribute function.
 	 * 
 	 * @access public
-	 * @return void
+	 * @return float
 	 * @codeCoverageIgnore
 	 */
 	public function getStatusMinutesAttribute()
@@ -105,7 +105,7 @@ class Agent extends Model
 	 * getAvatarAttribute function.
 	 * 
 	 * @access public
-	 * @return void
+	 * @return string
 	 * @codeCoverageIgnore
 	 */
 	public function getAvatarAttribute()

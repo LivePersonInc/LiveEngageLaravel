@@ -3,7 +3,6 @@
 namespace LivePersonInc\LiveEngageLaravel\Commands;
 
 use Illuminate\Console\Command;
-use Orchestra\Parser\Xml\Facade as XmlParser;
 use Nathanmac\Utilities\Parser\Facades\Parser;
 
 /**
@@ -89,10 +88,10 @@ class LiveEngageTestCoverage extends Command
 				    $name = $namespace['@name'];
 				    if (!$this->isAssoc($namespace['file'])) {
 					    foreach ($namespace['file'] as $file) {
-						    $this->processFile($file, $name);
+						    $this->processFile($file);
 					    }
 					} else {
-						$this->processFile($namespace['file'], $name);
+						$this->processFile($namespace['file']);
 					}
 			    }
 		    
@@ -102,7 +101,7 @@ class LiveEngageTestCoverage extends Command
         
     }
     
-    private function processFile($file, $parent)
+    private function processFile($file)
     {
 	    $filename = $file['@name'];
 	    $name = basename($file['@name']);

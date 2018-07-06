@@ -25,6 +25,32 @@ class LiveEngageRequest
 	private $config;
 	
 	/**
+	 * retry_limit
+	 * 
+	 * (default value: 3)
+	 * 
+	 * @var int
+	 * @access private
+	 */
+	private $retry_limit = 3;
+	/**
+	 * retry_counter
+	 * 
+	 * (default value: 0)
+	 * 
+	 * @var int
+	 * @access private
+	 */
+	private $retry_counter = 0;
+	/**
+	 * bearer
+	 * 
+	 * @var mixed
+	 * @access private
+	 */
+	private $bearer;
+	
+	/**
 	 * __construct function.
 	 * 
 	 * @access public
@@ -44,6 +70,7 @@ class LiveEngageRequest
 	 */
 	public function login()
 	{
+		/** @scrutinizer ignore-call */
 		$le = LiveEngage::domain('agentVep');
 		$domain = $le->domain;
 		$account = $le->account;
@@ -80,7 +107,7 @@ class LiveEngageRequest
 	 * @param array $payload (default: [])
 	 * @return mixed
 	 */
-	public function V1($url, $method, $payload = [])
+	public function V1($url, $method, $payload = null)
 	{
 		$client = $this->requestClient();
 
@@ -89,23 +116,23 @@ class LiveEngageRequest
 			'headers' => [
 				'content-type' => 'application/json',
 			],
-			'body' => json_encode($payload)
+			'body' => json_encode($payload ?: [])
 		];
 
+		// @codeCoverageIgnoreStart
 		try {
 			$res = $client->request($method, $url, $args);
 			$response = json_decode($res->getBody());
 		} catch (\Exception $e) {
-			// @codeCoverageIgnoreStart
 			if ($this->retry_counter < $this->retry_limit || $this->retry_limit == -1) {
 				usleep(1500);
 				$this->retry_counter++;
-				$response = $this->requestV1($url, $payload);
+				$response = $this->V1($url, $payload ?: []);
 			} else {
 				throw $e;
 			}
-			// @codeCoverageIgnoreEnd
 		}
+		// @codeCoverageIgnoreEnd
 
 		return $response;
 	}
@@ -118,9 +145,9 @@ class LiveEngageRequest
 	 * @param mixed $method
 	 * @param mixed $payload (default: [])
 	 * @param mixed $headers (default: [])
-	 * @return void
+	 * @return mixed
 	 */
-	public function V2($url, $method, $payload = [], $headers = [])
+	public function V2($url, $method, $payload = null, $headers = null)
 	{
 		$this->login();
 		
@@ -129,8 +156,8 @@ class LiveEngageRequest
 			'headers' => array_merge([
 				'content-type' => 'application/json',
 				'Authorization' => 'Bearer ' . $this->bearer
-			], $headers),
-			'body' => json_encode($payload)
+			], $headers ?: []),
+			'body' => json_encode($payload ?: [])
 		];
 		
 		// @codeCoverageIgnoreStart
