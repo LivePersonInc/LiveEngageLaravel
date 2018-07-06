@@ -127,7 +127,7 @@ class LiveEngageRequest
 			if ($this->retry_counter < $this->retry_limit || $this->retry_limit == -1) {
 				usleep(1500);
 				$this->retry_counter++;
-				$response = $this->V1($url, $payload ?: []);
+				$response = $this->V1($url, $method, $payload ?: []);
 			} else {
 				throw $e;
 			}

@@ -85,7 +85,6 @@ class LiveEngageTestCoverage extends Command
 			    $packages = $xml['project']['package'];
 			    
 			    foreach ($packages as $namespace) {
-				    $name = $namespace['@name'];
 				    if (!$this->isAssoc($namespace['file'])) {
 					    foreach ($namespace['file'] as $file) {
 						    $this->processFile($file);
