@@ -25,7 +25,11 @@ class MessagingInfo extends Model
 	
 	public function getEndTimeAttribute()
 	{
-		return new Carbon($this->attributes['endTime']);
+		if ($this->attributes['endTime'] != 'undefined') {
+			return new Carbon($this->attributes['endTime']);
+		} else {
+			return null;
+		}
 	}
 
 	public function getMinutesAttribute()

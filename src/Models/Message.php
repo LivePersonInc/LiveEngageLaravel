@@ -18,6 +18,7 @@ class Message extends Model
 		'plain_text',
 		'text',
 		'time',
+		'rich_content'
 	];
 	
 	public function getTextAttribute()
@@ -28,6 +29,15 @@ class Message extends Model
 			return 'RICH_CONTENT'; // @codeCoverageIgnore
 		} else {
 			return isset($this->attributes['text']) ? $this->attributes['text'] : '';
+		}
+	}
+	
+	public function getRichContentAttribute()
+	{
+		if ($this->type == 'RICH_CONTENT') {
+			return json_decode($this->messageData->richContent->content);
+		} else {
+			return 'RICH_CONTENT';
 		}
 	}
 
