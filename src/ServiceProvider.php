@@ -31,6 +31,9 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 			return new LiveEngageLaravel();
 		});
 		
+		$loader = \Illuminate\Foundation\AliasLoader::getInstance();
+		$loader->alias('LiveEngage', 'LivePersonInc\LiveEngageLaravel\Facades\LiveEngageLaravel');
+		
 		$this->app->register(
 		    'Nathanmac\Utilities\Parser\ParserServiceProvider'
 		);
