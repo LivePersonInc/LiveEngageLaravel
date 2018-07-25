@@ -21,6 +21,11 @@ class Info extends Model
 	{
 		return new Carbon($this->attributes['startTime']);
 	}
+	
+	public function getEndTimeAttribute()
+	{
+		return new Carbon($this->attributes['endTime']);
+	}
 
 	public function getSessionIdAttribute()
 	{

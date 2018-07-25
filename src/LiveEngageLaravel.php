@@ -131,6 +131,8 @@ class LiveEngageLaravel
 	 * @access private
 	 */
 	private $retry_counter = 0;
+	
+	private $request_version = 'V1';
 
 	/**
 	 * __get magic function to retrieve private properties of the class.
@@ -171,6 +173,19 @@ class LiveEngageLaravel
 		$this->config = "services.liveperson.$key";
 		$this->__construct();
 
+		return $this;
+	}
+	
+	/**
+	 * version function.
+	 * 
+	 * @access public
+	 * @param string $version (default: 'V1')
+	 * @return void
+	 */
+	public function version($version = 'V1') {
+		$this->request_version = 'V2';
+		
 		return $this;
 	}
 	
@@ -353,6 +368,7 @@ class LiveEngageLaravel
 	final public function retrieveMsgHistory(Carbon $start, Carbon $end, $url = false)
 	{
 		$this->domain('msgHist');
+		$version = $this->request_version;
 
 		$url = $url ?: "https://{$this->domain}/messaging_history/api/account/{$this->account}/conversations/search?limit={$this->history_limit}&offset=0&sort=start:desc";
 
@@ -368,7 +384,7 @@ class LiveEngageLaravel
 			'skillIds' => $this->skills
 		]);
 		
-		$result = $this->request->V1($url, 'POST', $data);
+		$result = $this->request->$version($url, 'POST', $data);
 		$result->records = $result->conversationHistoryRecords;
 		$result->conversationHistoryRecords = null;
 		

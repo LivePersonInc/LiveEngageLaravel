@@ -65,12 +65,14 @@ class LiveEngageRequest
 	}
 	
 	/**
-	 * login
+	 * login function.
 	 * 
 	 * @access public
-	 * @return this
+	 * @param string $user (default: null)
+	 * @param string $pass (default: null)
+	 * @return object
 	 */
-	public function login()
+	public function login($user = false, $pass = false)
 	{
 		/** @scrutinizer ignore-call */
 		$le = LiveEngage::domain('agentVep');
@@ -83,20 +85,27 @@ class LiveEngageRequest
 		$secret = config("{$this->config}.token_secret");
 		$username = config("{$this->config}.user_name");
 		
-		$auth = [
-			'username'		  => $username,
-			'appKey'			=> $consumer_key,
-			'secret'			=> $consumer_secret,
-			'accessToken'		=> $token,
-			'accessTokenSecret' => $secret,
-		];
+		if ($user && $pass) {
+			$auth = [
+				'username'			=> $user,
+				'password'			=> $pass
+			];
+		} else {
+			$auth = [
+				'username'			=> $username,
+				'appKey'			=> $consumer_key,
+				'secret'			=> $consumer_secret,
+				'accessToken'		=> $token,
+				'accessTokenSecret' => $secret,
+			];
+		}
 		
 		$url = "https://{$domain}/api/account/{$account}/login?v=1.3";
 		
 		try {
-			$response = $this->V1($url, 'POST', $auth);
+			$response = $this->V1($url, 'POST', $auth, true);
 		} catch (\GuzzleHttp\Exception\ServerException $e) {
-			throw new LoginFailure();
+			throw $e; //new LoginFailure();
 		}
 		
 		$this->bearer = $response->bearer;
@@ -111,20 +120,24 @@ class LiveEngageRequest
 	 * @param string $url
 	 * @param string $method
 	 * @param array $payload (default: [])
+	 * @param bool $noauth (default: false)
 	 * @return mixed
 	 */
-	public function V1($url, $method, $payload = null)
+	public function V1($url, $method, $payload = null, $noauth = false)
 	{
-		$client = $this->requestClient();
+		$client = $this->requestClient($noauth);
 
 		$args = [
 			'auth' => 'oauth',
 			'headers' => [
 				'content-type' => 'application/json',
+				'accept' => 'application/json'
 			],
 			'body' => json_encode($payload ?: [])
 		];
-
+		
+		if ($noauth) unset($args['auth']);
+		
 		// @codeCoverageIgnoreStart
 		try {
 			$res = $client->request($method, $url, $args);
@@ -158,12 +171,13 @@ class LiveEngageRequest
 	 */
 	public function V2($url, $method, $payload = null, $headers = null)
 	{
-		$this->login();
+		if (!$this->bearer) $this->login();
 		
 		$client = new Client();
 		$args = [
 			'headers' => array_merge([
 				'content-type' => 'application/json',
+				'accept' => 'application/json',
 				'Authorization' => 'Bearer ' . $this->bearer
 			], $headers ?: []),
 			'body' => json_encode($payload ?: [])
@@ -185,9 +199,14 @@ class LiveEngageRequest
 	 * 
 	 * @access private
 	 * @return \GuzzleHttp\Client
+	 * @param bool $noauth (default: false)
 	 */
-	private function requestClient()
+	private function requestClient($noauth = false)
 	{
+		if ($noauth) {
+			return new Client();
+		}
+		
 		$consumer_key = config("{$this->config}.key");
 		$consumer_secret = config("{$this->config}.secret");
 		$token = config("{$this->config}.token");

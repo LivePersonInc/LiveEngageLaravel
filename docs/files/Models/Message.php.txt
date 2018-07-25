@@ -16,17 +16,28 @@ class Message extends Model
 
 	protected $appends = [
 		'plain_text',
+		'text',
 		'time',
+		'rich_content'
 	];
 	
 	public function getTextAttribute()
 	{
-		if ($this->type == 'PLAIN') {
+		if ($this->type == 'TEXT_PLAIN') {
 			return $this->messageData->msg->text;
 		} elseif ($this->type == 'RICH_CONTENT') {
-			return 'RICH_CONTENT';
+			return 'RICH_CONTENT'; // @codeCoverageIgnore
 		} else {
 			return isset($this->attributes['text']) ? $this->attributes['text'] : '';
+		}
+	}
+	
+	public function getRichContentAttribute()
+	{
+		if ($this->type == 'RICH_CONTENT') {
+			return json_decode($this->messageData->richContent->content);
+		} else {
+			return 'RICH_CONTENT';
 		}
 	}
 
@@ -42,13 +53,7 @@ class Message extends Model
 
 	public function __toString()
 	{
-		if ($this->type == 'TEXT_PLAIN') {
-			return $this->messageData->msg->text;
-		} elseif ($this->type == 'RICH_CONTENT') {
-			return 'RICH_CONTENT';
-		} else {
-			return isset($this->attributes['text']) ? $this->attributes['text'] : '';
-		}
+		return $this->text;
 	}
 }
 
