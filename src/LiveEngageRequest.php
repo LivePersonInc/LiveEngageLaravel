@@ -10,6 +10,8 @@ use GuzzleHttp\Client;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Subscriber\Oauth\Oauth1;
 use LivePersonInc\LiveEngageLaravel\Models\Payload;
+use LivePersonInc\LiveEngageLaravel\Exceptions\LiveEngageException;
+use LivePersonInc\LiveEngageLaravel\Exceptions\LoginFailure;
 
 /**
  * LiveEngageRequest class.
@@ -91,7 +93,11 @@ class LiveEngageRequest
 		
 		$url = "https://{$domain}/api/account/{$account}/login?v=1.3";
 		
-		$response = $this->V1($url, 'POST', $auth);
+		try {
+			$response = $this->V1($url, 'POST', $auth);
+		} catch (\GuzzleHttp\Exception\ServerException $e) {
+			throw new LoginFailure();
+		}
 		
 		$this->bearer = $response->bearer;
 		
@@ -123,14 +129,17 @@ class LiveEngageRequest
 		try {
 			$res = $client->request($method, $url, $args);
 			$response = json_decode($res->getBody());
-		} catch (\Exception $e) {
-			if ($this->retry_counter < $this->retry_limit || $this->retry_limit == -1) {
-				usleep(1500);
-				$this->retry_counter++;
-				$response = $this->V1($url, $method, $payload ?: []);
+		} catch (\GuzzleHttp\Exception\ServerException $e) {
+			throw $e;
+		} catch (\GuzzleHttp\Exception\ClientException $e) {
+			$code = $e->getResponse()->getStatusCode();
+			if ($code == 401) {
+				throw new LoginFailure();
 			} else {
 				throw $e;
 			}
+		} catch (\Exception $e) {
+			throw $e;
 		}
 		// @codeCoverageIgnoreEnd
 
