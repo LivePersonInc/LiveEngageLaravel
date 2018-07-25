@@ -43,7 +43,7 @@ Register package facade in `config/app.php` in `aliases` section
 
 ## Usage
 
-Create/Obtain an API key from LiveEngage with appropriate permissions for the APIs you intend to access.
+Create/Obtain an API key from LiveEngage with appropriate permissions for the APIs you intend to access. The `default` key is required.
 
 Configure your keys/account in `config/services.php`
 
