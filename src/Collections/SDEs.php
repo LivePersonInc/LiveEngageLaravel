@@ -26,8 +26,10 @@ class SDEs extends Collection
 	 */
 	public function __construct(array $models = [])
 	{
+		
+		
 		$models = array_map(function($item) {
-			return new SDE((array) $item);
+			return is_a($item, 'LivePersonInc\LiveEngageLaravel\Models\SDE') ? $item : new SDE((array) $item);
 		}, $models);
 		
 		parent::__construct($models);
@@ -43,7 +45,11 @@ class SDEs extends Collection
 	public function getSDE($type)
 	{
 		
-		return $this->firstWhere('sdeType', $type);
+		$sorted = $this->sortByDesc(function($item) {
+			return $item->serverTimeStamp;
+		});
+		
+		return $sorted->firstWhere('sdeType', $type);
 		
 	}
 	

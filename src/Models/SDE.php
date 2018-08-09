@@ -8,6 +8,7 @@
 namespace LivePersonInc\LiveEngageLaravel\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Carbon\Carbon;
 
 /**
  * SDE class.
@@ -17,4 +18,8 @@ use Illuminate\Database\Eloquent\Model;
 class SDE extends Model
 {
 	protected $guarded = [];
+	
+	public function getServerTimeAttribute() {
+		return Carbon::createFromTimestampMs($this->attributes['serverTimeStamp']);
+	}
 }
