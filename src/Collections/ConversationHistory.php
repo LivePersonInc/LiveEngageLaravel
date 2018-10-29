@@ -11,6 +11,7 @@ use Illuminate\Support\Collection;
 use LivePersonInc\LiveEngageLaravel\Models\MetaData;
 use LivePersonInc\LiveEngageLaravel\Models\Conversation;
 use LivePersonInc\LiveEngageLaravel\Traits\Pageable;
+use LivePersonInc\LiveEngageLaravel\Traits\Timeable;
 
 /**
  * ConversationHistory class.
@@ -19,7 +20,7 @@ use LivePersonInc\LiveEngageLaravel\Traits\Pageable;
  */
 class ConversationHistory extends Collection
 {
-	use Pageable;
+	use Pageable, Timeable;
 	
 	/**
 	 * metaData
@@ -53,6 +54,24 @@ class ConversationHistory extends Collection
 		}, $models ?: []);
 		$this->metaData = new MetaData();
 		parent::__construct($models);
+	}
+	
+	/**
+	 * closeReason function.
+	 * 
+	 * @access public
+	 * @param mixed $reason
+	 * @return void
+	 */
+	public function closeReason()
+	{
+		$reasons = func_get_args();
+		
+		$result = $this->filter(function($value) use ($reasons) {
+			return in_array($value->info->closeReason, $reasons);
+		});
+		
+		return $result;
 	}
 	
 	/**

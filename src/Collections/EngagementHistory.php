@@ -11,6 +11,7 @@ use Illuminate\Support\Collection;
 use LivePersonInc\LiveEngageLaravel\Models\Engagement;
 use LivePersonInc\LiveEngageLaravel\Models\MetaData;
 use LivePersonInc\LiveEngageLaravel\Traits\Pageable;
+use LivePersonInc\LiveEngageLaravel\Traits\Timeable;
 
 /**
  * EngagementHistory class.
@@ -19,7 +20,7 @@ use LivePersonInc\LiveEngageLaravel\Traits\Pageable;
  */
 class EngagementHistory extends Collection
 {
-	use Pageable;
+	use Pageable, Timeable;
 	
 	/**
 	 * metaData
@@ -67,6 +68,10 @@ class EngagementHistory extends Collection
 		$result = $this->filter(function($value) use ($engagementID) {
 			return $value->info->sessionId == $engagementID;
 		});
+		
+		if ($result->count() > 1) {
+			return $result;
+		}
 		
 		return $result->first();
 	}

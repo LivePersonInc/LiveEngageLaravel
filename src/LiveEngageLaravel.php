@@ -365,7 +365,7 @@ class LiveEngageLaravel
 	 * @param string $url (default: false)
 	 * @return mixed
 	 */
-	final public function retrieveMsgHistory(Carbon $start, Carbon $end, $url = false)
+	final public function retrieveMsgHistory(Carbon $start, Carbon $end, $url = false, $args = [])
 	{
 		$this->domain('msgHist');
 		$version = $this->request_version;
@@ -375,14 +375,14 @@ class LiveEngageLaravel
 		$start_str = $start->toW3cString();
 		$end_str = $end->toW3cString();
 
-		$data = new Payload([
+		$data = new Payload(array_merge([
 			'status' => $this->ended ? ['CLOSE'] : ['OPEN', 'CLOSE'],
 			'start' => [
 				'from' => strtotime($start_str) . '000',
 				'to' => strtotime($end_str) . '000',
 			],
 			'skillIds' => $this->skills
-		]);
+		], $args));
 		
 		$result = $this->request->$version($url, 'POST', $data);
 		$result->records = $result->conversationHistoryRecords;
@@ -540,7 +540,7 @@ class LiveEngageLaravel
 	 * @param int/array $skills (default: [])
 	 * @return Collections\ConversationHistory
 	 */
-	public function conversationHistory(Carbon $start = null, Carbon $end = null, $skills = [])
+	public function conversationHistory(Carbon $start = null, Carbon $end = null, $skills = [], $arguments = [])
 	{
 		$this->retry_counter = 0;
 		$this->skills = $skills;
@@ -548,10 +548,11 @@ class LiveEngageLaravel
 		$start = $start ?: (new Carbon())->today();
 		$end = $end ?: (new Carbon())->today()->addHours(23)->addMinutes(59);
 
-		$results_object = $this->retrieveMsgHistory($start, $end);
+		$results_object = $this->retrieveMsgHistory($start, $end, false, $arguments);
 		
 		$results_object->_metadata->start = $start;
 		$results_object->_metadata->end = $end;
+		$results_object->_metadata->arguments = $arguments;
 	
 		$meta = new MetaData((array) $results_object->_metadata);
 		
