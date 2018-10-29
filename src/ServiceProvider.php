@@ -23,20 +23,12 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
 			'live-engage-laravel'
 		);
 		
-		$this->commands([
-		    Commands\LiveEngageTestCoverage::class
-		]);
-
 		$this->app->bind('live-engage-laravel', function() {
 			return new LiveEngageLaravel();
 		});
 		
 		$loader = \Illuminate\Foundation\AliasLoader::getInstance();
 		$loader->alias('LiveEngage', 'LivePersonInc\LiveEngageLaravel\Facades\LiveEngageLaravel');
-		
-		$this->app->register(
-		    'Nathanmac\Utilities\Parser\ParserServiceProvider'
-		);
 		
 	}
 }
