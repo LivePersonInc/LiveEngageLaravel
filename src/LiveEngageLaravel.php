@@ -264,9 +264,9 @@ class LiveEngageLaravel
 	 */
 	public function domain($service)
 	{
-		$response = $this->request->V1("https://api.liveperson.net/api/account/{$this->account}/service/{$service}/baseURI.json?version={$this->version}", 'GET');
+		$response = $this->request->get('V1', "https://api.liveperson.net/api/account/{$this->account}/service/{$service}/baseURI.json?version={$this->version}", 'GET');
 		
-		$this->domain = $response->baseURI;
+		$this->domain = $response->body->baseURI;
 
 		return $this;
 	}
