@@ -365,7 +365,7 @@ class LiveEngageLaravel
 	 * @param string $url (default: false)
 	 * @return mixed
 	 */
-	final public function retrieveMsgHistory(Carbon $start, Carbon $end, $url = false, $args = [])
+	final public function retrieveMsgHistory(Carbon $start, Carbon $end, $url = false)
 	{
 		$this->domain('msgHist');
 		$version = $this->request_version;
@@ -375,14 +375,14 @@ class LiveEngageLaravel
 		$start_str = $start->toW3cString();
 		$end_str = $end->toW3cString();
 
-		$data = new Payload(array_merge([
+		$data = new Payload([
 			'status' => $this->ended ? ['CLOSE'] : ['OPEN', 'CLOSE'],
 			'start' => [
 				'from' => strtotime($start_str) . '000',
 				'to' => strtotime($end_str) . '000',
 			],
 			'skillIds' => $this->skills
-		], $args));
+		]);
 		
 		$result = $this->request->$version($url, 'POST', $data);
 		$result->records = $result->conversationHistoryRecords;
@@ -435,7 +435,11 @@ class LiveEngageLaravel
 		
 		$url = "https://{$this->domain}/api/account/{$this->account}/configuration/le-users/users/{$userId}?v=4.0";
 		
-		return new Agent((array) $this->request->V2($url, 'GET'));
+		$content = $this->request->get('V2', $url, 'GET');
+		
+		dd($content);
+		
+		return new Agent((array) $content->body);
 	}
 	
 	/**
@@ -459,7 +463,9 @@ class LiveEngageLaravel
 			'if-Match' => '*'
 		];
 		
-		return new Agent((array) $this->request->V2($url, 'PUT', $properties, $headers));
+		$content = $this->request->get('V2', $url, 'PUT', $properties, $headers);
+		
+		return new Agent((array) $content->body);
 	}
 	
 	/**
@@ -540,7 +546,7 @@ class LiveEngageLaravel
 	 * @param int/array $skills (default: [])
 	 * @return Collections\ConversationHistory
 	 */
-	public function conversationHistory(Carbon $start = null, Carbon $end = null, $skills = [], $arguments = [])
+	public function conversationHistory(Carbon $start = null, Carbon $end = null, $skills = [])
 	{
 		$this->retry_counter = 0;
 		$this->skills = $skills;
@@ -548,11 +554,10 @@ class LiveEngageLaravel
 		$start = $start ?: (new Carbon())->today();
 		$end = $end ?: (new Carbon())->today()->addHours(23)->addMinutes(59);
 
-		$results_object = $this->retrieveMsgHistory($start, $end, false, $arguments);
+		$results_object = $this->retrieveMsgHistory($start, $end);
 		
 		$results_object->_metadata->start = $start;
 		$results_object->_metadata->end = $end;
-		$results_object->_metadata->arguments = $arguments;
 	
 		$meta = new MetaData((array) $results_object->_metadata);
 		

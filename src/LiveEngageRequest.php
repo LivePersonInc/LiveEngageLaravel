@@ -123,16 +123,16 @@ class LiveEngageRequest
 	 * @param bool $noauth (default: false)
 	 * @return mixed
 	 */
-	public function V1($url, $method, $payload = null, $noauth = false)
+	public function V1($url, $method, $payload = null, $headers = null, $noauth = false)
 	{
 		$client = $this->requestClient($noauth);
 
 		$args = [
 			'auth' => 'oauth',
-			'headers' => [
+			'headers' => array_merge([
 				'content-type' => 'application/json',
 				'accept' => 'application/json'
-			],
+			], $headers ?: []),
 			'body' => json_encode($payload ?: [])
 		];
 		
@@ -141,7 +141,6 @@ class LiveEngageRequest
 		// @codeCoverageIgnoreStart
 		try {
 			$res = $client->request($method, $url, $args);
-			$response = json_decode($res->getBody());
 		} catch (\GuzzleHttp\Exception\ServerException $e) {
 			throw $e;
 		} catch (\GuzzleHttp\Exception\ClientException $e) {
@@ -156,7 +155,7 @@ class LiveEngageRequest
 		}
 		// @codeCoverageIgnoreEnd
 
-		return $response;
+		return $res;
 	}
 	
 	/**
@@ -169,7 +168,7 @@ class LiveEngageRequest
 	 * @param mixed $headers (default: [])
 	 * @return mixed
 	 */
-	public function V2($url, $method, $payload = null, $headers = null)
+	public function V2($url, $method, $payload = null, $headers = null, $noauth = false)
 	{
 		if (!$this->bearer) $this->login();
 		
@@ -191,7 +190,18 @@ class LiveEngageRequest
 		}
 		// @codeCoverageIgnoreEnd
 		
-		return json_decode($res->getBody());
+		return $res;
+	}
+	
+	public function get($version, $url, $method, $payload = null, $headers = null, $noauth = false)
+	{
+		$response = $this->$version($url, $method, $payload, $headers, $noauth);
+		
+		$content = new \StdClass();
+		$content->body = json_decode($response->getBody());
+		$content->headers = $response->getHeaders();
+		
+		return $content;
 	}
 	
 	/**
