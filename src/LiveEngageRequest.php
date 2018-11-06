@@ -103,12 +103,12 @@ class LiveEngageRequest
 		$url = "https://{$domain}/api/account/{$account}/login?v=1.3";
 		
 		try {
-			$response = $this->V1($url, 'POST', $auth, true);
+			$response = $this->get('V1', $url, 'POST', $auth, [], true);
 		} catch (\GuzzleHttp\Exception\ServerException $e) {
 			throw $e; //new LoginFailure();
 		}
 		
-		$this->bearer = $response->bearer;
+		$this->bearer = $response->body->bearer;
 		
 		return $this;
 	}
@@ -126,7 +126,7 @@ class LiveEngageRequest
 	public function V1($url, $method, $payload = null, $headers = null, $noauth = false)
 	{
 		$client = $this->requestClient($noauth);
-
+		
 		$args = [
 			'auth' => 'oauth',
 			'headers' => array_merge([

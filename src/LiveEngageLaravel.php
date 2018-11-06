@@ -437,9 +437,10 @@ class LiveEngageLaravel
 		
 		$content = $this->request->get('V2', $url, 'GET');
 		
-		dd($content);
+		$agent = new Agent((array) $content->body);
+		$agent->revision = $content->headers['ac-revision'];
 		
-		return new Agent((array) $content->body);
+		return $agent;
 	}
 	
 	/**
@@ -460,7 +461,7 @@ class LiveEngageLaravel
 		$url = "https://{$this->domain}/api/account/{$this->account}/configuration/le-users/users/{$userId}?v=4.0";
 		$headers = [
 			'X-HTTP-Method-Override' => 'PUT',
-			'if-Match' => '*'
+			'If-Match' => $agent->revision
 		];
 		
 		$content = $this->request->get('V2', $url, 'PUT', $properties, $headers);
