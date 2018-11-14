@@ -288,11 +288,11 @@ class LiveEngageLaravel
 		if ($setData) {
 			$url = "https://{$this->domain}/api/account/{$this->account}/monitoring/visitors/{$visitorID}/visits/current/events?v=1&sid={$sessionID}";
 
-			return $this->request->V1($url, 'POST', $setData);
+			return $this->request->get($this->request_version, $url, 'POST', $setData)->body;
 		} else {
 			$url = "https://{$this->domain}/api/account/{$this->account}/monitoring/visitors/{$visitorID}/visits/current/state?v=1&sid={$sessionID}";
 
-			return $this->request->V1($url, 'GET');
+			return $this->request->get($this->request_version, $url, 'GET')->body;
 		}
 	}
 	
@@ -314,7 +314,7 @@ class LiveEngageLaravel
 		];
 		$payload = new Payload($args);
 		
-		$response = $this->request->V1($url, 'POST', $payload);
+		$response = $this->request->get($this->request_version, $url, 'POST', $payload)->body;
 		
 		return $response;
 	}
@@ -348,7 +348,7 @@ class LiveEngageLaravel
 			'skillIds' => $this->skills
 		]);
 
-		$result = $this->request->V1($url, 'POST', $data);
+		$result = $this->request->get($this->request_version, $url, 'POST', $data)->body;
 		$result->records = $result->interactionHistoryRecords;
 		$result->interactionHistoryRecords = null;
 		
@@ -384,11 +384,10 @@ class LiveEngageLaravel
 			'skillIds' => $this->skills
 		]);
 		
-		$result = $this->request->get($version, $url, 'POST', $data);
+		$result = $this->request->get($version, $url, 'POST', $data)->body;
 		
-		$result->_metadata = $result->body->_metadata;
-		$result->records = $result->body->conversationHistoryRecords;
-		//$result->conversationHistoryRecords = null;
+		$result->records = $result->conversationHistoryRecords;
+		$result->conversationHistoryRecords = null;
 		
 		return $result;
 	}
@@ -405,7 +404,7 @@ class LiveEngageLaravel
 		
 		$url = "https://{$this->domain}/api/account/{$this->account}/configuration/le-users/skills?v=4.0";
 		
-		return new Skills($this->request->V2($url, 'GET'));
+		return new Skills($this->request->get($this->request_version, $url, 'GET')->body);
 	}
 	
 	/**
@@ -421,7 +420,7 @@ class LiveEngageLaravel
 		
 		$url = "https://{$this->domain}/api/account/{$this->account}/configuration/le-users/skills/{$skillId}?v=4.0";
 		
-		return new Skill((array) $this->request->V2($url, 'GET'));
+		return new Skill((array) $this->request->get($this->request_version, $url, 'GET')->body);
 	}
 	
 	/**
@@ -437,7 +436,7 @@ class LiveEngageLaravel
 		
 		$url = "https://{$this->domain}/api/account/{$this->account}/configuration/le-users/users/{$userId}?v=4.0";
 		
-		$content = $this->request->get('V2', $url, 'GET');
+		$content = $this->request->get($this->request_version, $url, 'GET');
 		
 		$agent = new Agent((array) $content->body);
 		$agent->revision = $content->headers['ac-revision'];
@@ -466,7 +465,7 @@ class LiveEngageLaravel
 			'If-Match' => $agent->revision
 		];
 		
-		$content = $this->request->get('V2', $url, 'PUT', $properties, $headers);
+		$content = $this->request->get($this->request_version, $url, 'PUT', $properties, $headers);
 		
 		return new Agent((array) $content->body);
 	}
@@ -532,7 +531,7 @@ class LiveEngageLaravel
 		
 		$data = ['skillIds' => $skills];
 		
-		$response = $this->request->get('V1', $url, 'POST', $data)->body;
+		$response = $this->request->get($this->request_version, $url, 'POST', $data)->body;
 		$collection = new AgentParticipants($response->agentStatusRecords);
 		$collection->metaData = new MetaData((array) $response->_metadata);
 		
@@ -588,7 +587,7 @@ class LiveEngageLaravel
 			'conversationId' => $conversationId
 		]);
 		
-		$result = $this->request->V1($url, 'POST', $data);
+		$result = $this->request->get($this->request_version, $url, 'POST', $data)->body;
 		if (!count($result->conversationHistoryRecords)) {
 			return null; // @codeCoverageIgnore
 		}
@@ -637,7 +636,7 @@ class LiveEngageLaravel
 	{
 		$url = "https://status.liveperson.com/json?site={$this->account}";
 		
-		$response = $this->request->V1($url, 'GET');
+		$response = $this->request->get('V1', $url, 'GET')->body;
 		
 		return new AccountStatus((array) $response);
 	}
