@@ -384,9 +384,11 @@ class LiveEngageLaravel
 			'skillIds' => $this->skills
 		]);
 		
-		$result = $this->request->$version($url, 'POST', $data);
-		$result->records = $result->conversationHistoryRecords;
-		$result->conversationHistoryRecords = null;
+		$result = $this->request->get($version, $url, 'POST', $data);
+		
+		$result->_metadata = $result->body->_metadata;
+		$result->records = $result->body->conversationHistoryRecords;
+		//$result->conversationHistoryRecords = null;
 		
 		return $result;
 	}
@@ -510,7 +512,7 @@ class LiveEngageLaravel
 		
 		$url = "https://{$this->domain}/api/account/{$this->account}/configuration/le-users/users?v=4.0&select=$select";
 		
-		return new AgentParticipants($this->request->V2($url, 'GET'));
+		return new AgentParticipants((array) $this->request->get('V2', $url, 'GET')->body);
 	}
 	
 	/**
@@ -530,7 +532,7 @@ class LiveEngageLaravel
 		
 		$data = ['skillIds' => $skills];
 		
-		$response = $this->request->V1($url, 'POST', $data);
+		$response = $this->request->get('V1', $url, 'POST', $data)->body;
 		$collection = new AgentParticipants($response->agentStatusRecords);
 		$collection->metaData = new MetaData((array) $response->_metadata);
 		

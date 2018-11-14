@@ -50,7 +50,7 @@ class LiveEngageRequest
 	 * @var mixed
 	 * @access private
 	 */
-	private $bearer;
+	public $bearer;
 	
 	/**
 	 * __construct function.
