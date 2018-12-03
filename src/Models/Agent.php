@@ -113,4 +113,15 @@ class Agent extends Model
 		return isset($this->attributes['pictureUrl']) ? $this->attributes['pictureUrl'] : null;
 	}
 	
+	/**
+	 * getDetailsAttribute function.
+	 * 
+	 * @access public
+	 * @return void
+	 */
+	public function getDetailsAttribute()
+	{
+		return \LiveEngage::getAgent($this->agentId);
+	}
+	
 }

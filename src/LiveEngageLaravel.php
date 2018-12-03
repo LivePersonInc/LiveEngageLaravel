@@ -444,6 +444,22 @@ class LiveEngageLaravel
 		return $agent;
 	}
 	
+	public function getSettings($filters = [])
+	{
+		$url = "https://z1-a.houston.int.liveperson.net/a/{$this->account}/module/sitesettings/doc/siteSettingsDictionary.json";
+		
+		$content = $this->request->get('V2', $url, 'GET');
+		
+		$settings = collect($content->body);
+		foreach ($filters as $filter => $value) {
+			$settings = $settings->filter(function($item, $key) use ($filter, $value) {
+				return str_contains($item->$filter, $value);
+			});
+		}
+		
+		return $settings;
+	}
+	
 	/**
 	 * updateAgent function.
 	 * 
