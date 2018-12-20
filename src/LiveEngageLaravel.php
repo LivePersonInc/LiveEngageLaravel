@@ -5,7 +5,7 @@
  * @package LivePersonInc\LiveEngageLaravel
  *
  */
- 
+
 namespace LivePersonInc\LiveEngageLaravel;
 
 use Carbon\Carbon;
@@ -39,45 +39,45 @@ class LiveEngageLaravel
 {
 	/**
 	 * account - LiveEngage account number, usually set by configuration
-	 * 
+	 *
 	 * (default value: false)
-	 * 
+	 *
 	 * @var long
 	 * @access private
 	 */
 	private $account = false;
 	/**
 	 * skills - holds the skills for history retrieval
-	 * 
+	 *
 	 * (default value: [])
-	 * 
+	 *
 	 * @var array
 	 * @access private
 	 */
 	private $skills = [];
 	/**
 	 * config - holds the configuration key where keyset is stored in config/services.php
-	 * 
+	 *
 	 * (default value: 'services.liveperson.default')
-	 * 
+	 *
 	 * @var string
 	 * @access private
 	 */
 	private $config = 'services.liveperson.default';
 	/**
 	 * version - api version
-	 * 
+	 *
 	 * (default value: '1.0')
-	 * 
+	 *
 	 * @var string
 	 * @access private
 	 */
 	private $version = '1.0';
 	/**
 	 * history_limit - stores the history page limit
-	 * 
+	 *
 	 * (default value: 50)
-	 * 
+	 *
 	 * @var int
 	 * @access private
 	 */
@@ -86,18 +86,18 @@ class LiveEngageLaravel
 	private $ended = true;
 	/**
 	 * bearer - bearer token for V2 authentication
-	 * 
+	 *
 	 * (default value: false)
-	 * 
+	 *
 	 * @var string
 	 * @access private
 	 */
 	private $bearer = false;
 	/**
 	 * revision
-	 * 
+	 *
 	 * (default value: 0)
-	 * 
+	 *
 	 * @var int
 	 * @access private
 	 */
@@ -105,9 +105,9 @@ class LiveEngageLaravel
 
 	/**
 	 * domain - api domain storage
-	 * 
+	 *
 	 * (default value: false)
-	 * 
+	 *
 	 * @var bool
 	 * @access private
 	 */
@@ -115,28 +115,28 @@ class LiveEngageLaravel
 
 	/**
 	 * retry_limit - number of times the request will attempt before it throws the exception.
-	 * 
+	 *
 	 * (default value: 5)
-	 * 
+	 *
 	 * @var int
 	 * @access private
 	 */
 	private $retry_limit = 5;
 	/**
 	 * retry_counter - stores current count of retries.
-	 * 
+	 *
 	 * (default value: 0)
-	 * 
+	 *
 	 * @var int
 	 * @access private
 	 */
 	private $retry_counter = 0;
-	
+
 	private $request_version = 'V1';
 
 	/**
 	 * __get magic function to retrieve private properties of the class.
-	 * 
+	 *
 	 * @access public
 	 * @param mixed $attribute
 	 * @return mixed
@@ -145,12 +145,12 @@ class LiveEngageLaravel
 	{
 		return $this->$attribute;
 	}
-	
+
 	private $request;
 
 	/**
 	 * __construct function.
-	 * 
+	 *
 	 * @access public
 	 * @return void
 	 */
@@ -163,7 +163,7 @@ class LiveEngageLaravel
 
 	/**
 	 * key function sets the keyset the class should use. Setting this once will be stored for script execution, but not for the session.
-	 * 
+	 *
 	 * @access public
 	 * @param string $key (default: 'default')
 	 * @return this
@@ -175,23 +175,23 @@ class LiveEngageLaravel
 
 		return $this;
 	}
-	
+
 	/**
 	 * version function.
-	 * 
+	 *
 	 * @access public
 	 * @param string $version (default: 'V1')
 	 * @return void
 	 */
 	public function version($version = 'V1') {
 		$this->request_version = 'V2';
-		
+
 		return $this;
 	}
-	
+
 	/**
 	 * nonInteractive function.
-	 * 
+	 *
 	 * @access public
 	 * @return void
 	 */
@@ -200,10 +200,10 @@ class LiveEngageLaravel
 		$this->interactive = false;
 		return $this;
 	}
-	
+
 	/**
 	 * active function.
-	 * 
+	 *
 	 * @access public
 	 * @return void
 	 */
@@ -215,7 +215,7 @@ class LiveEngageLaravel
 
 	/**
 	 * limit function.
-	 * 
+	 *
 	 * @access public
 	 * @param mixed $limit
 	 * @return void
@@ -229,7 +229,7 @@ class LiveEngageLaravel
 
 	/**
 	 * retry function.
-	 * 
+	 *
 	 * @access public
 	 * @param mixed $limit
 	 * @return void
@@ -243,7 +243,7 @@ class LiveEngageLaravel
 
 	/**
 	 * account function.
-	 * 
+	 *
 	 * @access public
 	 * @param mixed $accountid
 	 * @return void
@@ -257,7 +257,7 @@ class LiveEngageLaravel
 
 	/**
 	 * domain function sets the LivePerson domain for the secified service. Like `key` it is set for the execution script, but not session. It must be run each time.
-	 * 
+	 *
 	 * @access public
 	 * @param mixed $service
 	 * @return this
@@ -265,7 +265,7 @@ class LiveEngageLaravel
 	public function domain($service)
 	{
 		$response = $this->request->get('V1', "https://api.liveperson.net/api/account/{$this->account}/service/{$service}/baseURI.json?version={$this->version}", 'GET');
-		
+
 		$this->domain = $response->body->baseURI;
 
 		return $this;
@@ -273,7 +273,7 @@ class LiveEngageLaravel
 
 	/**
 	 * visitor function gets or sets visitor attribute information - this only works for CHAT, not messaging.
-	 * 
+	 *
 	 * @access public
 	 * @param string $visitorID
 	 * @param string $sessionID
@@ -295,7 +295,7 @@ class LiveEngageLaravel
 			return $this->request->get($this->request_version, $url, 'GET')->body;
 		}
 	}
-	
+
 	/**
 	 * chat function
 	 *
@@ -306,22 +306,22 @@ class LiveEngageLaravel
 	public function chat()
 	{
 		$this->domain('conversationVep');
-		
+
 		$url = "https://{$this->domain}/api/account/{$this->account}/chat/request?v=1&NC=true";
-		
+
 		$args = [
-			
+
 		];
 		$payload = new Payload($args);
-		
+
 		$response = $this->request->get($this->request_version, $url, 'POST', $payload)->body;
-		
+
 		return $response;
 	}
 
 	/**
 	 * retrieveHistory function.
-	 * 
+	 *
 	 * @access public
 	 * @final
 	 * @param Carbon $start
@@ -351,13 +351,13 @@ class LiveEngageLaravel
 		$result = $this->request->get($this->request_version, $url, 'POST', $data)->body;
 		$result->records = $result->interactionHistoryRecords;
 		$result->interactionHistoryRecords = null;
-		
+
 		return $result;
 	}
 
 	/**
 	 * retrieveMsgHistory function.
-	 * 
+	 *
 	 * @access public
 	 * @final
 	 * @param Carbon $start
@@ -365,7 +365,7 @@ class LiveEngageLaravel
 	 * @param string $url (default: false)
 	 * @return mixed
 	 */
-	final public function retrieveMsgHistory(Carbon $start, Carbon $end, $url = false)
+	final public function retrieveMsgHistory(Carbon $start, Carbon $end, $url = false, $parameters = [])
 	{
 		$this->domain('msgHist');
 		$version = $this->request_version;
@@ -375,41 +375,41 @@ class LiveEngageLaravel
 		$start_str = $start->toW3cString();
 		$end_str = $end->toW3cString();
 
-		$data = new Payload([
+		$data = new Payload(array_merge([
 			'status' => $this->ended ? ['CLOSE'] : ['OPEN', 'CLOSE'],
 			'start' => [
 				'from' => strtotime($start_str) . '000',
 				'to' => strtotime($end_str) . '000',
 			],
 			'skillIds' => $this->skills
-		]);
-		
+		], $parameters));
+
 		$result = $this->request->get($version, $url, 'POST', $data)->body;
-		
+
 		$result->records = $result->conversationHistoryRecords;
 		$result->conversationHistoryRecords = null;
-		
+
 		return $result;
 	}
-	
+
 	/**
 	 * skills function gets collection of skills associated with the account.
-	 * 
+	 *
 	 * @access public
 	 * @return Collections\Skills
 	 */
 	public function skills()
 	{
 		$this->domain('accountConfigReadOnly');
-		
+
 		$url = "https://{$this->domain}/api/account/{$this->account}/configuration/le-users/skills?v=4.0";
-		
+
 		return new Skills($this->request->get($this->request_version, $url, 'GET')->body);
 	}
-	
+
 	/**
 	 * getSkill function gets skill object based on ID.
-	 * 
+	 *
 	 * @access public
 	 * @param int $skillId
 	 * @return Models\Skill
@@ -417,15 +417,15 @@ class LiveEngageLaravel
 	public function getSkill($skillId)
 	{
 		$this->domain('accountConfigReadOnly');
-		
+
 		$url = "https://{$this->domain}/api/account/{$this->account}/configuration/le-users/skills/{$skillId}?v=4.0";
-		
+
 		return new Skill((array) $this->request->get($this->request_version, $url, 'GET')->body);
 	}
-	
+
 	/**
 	 * getAgent function gets agent object based on ID.
-	 * 
+	 *
 	 * @access public
 	 * @param int $userId
 	 * @return Models\Agent
@@ -433,36 +433,36 @@ class LiveEngageLaravel
 	public function getAgent($userId)
 	{
 		$this->domain('accountConfigReadOnly');
-		
+
 		$url = "https://{$this->domain}/api/account/{$this->account}/configuration/le-users/users/{$userId}?v=4.0";
-		
+
 		$content = $this->request->get($this->request_version, $url, 'GET');
-		
+
 		$agent = new Agent((array) $content->body);
 		$agent->revision = $content->headers['ac-revision'];
-		
+
 		return $agent;
 	}
-	
+
 	public function getSettings($filters = [])
 	{
 		$url = "https://z1-a.houston.int.liveperson.net/a/{$this->account}/module/sitesettings/doc/siteSettingsDictionary.json";
-		
+
 		$content = $this->request->get('V2', $url, 'GET');
-		
+
 		$settings = collect($content->body);
 		foreach ($filters as $filter => $value) {
 			$settings = $settings->filter(function($item, $key) use ($filter, $value) {
 				return str_contains($item->$filter, $value);
 			});
 		}
-		
+
 		return $settings;
 	}
-	
+
 	/**
 	 * updateAgent function.
-	 * 
+	 *
 	 * @access public
 	 * @param mixed $userId
 	 * @param mixed $properties
@@ -472,30 +472,30 @@ class LiveEngageLaravel
 	public function updateAgent($userId, $properties)
 	{
 		$agent = $this->getAgent($userId);
-		
+
 		$this->domain('accountConfigReadWrite');
-		
+
 		$url = "https://{$this->domain}/api/account/{$this->account}/configuration/le-users/users/{$userId}?v=4.0";
 		$headers = [
 			'X-HTTP-Method-Override' => 'PUT',
 			'If-Match' => $agent->revision
 		];
-		
+
 		$content = $this->request->get($this->request_version, $url, 'PUT', $properties, $headers);
-		
+
 		return new Agent((array) $content->body);
 	}
-	
+
 	/**
 	 * agents function gets collection of agents from account.
-	 * 
+	 *
 	 * @access public
 	 * @return Collections\AgentParticipants
 	 */
 	public function agents()
 	{
 		$this->domain('accountConfigReadOnly');
-		
+
 		$select = implode(',', [
 			'id',
 			'pid',
@@ -524,15 +524,15 @@ class LiveEngageLaravel
 			'lastPwdChangeDate',
 			'pictureUrl'
 		]);
-		
+
 		$url = "https://{$this->domain}/api/account/{$this->account}/configuration/le-users/users?v=4.0&select=$select";
-		
+
 		return new AgentParticipants((array) $this->request->get('V2', $url, 'GET')->body);
 	}
-	
+
 	/**
 	 * getAgentStatus function gets status of agents based on provided Skill IDs.
-	 * 
+	 *
 	 * @access public
 	 * @param int/array $skills
 	 * @return Collections\AgentParticipants
@@ -540,31 +540,31 @@ class LiveEngageLaravel
 	public function getAgentStatus($skills)
 	{
 		$skills = is_array($skills) ? $skills : [$skills];
-	
+
 		$this->domain('msgHist');
-		
+
 		$url = "https://{$this->domain}/messaging_history/api/account/{$this->account}/agent-view/status";
-		
+
 		$data = ['skillIds' => $skills];
-		
+
 		$response = $this->request->get($this->request_version, $url, 'POST', $data)->body;
 		$collection = new AgentParticipants($response->agentStatusRecords);
 		$collection->metaData = new MetaData((array) $response->_metadata);
-		
+
 		return $collection;
-		
+
 	}
-	
+
 	/**
 	 * conversationHistory function.
-	 * 
+	 *
 	 * @access public
 	 * @param Carbon $start (default: null)
 	 * @param Carbon $end (default: null)
 	 * @param int/array $skills (default: [])
 	 * @return Collections\ConversationHistory
 	 */
-	public function conversationHistory(Carbon $start = null, Carbon $end = null, $skills = [])
+	public function conversationHistory(Carbon $start = null, Carbon $end = null, $skills = [], $parameters = [])
 	{
 		$this->retry_counter = 0;
 		$this->skills = $skills;
@@ -572,23 +572,23 @@ class LiveEngageLaravel
 		$start = $start ?: (new Carbon())->today();
 		$end = $end ?: (new Carbon())->today()->addHours(23)->addMinutes(59);
 
-		$results_object = $this->retrieveMsgHistory($start, $end);
-		
+		$results_object = $this->retrieveMsgHistory($start, $end, false, $parameters);
+
 		$results_object->_metadata->start = $start;
 		$results_object->_metadata->end = $end;
-	
+
 		$meta = new MetaData((array) $results_object->_metadata);
-		
+
 		$collection = new ConversationHistory($results_object->records);
 		$collection->metaData = $meta;
-		
+
 		return $collection;
-			
+
 	}
-	
+
 	/**
 	 * getConversation function.
-	 * 
+	 *
 	 * @access public
 	 * @param mixed $conversationId
 	 * @return Models\Conversation
@@ -596,24 +596,24 @@ class LiveEngageLaravel
 	public function getConversation($conversationId)
 	{
 		$this->domain('msgHist');
-		
+
 		$url = "https://{$this->domain}/messaging_history/api/account/{$this->account}/conversations/conversation/search";
-		
+
 		$data = new Payload([
 			'conversationId' => $conversationId
 		]);
-		
+
 		$result = $this->request->get($this->request_version, $url, 'POST', $data)->body;
 		if (!count($result->conversationHistoryRecords)) {
 			return null; // @codeCoverageIgnore
 		}
-		
+
 		return new Conversation((array) $result->conversationHistoryRecords[0]);
 	}
 
 	/**
 	 * engagementHistory function.
-	 * 
+	 *
 	 * @access public
 	 * @param Carbon $start (default: null)
 	 * @param Carbon $end (default: null)
@@ -629,31 +629,31 @@ class LiveEngageLaravel
 		$end = $end ?: (new Carbon())->today()->addHours(23)->addMinutes(59);
 
 		$results_object = $this->retrieveHistory($start, $end);
-		
+
 		$results_object->_metadata->start = $start;
 		$results_object->_metadata->end = $end;
-	
+
 		$meta = new MetaData((array) $results_object->_metadata);
-		
+
 		$collection = new EngagementHistory($results_object->records);
 		$collection->metaData = $meta;
-		
+
 		return $collection;
-			
+
 	}
-	
+
 	/**
 	 * status function gets status of the account.
-	 * 
+	 *
 	 * @access public
 	 * @return Models\AccountStatus
 	 */
 	public function status()
 	{
 		$url = "https://status.liveperson.com/json?site={$this->account}";
-		
+
 		$response = $this->request->get('V1', $url, 'GET')->body;
-		
+
 		return new AccountStatus((array) $response);
 	}
 }
