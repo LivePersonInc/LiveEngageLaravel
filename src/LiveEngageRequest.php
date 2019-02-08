@@ -131,8 +131,10 @@ class LiveEngageRequest
 	public function V1($url, $method, $payload = null, $headers = null, $noauth = false)
 	{
 		$client = $this->requestClient($noauth);
+		$jar = new \GuzzleHttp\Cookie\CookieJar;
 
 		$args = [
+			'cookies' => $jar,
 			'auth' => 'oauth',
 			'headers' => array_merge([
 				'content-type' => 'application/json',
