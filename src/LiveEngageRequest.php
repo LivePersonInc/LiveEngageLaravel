@@ -109,7 +109,9 @@ class LiveEngageRequest
 		}
 
 		$this->bearer = $response->body->bearer;
-		session(['lptoken' => $this->bearer]);
+		$refresh = isset($this->cookies['Session_id']) ? $this->cookies['Session_id'] : '';
+
+		session(['lptoken' => $this->bearer, 'lprefresh' => $refresh, 'lpcsrf' => $response->body->csrf]);
 
 		return $this;
 	}
@@ -129,6 +131,7 @@ class LiveEngageRequest
 		$client = $this->requestClient($noauth);
 
 		$args = [
+			'cookies' => true,
 			'auth' => 'oauth',
 			'headers' => array_merge([
 				'content-type' => 'application/json',
@@ -142,6 +145,8 @@ class LiveEngageRequest
 		// @codeCoverageIgnoreStart
 		try {
 			$res = $client->request($method, $url, $args);
+			dd($client->getConfig('cookies')->toArray());
+			$this->cookies = $client->getConfig('cookies')->toArray();
 		} catch (\GuzzleHttp\Exception\ServerException $e) {
 			throw $e;
 		} catch (\GuzzleHttp\Exception\ClientException $e) {
@@ -177,6 +182,7 @@ class LiveEngageRequest
 
 		$client = new Client();
 		$args = [
+			'cookies' => true,
 			'headers' => array_merge([
 				'content-type' => 'application/json',
 				'accept' => 'application/json',
@@ -188,6 +194,7 @@ class LiveEngageRequest
 		// @codeCoverageIgnoreStart
 		try {
 			$res = $client->request($method, $url, $args);
+			$this->cookies = $client->getConfig('cookies')->toArray();
 		} catch (\Exception $e) {
 			throw $e;
 		}
@@ -240,5 +247,10 @@ class LiveEngageRequest
 		]);
 
 		return $client;
+	}
+
+	public function refresh()
+	{
+
 	}
 }
