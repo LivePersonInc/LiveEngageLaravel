@@ -254,9 +254,9 @@ class LiveEngageRequest
 		$csrf = session('lpcsrf');
 		$client = $this->requestClient(true);
 		$client->post("https://$domain/api/account/$account/refresh", [
-			'body' => [
+			'body' => json_encode([
 				'csrf' => $csrf
-			]
+			])
 		]);
 	}
 }
