@@ -2,7 +2,7 @@
 /**
  * LiveEngageRequest class.
  */
-	
+
 namespace LivePersonInc\LiveEngageLaravel;
 
 use LivePersonInc\LiveEngageLaravel\Facades\LiveEngageLaravel as LiveEngage;
@@ -20,41 +20,41 @@ class LiveEngageRequest
 {
 	/**
 	 * config
-	 * 
+	 *
 	 * @var mixed
 	 * @access private
 	 */
 	private $config;
-	
+
 	/**
 	 * retry_limit
-	 * 
+	 *
 	 * (default value: 3)
-	 * 
+	 *
 	 * @var int
 	 * @access private
 	 */
 	private $retry_limit = 3;
 	/**
 	 * retry_counter
-	 * 
+	 *
 	 * (default value: 0)
-	 * 
+	 *
 	 * @var int
 	 * @access private
 	 */
 	private $retry_counter = 0;
 	/**
 	 * bearer
-	 * 
+	 *
 	 * @var mixed
 	 * @access private
 	 */
 	public $bearer;
-	
+
 	/**
 	 * __construct function.
-	 * 
+	 *
 	 * @access public
 	 * @param mixed $config
 	 * @return void
@@ -63,10 +63,10 @@ class LiveEngageRequest
 	{
 		$this->config = $config; // @codeCoverageIgnore
 	}
-	
+
 	/**
 	 * login function.
-	 * 
+	 *
 	 * @access public
 	 * @param string $user (default: null)
 	 * @param string $pass (default: null)
@@ -78,13 +78,13 @@ class LiveEngageRequest
 		$le = LiveEngage::domain('agentVep');
 		$domain = $le->domain;
 		$account = $le->account;
-		
+
 		$consumer_key = config("{$this->config}.key");
 		$consumer_secret = config("{$this->config}.secret");
 		$token = config("{$this->config}.token");
 		$secret = config("{$this->config}.token_secret");
 		$username = config("{$this->config}.user_name");
-		
+
 		if ($user && $pass) {
 			$auth = [
 				'username'			=> $user,
@@ -99,23 +99,24 @@ class LiveEngageRequest
 				'accessTokenSecret' => $secret,
 			];
 		}
-		
+
 		$url = "https://{$domain}/api/account/{$account}/login?v=1.3";
-		
+
 		try {
 			$response = $this->get('V1', $url, 'POST', $auth, [], true);
 		} catch (\GuzzleHttp\Exception\ServerException $e) {
 			throw $e; //new LoginFailure();
 		}
-		
+
 		$this->bearer = $response->body->bearer;
-		
+		session(['lptoken' => $this->bearer]);
+
 		return $this;
 	}
-	
+
 	/**
 	 * V1
-	 * 
+	 *
 	 * @access public
 	 * @param string $url
 	 * @param string $method
@@ -126,7 +127,7 @@ class LiveEngageRequest
 	public function V1($url, $method, $payload = null, $headers = null, $noauth = false)
 	{
 		$client = $this->requestClient($noauth);
-		
+
 		$args = [
 			'auth' => 'oauth',
 			'headers' => array_merge([
@@ -135,9 +136,9 @@ class LiveEngageRequest
 			], $headers ?: []),
 			'body' => json_encode($payload ?: [])
 		];
-		
+
 		if ($noauth) unset($args['auth']);
-		
+
 		// @codeCoverageIgnoreStart
 		try {
 			$res = $client->request($method, $url, $args);
@@ -157,10 +158,10 @@ class LiveEngageRequest
 
 		return $res;
 	}
-	
+
 	/**
 	 * V2
-	 * 
+	 *
 	 * @access public
 	 * @param mixed $url
 	 * @param mixed $method
@@ -170,18 +171,20 @@ class LiveEngageRequest
 	 */
 	public function V2($url, $method, $payload = null, $headers = null, $noauth = false)
 	{
-		if (!$this->bearer) $this->login();
-		
+		if (!($token = session('lptoken', $this->bearer))) $this->login();
+
+
+
 		$client = new Client();
 		$args = [
 			'headers' => array_merge([
 				'content-type' => 'application/json',
 				'accept' => 'application/json',
-				'Authorization' => 'Bearer ' . $this->bearer
+				'Authorization' => 'Bearer ' . $token
 			], $headers ?: []),
 			'body' => json_encode($payload ?: [])
 		];
-		
+
 		// @codeCoverageIgnoreStart
 		try {
 			$res = $client->request($method, $url, $args);
@@ -189,24 +192,24 @@ class LiveEngageRequest
 			throw $e;
 		}
 		// @codeCoverageIgnoreEnd
-		
+
 		return $res;
 	}
-	
+
 	public function get($version, $url, $method, $payload = null, $headers = null, $noauth = false)
 	{
 		$response = $this->$version($url, $method, $payload, $headers, $noauth);
-		
+
 		$content = new \StdClass();
 		$content->body = json_decode($response->getBody());
 		$content->headers = $response->getHeaders();
-		
+
 		return $content;
 	}
-	
+
 	/**
 	 * requestClient
-	 * 
+	 *
 	 * @access private
 	 * @return \GuzzleHttp\Client
 	 * @param bool $noauth (default: false)
@@ -216,7 +219,7 @@ class LiveEngageRequest
 		if ($noauth) {
 			return new Client();
 		}
-		
+
 		$consumer_key = config("{$this->config}.key");
 		$consumer_secret = config("{$this->config}.secret");
 		$token = config("{$this->config}.token");
@@ -235,7 +238,7 @@ class LiveEngageRequest
 		$client = new Client([
 			'handler' => $stack,
 		]);
-		
+
 		return $client;
 	}
 }
