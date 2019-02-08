@@ -112,7 +112,7 @@ class LiveEngageRequest
 		$refresh = isset($this->cookies['Session_id']) ? $this->cookies['Session_id'] : '';
 
 		$session = ['lptoken' => $this->bearer, 'lprefresh' => $refresh, 'lpcsrf' => $response->body->csrf];
-
+		dd($session);
 		session($session);
 
 		return $this;
