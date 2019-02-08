@@ -133,7 +133,6 @@ class LiveEngageRequest
 		$client = $this->requestClient($noauth);
 
 		$args = [
-			'cookies' => true,
 			'auth' => 'oauth',
 			'headers' => array_merge([
 				'content-type' => 'application/json',
@@ -183,7 +182,6 @@ class LiveEngageRequest
 
 		$client = new Client();
 		$args = [
-			'cookies' => true,
 			'headers' => array_merge([
 				'content-type' => 'application/json',
 				'accept' => 'application/json',
@@ -195,7 +193,6 @@ class LiveEngageRequest
 		// @codeCoverageIgnoreStart
 		try {
 			$res = $client->request($method, $url, $args);
-			$this->cookies = $client->getConfig('cookies')->toArray();
 		} catch (\Exception $e) {
 			throw $e;
 		}
@@ -245,6 +242,7 @@ class LiveEngageRequest
 
 		$client = new Client([
 			'handler' => $stack,
+			'cookies' => true
 		]);
 
 		return $client;
