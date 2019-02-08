@@ -111,7 +111,9 @@ class LiveEngageRequest
 		$this->bearer = $response->body->bearer;
 		$refresh = isset($this->cookies['Session_id']) ? $this->cookies['Session_id'] : '';
 
-		session(['lptoken' => $this->bearer, 'lprefresh' => $refresh, 'lpcsrf' => $response->body->csrf]);
+		$session = ['lptoken' => $this->bearer, 'lprefresh' => $refresh, 'lpcsrf' => $response->body->csrf];
+
+		session($session);
 
 		return $this;
 	}
@@ -145,7 +147,6 @@ class LiveEngageRequest
 		// @codeCoverageIgnoreStart
 		try {
 			$res = $client->request($method, $url, $args);
-			dd($client->getConfig('cookies')->toArray());
 			$this->cookies = $client->getConfig('cookies')->toArray();
 		} catch (\GuzzleHttp\Exception\ServerException $e) {
 			throw $e;
