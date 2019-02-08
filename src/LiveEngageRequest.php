@@ -130,7 +130,6 @@ class LiveEngageRequest
 	public function V1($url, $method, $payload = null, $headers = null, $noauth = false)
 	{
 		$client = $this->requestClient($noauth);
-		$jar = new \GuzzleHttp\Cookie\CookieJar;
 
 		$args = [
 			'auth' => 'oauth',
@@ -219,7 +218,9 @@ class LiveEngageRequest
 	private function requestClient($noauth = false)
 	{
 		if ($noauth) {
-			return new Client();
+			return new Client([
+				'cookies' => true,
+			]);
 		}
 
 		$consumer_key = config("{$this->config}.key");
@@ -247,6 +248,15 @@ class LiveEngageRequest
 
 	public function refresh()
 	{
-
+		$le = LiveEngage::domain('agentVep');
+		$domain = $le->domain;
+		$account = $le->account;
+		$csrf = session('lpcsrf');
+		$client = $this->requestClient(true);
+		$client->post("https://$domain/api/account/$account/refresh", [
+			'body' => [
+				'csrf' => $csrf
+			]
+		]);
 	}
 }

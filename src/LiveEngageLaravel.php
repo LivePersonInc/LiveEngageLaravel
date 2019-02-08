@@ -656,4 +656,10 @@ class LiveEngageLaravel
 
 		return new AccountStatus((array) $response);
 	}
+
+	public function refresh()
+	{
+		$this->request->refresh();
+		return $this;
+	}
 }
