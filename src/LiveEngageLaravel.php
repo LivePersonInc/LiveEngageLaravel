@@ -527,7 +527,7 @@ class LiveEngageLaravel
 
 		$url = "https://{$this->domain}/api/account/{$this->account}/configuration/le-users/users?v=4.0&select=$select";
 
-		return new AgentParticipants((array) $this->request->get('V2', $url, 'GET')->body);
+		return new AgentParticipants((array) $this->request->get($this->request_version, $url, 'GET')->body);
 	}
 
 	/**
