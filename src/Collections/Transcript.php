@@ -24,7 +24,7 @@ class Transcript extends Collection
 			if (property_exists($item, 'sentBy') && $item->sentBy == 'Agent' && $agents) {
 				$item->agentDetails = $agents->findById($item->participantId);
 			}
-			return new Message((array) $item);
+			return is_a($item, 'LivePersonInc\LiveEngageLaravel\Models\Message') ? $item : new Message((array) $item);
 		}, $models);
 		return parent::__construct($models);
 	}
