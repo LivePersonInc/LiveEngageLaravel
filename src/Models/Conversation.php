@@ -76,4 +76,11 @@ class Conversation extends Model
 		$info['transcript'] = $this->textTranscript;
 		return ((object)$info);
 	}
+
+	public function extractEmail(&$matches = [])
+	{
+		$pattern = '/[.A-Za-z0-9_-]+@[A-Za-z0-9_-]+\.([A-Za-z0-9_-][A-Za-z0-9_]+)/'; //regex for pattern of e-mail address
+        preg_match($pattern, $this->textTranscript, $matches);
+        return count($matches) ? $matches[0] : null;
+	}
 }
