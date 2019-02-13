@@ -600,7 +600,25 @@ class LiveEngageLaravel
 		$url = "https://{$this->domain}/messaging_history/api/account/{$this->account}/conversations/conversation/search";
 
 		$data = new Payload([
-			'conversationId' => $conversationId
+			'conversationId' => $conversationId,
+			'contentToRetrieve' => [
+				'campaign',
+				'messageRecords',
+				'agentParticipants',
+				'agentParticipantsLeave',
+				'agentParticipantsActive',
+				'consumerParticipants',
+				'transfers',
+				'interactions',
+				'messageScores',
+				'messageStatuses',
+				'conversationSurveys',
+				'coBrowseSessions',
+				'summary',
+				'sdes',
+				'unAuthSdes',
+				'monitoring'
+			]
 		]);
 
 		$result = $this->request->get($this->request_version, $url, 'POST', $data)->body;
