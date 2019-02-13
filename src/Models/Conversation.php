@@ -80,7 +80,7 @@ class Conversation extends Model
 	public function extractEmail(&$matches = [])
 	{
 		$pattern = '/[.A-Za-z0-9_-]+@[A-Za-z0-9_-]+\.([A-Za-z0-9_-][A-Za-z0-9_]+)/'; //regex for pattern of e-mail address
-        preg_match($pattern, $this->textTranscript, $matches);
+        preg_match_all($pattern, $this->textTranscript, $matches);
         return count($matches) ? $matches[0] : null;
 	}
 }
