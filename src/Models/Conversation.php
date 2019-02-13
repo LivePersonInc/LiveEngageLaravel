@@ -37,12 +37,14 @@ class Conversation extends Model
 			'agentParticipants'		=> [],
 			'consumerParticipants'	=> [],
 			'messageRecords'		=> [],
+			'monitoring'			=> [],
 			'sdes'					=> new SDE()
 		];
 
 		$item = array_merge($init, $item);
 
 		$item['info'] = new MessagingInfo((array) $item['info']);
+		$item['monitoring'] = new MessagingInfo((array) $item['monitoring']);
 		$item['visitorInfo'] = new Visitor((array) $item['visitorInfo']);
 		$item['campaign'] = new Campaign((array) $item['campaign']);
 		$item['transfers'] = new Transfers($item['transfers']);
@@ -77,8 +79,9 @@ class Conversation extends Model
 		return ((object)$info);
 	}
 
-	public function extractEmail(&$matches = [])
+	public function extractEmail()
 	{
+		$matches = [];
 		$pattern = '/[.A-Za-z0-9_-]+@[A-Za-z0-9_-]+\.([A-Za-z0-9_-][A-Za-z0-9_]+)/'; //regex for pattern of e-mail address
         preg_match_all($pattern, $this->textTranscript, $matches);
         return count($matches) ? $matches[0] : null;
