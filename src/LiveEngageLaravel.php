@@ -370,7 +370,7 @@ class LiveEngageLaravel
 		$this->domain('msgHist');
 		$version = $this->request_version;
 
-		$url = $url ?: "https://{$this->domain}/messaging_history/api/account/{$this->account}/conversations/search?limit={$this->history_limit}&offset=0&sort=start:desc";
+		$url = $url ?: "https://{$this->domain}/messaging_history/api/account/{$this->account}/conversations/search?limit={$this->history_limit}&offset=0&sort=start:desc&v=2";
 
 		$start_str = $start->toW3cString();
 		$end_str = $end->toW3cString();
