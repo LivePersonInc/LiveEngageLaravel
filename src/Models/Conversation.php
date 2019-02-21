@@ -29,6 +29,8 @@ class Conversation extends Model
 
 	public function __construct(array $item)
 	{
+
+
 		$init = [
 			'info'					=> [],
 			'visitorInfo'			=> [],

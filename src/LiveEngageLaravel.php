@@ -381,7 +381,25 @@ class LiveEngageLaravel
 				'from' => strtotime($start_str) . '000',
 				'to' => strtotime($end_str) . '000',
 			],
-			'skillIds' => $this->skills
+			'skillIds' => $this->skills,
+			'contentToRetrieve' => [
+				'campaign',
+				'messageRecords',
+				'agentParticipants',
+				'agentParticipantsLeave',
+				'agentParticipantsActive',
+				'consumerParticipants',
+				'transfers',
+				'interactions',
+				'messageScores',
+				'messageStatuses',
+				'conversationSurveys',
+				'coBrowseSessions',
+				'summary',
+				'sdes',
+				'unAuthSdes',
+				'monitoring'
+			]
 		], $parameters));
 
 		$result = $this->request->get($version, $url, 'POST', $data)->body;
@@ -597,7 +615,7 @@ class LiveEngageLaravel
 	{
 		$this->domain('msgHist');
 
-		$url = "https://{$this->domain}/messaging_history/api/account/{$this->account}/conversations/conversation/search";
+		$url = "https://{$this->domain}/messaging_history/api/account/{$this->account}/conversations/conversation/search?v=2";
 
 		$data = new Payload([
 			'conversationId' => $conversationId,
@@ -610,10 +628,10 @@ class LiveEngageLaravel
 				'consumerParticipants',
 				'transfers',
 				'interactions',
-				'messageScores',
-				'messageStatuses',
+				//'messageScores',
+				//'messageStatuses',
 				'conversationSurveys',
-				'coBrowseSessions',
+				//'coBrowseSessions',
 				'summary',
 				'sdes',
 				'unAuthSdes',
@@ -625,6 +643,7 @@ class LiveEngageLaravel
 		if (!count($result->conversationHistoryRecords)) {
 			return null; // @codeCoverageIgnore
 		}
+
 
 		return new Conversation((array) $result->conversationHistoryRecords[0]);
 	}
