@@ -38,7 +38,8 @@ class Conversation extends Model
 			'consumerParticipants'	=> [],
 			'messageRecords'		=> [],
 			'monitoring'			=> [],
-			'sdes'					=> new SDE()
+			'sdes'					=> new SDE(),
+			'unAuthSdes'			=> new SDE(),
 		];
 
 		$item = array_merge($init, $item);
@@ -52,6 +53,7 @@ class Conversation extends Model
 		$item['consumerParticipants'] = new ConsumerParticipants($item['consumerParticipants']);
 		$item['messageRecords'] = new Transcript($item['messageRecords'], $item['agentParticipants']);
 		$item['sdes'] = new SDEs($item['sdes']->events ?: []);
+		$item['unAuthSdes'] = new SDEs($item['unAuthSdes']->events ?: []);
 
 		parent::__construct($item);
 	}
