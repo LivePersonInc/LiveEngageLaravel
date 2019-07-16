@@ -34,7 +34,8 @@ class Transcript extends Collection
 		$text = "";
 		foreach ($this as $message) {
 			$by = $message->sentBy == 'Agent' ? $message->agentDetails->agentFullName : 'Visitor';
-			$text .= "{$by}:\n{$message->plainText}\n\n";
+			$messageTime = $message->time->toDateTimeString();
+			$text .= "{$by}, {$messageTime}:\n{$message->plainText}\n\n";
 		}
 		return $text;
 	}
