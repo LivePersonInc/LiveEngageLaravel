@@ -26,7 +26,7 @@ class MessagingInfo extends Model
 	
 	public function getEndTimeAttribute()
 	{
-        if (if (isset($this->attributes['endTime']))) {
+        if (isset($this->attributes['endTime'])) {
             if ($this->attributes['status'] == 'CLOSE') {
                 return new Carbon($this->attributes['endTime']);
             } else {
