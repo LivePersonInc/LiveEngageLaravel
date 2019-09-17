@@ -20,16 +20,19 @@ class MessagingInfo extends Model
 
 	public function getStartTimeAttribute()
 	{
-		return new Carbon($this->attributes['startTime']);
+        if (isset($this->attributes['startTime']))
+		    return new Carbon($this->attributes['startTime']);
 	}
 	
 	public function getEndTimeAttribute()
 	{
-		if ($this->attributes['status'] == 'CLOSE') {
-			return new Carbon($this->attributes['endTime']);
-		} else {
-			return null;
-		}
+        if (if (isset($this->attributes['endTime']))) {
+            if ($this->attributes['status'] == 'CLOSE') {
+                return new Carbon($this->attributes['endTime']);
+            } else {
+                return null;
+            }
+        }
 	}
 
 	public function getMinutesAttribute()
