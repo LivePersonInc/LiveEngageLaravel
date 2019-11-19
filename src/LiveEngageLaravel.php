@@ -384,6 +384,7 @@ class LiveEngageLaravel
 			'skillIds' => $this->skills,
 			'contentToRetrieve' => [
 				'campaign',
+                'dialogs',
 				'messageRecords',
 				'agentParticipants',
 				'agentParticipantsLeave',
