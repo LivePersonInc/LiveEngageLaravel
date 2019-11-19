@@ -622,6 +622,7 @@ class LiveEngageLaravel
 			'conversationId' => $conversationId,
 			'contentToRetrieve' => [
 				'campaign',
+                'dialogs',
 				'messageRecords',
 				'agentParticipants',
 				'agentParticipantsLeave',
