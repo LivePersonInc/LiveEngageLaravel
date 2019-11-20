@@ -13,4 +13,9 @@ use Illuminate\Database\Eloquent\Model;
 class Transfer extends Model
 {
 	protected $guarded = [];
+    
+    public function getTimeAttribute()
+    {
+        return new Carbon(intval($this->timeL/1000));
+    }
 }
