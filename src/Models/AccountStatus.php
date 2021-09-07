@@ -8,16 +8,17 @@
 namespace LivePersonInc\LiveEngageLaravel\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Str;
 
 class AccountStatus extends Model
 {
 	protected $guarded = [];
-	
+
 	public function __construct(array $array)
 	{
 		$output = [];
 		foreach ($array as $key=>$value) {
-			$output[snake_case($key)] = $value;
+			$output[Str::snake($key)] = $value;
 		}
 		parent::__construct($output);
 	}
